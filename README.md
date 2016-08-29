@@ -26,3 +26,15 @@ First you will need to put all the apps developed in Projects B, C and D into th
 - Create the user interaction controls for the apps integrated and enable them
 - Create an absolutely awesome UX/UI for the website with a really useful homepage :)
 - Make arrangements to host the web site on a host that can scale for traffic demands (preferably there should be no cost associated with this step. Check Heroku, AWS, etc). We (mentors) can * also help with university resources.
+
+## Team members
+Our team consists of presentation groups 6, 9 and 10.
+
+- @AlexanderLill Alexander Lill (Group 6)
+- @philbu Philippe Buschmann (Group 6)
+- @MajorBreakfast Josef Brandl (Group 6)
+- @WoH Wolfgang Hobmaier (Group 9)
+- @Georrgi Georgi Aylov (Group 9)
+- @johartl Jochen Hartl (Group 9)
+- @mfkaptan Mustafa Kaptan (Group 10)
+- @Lugitan Gilles Tanson (Group 10)
