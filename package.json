@@ -7,7 +7,7 @@
     "start": "node lib/main",
     "test": "node tests/main && standard"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
