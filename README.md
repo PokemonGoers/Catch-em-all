@@ -1,9 +1,18 @@
 # Catch-em-all
 
+[![Gitter Chat Badge](https://badges.gitter.im/pokemongoers/Catch-em-all.svg)](https://gitter.im/pokemongoers/Catch-em-all?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Travis CI Badge](https://travis-ci.org/PokemonGoers/Catch-em-all.svg?branch=develop)](https://travis-ci.org/PokemonGoers/Catch-em-all?branch=develop)
+
+
 This is project E of the WS 2016 JavaScript Technology seminar at the TU Munich. More details about the seminar at https://rostlab.org/owiki/index.php/Javascript_technology_2016-2
 
-## Chat
-[![Join the chat at https://gitter.im/pokemongoers/Catch-em-all](https://badges.gitter.im/pokemongoers/Catch-em-all.svg)](https://gitter.im/pokemongoers/Catch-em-all?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) All team members should join!
+## How to use
+
+`npm install` to install packages
+
+`npm start` to start server
+
+`npm test` to run tests
 
 ## About this project
 
