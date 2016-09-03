@@ -1,4 +1,7 @@
-sudo: false
+sudo: required
+
+services:
+  - docker
 
 language: node_js
 node_js:
@@ -10,12 +13,9 @@ cache:
     $HOME/.cache # Includes bower cache
 
 before_install:
-  # Prevent the npm loading indicator
-  - npm config --global set spin false
-  # If npm version is less 3.0.0 upgrade to 3
-  - if [[ $(npm -v | cut -d '.' -f 1) -lt 3 ]]; then npm i -g npm@^3; fi
+  - docker-compose build
 
-install:
-  - npm install --no-optional
-
-script: npm test
+script:
+  - docker-compose up -d
+  - docker-compose run app npm test
+  - docker-compose stop
