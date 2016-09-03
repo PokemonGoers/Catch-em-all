@@ -12,10 +12,14 @@ cache:
     $HOME/.npm
     $HOME/.cache # Includes bower cache
 
-before_install:
+install:
   - docker-compose build
 
-script:
+before_script:
   - docker-compose up -d
+
+script:
   - docker-compose run app npm test
+
+after_script:
   - docker-compose stop
