@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8080"
+    depends_on:
+      - api
+
+  api:
+    build: https://github.com/PokemonGoers/PokeData.git#develop
+    ports:
+      - "8080:8080"
+    links:
+      - db
+    environment:
+      - DB_URI=db
+
+  db:
+    image: mongo
+    volumes:
+      - ./db-data:/data/db
