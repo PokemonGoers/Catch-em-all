@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { ionicBootstrap, Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
+import 'rxjs/add/operator/map';
 
+import { Api } from './api/api';
 import { HomePage } from './pages/home/home';
 
 
 @Component({
-  template: '<ion-nav [root]="rootPage"></ion-nav>'
+  template: '<ion-nav [root]="rootPage"></ion-nav>',
+  providers: [Api]
 })
 export class MyApp {
   rootPage: any = HomePage;
