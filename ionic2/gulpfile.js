@@ -27,11 +27,19 @@ gulp.task('run:before', [shouldWatch ? 'watch' : 'build']);
  * changes, but you are of course welcome (and encouraged) to customize your
  * build however you see fit.
  */
-var buildBrowserify = require('ionic-gulp-browserify-typescript');
-var buildSass = require('ionic-gulp-sass-build');
-var copyHTML = require('ionic-gulp-html-copy');
-var copyFonts = require('ionic-gulp-fonts-copy');
-var copyScripts = require('ionic-gulp-scripts-copy');
+
+function applyOptions(options, fn) {
+  return (callOptions) => fn(Object.assign(callOptions, options));
+}
+
+var outputDir = '../server/app';
+
+// Change output destination to server directory
+var buildBrowserify = applyOptions({outputPath: outputDir + '/js'}, require('ionic-gulp-browserify-typescript'));
+var buildSass = applyOptions({dest: outputDir + '/css'}, require('ionic-gulp-sass-build'));
+var copyHTML = applyOptions({dest: outputDir}, require('ionic-gulp-html-copy'));
+var copyFonts = applyOptions({dest: outputDir + '/fonts'}, require('ionic-gulp-fonts-copy'));
+var copyScripts = applyOptions({dest: outputDir + '/js'}, require('ionic-gulp-scripts-copy'));
 var tslint = require('ionic-gulp-tslint');
 
 var isRelease = argv.indexOf('--release') > -1;
@@ -69,6 +77,6 @@ gulp.task('html', copyHTML);
 gulp.task('fonts', copyFonts);
 gulp.task('scripts', copyScripts);
 gulp.task('clean', function(){
-  return del('www/build');
+  return del(outputDir, {force: true});
 });
 gulp.task('lint', tslint);

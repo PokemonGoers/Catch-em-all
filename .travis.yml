@@ -7,9 +7,13 @@ language: node_js
 node_js:
   - stable
 
+cache:
+  directories:
+    - ionic2/node_modules
+    - server/node_modules
+
 install:
   - docker build -t pokemongoers/catchemall .
 
 script:
-  - docker run pokemongoers/catchemall /bin/sh -c 'cd server && npm test'
-  - docker run pokemongoers/catchemall /bin/sh -c 'cd ionic2 && npm test'
+  - docker run pokemongoers/catchemall npm test

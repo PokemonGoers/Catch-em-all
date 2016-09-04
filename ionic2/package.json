@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "start": "ionic serve",
-    "test": "echo \"No tests yet\""
+    "start": "ionic serve"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.4",
