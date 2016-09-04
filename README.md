@@ -6,13 +6,45 @@
 
 This is project E of the WS 2016 JavaScript Technology seminar at the TU Munich. More details about the seminar at https://rostlab.org/owiki/index.php/Javascript_technology_2016-2
 
-## How to use
+## Set up for development
+
+In `./ionic2` run
+
+`npm install -g cordova ionic@beta` to install ionic and cordova
 
 `npm install` to install packages
 
-`npm start` to start server
+`ionic serve` to start server
 
-`npm test` to run tests
+## Build app for deployment
+
+### Using Docker
+
+1. `docker build -t pokemongoers/catchemall .`
+
+2. `docker run -p 8080:8080 pokemongoers/catchemall`
+
+3. Go to `http://localhost:8080`
+
+### Without Docker
+
+1. In `./ionic2` run
+
+    `npm install`
+
+    `gulp build --release`
+
+2. In `./server` run
+
+    `npm install`
+
+    `npm start`
+
+3. Go to `http://localhost:8080`
+
+## Testing
+
+In `./server` run `npm test`
 
 ## About this project
 
