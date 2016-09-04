@@ -4,7 +4,8 @@ WORKDIR /usr/src/pokemon-app
 
 ADD . .
 
-RUN npm install
+RUN cd server && npm install
+RUN cd ionic2 && npm install
 
 EXPOSE 8080
-CMD ["npm", "start"]
+CMD cd server && npm start

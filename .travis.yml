@@ -1,0 +1,15 @@
+sudo: required
+
+services:
+  - docker
+
+language: node_js
+node_js:
+  - stable
+
+install:
+  - docker build -t pokemongoers/catchemall .
+
+script:
+  - docker run pokemongoers/catchemall /bin/sh -c 'cd server && npm test'
+  - docker run pokemongoers/catchemall /bin/sh -c 'cd ionic2 && npm test'

@@ -28,8 +28,6 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "pokemap-1": "github:pokemongoers/PokeMap-1#develop",
-    "pokemap-2": "github:pokemongoers/PokeMap-2#develop"
+    "express": "^4.14.0"
   }
 }
