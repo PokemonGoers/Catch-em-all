@@ -14,12 +14,6 @@ This is project E of the WS 2016 JavaScript Technology seminar at the TU Munich.
 
 `npm test` to run tests
 
-## Docker build
-
-`docker-compose build` to build the project including other project dependencies
-
-`docker-compose up` to start the app on `http://localhost:8080`
-
 ## About this project
 
 ### Description
