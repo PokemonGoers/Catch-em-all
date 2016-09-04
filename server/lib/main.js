@@ -1,6 +1,7 @@
 const PokemonSite = require('./pokemon-site')
+const config = require('./config')
 
-const pokemonSite = new PokemonSite()
+const pokemonSite = new PokemonSite(config)
 
 // Setup termination handler for various signals
 const signals = [
