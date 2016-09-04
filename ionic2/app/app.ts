@@ -8,7 +8,7 @@ import { HomePage } from './pages/home/home';
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>'
 })
-export class MyApp {
+export class App {
   rootPage: any = HomePage;
 
   constructor(public platform: Platform) {
@@ -20,4 +20,4 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp);
+ionicBootstrap(App);
