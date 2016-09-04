@@ -11,7 +11,7 @@ import { HomePage } from './pages/home/home';
   template: '<ion-nav [root]="rootPage"></ion-nav>',
   providers: [Api]
 })
-export class MyApp {
+export class App {
   rootPage: any = HomePage;
 
   constructor(public platform: Platform) {
@@ -23,4 +23,4 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp);
+ionicBootstrap(App);

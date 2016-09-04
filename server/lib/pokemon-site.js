@@ -2,23 +2,31 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const http = require('http')
+const proxy = require('express-http-proxy')
+const url = require('url')
 
 class PokemonSite {
-  constructor (options = {}) {
-    const ipAddress = options.ipAddress || '127.0.0.1'
-    const port = options.port || 8080
-
+  constructor (config) {
     // Express
     const app = express()
     app.use(bodyParser.json())
     app.get('/', (req, res) => { res.redirect('index.html') })
-    app.use(express.static(path.join(__dirname, 'public'))) // Serve `/public`
+
+    // Serve app content
+    app.use(express.static(path.join(__dirname, '../app')))
+
+    // Proxy requests to /api/* to API backend
+    var apiEndpoint = config.apiHost + ':' + config.apiPort
+    app.use('/api/*', proxy(apiEndpoint, {
+      forwardPath: (req, res) => url.parse(req.baseUrl).path
+    }))
+
     this._app = app
 
     // Start listening
     const server = http.createServer(app)
-    server.listen(port, ipAddress, () => {
-      console.log('Listening on %s:%d ...', ipAddress, port)
+    server.listen(config.listenPort, config.listenAddress, () => {
+      console.log('Listening on %s:%d ...', config.listenAddress, config.listenPort)
     })
     this._server = server
   }

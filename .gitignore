@@ -1,3 +1,6 @@
+# Bundled web app
+/server/app
+
 # Logs
 logs
 *.log
@@ -35,3 +38,11 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# JetBrains IDE project files
+.idea
+
+# Ionic
+/ionic2/platforms/
+/ionic2/plugins/
+.DS_Store

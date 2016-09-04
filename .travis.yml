@@ -1,0 +1,19 @@
+sudo: required
+
+services:
+  - docker
+
+language: node_js
+node_js:
+  - stable
+
+cache:
+  directories:
+    - ionic2/node_modules
+    - server/node_modules
+
+install:
+  - docker build -t pokemongoers/catchemall .
+
+script:
+  - docker run pokemongoers/catchemall npm test
