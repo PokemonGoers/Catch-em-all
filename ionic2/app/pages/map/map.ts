@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
-  templateUrl: 'pages/home/home.html'
+  templateUrl: 'pages/map/map.html'
 })
-export class HomePage {
-  constructor(public navCtrl: NavController) {
+export class MapPage {
+
+  constructor(private navCtrl: NavController) {
 
   }
+
 }
