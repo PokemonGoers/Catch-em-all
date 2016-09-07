@@ -47,8 +47,7 @@ module.exports = function(config) {
       }
     },
 
-    // Disable progress reporters for cleaner log output on Travis
-    reporters: [],
+    reporters: ['spec'],
 
     // web server port
     port: 9876,

@@ -39,6 +39,7 @@
     "karma-browserify": "^5.1.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-jasmine": "^1.0.2",
+    "karma-spec-reporter": "0.0.26",
     "run-sequence": "1.1.5",
     "tsify": "^1.0.5",
     "tslint-ionic-rules": "0.0.4"
