@@ -4,12 +4,12 @@ import { StatusBar } from 'ionic-native';
 import 'rxjs/add/operator/map';
 
 import {MapPage} from "./pages/map/map";
-import { Api } from './api/api';
+import { ApiService } from './api/api.service';
 
 
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>',
-  providers: [Api]
+  providers: [ApiService]
 })
 export class App {
   rootPage: any = MapPage;
