@@ -44,7 +44,9 @@ In `./ionic2` run
 
 ## Testing
 
-In `./server` run `npm test`
+In `./server` run `npm test` for server tests.
+
+In `./ionic2` run `npm test` for frontend/app tests.
 
 ## About this project
 

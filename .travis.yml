@@ -5,7 +5,7 @@ services:
 
 language: node_js
 node_js:
-  - stable
+  - "6"
 
 cache:
   directories:
@@ -13,7 +13,24 @@ cache:
     - server/node_modules
 
 install:
+  - cd server
+  - npm install -q
+
+  - cd ../ionic2
+  - npm install -q
+  - node_modules/gulp/bin/gulp.js build --release
+
+  - cd ../
   - docker build -t pokemongoers/catchemall .
 
+before_script:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
 script:
-  - docker run pokemongoers/catchemall npm test
+  - cd server
+  - npm test
+
+  - cd ../ionic2
+  - npm test
