@@ -3,8 +3,8 @@ import { ionicBootstrap, Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import 'rxjs/add/operator/map';
 
+import {MapPage} from "./pages/map/map";
 import { Api } from './api/api';
-import { HomePage } from './pages/home/home';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { HomePage } from './pages/home/home';
   providers: [Api]
 })
 export class App {
-  rootPage: any = HomePage;
+  rootPage: any = MapPage;
 
   constructor(public platform: Platform) {
     platform.ready().then(() => {

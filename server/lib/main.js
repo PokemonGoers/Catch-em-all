@@ -9,6 +9,9 @@ const signals = [
   'SIGBUS', 'SIGFPE', 'SIGUSR1', 'SIGSEGV', 'SIGUSR2', 'SIGTERM'
 ]
 function closeApp () {
-  return pokemonSite.close().then(() => { process.exit(1) })
+  return pokemonSite.close().then(() => {
+    console.log('Stopped app')
+    process.exit(1)
+  })
 }
 for (let signal of signals) { process.on(signal, closeApp) }
