@@ -12,8 +12,8 @@ class PokemonSite {
     app.use(bodyParser.json())
     app.get('/', (req, res) => { res.redirect('index.html') })
 
-    // Serve static content from /public directory
-    app.use(express.static(path.join(__dirname, 'public')))
+    // Serve app content
+    app.use(express.static(path.join(__dirname, '../app')))
 
     // Proxy requests to /api/* to API backend
     var apiEndpoint = config.apiHost + ':' + config.apiPort

@@ -24,7 +24,8 @@
       "beforeEach",
       "afterEach",
       "it"
-    ]
+    ],
+    "ignore": ["/app/"]
   },
   "dependencies": {
     "body-parser": "^1.15.2",

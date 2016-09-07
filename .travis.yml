@@ -1,21 +1,19 @@
-sudo: false
+sudo: required
+
+services:
+  - docker
 
 language: node_js
 node_js:
-  - "6"
+  - stable
 
 cache:
   directories:
-    $HOME/.npm
-    $HOME/.cache # Includes bower cache
-
-before_install:
-  # Prevent the npm loading indicator
-  - npm config --global set spin false
-  # If npm version is less 3.0.0 upgrade to 3
-  - if [[ $(npm -v | cut -d '.' -f 1) -lt 3 ]]; then npm i -g npm@^3; fi
+    - ionic2/node_modules
+    - server/node_modules
 
 install:
-  - npm install --no-optional
+  - docker build -t pokemongoers/catchemall .
 
-script: npm test
+script:
+  - docker run pokemongoers/catchemall npm test

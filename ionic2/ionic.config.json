@@ -1,0 +1,16 @@
+{
+  "name": "CatchEmAll",
+  "app_id": "",
+  "v2": true,
+  "typescript": true,
+  "documentRoot": "../server/app",
+  "watchPatterns": [
+    "../server/app/**/*"
+  ],
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api"
+    }
+  ]
+}
