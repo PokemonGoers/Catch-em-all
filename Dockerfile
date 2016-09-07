@@ -5,9 +5,8 @@ WORKDIR /usr/src/pokemon-app
 Add ionic2 ionic2
 ADD server server
 
-RUN npm config set loglevel warn
-RUN cd server && npm install
-RUN cd ionic2 && npm install
+RUN cd server && npm install -q
+RUN cd ionic2 && npm install -q
 RUN cd ionic2 && node_modules/gulp/bin/gulp.js build --release
 RUN rm -rf ionic2
 
