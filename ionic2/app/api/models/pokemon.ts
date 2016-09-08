@@ -53,7 +53,7 @@ export class Pokemon {
     _id: string;
   }];
 
-  static fromObject(object) {
+  static fromObject(object: Object): Object {
     let instance = Object.create(Pokemon.prototype);
     return Object.assign(instance, object);
   }

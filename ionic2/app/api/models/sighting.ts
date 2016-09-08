@@ -9,7 +9,7 @@ export class Sighting {
     type: string;
   };
 
-  static fromObject(object) {
+  static fromObject(object: Object): Object {
     let instance = Object.create(Sighting.prototype);
     return Object.assign(instance, object);
   }
