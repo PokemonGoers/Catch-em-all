@@ -9,7 +9,13 @@ export class FilterPopover {
   time: {lower: number, upper: number}
   locationRadius: number
 
-  constructor(private viewCtrl: ViewController, public events: Events) {}
+  constructor(private viewCtrl: ViewController, public events: Events) {
+    this.time = {
+      lower: 0,
+      upper: 7
+    }
+    this.locationRadius = 1000
+  }
 
   close() {
     this.viewCtrl.dismiss();
