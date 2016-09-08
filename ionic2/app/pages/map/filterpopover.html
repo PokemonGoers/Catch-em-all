@@ -1,14 +1,33 @@
 <ion-list>
   <ion-item>
-    Time:
+    Time (days):
     <ion-item>
-      <ion-range dualKnobs="true" [(ngModel)]="time" (ionChange)="onChange()" min="0" max="31" step="1" snaps="true" debounce="500">Time:</ion-range>
+      <ion-range 
+        dualKnobs="true" 
+        [(ngModel)]="time" 
+        (ionChange)="onChange()" 
+        min="0" 
+        max="31" 
+        step="1" 
+        snaps="true"
+        pin="true" 
+        debounce="500">
+      </ion-range>
     </ion-item>
   </ion-item>
   <ion-item>
-    Radius:
+    Radius (meter):
     <ion-item>
-      <ion-range [(ngModel)]="locationRadius" (ionChange)="onChange()" min="0" max="10000" step="10" snaps="false" debounce="500"></ion-range>
+      <ion-range 
+        [(ngModel)]="locationRadius" 
+        (ionChange)="onChange()" 
+        min="0"
+        max="5000" 
+        step="100" 
+        snaps="false"
+        pin="true"
+        debounce="500">
+      </ion-range>
     </ion-item>
   </ion-item>
 </ion-list>
