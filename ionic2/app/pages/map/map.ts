@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Events, NavController } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
 import { FilterPopover } from './FilterPopover';
 
@@ -8,7 +8,11 @@ import { FilterPopover } from './FilterPopover';
 })
 export class MapPage {
 
-  constructor(private navCtrl: NavController, private popoverCtrl: PopoverController) { }
+  constructor(private navCtrl: NavController, private popoverCtrl: PopoverController, public events: Events) {
+    events.subscribe('filter:changed', (data) => {
+      console.log(data)
+    })
+   }
 
   public toggleFilterPopover($event) {
     let popover = this.popoverCtrl.create(FilterPopover);

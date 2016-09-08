@@ -1,15 +1,24 @@
 import { Component } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { Events, ViewController } from 'ionic-angular';
 
 @Component({
   templateUrl: 'pages/map/filterpopover.html'
 })
 export class FilterPopover {
 
-  constructor(private viewCtrl: ViewController) { }
+  time: {lower: number, upper: number}
+  locationRadius: {lower: number, upper: number}
+
+  constructor(private viewCtrl: ViewController, public events: Events) {}
 
   close() {
     this.viewCtrl.dismiss();
   }
 
+  onChange() {
+    this.events.publish('filter:changed', {
+      time: this.time,
+      locationRadius: this.locationRadius
+    })
+  }
 }
