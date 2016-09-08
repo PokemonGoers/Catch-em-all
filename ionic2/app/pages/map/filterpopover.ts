@@ -7,7 +7,7 @@ import { Events, ViewController } from 'ionic-angular';
 export class FilterPopover {
 
   time: {lower: number, upper: number}
-  locationRadius: {lower: number, upper: number}
+  locationRadius: number
 
   constructor(private viewCtrl: ViewController, public events: Events) {}
 
