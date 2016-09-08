@@ -1,5 +1,9 @@
-export const LIST: any =[
-  {name: 'Map', link: '/map'},
-  {name: 'Wiki', link: '/wiki'},
-  {name: 'About',link: '/about'}
+import {MapPage} from './pages/map/map';
+import {WikiPage} from './pages/wiki/wiki';
+import {AboutPage} from './pages/about/about';
+
+export const Array: any =[
+  {name: 'Map', link: MapPage},
+  {name: 'Wiki', link: WikiPage},
+  {name: 'About',link: AboutPage}
 ];

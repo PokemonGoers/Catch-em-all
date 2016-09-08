@@ -1,25 +1,11 @@
 <ion-header>
-    <ion-navbar #mycontent>
-        <button menuToggle>
-          <ion-icon name='menu'></ion-icon>
-        </button>
-        <ion-title>Map</ion-title>
-    </ion-navbar>
+  <ion-navbar #mycontent>
+      <button menuToggle>
+        <ion-icon name='menu'></ion-icon>
+      </button>
+    <ion-title>Map</ion-title>
+  </ion-navbar>
 </ion-header>
-
-<ion-menu [content]="mycontent">
-    <ion-content>
-        <ion-toolbar>
-          <ion-title>Menu</ion-title>
-        </ion-toolbar>
-        <ion-list>
-            <ion-item  *ngFor="let item of items" (click)="onSelect(item)">
-                <a href="{{item.link}}">{{item.name}}</a>
-            </ion-item>
-            <button menuClose ion-item detail-none>Close Menu</button>
-        </ion-list>
-    </ion-content>
-</ion-menu>
 
 <ion-content padding>
     Project E: Catch-em-All

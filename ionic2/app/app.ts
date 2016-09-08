@@ -1,14 +1,19 @@
-import { Component } from '@angular/core';
-import { ionicBootstrap, Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { ionicBootstrap, Platform, Nav } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
-import {MapPage} from "./pages/map/map";
+import {MapPage} from './pages/map/map';
+import { Array } from './app-menu.component';
 
 @Component({
-  template: '<ion-nav [root]="rootPage"></ion-nav>'
+  templateUrl: 'app-menu.html'
 })
 export class App {
+  @ViewChild(Nav) nav: Nav;
+
   rootPage: any = MapPage;
+
+  pages:any = Array;
 
   constructor(public platform: Platform) {
     platform.ready().then(() => {
@@ -16,6 +21,11 @@ export class App {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
     });
+  }
+  openPage(page) {
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
+    this.nav.setRoot(page.link);
   }
 }
 
