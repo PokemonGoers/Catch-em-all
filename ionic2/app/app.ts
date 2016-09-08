@@ -4,7 +4,6 @@ import { StatusBar } from 'ionic-native';
 
 import {MapPage} from "./pages/map/map";
 
-
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>'
 })
