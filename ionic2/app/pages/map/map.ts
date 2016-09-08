@@ -14,7 +14,7 @@ export class MapPage {
     })
    }
 
-  public toggleFilterPopover($event) {
+  public toggleFilterPopover($event): void {
     let popover = this.popoverCtrl.create(FilterPopover);
     popover.present({
       ev: $event

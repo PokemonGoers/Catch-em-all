@@ -5,7 +5,6 @@ import { Events, ViewController } from 'ionic-angular';
   templateUrl: 'pages/map/filterpopover.html'
 })
 export class FilterPopover {
-
   time: {lower: number, upper: number}
   locationRadius: number
 
@@ -17,11 +16,11 @@ export class FilterPopover {
     this.locationRadius = 1000
   }
 
-  close() {
+  private close(): void {
     this.viewCtrl.dismiss();
   }
 
-  onChange() {
+  private onChange(): void {
     this.events.publish('filter:changed', {
       time: this.time,
       locationRadius: this.locationRadius

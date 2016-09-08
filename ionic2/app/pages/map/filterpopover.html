@@ -1,11 +1,14 @@
 <ion-list>
-  <ion-list-header>Filter</ion-list-header>
-  Time:
   <ion-item>
-    <ion-range dualKnobs="true" [(ngModel)]="time" (ionChange)="onChange()" min="0" max="31" step="1" snaps="true" debounce="500"></ion-range>
+    Time:
+    <ion-item>
+      <ion-range dualKnobs="true" [(ngModel)]="time" (ionChange)="onChange()" min="0" max="31" step="1" snaps="true" debounce="500">Time:</ion-range>
+    </ion-item>
   </ion-item>
-  Radius: 
   <ion-item>
-    <ion-range [(ngModel)]="locationRadius" (ionChange)="onChange()" min="0" max="10000" step="10" snaps="false" debounce="500"></ion-range>
+    Radius:
+    <ion-item>
+      <ion-range [(ngModel)]="locationRadius" (ionChange)="onChange()" min="0" max="10000" step="10" snaps="false" debounce="500"></ion-range>
+    </ion-item>
   </ion-item>
 </ion-list>
