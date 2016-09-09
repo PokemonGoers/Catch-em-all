@@ -2,7 +2,22 @@ import { Component } from '@angular/core';
 import { Events, NavParams, ViewController } from 'ionic-angular';
 
 @Component({
-  templateUrl: 'pages/map/filterpopover/filterpopover.html'
+  template: `
+  <ion-list>
+    <ion-list-header>Time (days):</ion-list-header>
+    <ion-item>
+      <ion-range 
+          dualKnobs="true" 
+          [(ngModel)]="time" 
+          (ionChange)="onChange()" 
+          min="0" 
+          max="31" 
+          step="1"
+          pin="true" 
+          debounce="500">
+      </ion-range>
+    </ion-item>
+</ion-list>`
 })
 export class FilterPopover {
   time: {lower: number, upper: number}
