@@ -16,8 +16,6 @@ export class FilterPopover {
   }
 
   private onChange(): void {
-    this.events.publish('filter:changed', {
-      time: this.time,
-    })
+    this.events.publish('filter:changed:time', this.time)
   }
 }
