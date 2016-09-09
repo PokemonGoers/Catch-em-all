@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Events, NavController } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
-import { FilterPopover } from './filterpopover';
+import { FilterPopover } from './filterpopover/filterpopover';
 
 @Component({
   templateUrl: 'pages/map/map.html'

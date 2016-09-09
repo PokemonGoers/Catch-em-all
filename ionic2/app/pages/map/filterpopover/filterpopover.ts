@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Events, NavParams, ViewController } from 'ionic-angular';
 
 @Component({
-  templateUrl: 'pages/map/filterpopover.html'
+  templateUrl: 'pages/map/filterpopover/filterpopover.html'
 })
 export class FilterPopover {
   time: {lower: number, upper: number}
