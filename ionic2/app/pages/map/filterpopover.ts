@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Events, ViewController } from 'ionic-angular';
+import { Events, NavParams, ViewController } from 'ionic-angular';
 
 @Component({
   templateUrl: 'pages/map/filterpopover.html'
@@ -8,13 +8,10 @@ export class FilterPopover {
   time: {lower: number, upper: number}
   locationRadius: number
 
-  constructor(private viewCtrl: ViewController, public events: Events) {
-    this.time = {
-      lower: 0,
-      upper: 7
-    }
-    this.locationRadius = 1000
-  }
+  constructor(private viewCtrl: ViewController, private params: NavParams, public events: Events) {
+    this.time = params.data.time || params.data[0].time
+    this.locationRadius = params.data.locationRadius || params.data[0].locationRadius
+   }
 
   private close(): void {
     this.viewCtrl.dismiss();

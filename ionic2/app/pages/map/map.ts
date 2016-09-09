@@ -8,14 +8,23 @@ import { FilterPopover } from './filterpopover';
 })
 export class MapPage {
 
+    filter = {
+      time: {
+        lower: 0,
+        upper: 7
+      },
+      locationRadius: 1000
+    }
+    
+
   constructor(private navCtrl: NavController, private popoverCtrl: PopoverController, public events: Events) {
-    events.subscribe('filter:changed', (data) => {
-      console.log(data)
+    events.subscribe('filter:changed', (filter) => {
+      this.filter = filter
     })
    }
 
   public toggleFilterPopover($event): void {
-    let popover = this.popoverCtrl.create(FilterPopover);
+    let popover = this.popoverCtrl.create(FilterPopover, this.filter);
     popover.present({
       ev: $event
     });
