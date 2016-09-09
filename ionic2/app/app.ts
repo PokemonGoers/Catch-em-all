@@ -12,8 +12,7 @@ export class App {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = MapPage;
-
-  pages:any = Array;
+  pages: any = Pages;
 
   constructor(public platform: Platform) {
     platform.ready().then(() => {
