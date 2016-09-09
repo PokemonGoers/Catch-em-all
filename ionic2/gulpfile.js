@@ -32,10 +32,15 @@ function applyOptions(options, fn) {
   return (callOptions) => fn(Object.assign(callOptions, options));
 }
 
+function handleError(error) {
+  console.error(error.toString());
+  process.exit(1);
+}
+
 var outputDir = '../server/app';
 
 // Change output destination to server directory
-var buildBrowserify = applyOptions({outputPath: outputDir + '/js'}, require('ionic-gulp-browserify-typescript'));
+var buildBrowserify = applyOptions({outputPath: outputDir + '/js', onError: handleError}, require('ionic-gulp-browserify-typescript'));
 var buildSass = applyOptions({dest: outputDir + '/css'}, require('ionic-gulp-sass-build'));
 var copyHTML = applyOptions({dest: outputDir}, require('ionic-gulp-html-copy'));
 var copyFonts = applyOptions({dest: outputDir + '/fonts'}, require('ionic-gulp-fonts-copy'));
@@ -58,7 +63,11 @@ gulp.task('watch', ['clean'], function(done){
 gulp.task('build', ['clean'], function(done){
   runSequence(
     ['sass', 'html', 'fonts', 'scripts'],
-    function(){
+    function(error){
+      if (error) {
+        handleError(error);
+      }
+
       buildBrowserify({
         minify: isRelease,
         browserifyOptions: {
