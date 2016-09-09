@@ -3,7 +3,7 @@ import { Events, NavParams, ViewController } from 'ionic-angular';
 
 @Component({
   template: `
-  <ion-list>
+  <ion-list style="margin-bottom: 0">
     <ion-list-header>Time (days):</ion-list-header>
     <ion-item>
       <ion-range 
