@@ -17,7 +17,7 @@ export class MapPage {
     
 
   constructor(private navCtrl: NavController, private popoverCtrl: PopoverController, public events: Events) {
-    events.subscribe('filter:changed:time', (time) => {
+    events.subscribe('filter:changed:time', (time: Object) => {
       this.filter.time = time[0]
     })
    }
