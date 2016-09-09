@@ -3,7 +3,7 @@ import { ionicBootstrap, Platform, Nav } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
 import {MapPage} from './pages/map/map';
-import { Array } from './app-menu.component';
+import { Pages } from './app-menu.component';
 
 @Component({
   templateUrl: 'app-menu.html'
