@@ -12,8 +12,7 @@ export class MapPage {
       time: {
         lower: 0,
         upper: 7
-      },
-      locationRadius: 1000
+      }
     }
     
 

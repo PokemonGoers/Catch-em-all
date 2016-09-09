@@ -6,11 +6,9 @@ import { Events, NavParams, ViewController } from 'ionic-angular';
 })
 export class FilterPopover {
   time: {lower: number, upper: number}
-  locationRadius: number
 
   constructor(private viewCtrl: ViewController, private params: NavParams, public events: Events) {
     this.time = params.data.time || params.data[0].time
-    this.locationRadius = params.data.locationRadius || params.data[0].locationRadius
    }
 
   private close(): void {
@@ -20,7 +18,6 @@ export class FilterPopover {
   private onChange(): void {
     this.events.publish('filter:changed', {
       time: this.time,
-      locationRadius: this.locationRadius
     })
   }
 }
