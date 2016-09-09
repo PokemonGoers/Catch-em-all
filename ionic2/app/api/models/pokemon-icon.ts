@@ -7,7 +7,7 @@ export class PokemonIcon {
     contenttype: string;
   };
 
-  static fromObject(object: Object): Object {
+  static fromObject(object: Object): PokemonIcon {
     let instance = Object.create(PokemonIcon.prototype);
     return Object.assign(instance, object);
   }

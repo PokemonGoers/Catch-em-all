@@ -1,3 +1,6 @@
+export type PokemonGender = 'm' | 'f' | 'g' | 'h';
+export type PokemonAttackCategory = 'fast' | 'special';
+
 export class Pokemon {
 
   pokemonId: number;
@@ -11,7 +14,7 @@ export class Pokemon {
   types: [string];
 
   gender: {
-    abbreviation: string;
+    abbreviation: PokemonGender;
     maleRatio: number;
     femaleRatio: number;
     breedable: boolean;
@@ -53,7 +56,7 @@ export class Pokemon {
     _id: string;
   }];
 
-  static fromObject(object: Object): Object {
+  static fromObject(object: Object): Pokemon {
     let instance = Object.create(Pokemon.prototype);
     return Object.assign(instance, object);
   }

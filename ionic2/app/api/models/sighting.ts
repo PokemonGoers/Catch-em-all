@@ -1,3 +1,5 @@
+export type SightingSource = 'twitter' | 'pokesniper' | 'pokeradar' | 'skiplagged' | 'pokecrew';
+
 export class Sighting {
 
   pokemonId: number;
@@ -9,7 +11,7 @@ export class Sighting {
     type: string;
   };
 
-  static fromObject(object: Object): Object {
+  static fromObject(object: Object): Sighting {
     let instance = Object.create(Sighting.prototype);
     return Object.assign(instance, object);
   }
