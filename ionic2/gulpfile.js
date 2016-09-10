@@ -34,7 +34,11 @@ function applyOptions(options, fn) {
 
 function handleError(error) {
   console.error(error.toString());
-  process.exit(1);
+  if (isRelease) {
+    // During development we don't want to stop the process because
+    // ionic will automatically recover and restart the gulp build.
+    process.exit(1);
+  }
 }
 
 var outputDir = '../server/app';
