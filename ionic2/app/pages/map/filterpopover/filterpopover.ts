@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { Events, ViewController } from 'ionic-angular';
 
 @Component({
   template: `
@@ -22,7 +22,7 @@ import { ViewController } from 'ionic-angular';
 export class FilterPopover {
   time: {lower: number, upper: number}
 
-  constructor(private viewCtrl: ViewController) {
+  constructor(private viewCtrl: ViewController, public events: Events) {
     this.time = viewCtrl.getNavParams().get('time') || {lower: 0, upper: 31}
    }
 
@@ -30,7 +30,13 @@ export class FilterPopover {
     this.viewCtrl.dismiss();
   }
 
-  onChange() {
-      
+  onChange(): void {
+    this.events.publish('filter:changed:time', this.time)
+  }
+
+  setTime(lower: number, upper: number) {
+    this.time.lower = lower
+    this.time.upper = upper
+    this.onChange()
   }
 }
