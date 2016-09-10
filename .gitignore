@@ -32,6 +32,7 @@ build/Release
 # Dependency directories
 node_modules
 jspm_packages
+ionic2/typings
 
 # Optional npm cache directory
 .npm
