@@ -2,7 +2,7 @@ import { addProviders, beforeEach, it, describe, expect, inject } from '@angular
 import { Events, ViewController } from 'ionic-angular';
 import { FilterPopover } from './filterpopover';
 
-describe('Map', () => {
+describe('FilterPopover', () => {
     let viewCtrl: ViewController
     let events: Events
     let filterPopover: FilterPopover
@@ -14,7 +14,7 @@ describe('Map', () => {
         addProviders([])
     });
 
-    it('should emit filter:time:changed', inject([], () => {
+    it('should respond to changes', inject([], () => {
         spyOn(filterPopover, 'onChange')
         filterPopover.setTime(1, 2)
         expect(filterPopover.onChange).toHaveBeenCalled()
