@@ -16,13 +16,13 @@ export class MapPage {
     }
     
 
-  constructor(private navCtrl: NavController, private popoverCtrl: PopoverController, public events: Events) {
+  constructor(private popoverCtrl: PopoverController, public events: Events) {
     events.subscribe('filter:changed:time', (time: Object) => {
       this.filter.time = time[0]
     })
    }
 
-  public toggleFilterPopover($event): void {
+  public showFilterPopover($event?): void {
     let popover = this.popoverCtrl.create(FilterPopover, this.filter);
     popover.present({
       ev: $event

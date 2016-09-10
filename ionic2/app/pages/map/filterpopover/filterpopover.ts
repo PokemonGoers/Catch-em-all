@@ -22,15 +22,21 @@ import { Events, NavParams, ViewController } from 'ionic-angular';
 export class FilterPopover {
   time: {lower: number, upper: number}
 
-  constructor(private viewCtrl: ViewController, private params: NavParams, public events: Events) {
-    this.time = params.data.time || params.data[0].time
+  constructor(private viewCtrl: ViewController, public events: Events) {
+    this.time = viewCtrl.getNavParams().get('time') || {lower: 0, upper: 31}
    }
 
-  private close(): void {
+  close(): void {
     this.viewCtrl.dismiss();
   }
 
-  private onChange(): void {
+  onChange(): void {
     this.events.publish('filter:changed:time', this.time)
+  }
+
+  setTime(lower: number, upper: number) {
+    this.time.lower = lower
+    this.time.upper = upper
+    this.onChange()
   }
 }
