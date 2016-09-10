@@ -6,11 +6,11 @@ import 'rxjs/add/operator/map';
 import { MapPage } from './pages/map/map';
 import { Pages } from './app-menu.component';
 import { ApiService } from './api/api.service';
-
+import { LocationService } from './services/location.service';
 
 @Component({
   templateUrl: 'app-menu.html',
-  providers: [ApiService]
+  providers: [ApiService, LocationService]
 })
 export class App {
   @ViewChild(Nav) nav: Nav;
