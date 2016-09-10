@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Events, PopoverController } from 'ionic-angular';
-import { FilterPopover } from '../../components/filter-popover/filter-popover';
+import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
 
 @Component({
   templateUrl: 'pages/map/map.html'
@@ -21,7 +21,7 @@ export class MapPage {
    }
 
   public showFilterPopover($event?): void {
-    let popover = this.popoverCtrl.create(FilterPopover, this.filter);
+    let popover = this.popoverCtrl.create(FilterPopoverComponent, this.filter);
     popover.present({
       ev: $event
     });

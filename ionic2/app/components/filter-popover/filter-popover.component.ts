@@ -19,7 +19,7 @@ import { Events, ViewController } from 'ionic-angular';
     </ion-item>
 </ion-list>`
 })
-export class FilterPopover {
+export class FilterPopoverComponent {
   time: {lower: number, upper: number}
 
   constructor(private viewCtrl: ViewController, public events: Events) {

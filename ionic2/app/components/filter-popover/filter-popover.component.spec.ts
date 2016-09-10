@@ -1,16 +1,16 @@
 import { addProviders, beforeEach, it, describe, expect, inject } from '@angular/core/testing';
 import { Events, ViewController } from 'ionic-angular';
-import { FilterPopover } from './filter-popover';
+import { FilterPopoverComponent } from './filter-popover.component';
 
 describe('FilterPopover', () => {
     let viewCtrl: ViewController
     let events: Events
-    let filterPopover: FilterPopover
+    let filterPopover: FilterPopoverComponent
 
     beforeEach(() => { 
         viewCtrl = new ViewController(FakePage)
         events = new Events()
-        filterPopover = new FilterPopover(viewCtrl, events)
+        filterPopover = new FilterPopoverComponent(viewCtrl, events)
         addProviders([])
     });
 
