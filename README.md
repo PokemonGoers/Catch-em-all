@@ -6,6 +6,10 @@
 
 This is project E of the WS 2016 JavaScript Technology seminar at the TU Munich. More details about the seminar at https://rostlab.org/owiki/index.php/Javascript_technology_2016-2
 
+## Live Demo
+
+http://catch-em-all-0a600d65.c65978f4.svc.dockerapp.io:4898/
+
 ## Set up for development
 
 In `./ionic2` run
