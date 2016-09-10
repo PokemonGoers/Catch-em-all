@@ -1,12 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { ionicBootstrap, Platform, Nav } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
-
-import {MapPage} from './pages/map/map';
+import 'rxjs/add/operator/map';
+import { MapPage } from './pages/map/map';
 import { Pages } from './app-menu.component';
+import { ApiService } from './api/api.service';
 
 @Component({
-  templateUrl: 'app-menu.html'
+  templateUrl: 'app-menu.html',
+  providers: [ApiService]
 })
 export class App {
   @ViewChild(Nav) nav: Nav;
