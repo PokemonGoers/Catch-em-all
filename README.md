@@ -10,9 +10,11 @@ This is project E of the WS 2016 JavaScript Technology seminar at the TU Munich.
 
 In `./ionic2` run
 
-`npm install -g cordova ionic@beta` to install ionic and cordova
+`npm install -g cordova ionic@beta typings` to install ionic and cordova
 
 `npm install` to install packages
+
+`typings install` to install typings
 
 `ionic serve` to start server
 
