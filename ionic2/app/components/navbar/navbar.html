@@ -9,7 +9,14 @@
         </ion-col>
 
         <ion-col>
-            <searchbar></searchbar>
+            <searchbar @searchbarAnimate="searchbarState"></searchbar>
         </ion-col>
     </ion-row>
+
+    <ion-buttons end>
+        <button (click)="toggleSearchBar()">
+            <ion-icon name="search" *ngIf="searchbarState == 'hidden'"></ion-icon>
+            <ion-icon name="arrow-dropright" *ngIf="searchbarState == 'visible'"></ion-icon>
+        </button>
+    </ion-buttons>
 </ion-navbar>
