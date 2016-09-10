@@ -7,6 +7,7 @@ ADD server server
 
 RUN cd server && npm install -q
 RUN cd ionic2 && npm install -q
+RUN cd ionic2 && npm update pokemap-1 pokemap-2
 RUN cd ionic2 && node_modules/gulp/bin/gulp.js build --release
 RUN rm -rf ionic2
 
