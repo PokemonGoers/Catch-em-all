@@ -18,6 +18,7 @@ install:
 
   - cd ../ionic2
   - npm install -q
+  - node_modules/.bin/typings install
   - node_modules/gulp/bin/gulp.js build --release
 
   - cd ../
