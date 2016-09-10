@@ -171,7 +171,7 @@ export class ApiService {
   /**
    * Get Pokemon by specified search parameters.
    * @param {Object} query - search parameters
-   * @returns {Observable<Pokemon[]}
+   * @returns {Observable<Pokemon[]>}
    */
   searchPokemon(query: Object): Observable<Pokemon[]> {
     let params = ApiService.createSearchParamsFromObject(query);
