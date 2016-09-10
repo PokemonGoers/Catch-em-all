@@ -1,24 +1,14 @@
-import { addProviders, beforeEach, async, it, describe, expect, inject } from '@angular/core/testing';
-import { MapPage } from '../map';
-import { App, ViewController, ionicBootstrap, Platform, Config, Events, NavParams } from 'ionic-angular';
+import { addProviders, beforeEach, it, describe, expect, inject } from '@angular/core/testing';
+import { Events, ViewController } from 'ionic-angular';
 import { FilterPopover } from './filterpopover';
 
 describe('Map', () => {
-    let config: Config
-    let platform: Platform
-    let app: App
     let viewCtrl: ViewController
     let events: Events
-    let mapPage: MapPage
     let filterPopover: FilterPopover
-    let navParams: NavParams
 
     beforeEach(() => { 
-        config = new Config()
-        platform = new Platform()
-        app = new App(config, platform);
         viewCtrl = new ViewController(FakePage)
-        navParams = new NavParams()
         events = new Events()
         filterPopover = new FilterPopover(viewCtrl, events)
         addProviders([])

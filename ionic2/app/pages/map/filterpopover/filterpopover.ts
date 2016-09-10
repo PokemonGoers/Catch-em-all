@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Events, NavParams, ViewController } from 'ionic-angular';
+import { Events, ViewController } from 'ionic-angular';
 
 @Component({
   template: `

@@ -1,8 +1,7 @@
-import { addProviders, beforeEach, async, it, describe, expect, inject } from '@angular/core/testing';
+import { addProviders, beforeEach, it, describe, expect, inject } from '@angular/core/testing';
 import { MapPage } from './map';
 import { Events } from 'ionic-angular';
-import { App, PopoverController, ionicBootstrap, Platform, Config } from 'ionic-angular';
-import { FilterPopover } from './filterpopover/filterpopover';
+import { App, PopoverController, Platform, Config } from 'ionic-angular';
 
 describe('Map', () => {
     let config: Config
