@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "ionic serve"
+    "start": "ionic serve",
+    "test": "karma start karma.conf.js"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.4",
@@ -21,6 +22,8 @@
     "pokemap-2": "github:pokemongoers/PokeMap-2#develop"
   },
   "devDependencies": {
+    "browserify": "^13.1.0",
+    "browserify-istanbul": "^2.0.0",
     "del": "2.2.0",
     "gulp": "3.9.1",
     "gulp-watch": "4.3.5",
@@ -30,8 +33,16 @@
     "ionic-gulp-sass-build": "^1.0.0",
     "ionic-gulp-scripts-copy": "^2.0.0",
     "ionic-gulp-tslint": "^1.0.0",
-    "tslint-ionic-rules": "0.0.4",
-    "run-sequence": "1.1.5"
+    "isparta": "^4.0.0",
+    "jasmine-core": "^2.5.0",
+    "karma": "^1.2.0",
+    "karma-browserify": "^5.1.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-spec-reporter": "0.0.26",
+    "run-sequence": "1.1.5",
+    "tsify": "^1.0.5",
+    "tslint-ionic-rules": "0.0.4"
   },
   "name": "catchemall",
   "description": "CatchEmAll: An Ionic project",
