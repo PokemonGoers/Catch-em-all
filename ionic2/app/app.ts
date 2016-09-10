@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { ionicBootstrap, Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
+import 'rxjs/add/operator/map';
 
 import {MapPage} from "./pages/map/map";
+import { ApiService } from './api/api.service';
 
 
 @Component({
-  template: '<ion-nav [root]="rootPage"></ion-nav>'
+  template: '<ion-nav [root]="rootPage"></ion-nav>',
+  providers: [ApiService]
 })
 export class App {
   rootPage: any = MapPage;
