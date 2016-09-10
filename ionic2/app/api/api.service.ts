@@ -46,9 +46,9 @@ export class ApiService {
 
   /**
    * Get all Pokemon.
-   * @returns {Observable<[Pokemon]>}
+   * @returns {Observable<Pokemon[]>}
    */
-  getAllPokemon(): Observable<[Pokemon]> {
+  getAllPokemon(): Observable<Pokemon[]> {
     let request = this.http.get('/api/pokemon');
     return request.map(ApiService.handleResponse(Pokemon));
   }
@@ -76,9 +76,9 @@ export class ApiService {
   /**
    * Get Pokemon by specific gender.
    * @param {string} gender - Gender of the Pokemon, allowed values: [m, f, g, h]
-   * @returns {Observable<[Pokemon]>}
+   * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByGender(gender: PokemonGender): Observable<[Pokemon]> {
+  getPokemonByGender(gender: PokemonGender): Observable<Pokemon[]> {
     let request = this.http.get('/api/pokemon/gender/' + gender);
     return request.map(ApiService.handleResponse(Pokemon));
   }
@@ -86,9 +86,9 @@ export class ApiService {
   /**
    * Get Pokemon by specific type.
    * @param {string} type - Type of the Pokemon
-   * @returns {Observable<[Pokemon]>}
+   * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByType(type: string): Observable<[Pokemon]> {
+  getPokemonByType(type: string): Observable<Pokemon[]> {
     let request = this.http.get('/api/pokemon/type/' + type);
     return request.map(ApiService.handleResponse(Pokemon));
   }
@@ -96,9 +96,9 @@ export class ApiService {
   /**
    * Get Pokemon by specific weakness.
    * @param {string} weakness - Weakness of the Pokemon
-   * @returns {Observable<[Pokemon]>}
+   * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByWeakness(weakness: string): Observable<[Pokemon]> {
+  getPokemonByWeakness(weakness: string): Observable<Pokemon[]> {
     let request = this.http.get('/api/pokemon/weakness/' + weakness);
     return request.map(ApiService.handleResponse(Pokemon));
   }
@@ -106,9 +106,9 @@ export class ApiService {
   /**
    * Get Pokemon by specific resistance.
    * @param {string} resistance - Resistance factor of the Pokemon
-   * @returns {Observable<[Pokemon]>}
+   * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByResistance(resistance: string): Observable<[Pokemon]> {
+  getPokemonByResistance(resistance: string): Observable<Pokemon[]> {
     let request = this.http.get('/api/pokemon/resistance/' + resistance);
     return request.map(ApiService.handleResponse(Pokemon));
   }
@@ -117,9 +117,9 @@ export class ApiService {
    * Get Pokemon by specific attack type.
    * @param {string} category - Category of attack, allowed values: [fast, special]
    * @param {string} type - Type of the attack
-   * @returns {Observable<[Pokemon]>}
+   * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByAttackType(category: PokemonAttackCategory, type: string): Observable<[Pokemon]> {
+  getPokemonByAttackType(category: PokemonAttackCategory, type: string): Observable<Pokemon[]> {
     let request = this.http.get('/api/pokemon/attack/' + category + '/type/' + type);
     return request.map(ApiService.handleResponse(Pokemon));
   }
@@ -128,9 +128,9 @@ export class ApiService {
    * Get Pokemon by specific attack name.
    * @param {string} category - Category of attack, allowed values: [fast, special]
    * @param {string} name - Name of the attack
-   * @returns {Observable<[Pokemon]>}
+   * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByAttackName(category: PokemonAttackCategory, name: string): Observable<[Pokemon]> {
+  getPokemonByAttackName(category: PokemonAttackCategory, name: string): Observable<Pokemon[]> {
     let request = this.http.get('/api/pokemon/attack/' + category + '/name/' + name);
     return request.map(ApiService.handleResponse(Pokemon));
   }
@@ -139,9 +139,9 @@ export class ApiService {
    * Get Pokemon by specific attack damage.
    * @param {string} category - Category of attack, allowed values: [fast, special]
    * @param {number} damage - Damage value of the attack
-   * @returns {Observable<[Pokemon]>}
+   * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByAttackDamage(category: PokemonAttackCategory, damage: number): Observable<[Pokemon]> {
+  getPokemonByAttackDamage(category: PokemonAttackCategory, damage: number): Observable<Pokemon[]> {
     let request = this.http.get('/api/pokemon/attack/' + category + '/damage/' + damage);
     return request.map(ApiService.handleResponse(Pokemon));
   }
@@ -150,9 +150,9 @@ export class ApiService {
    * Get Pokemon by specific evolution ID.
    * @param {string} category - Category of attack, allowed values: [fast, special]
    * @param {number} id - ID of the evolved Pokemon, range 1-151
-   * @returns {Observable<[Pokemon]>}
+   * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByEvolutionId(category: PokemonAttackCategory, id: number): Observable<[Pokemon]> {
+  getPokemonByEvolutionId(category: PokemonAttackCategory, id: number): Observable<Pokemon[]> {
     let request = this.http.get('/api/pokemon/evolution/' + category + '/id/' + id);
     return request.map(ApiService.handleResponse(Pokemon));
   }
@@ -161,9 +161,9 @@ export class ApiService {
    * Get Pokemon by specific evolution name.
    * @param {string} category - Category of attack, allowed values: [fast, special]
    * @param {string} name - Name of the evolved Pokemon
-   * @returns {Observable<[Pokemon]>}
+   * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByEvolutionName(category: PokemonAttackCategory, name: string): Observable<[Pokemon]> {
+  getPokemonByEvolutionName(category: PokemonAttackCategory, name: string): Observable<Pokemon[]> {
     let request = this.http.get('/api/pokemon/evolution/' + category + '/name/' + name);
     return request.map(ApiService.handleResponse(Pokemon));
   }
@@ -171,9 +171,9 @@ export class ApiService {
   /**
    * Get Pokemon by specified search parameters.
    * @param {Object} query - search parameters
-   * @returns {Observable<[Pokemon]}
+   * @returns {Observable<Pokemon[]}
    */
-  searchPokemon(query: Object): Observable<[Pokemon]> {
+  searchPokemon(query: Object): Observable<Pokemon[]> {
     let params = ApiService.createSearchParamsFromObject(query);
     let request = this.http.get('/api/pokemon/search', {
       search: params
@@ -193,9 +193,9 @@ export class ApiService {
 
   /**
    * Get all Pokemon sightings.
-   * @returns {Observable<[Sighting]>}
+   * @returns {Observable<Sighting[]>}
    */
-  getAllSightings(): Observable<[Sighting]> {
+  getAllSightings(): Observable<Sighting[]> {
     let request = this.http.get('/api/pokemon/sighting');
     return request.map(ApiService.handleResponse(Sighting));
   }
@@ -214,9 +214,9 @@ export class ApiService {
    * Get Pokemon sightings by specific source.
    * @param {string} source - Source of the data extraction,
    * allowed values: [twitter, pokesniper, pokeradar, skiplagged, pokecrew]
-   * @returns {Observable<[Sighting]>}
+   * @returns {Observable<Sighting[]>}
    */
-  getSightingBySource(source: SightingSource): Observable<[Sighting]> {
+  getSightingBySource(source: SightingSource): Observable<Sighting[]> {
     let request = this.http.get('/api/pokemon/sighting/source/' + source);
     return request.map(ApiService.handleResponse(Sighting));
   }
@@ -224,9 +224,9 @@ export class ApiService {
   /**
    * Get Pokemon sightings at specific coordinates.
    * @param {Object} coordinates - Location coordinates specified by Longitude, Latitude
-   * @returns {Observable<[Sighting]>}
+   * @returns {Observable<Sighting[]>}
    */
-  getSightingAtCoordinates(coordinates: {longitude:number, latitude:number}): Observable<[Sighting]> {
+  getSightingAtCoordinates(coordinates: {longitude:number, latitude:number}): Observable<Sighting[]> {
     let coords = coordinates.longitude + ',' + coordinates.latitude;
     let request = this.http.get('/api/pokemon/sighting/coordinates/' + coords);
     return request.map(ApiService.handleResponse(Sighting));
@@ -236,10 +236,10 @@ export class ApiService {
    * Get Pokemon sightings between specific set of coordinates.
    * @param {Object} from - Coordinates of starting location specified by Longitude, Latitude
    * @param {Object} to - Coordinates of end location specified by Longitude, Latitude
-   * @returns {Observable<[Sighting]>}
+   * @returns {Observable<Sighting[]>}
    */
   getSightingBetweenCoordinates(from: {longitude:number, latitude:number},
-                                to: {longitude:number, latitude:number}): Observable<[Sighting]> {
+                                to: {longitude:number, latitude:number}): Observable<Sighting[]> {
     let fromCoords = from.longitude + ',' + from.latitude;
     let toCoords = to.longitude + ',' + to.latitude;
     let request = this.http.get('/api/pokemon/sighting/coordinates/from/' + fromCoords + '/to/' + toCoords);
@@ -251,9 +251,9 @@ export class ApiService {
    * @param {string} timestamp - Starting time-stamp in UTC format
    * @param {string} range - w(Week), d(Day), h(Hour), m(Minute),
    * values can be specified preceding the letters. Example: 1w, 5d, 2h, 30m etc.
-   * @returns {Observable<[Sighting]>}
+   * @returns {Observable<Sighting[]>}
    */
-  getSightingByTimeRange(timestamp: string, range: string): Observable<[Sighting]> {
+  getSightingByTimeRange(timestamp: string, range: string): Observable<Sighting[]> {
     let request = this.http.get('/api/pokemon/sighting/ts/' + timestamp + '/range/' + range);
     return request.map(ApiService.handleResponse(Sighting));
   }
@@ -261,9 +261,9 @@ export class ApiService {
   /**
    * Get Pokemon sightings by specified search parameters.
    * @param {Object} query - search parameters
-   * @returns {Observable<[Sighting]>}
+   * @returns {Observable<Sighting[]>}
    */
-  searchSightings(query: Object): Observable<[Sighting]> {
+  searchSightings(query: Object): Observable<Sighting[]> {
     let params = ApiService.createSearchParamsFromObject(query);
     let request = this.http.get('/api/pokemon/sighting/search', {
       search: params
