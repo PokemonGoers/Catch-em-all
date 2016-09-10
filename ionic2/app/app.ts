@@ -3,7 +3,7 @@ import { ionicBootstrap, Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import 'rxjs/add/operator/map';
 
-import {MapPage} from "./pages/map/map";
+import {MapPage} from "./pages/map/map.page";
 import { ApiService } from './api/api.service';
 
 
