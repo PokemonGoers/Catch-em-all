@@ -1,0 +1,22 @@
+<ion-navbar>
+    <button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-row>
+        <ion-col style="display: flex; align-items: center; flex-grow: 0;">
+            <ion-title>{{ title }}</ion-title>
+        </ion-col>
+
+        <ion-col>
+            <ion-searchbar
+                    [(ngModel)]="search"
+                    (ionInput)="onInput($event)"
+                    (search)="onSearch($event)"
+                    showCancelButton="true"
+                    autocomplete="on"
+                    placeholder="Search for Pokemon or location">
+            </ion-searchbar>
+        </ion-col>
+    </ion-row>
+</ion-navbar>
