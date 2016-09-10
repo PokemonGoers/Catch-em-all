@@ -8,6 +8,7 @@ ADD server server
 RUN cd server && npm install -q
 RUN cd ionic2 && npm install -q
 RUN cd ionic2 && node_modules/gulp/bin/gulp.js build --release
+RUN cd ionic2 && node_modules/.bin/typings install
 RUN rm -rf ionic2
 
 WORKDIR server

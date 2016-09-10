@@ -32,6 +32,8 @@ In `./ionic2` run
 
     `npm install`
 
+    `node_modules/.bin/typings install`
+
     `gulp build --release`
 
 2. In `./server` run
