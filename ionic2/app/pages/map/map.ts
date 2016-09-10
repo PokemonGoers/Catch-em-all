@@ -9,7 +9,7 @@ export class MapPage {
     filter = {
       time: {
         lower: 0,
-        upper: 7
+        upper: 60
       }
     }
     

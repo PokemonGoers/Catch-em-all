@@ -4,15 +4,15 @@ import { Events, ViewController } from 'ionic-angular';
 @Component({
   template: `
   <ion-list style="margin-bottom: 0">
-    <ion-list-header>Time (days):</ion-list-header>
+    <ion-list-header>Limit prediciton time (minutes):</ion-list-header>
     <ion-item>
       <ion-range 
           dualKnobs="true" 
           [(ngModel)]="time" 
           (ionChange)="onChange()" 
           min="0" 
-          max="31" 
-          step="1"
+          max="120" 
+          step="5"
           pin="true" 
           debounce="500">
       </ion-range>
@@ -23,7 +23,7 @@ export class FilterPopoverComponent {
   time: {lower: number, upper: number}
 
   constructor(private viewCtrl: ViewController, public events: Events) {
-    this.time = viewCtrl.getNavParams().get('time') || {lower: 0, upper: 31}
+    this.time = viewCtrl.getNavParams().get('time') || {lower: 0, upper: 60}
    }
 
   close(): void {
