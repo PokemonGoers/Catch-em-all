@@ -1,21 +1,13 @@
 import { Component, Input } from '@angular/core';
+import { Searchbar } from '../searchbar/searchbar';
 
 @Component({
   templateUrl: 'components/navbar/navbar.html',
-  selector: 'navbar'
+  selector: 'navbar',
+  directives: [Searchbar]
 })
 export class Navbar {
 
   @Input() title: string;
-
-  search: string;
-
-  onInput(event) {
-    console.log('input', this.search);
-  }
-
-  onSearch(event) {
-    console.log('search', this.search);
-  }
 
 }

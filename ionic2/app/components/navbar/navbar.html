@@ -9,14 +9,7 @@
         </ion-col>
 
         <ion-col>
-            <ion-searchbar
-                    [(ngModel)]="search"
-                    (ionInput)="onInput($event)"
-                    (search)="onSearch($event)"
-                    showCancelButton="true"
-                    autocomplete="on"
-                    placeholder="Search for Pokemon or location">
-            </ion-searchbar>
+            <searchbar></searchbar>
         </ion-col>
     </ion-row>
 </ion-navbar>
