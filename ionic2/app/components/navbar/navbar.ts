@@ -19,8 +19,13 @@ export class Navbar {
 
   searchbarState: string = 'hidden';
 
+  constructor() {
+    this.searchbarState = sessionStorage['searchbar'] || 'hidden';
+  }
+
   toggleSearchBar() {
     this.searchbarState = this.searchbarState == 'visible' ? 'hidden' : 'visible';
+    sessionStorage['searchbar'] = this.searchbarState;
   }
 
 }

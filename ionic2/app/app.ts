@@ -10,7 +10,10 @@ import { LocationService } from './services/location.service';
 
 @Component({
   templateUrl: 'app-menu.html',
-  providers: [ApiService, LocationService]
+  providers: [
+    ApiService,
+    LocationService
+  ]
 })
 export class App {
   @ViewChild(Nav) nav: Nav;
