@@ -3,6 +3,8 @@ import { ApiService } from '../../services/api.service';
 import { LocationService, LocationQueryResponse } from '../../services/location.service';
 import { Pokemon } from '../../models/pokemon';
 import { Observable } from 'rxjs';
+import { WikiPage } from '../wiki/wiki.page';
+import { MapPage } from '../map/map.page';
 
 @Page({
   templateUrl: 'pages/search/search.page.html'
@@ -38,10 +40,10 @@ export class SearchPage {
   }
 
   selectPokemon(pokemon:Pokemon) {
-
+    this.navCtrl.setRoot(WikiPage, {pokemonId: pokemon.pokemonId});
   }
 
   selectLocation(location:LocationQueryResponse) {
-
+    this.navCtrl.setRoot(MapPage, location.coordinates);
   }
 }

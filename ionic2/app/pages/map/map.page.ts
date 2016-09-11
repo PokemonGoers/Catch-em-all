@@ -1,24 +1,30 @@
-import { Page, Events, PopoverController } from 'ionic-angular';
+import { forwardRef } from '@angular/core';
+import { Page, Events, PopoverController, NavParams } from 'ionic-angular';
 import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
 import { Navbar } from '../../components/navbar/navbar.component';
 
 @Page({
   templateUrl: 'pages/map/map.page.html',
-  directives: [Navbar]
+  directives: [forwardRef(() => Navbar)]
 })
 export class MapPage {
-    filter = {
-      time: {
-        lower: 0,
-        upper: 60
-      }
+  filter = {
+    time: {
+      lower: 0,
+      upper: 60
     }
-    
+  };
 
-  constructor(private popoverCtrl: PopoverController, public events: Events) {
+  latitude: number;
+  longitude: number;
+
+  constructor(private popoverCtrl: PopoverController, events: Events, navParams: NavParams) {
     events.subscribe('filter:changed:time', (time: Object) => {
       this.filter.time = time[0]
-    })
+    });
+
+    this.latitude = navParams.get('latitude');
+    this.longitude = navParams.get('longitude');
    }
 
   public showFilterPopover($event?): void {
