@@ -24,16 +24,60 @@
     intelligently guess when and where our Pokemons will pop up.
   </p>
   <ion-title>Our Team</ion-title>
-  <h5>Pokémon Trainer</h5>
-  <a>Christian Dallago</a><br><a>Dr. Guy Yachdav</a><br><a>Dr. Tatyana Goldberg</a><br><a>Juan Miguel Cejuela</a><br>
-  <h5>Pokémon Data Analysts</h5>
-  <p>Annette Köhler<br>Fabian Buske<br>Jonas Heintzenberg<br>Samit Vaidya<br>Swathi S Sunder<br>Vivek Sethia</p>
-  <h5>Pokémon Clairvoyants</h5>
-  <p>Aurel Roci<br>Benjamin Strobel<br>Marcel Wagenländer<br>Matthias Baur<br>Siamion Karcheuski<br>Timur Khodzhaev</p>
-  <h5>Pokémon Whisperer</h5>
-  <p>Amr Abdelraouf<br>Hannes Dorfmann<br>Karen Reyna<br>Philipp Dowling</p>
-  <h5>Pokémon World Cartographers</h5>
-  <p>Elma Gazetic<br>Faris Cakaric<br>Gani Qinami<br>Oleksandr Fedotov<br>Paul Gualotuna<br>Timo Ludwig</p>
-  <h5>Pokémon Catcher</h5>
-  <p>Alexander Lill<br>Georgi Aylov<br>Gilles Tanson<br>Jochen Hartl<br>Josef Brandl<br>Mustafa Kaptan<br>Philippe Buschmann<br>Wolfgang Hobmaier</p>
+  <ion-list no-lines>
+    <ion-list-header>
+      Pokémon Legends
+    </ion-list-header>
+    <ion-item *ngFor="let person of profs">
+      <a href="{{person.link}}">{{person.name}}</a>
+    </ion-item>
+  </ion-list>
+  <ion-list no-lines>
+    <ion-list-header>
+      Pokémon Trainer
+    </ion-list-header>
+    <ion-item *ngFor="let person of mentors">
+      <a href="{{person.link}}">{{person.name}}</a>
+    </ion-item>
+  </ion-list>
+  <ion-list no-lines>
+    <ion-list-header>
+      Pokémon Data Analysts
+    </ion-list-header>
+    <ion-item *ngFor="let person of teamA">
+      <a href="{{person.link}}">{{person.name}}</a>
+    </ion-item>
+  </ion-list>
+  <ion-list no-lines>
+    <ion-list-header>
+      Pokémon Clairvoyants
+    </ion-list-header>
+    <ion-item *ngFor="let person of teamB">
+      <a href="{{person.link}}">{{person.name}}</a>
+    </ion-item>
+  </ion-list>
+  <ion-list no-lines>
+    <ion-list-header>
+      Pokémon Whisperer
+    </ion-list-header>
+    <ion-item *ngFor="let person of teamC">
+      <a href="{{person.link}}">{{person.name}}</a>
+    </ion-item>
+  </ion-list>
+  <ion-list no-lines>
+    <ion-list-header>
+      Pokémon World Cartographers
+    </ion-list-header>
+    <ion-item *ngFor="let person of teamD">
+      <a href="{{person.link}}">{{person.name}}</a>
+    </ion-item>
+  </ion-list>
+  <ion-list no-lines>
+    <ion-list-header>
+      Pokémon Catcher
+    </ion-list-header>
+    <ion-item *ngFor="let person of teamE">
+      <a href="{{person.link}}">{{person.name}}</a>
+    </ion-item>
+  </ion-list>
 </ion-content>
