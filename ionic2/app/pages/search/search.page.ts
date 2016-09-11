@@ -1,6 +1,6 @@
 import { Page, NavController } from 'ionic-angular';
 import { ApiService } from '../../services/api.service';
-import { LocationService } from '../../services/location.service';
+import { LocationService, LocationQueryResponse } from '../../services/location.service';
 import { Pokemon } from '../../models/pokemon';
 import { Observable } from 'rxjs';
 
@@ -10,25 +10,38 @@ import { Observable } from 'rxjs';
 export class SearchPage {
 
   search: string;
-  locationResults: Observable<Object[]>;
-  pokemonResults: Observable<Pokemon[]>;
+
+  locationResults: Observable<LocationQueryResponse[]> = Observable.of([]);
+  locationCount: Observable<number> = Observable.of(0);
+
+  pokemonResults: Observable<Pokemon[]> = Observable.of([]);
+  pokemonCount: Observable<number> = Observable.of(0);
 
   constructor(private navCtrl: NavController, private locationService: LocationService, private api: ApiService) {
   }
 
   onInput(event) {
-    if (this.search.length < 3) {
-      return;
+    if (this.search.length >= 3) {
+      this.pokemonResults = this.api.getPokemonByName(this.search);
+      this.locationResults = this.locationService.queryLocation(this.search);
+    } else {
+      this.pokemonResults = Observable.of([]);
+      this.locationResults = Observable.of([]);
     }
 
-    this.locationResults = this.locationService.queryLocation(this.search);
-    this.pokemonResults = this.api.getPokemonByName(this.search);
-
-    this.locationResults.subscribe(console.log);
-    this.pokemonResults.subscribe(console.log);
+    this.locationCount = this.locationResults.map(results => results.length);
+    this.pokemonCount = this.pokemonResults.map(results => results.length);
   }
 
-  onSearch(event) {
-    console.log('search', this.search);
+  onCancel(event) {
+    this.navCtrl.pop();
+  }
+
+  selectPokemon(pokemon:Pokemon) {
+
+  }
+
+  selectLocation(location:LocationQueryResponse) {
+
   }
 }
