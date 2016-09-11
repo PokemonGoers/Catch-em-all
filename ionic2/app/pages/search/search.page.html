@@ -4,9 +4,10 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
     <ion-searchbar
+            padding
             [(ngModel)]="search"
             (ionInput)="onInput($event)"
             (ionCancel)="onCancel($event)"
@@ -17,7 +18,7 @@
 
     <ion-list>
         <ion-list-header *ngIf="pokemonResults.length > 0">
-            Pokemon ({{ pokemonCount | async }})
+            Pokemon ({{ pokemonResults.length }})
         </ion-list-header>
         <button ion-item
                 *ngFor="let pokemon of pokemonResults"
@@ -37,7 +38,7 @@
         </button>
 
         <ion-list-header *ngIf="locationResults.length > 0">
-            Locations ({{ locationCount | async }})
+            Locations ({{ locationResults.length }})
         </ion-list-header>
 
         <button ion-item
