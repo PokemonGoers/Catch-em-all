@@ -10,7 +10,18 @@ export class MapPage implements AfterViewInit {
 
   @ViewChild(MapComponent) map: MapComponent;
 
+  latitude: number;
+  longitude: number;
+  timeRangeFrom: number;
+  timeRangeTo: number;
+  apiEndpoint: string;
+
   constructor(private navCtrl: NavController) {
+    this.latitude = 48.264673;
+    this.longitude = 11.671434;
+    this.timeRangeFrom = 0;
+    this.timeRangeTo = 60;
+    this.apiEndpoint = window.location.origin;
   }
 
   ngAfterViewInit() {
