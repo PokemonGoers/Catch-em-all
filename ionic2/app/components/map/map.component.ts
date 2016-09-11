@@ -12,27 +12,21 @@ PokeMap.prototype.updateTimeRange = function(...args) {console.debug('map:update
 @Directive({
   selector: 'map'
 })
-export class MapComponent implements OnInit {
+export class MapComponent {
 
   private map;
 
-  @Input() latitude: number;
-  @Input() longitude: number;
-  @Input() timeRangeFrom: number;
-  @Input() timeRangeTo: number;
-  @Input() apiEndpoint: string;
-
   constructor(private element: ElementRef) {}
 
-  ngOnInit() {
-    let coordinates = {latitude: this.latitude, longitude: this.longitude};
-    let timeRange = {from: this.timeRangeFrom, to: this.timeRangeTo};
-    let apiEndpoint = this.apiEndpoint;
-
-    this.map = new PokeMap(this.element.nativeElement, {coordinates, timeRange, apiEndpoint});
+  initialize(options) {
+    this.map = new PokeMap(this.element.nativeElement, options);
 
     this.map.on('click', this.onClick.bind(this));
     this.map.on('move', this.onMove.bind(this));
+  }
+
+  get initialized(): boolean {
+    return this.map !== undefined;
   }
 
   goTo(coordinates: {latitude:number, longitude:number}) {
@@ -52,4 +46,3 @@ export class MapComponent implements OnInit {
   }
 
 }
-

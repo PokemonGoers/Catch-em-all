@@ -1,21 +1,19 @@
-import { ViewChild } from '@angular/core';
+import { ViewChild, OnInit } from '@angular/core';
 import { Page, Events, PopoverController } from 'ionic-angular';
+import { Geolocation } from 'ionic-native';
+
 import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
-import {MapComponent} from '../../components/map/map.component';
+import { MapComponent } from '../../components/map/map.component';
 
 @Page({
   templateUrl: 'pages/map/map.page.html',
   directives: [MapComponent]
 })
-export class MapPage {
+export class MapPage implements OnInit {
 
   @ViewChild(MapComponent) map: MapComponent;
 
-  latitude: number;
-  longitude: number;
-  timeRangeFrom: number;
-  timeRangeTo: number;
-  apiEndpoint: string;
+  requestPosition: Promise<any>;
 
   filter = {
     time: {
@@ -24,20 +22,37 @@ export class MapPage {
     }
   };
 
-  constructor(private popoverCtrl: PopoverController, public events: Events) {
-    events.subscribe('filter:changed:time', (time: Object) => {
+  constructor(private popoverCtrl: PopoverController, private events: Events) {
+    this.requestPosition = Geolocation.getCurrentPosition();
+  }
+
+  ngOnInit() {
+    this.events.subscribe('filter:changed:time', (time: Object) => {
       this.filter.time = time[0];
-      this.map.updateTimeRange({from: time[0].lower, to: time[0].upper});
+
+      if (this.map.initialized) {
+        this.map.updateTimeRange({from: time[0].lower, to: time[0].upper});
+      }
     });
 
-    this.latitude = 48.264673;
-    this.longitude = 11.671434;
-    this.timeRangeFrom = 0;
-    this.timeRangeTo = 60;
-    this.apiEndpoint = window.location.origin;
-   }
+    this.requestPosition
+      .then(position => this.initializeMap({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      }))
+      .catch(error => this.initializeMap({
+        latitude: 48.264673,
+        longitude: 11.671434
+      }));
+  }
 
-  public showFilterPopover($event?): void {
+  initializeMap(coordinates) {
+    let timeRange = {from: this.filter.time.lower, to: this.filter.time.upper};
+    let apiEndpoint = window.location.origin;
+    this.map.initialize({coordinates, timeRange, apiEndpoint});
+  }
+
+  showFilterPopover($event?): void {
     let popover = this.popoverCtrl.create(FilterPopoverComponent, this.filter);
     popover.present({
       ev: $event
