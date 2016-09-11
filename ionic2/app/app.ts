@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, enableProdMode } from '@angular/core';
 import { ionicBootstrap, Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import 'rxjs/add/operator/map';
@@ -6,6 +6,12 @@ import 'rxjs/add/operator/map';
 import { MapPage } from './pages/map/map';
 import { ApiService } from './services/api.service';
 import { NavSidebar } from './components/nav-sidebar/nav-sidebar.component';
+
+declare const ENV: string;
+
+if (ENV === 'prod') {
+  enableProdMode();
+}
 
 @Component({
   templateUrl: 'app.html',
