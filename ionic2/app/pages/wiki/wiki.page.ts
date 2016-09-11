@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Page, NavController } from 'ionic-angular';
 import { Navbar } from '../../components/navbar/navbar.component';
 
-@Component({
-  templateUrl: 'pages/wiki/wiki.html',
+@Page({
+  templateUrl: 'pages/wiki/wiki.page.html',
   directives: [Navbar]
 })
 export class WikiPage {
@@ -11,4 +10,5 @@ export class WikiPage {
   constructor(private navCtrl: NavController) {
 
   }
+
 }
