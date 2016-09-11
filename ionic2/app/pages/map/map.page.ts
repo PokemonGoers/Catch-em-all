@@ -30,7 +30,7 @@ export class MapPage implements OnInit {
     this.events.subscribe('filter:changed:time', (time: Object) => {
       this.filter.time = time[0];
 
-      if (this.map.initialized) {
+      if (this.map && this.map.initialized) {
         this.map.updateTimeRange({from: time[0].lower, to: time[0].upper});
       }
     });
