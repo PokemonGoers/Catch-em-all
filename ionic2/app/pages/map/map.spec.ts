@@ -27,9 +27,9 @@ describe('Map', () => {
         expect(result).toEqual({
             time: {
                 lower: 0,
-                upper: 7
+                upper: 60
             }
-        })
+        }) //TODO: Expect to have time.lower: number and time.upper: number
     }))
 
     it('should respond to filter:time:changed', inject([], () => {

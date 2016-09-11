@@ -4,7 +4,7 @@ import { Events, ViewController } from 'ionic-angular';
 @Component({
   template: `
   <ion-list style="margin-bottom: 0">
-    <ion-list-header>Limit prediciton time (minutes):</ion-list-header>
+    <ion-list-header>Limit prediction time (minutes):</ion-list-header>
     <ion-item>
       <ion-range 
           dualKnobs="true" 
