@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 
 
 @Component({
-  templateUrl: 'pages/imprint/imprint.html',
+  templateUrl: 'pages/imprint/imprint.page.html',
 })
 export class ImprintPage {
 
