@@ -1,7 +1,7 @@
 import { addProviders, beforeEach, it, describe, expect, inject } from '@angular/core/testing';
 import { MapPage } from './map.page';
 import { Events } from 'ionic-angular';
-import { App, PopoverController, Platform, Config } from 'ionic-angular';
+import { App, PopoverController, Platform, Config, NavParams } from 'ionic-angular';
 
 describe('Map', () => {
     let config: Config
@@ -9,15 +9,17 @@ describe('Map', () => {
     let app: App
     let popoverCtrl: PopoverController
     let events: Events
+    let navParams: NavParams
     let mapPage: MapPage
 
     beforeEach(() => { 
-        config = new Config
-        platform = new Platform
+        config = new Config()
+        platform = new Platform()
         app = new App(config, platform);
         popoverCtrl = new PopoverController(app)
         events = new Events()
-        mapPage = new MapPage(popoverCtrl, events)
+        navParams = new NavParams()
+        mapPage = new MapPage(popoverCtrl, events, navParams)
         addProviders([])
     });
 
