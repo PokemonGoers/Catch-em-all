@@ -1,15 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { Nav } from 'ionic-angular';
 
-import { MapPage } from '../../pages/map/map';
-import { WikiPage } from '../../pages/wiki/wiki';
-import { AboutPage } from '../../pages/about/about';
+import { MapPage } from '../../pages/map/map.page';
+import { WikiPage } from '../../pages/wiki/wiki.page';
+import { AboutPage } from '../../pages/about/about.page';
 
 @Component({
   selector: 'nav-sidebar',
   templateUrl: 'components/nav-sidebar/nav-sidebar.component.html'
 })
-export class NavSidebar {
+export class NavSidebarComponent {
 
   @Input() content: Nav;
 
