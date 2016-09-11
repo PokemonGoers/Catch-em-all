@@ -14,7 +14,7 @@ export class NavSidebarComponent {
   @Input() content: Nav;
 
   pages = [
-    {name: 'Map', link: MapPage},
+    {name: 'PokeMap', link: MapPage},
     {name: 'Wiki', link: WikiPage},
     {name: 'About',link: AboutPage}
   ];
