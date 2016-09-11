@@ -9,7 +9,7 @@ import { ImprintPage } from '../../pages/imprint/imprint.page';
   selector: 'nav-sidebar',
   templateUrl: 'components/nav-sidebar/nav-sidebar.component.html'
 })
-export class NavSidebar {
+export class NavSidebarComponent {
 
   @Input() content: Nav;
 

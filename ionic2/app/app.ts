@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 
 import { MapPage } from "./pages/map/map.page";
 import { ApiService } from './services/api.service';
-import { NavSidebar } from './components/nav-sidebar/nav-sidebar.component';
+import { NavSidebarComponent } from './components/nav-sidebar/nav-sidebar.component';
 
 declare const ENV: string;
 
@@ -16,7 +16,7 @@ if (ENV === 'prod') {
 @Component({
   templateUrl: 'app.html',
   providers: [ApiService],
-  directives: [NavSidebar]
+  directives: [NavSidebarComponent]
 })
 export class App {
 
