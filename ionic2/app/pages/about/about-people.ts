@@ -1,4 +1,4 @@
-export const people = {
+export const PEOPLE = {
   profs:[
     {name:'Dr. Lothar Richter',link:'#'},
     {name:'Timothy Karl',link:'#'},
