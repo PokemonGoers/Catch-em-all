@@ -7,16 +7,11 @@
         <ion-col style="display: flex; align-items: center; flex-grow: 0;">
             <ion-title>{{ title }}</ion-title>
         </ion-col>
-
-        <ion-col>
-            <searchbar @searchbarAnimate="searchbarState"></searchbar>
-        </ion-col>
     </ion-row>
 
     <ion-buttons end>
-        <button (click)="toggleSearchBar()">
-            <ion-icon name="search" *ngIf="searchbarState == 'hidden'"></ion-icon>
-            <ion-icon name="arrow-dropright" *ngIf="searchbarState == 'visible'"></ion-icon>
+        <button (click)="launchSearchPage()">
+            <ion-icon name="search"></ion-icon>
         </button>
     </ion-buttons>
 </ion-navbar>

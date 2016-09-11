@@ -1,0 +1,22 @@
+<ion-content>
+
+    <ion-searchbar
+            [(ngModel)]="search"
+            (ionInput)="onInput($event)"
+            (search)="onSearch($event)"
+            showCancelButton="true"
+            autocomplete="on"
+            placeholder="Search for Pokemon or location">
+    </ion-searchbar>
+
+    <ion-list>
+        <ion-item *ngFor="let pokemon of pokemonResults | async">
+            {{ pokemon.name }}
+        </ion-item>
+
+        <ion-item *ngFor="let location of locationResults | async">
+            {{ location.address }}
+        </ion-item>
+    </ion-list>
+
+</ion-content>

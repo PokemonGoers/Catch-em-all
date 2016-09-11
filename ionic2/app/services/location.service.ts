@@ -30,7 +30,7 @@ export class LocationService {
     let data = response.json();
     return data.results.map((result:any) => {
       return {
-        location: result.formatted_address,
+        address: result.formatted_address,
         coordinates: {
           latitude: result.geometry.location.lat,
           longitude: result.geometry.location.lng
