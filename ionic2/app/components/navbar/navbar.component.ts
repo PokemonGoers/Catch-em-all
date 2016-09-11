@@ -6,7 +6,7 @@ import { SearchPage } from '../../pages/search/search.page';
   templateUrl: 'components/navbar/navbar.component.html',
   selector: 'navbar'
 })
-export class Navbar {
+export class NavbarComponent {
 
   constructor(private navCtr: NavController) {}
 

@@ -1,11 +1,11 @@
 import { forwardRef } from '@angular/core';
 import { Page, Events, PopoverController, NavParams } from 'ionic-angular';
 import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
-import { Navbar } from '../../components/navbar/navbar.component';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 @Page({
   templateUrl: 'pages/map/map.page.html',
-  directives: [forwardRef(() => Navbar)]
+  directives: [forwardRef(() => NavbarComponent)]
 })
 export class MapPage {
   filter = {

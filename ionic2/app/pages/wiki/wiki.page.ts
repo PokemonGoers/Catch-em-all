@@ -1,10 +1,10 @@
 import { forwardRef } from '@angular/core';
 import { Page, NavController, NavParams } from 'ionic-angular';
-import { Navbar } from '../../components/navbar/navbar.component';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 @Page({
   templateUrl: 'pages/wiki/wiki.page.html',
-  directives: [forwardRef(() => Navbar)]
+  directives: [forwardRef(() => NavbarComponent)]
 })
 export class WikiPage {
 
