@@ -6,9 +6,9 @@ Add ionic2 ionic2
 ADD server server
 
 # Fix bug https://github.com/npm/npm/issues/9863
-#RUN cd $(npm root -g)/npm \
-#  && npm install fs-extra \
-#  && sed -i -e s/graceful-fs/fs-extra/ -e s/fs\.rename/fs.move/ ./lib/utils/rename.js
+RUN cd $(npm root -g)/npm \
+  && npm install fs-extra \
+  && sed -i -e s/graceful-fs/fs-extra/ -e s/fs\.rename/fs.move/ ./lib/utils/rename.js
 
 RUN cd server && npm install -q
 RUN cd ionic2 && npm install -q
