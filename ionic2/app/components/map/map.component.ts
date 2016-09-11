@@ -1,7 +1,10 @@
 import { Directive, ElementRef, AfterViewInit } from '@angular/core';
 
 //let PokeMap = require('pokemap-1');
-let PokeMap = require('pokemap-2');
+//let PokeMap = require('pokemap-2');
+
+// Dummy until PokeMaps are implemented
+let PokeMap: any = function (...args) {};
 
 @Directive({
   selector: 'map'
