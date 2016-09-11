@@ -4,6 +4,25 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     argv = process.argv;
 
+var outputDir = '../server/app';
+var isRelease = argv.indexOf('--release') > -1;
+var appEntry = [
+  isRelease ? './app/env-prod.ts' : './app/env-dev.ts',
+  './typings/index.d.ts'
+];
+
+function applyOptions(options, fn) {
+  return (callOptions) => fn(Object.assign(callOptions, options));
+}
+
+function handleError(error) {
+  console.error(error.toString());
+  if (isRelease) {
+    // During development we don't want to stop the process because
+    // ionic will automatically recover and restart the gulp build.
+    process.exit(1);
+  }
+}
 
 /**
  * Ionic hooks
@@ -28,30 +47,15 @@ gulp.task('run:before', [shouldWatch ? 'watch' : 'build']);
  * build however you see fit.
  */
 
-function applyOptions(options, fn) {
-  return (callOptions) => fn(Object.assign(callOptions, options));
-}
-
-function handleError(error) {
-  console.error(error.toString());
-  if (isRelease) {
-    // During development we don't want to stop the process because
-    // ionic will automatically recover and restart the gulp build.
-    process.exit(1);
-  }
-}
-
-var outputDir = '../server/app';
-
 // Change output destination to server directory
-var buildBrowserify = applyOptions({outputPath: outputDir + '/js', onError: handleError}, require('ionic-gulp-browserify-typescript'));
+var browserifyOptions = {outputPath: outputDir + '/js', src: appEntry, onError: handleError};
+var buildBrowserify = applyOptions(browserifyOptions, require('ionic-gulp-browserify-typescript'));
 var buildSass = applyOptions({dest: outputDir + '/css'}, require('ionic-gulp-sass-build'));
 var copyHTML = applyOptions({dest: outputDir}, require('ionic-gulp-html-copy'));
 var copyFonts = applyOptions({dest: outputDir + '/fonts'}, require('ionic-gulp-fonts-copy'));
 var copyScripts = applyOptions({dest: outputDir + '/js'}, require('ionic-gulp-scripts-copy'));
 var tslint = require('ionic-gulp-tslint');
 
-var isRelease = argv.indexOf('--release') > -1;
 
 gulp.task('watch', ['clean'], function(done){
   runSequence(
