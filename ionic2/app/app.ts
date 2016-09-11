@@ -4,11 +4,11 @@ import { StatusBar } from 'ionic-native';
 import 'rxjs/add/operator/map';
 
 import { MapPage } from './pages/map/map';
-import { ApiService } from './api/api.service';
+import { ApiService } from './services/api.service';
 import { NavSidebar } from './components/nav-sidebar/nav-sidebar.component';
 
 @Component({
-  templateUrl: 'app-menu.html',
+  templateUrl: 'app.html',
   providers: [ApiService],
   directives: [NavSidebar]
 })
