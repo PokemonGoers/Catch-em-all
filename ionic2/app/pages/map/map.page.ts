@@ -1,4 +1,4 @@
-import { ViewChild, AfterViewInit } from '@angular/core';
+import { ViewChild } from '@angular/core';
 import { Page, Events, PopoverController } from 'ionic-angular';
 import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
 import {MapComponent} from '../../components/map/map.component';
@@ -7,7 +7,7 @@ import {MapComponent} from '../../components/map/map.component';
   templateUrl: 'pages/map/map.page.html',
   directives: [MapComponent]
 })
-export class MapPage implements AfterViewInit {
+export class MapPage {
 
   @ViewChild(MapComponent) map: MapComponent;
 
@@ -26,7 +26,8 @@ export class MapPage implements AfterViewInit {
 
   constructor(private popoverCtrl: PopoverController, public events: Events) {
     events.subscribe('filter:changed:time', (time: Object) => {
-      this.filter.time = time[0]
+      this.filter.time = time[0];
+      this.map.updateTimeRange({from: time[0].lower, to: time[0].upper});
     });
 
     this.latitude = 48.264673;
@@ -41,9 +42,5 @@ export class MapPage implements AfterViewInit {
     popover.present({
       ev: $event
     });
-  }
-
-  ngAfterViewInit() {
-    // Ready to interact with this.map
   }
 }
