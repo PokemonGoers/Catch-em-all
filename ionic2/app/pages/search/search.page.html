@@ -10,17 +10,17 @@
             [(ngModel)]="search"
             (ionInput)="onInput($event)"
             (ionCancel)="onCancel($event)"
-            showCancelButton="true"
+            (search)="onSearch($event)"
             autocomplete="on"
             placeholder="Search for Pokemon or location">
     </ion-searchbar>
 
     <ion-list>
-        <ion-list-header *ngIf="pokemonCount | async">
+        <ion-list-header *ngIf="pokemonResults.length > 0">
             Pokemon ({{ pokemonCount | async }})
         </ion-list-header>
         <button ion-item
-                *ngFor="let pokemon of pokemonResults | async"
+                *ngFor="let pokemon of pokemonResults"
                 (click)="selectPokemon(pokemon)">
 
             <ion-row>
@@ -36,12 +36,12 @@
 
         </button>
 
-        <ion-list-header *ngIf="locationCount | async">
+        <ion-list-header *ngIf="locationResults.length > 0">
             Locations ({{ locationCount | async }})
         </ion-list-header>
 
         <button ion-item
-                *ngFor="let location of locationResults | async"
+                *ngFor="let location of locationResults"
                 (click)="selectLocation(location)">
 
             <ion-row>

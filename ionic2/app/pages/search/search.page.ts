@@ -2,7 +2,7 @@ import { Page, NavController } from 'ionic-angular';
 import { ApiService } from '../../services/api.service';
 import { LocationService, LocationQueryResponse } from '../../services/location.service';
 import { Pokemon } from '../../models/pokemon';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { WikiPage } from '../wiki/wiki.page';
 import { MapPage } from '../map/map.page';
 
@@ -13,37 +13,62 @@ export class SearchPage {
 
   search: string;
 
-  locationResults: Observable<LocationQueryResponse[]> = Observable.of([]);
-  locationCount: Observable<number> = Observable.of(0);
+  pokemonResults: Pokemon[] = [];
+  locationResults: LocationQueryResponse[] = [];
 
-  pokemonResults: Observable<Pokemon[]> = Observable.of([]);
-  pokemonCount: Observable<number> = Observable.of(0);
+  pokemonQuery: Subscription;
+  locationQuery: Subscription;
 
   constructor(private navCtrl: NavController, private locationService: LocationService, private api: ApiService) {
   }
 
   onInput(event) {
-    if (this.search.length >= 3) {
-      this.pokemonResults = this.api.getPokemonByName(this.search);
-      this.locationResults = this.locationService.queryLocation(this.search);
-    } else {
-      this.pokemonResults = Observable.of([]);
-      this.locationResults = Observable.of([]);
-    }
+    this.cancelRequests();
 
-    this.locationCount = this.locationResults.map(results => results.length);
-    this.pokemonCount = this.pokemonResults.map(results => results.length);
+    if (this.search.length >= 3) {
+      // Search Pokemon
+      this.pokemonQuery = this.api.getPokemonByName(this.search)
+        .subscribe(results => this.pokemonResults = results, error => this.pokemonResults = []);
+
+      // Search Locations
+      this.locationQuery = this.locationService.queryLocation(this.search)
+        .subscribe(results => this.locationResults = results, error => this.locationResults = []);
+    } else {
+      this.pokemonResults = [];
+      this.locationResults = [];
+    }
   }
 
   onCancel(event) {
     this.navCtrl.pop();
   }
 
+  onSearch(event) {
+    // Triggered when the confirm button (e.g. enter) is pressed.
+    // If there is exactly one search result we will select
+    if (this.pokemonResults.length === 1 && this.locationResults.length === 0) {
+      this.selectPokemon(this.pokemonResults[0]);
+    } else if (this.locationResults.length === 1 && this.pokemonResults.length === 0) {
+      this.selectLocation(this.locationResults[0])
+    }
+  }
+
+  cancelRequests() {
+    if (this.locationQuery && !this.locationQuery.isUnsubscribed) {
+      this.locationQuery.unsubscribe();
+    }
+    if (this.pokemonQuery && !this.pokemonQuery.isUnsubscribed) {
+      this.pokemonQuery.unsubscribe();
+    }
+  }
+
   selectPokemon(pokemon:Pokemon) {
+    this.cancelRequests();
     this.navCtrl.setRoot(WikiPage, {pokemonId: pokemon.pokemonId});
   }
 
   selectLocation(location:LocationQueryResponse) {
+    this.cancelRequests();
     this.navCtrl.setRoot(MapPage, location.coordinates);
   }
 }
