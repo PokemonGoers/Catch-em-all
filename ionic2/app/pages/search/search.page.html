@@ -1,3 +1,8 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Search</ion-title>
+    </ion-navbar>
+</ion-header>
 
 <ion-content padding>
 
@@ -17,7 +22,18 @@
         <button ion-item
                 *ngFor="let pokemon of pokemonResults | async"
                 (click)="selectPokemon(pokemon)">
-            {{ pokemon.name }}
+
+            <ion-row>
+                <ion-col style="display: flex; align-items: center; flex-basis: 40px;
+                    flex-grow: 0; flex-direction: column;">
+                    <img [src]="pokemon.icon">
+                </ion-col>
+
+                <ion-col style="display: flex; align-items: center; ">
+                    {{ pokemon.name }}
+                </ion-col>
+            </ion-row>
+
         </button>
 
         <ion-list-header *ngIf="locationCount | async">
@@ -27,7 +43,18 @@
         <button ion-item
                 *ngFor="let location of locationResults | async"
                 (click)="selectLocation(location)">
-            {{ location.address }}
+
+            <ion-row>
+                <ion-col style="display: flex; align-items: center; flex-basis: 40px;
+                    flex-grow: 0; flex-direction: column;">
+                    <ion-icon name="pin"></ion-icon>
+                </ion-col>
+
+                <ion-col style="display: flex; align-items: center; ">
+                    {{ location.address }}
+                </ion-col>
+            </ion-row>
+
         </button>
     </ion-list>
 

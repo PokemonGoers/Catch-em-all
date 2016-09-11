@@ -60,4 +60,8 @@ export class Pokemon {
     let instance = Object.create(Pokemon.prototype);
     return Object.assign(instance, object);
   }
+
+  get icon():string {
+    return '/api/pokemon/id/' + this.pokemonId + '/icon';
+  }
 }
