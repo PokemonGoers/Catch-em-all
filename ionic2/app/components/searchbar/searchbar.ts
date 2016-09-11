@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LocationService } from '../../services/location.service';
-import { ApiService } from '../../api/api.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   templateUrl: 'components/searchbar/searchbar.html',
