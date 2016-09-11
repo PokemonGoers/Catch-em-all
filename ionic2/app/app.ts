@@ -5,13 +5,15 @@ import 'rxjs/add/operator/map';
 
 import { MapPage } from "./pages/map/map.page";
 import { ApiService } from './services/api.service';
-
+import { NavSidebar } from './components/nav-sidebar/nav-sidebar.component';
 
 @Component({
-  template: '<ion-nav [root]="rootPage"></ion-nav>',
-  providers: [ApiService]
+  templateUrl: 'app.html',
+  providers: [ApiService],
+  directives: [NavSidebar]
 })
 export class App {
+
   rootPage: any = MapPage;
 
   constructor(public platform: Platform) {
@@ -21,6 +23,7 @@ export class App {
       StatusBar.styleDefault();
     });
   }
+
 }
 
 ionicBootstrap(App);
