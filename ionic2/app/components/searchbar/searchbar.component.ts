@@ -3,7 +3,7 @@ import { LocationService } from '../../services/location.service';
 import { ApiService } from '../../services/api.service';
 
 @Component({
-  templateUrl: 'components/searchbar/searchbar.html',
+  templateUrl: 'components/searchbar/searchbar.component.html',
   selector: 'searchbar'
 })
 export class Searchbar {

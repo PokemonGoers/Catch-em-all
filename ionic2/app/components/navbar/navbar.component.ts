@@ -1,8 +1,8 @@
 import { Component, Input, ViewChild, animate, trigger, state, style, transition } from '@angular/core';
-import { Searchbar } from '../searchbar/searchbar';
+import { Searchbar } from '../searchbar/searchbar.component';
 
 @Component({
-  templateUrl: 'components/navbar/navbar.html',
+  templateUrl: 'components/navbar/navbar.component.html',
   selector: 'navbar',
   directives: [Searchbar],
   animations: [
