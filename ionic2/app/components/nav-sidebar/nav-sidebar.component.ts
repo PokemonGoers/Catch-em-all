@@ -17,7 +17,7 @@ export class NavSidebar {
     {name: 'Map', link: MapPage},
     {name: 'Wiki', link: WikiPage},
     {name: 'About',link: AboutPage},
-    {name: 'Imprint',link: ImprintPage}
+    {name: 'Imprint & Disclaimer',link: ImprintPage}
   ];
 
   openPage(page) {
