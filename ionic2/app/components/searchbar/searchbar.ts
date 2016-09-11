@@ -14,6 +14,9 @@ export class Searchbar {
   }
 
   onInput(event) {
+    if (this.search.length < 3) {
+      return;
+    }
     this.locationService.queryLocation(this.search).subscribe(locations => {
       console.log('locations', locations);
     });
