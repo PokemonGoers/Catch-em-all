@@ -1,5 +1,5 @@
 import { addProviders, beforeEach, it, describe, expect, inject } from '@angular/core/testing';
-import { MapPage } from './map';
+import { MapPage } from './map.page';
 import { Events } from 'ionic-angular';
 import { App, PopoverController, Platform, Config } from 'ionic-angular';
 

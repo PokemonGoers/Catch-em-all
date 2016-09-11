@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
-import { Events, PopoverController } from 'ionic-angular';
+import { Page, Events, PopoverController } from 'ionic-angular';
 import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
 
-@Component({
-  templateUrl: 'pages/map/map.html'
+@Page({
+  templateUrl: 'pages/map/map.page.html'
 })
 export class MapPage {
     filter = {
