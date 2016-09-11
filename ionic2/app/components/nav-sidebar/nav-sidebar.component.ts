@@ -9,12 +9,12 @@ import { AboutPage } from '../../pages/about/about.page';
   selector: 'nav-sidebar',
   templateUrl: 'components/nav-sidebar/nav-sidebar.component.html'
 })
-export class NavSidebar {
+export class NavSidebarComponent {
 
   @Input() content: Nav;
 
   pages = [
-    {name: 'Map', link: MapPage},
+    {name: 'PokeMap', link: MapPage},
     {name: 'Wiki', link: WikiPage},
     {name: 'About',link: AboutPage}
   ];

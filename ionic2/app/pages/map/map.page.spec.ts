@@ -20,6 +20,7 @@ describe('Map', () => {
         events = new Events()
         navParams = new NavParams()
         mapPage = new MapPage(popoverCtrl, events, navParams)
+        mapPage.ngOnInit()
         addProviders([])
     });
 
@@ -37,7 +38,7 @@ describe('Map', () => {
     it('should respond to filter:time:changed', inject([], () => {
         events.publish('filter:changed:time', {lower: -10, upper: 10})
         let result = mapPage.filter
-        
+
         expect(result).toEqual({
             time: {
                 lower: -10,
