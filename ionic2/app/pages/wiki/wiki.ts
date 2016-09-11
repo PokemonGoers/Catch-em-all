@@ -9,5 +9,4 @@ export class WikiPage {
   constructor(private navCtrl: NavController) {
 
   }
-
 }

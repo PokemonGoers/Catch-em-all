@@ -1,8 +1,6 @@
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {MapComponent} from '../../components/map/map';
-
-var PokeMap = require('../../../../../PokeMap-2/index.js');
+import {MapComponent} from '../../components/map/map.component';
 
 @Component({
   templateUrl: 'pages/map/map.html',

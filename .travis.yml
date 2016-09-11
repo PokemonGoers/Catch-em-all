@@ -19,6 +19,7 @@ install:
   - cd ../ionic2
   - npm install -q
   - npm update pokemap-1 pokemap-2
+  - node_modules/.bin/typings install
   - node_modules/gulp/bin/gulp.js build --release
 
   - cd ../
