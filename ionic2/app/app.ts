@@ -4,8 +4,11 @@ import { StatusBar } from 'ionic-native';
 import 'rxjs/add/operator/map';
 
 import { MapPage } from "./pages/map/map.page";
-import { ApiService } from './services/api.service';
 import { NavSidebarComponent } from './components/nav-sidebar/nav-sidebar.component';
+
+// Provider
+import { ApiService } from './services/api.service';
+import { LocationService } from './services/location.service';
 
 declare const ENV: string;
 
@@ -13,10 +16,14 @@ if (ENV === 'prod') {
   enableProdMode();
 }
 
+
 @Component({
   templateUrl: 'app.html',
-  providers: [ApiService],
-  directives: [NavSidebarComponent]
+  directives: [NavSidebarComponent],
+  providers: [
+    ApiService,
+    LocationService
+  ]
 })
 export class App {
 

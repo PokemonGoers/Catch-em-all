@@ -1,0 +1,62 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Search</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-searchbar
+            padding
+            [(ngModel)]="search"
+            (ionInput)="onInput($event)"
+            (ionCancel)="onCancel($event)"
+            (search)="onSearch($event)"
+            autocomplete="on"
+            placeholder="Search for Pokemon or location">
+    </ion-searchbar>
+
+    <ion-list>
+        <ion-list-header *ngIf="pokemonResults.length > 0">
+            Pokemon ({{ pokemonResults.length }})
+        </ion-list-header>
+        <button ion-item
+                *ngFor="let pokemon of pokemonResults"
+                (click)="selectPokemon(pokemon)">
+
+            <ion-row>
+                <ion-col style="display: flex; align-items: center; flex-basis: 40px;
+                    flex-grow: 0; flex-direction: column;">
+                    <img [src]="pokemon.icon">
+                </ion-col>
+
+                <ion-col style="display: flex; align-items: center; ">
+                    {{ pokemon.name }}
+                </ion-col>
+            </ion-row>
+
+        </button>
+
+        <ion-list-header *ngIf="locationResults.length > 0">
+            Locations ({{ locationResults.length }})
+        </ion-list-header>
+
+        <button ion-item
+                *ngFor="let location of locationResults"
+                (click)="selectLocation(location)">
+
+            <ion-row>
+                <ion-col style="display: flex; align-items: center; flex-basis: 40px;
+                    flex-grow: 0; flex-direction: column;">
+                    <ion-icon name="pin"></ion-icon>
+                </ion-col>
+
+                <ion-col style="display: flex; align-items: center; ">
+                    {{ location.address }}
+                </ion-col>
+            </ion-row>
+
+        </button>
+    </ion-list>
+
+</ion-content>

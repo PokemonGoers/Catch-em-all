@@ -1,19 +1,25 @@
-import { ViewChild, OnInit } from '@angular/core';
-import { Page, Events, PopoverController } from 'ionic-angular';
+import { ViewChild, OnInit, forwardRef } from '@angular/core';
+import { Page, Events, PopoverController, NavParams } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
 import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
 import { MapComponent } from '../../components/map/map.component';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 @Page({
   templateUrl: 'pages/map/map.page.html',
-  directives: [MapComponent]
+  directives: [
+    forwardRef(() => NavbarComponent),
+    MapComponent
+  ]
 })
 export class MapPage implements OnInit {
 
   @ViewChild(MapComponent) map: MapComponent;
 
-  requestPosition: Promise<any>;
+  requestPosition: Promise<any> = null;
+  latitude: number;
+  longitude: number;
 
   filter = {
     time: {
@@ -22,8 +28,13 @@ export class MapPage implements OnInit {
     }
   };
 
-  constructor(private popoverCtrl: PopoverController, private events: Events) {
-    this.requestPosition = Geolocation.getCurrentPosition();
+  constructor(private popoverCtrl: PopoverController, private events: Events, navParams: NavParams) {
+    if (navParams.get('latitude') && navParams.get('longitude')) {
+      this.latitude = navParams.get('latitude');
+      this.longitude = navParams.get('longitude');
+    } else {
+      this.requestPosition = Geolocation.getCurrentPosition();
+    }
   }
 
   ngOnInit() {
@@ -35,15 +46,22 @@ export class MapPage implements OnInit {
       }
     });
 
-    this.requestPosition
-      .then(position => this.initializeMap({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      }))
-      .catch(error => this.initializeMap({
-        latitude: 48.264673,
-        longitude: 11.671434
-      }));
+    if (this.requestPosition) {
+      this.requestPosition
+        .then(position => this.initializeMap({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        }))
+        .catch(error => this.initializeMap({
+          latitude: 48.264673,
+          longitude: 11.671434
+        }));
+    } else {
+      this.initializeMap({
+        latitude: this.latitude,
+        longitude: this.longitude
+      })
+    }
   }
 
   initializeMap(coordinates) {

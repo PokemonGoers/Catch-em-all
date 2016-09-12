@@ -66,11 +66,11 @@ export class ApiService {
   /**
    * Get Pokemon by specific name.
    * @param {string} name - Name of the Pokemon
-   * @returns {Observable<Pokemon>}
+   * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByName(name: string): Observable<Pokemon> {
+  getPokemonByName(name: string): Observable<Pokemon[]> {
     let request = this.http.get('/api/pokemon/name/' + name);
-    return request.map(ApiService.handleResponse(Pokemon, true));
+    return request.map(ApiService.handleResponse(Pokemon));
   }
 
   /**
