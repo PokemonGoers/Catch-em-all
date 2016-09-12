@@ -3,15 +3,12 @@
       <button menuToggle>
         <ion-icon name='menu'></ion-icon>
       </button>
-    <ion-title>Map</ion-title>
+    <ion-title>PokeMap</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    Project E: Catch-em-All
-    <p>
-        If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-    </p>
+<ion-content scroll="false">
+    <map></map>
+
     <button fab fab-right fab-bottom (click)="showFilterPopover($event)"><ion-icon name="funnel"></ion-icon></button>
-    
 </ion-content>

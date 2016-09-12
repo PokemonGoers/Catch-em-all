@@ -18,6 +18,7 @@ describe('Map', () => {
         popoverCtrl = new PopoverController(app)
         events = new Events()
         mapPage = new MapPage(popoverCtrl, events)
+        mapPage.ngOnInit()
         addProviders([])
     });
 
@@ -35,7 +36,7 @@ describe('Map', () => {
     it('should respond to filter:time:changed', inject([], () => {
         events.publish('filter:changed:time', {lower: -10, upper: 10})
         let result = mapPage.filter
-        
+
         expect(result).toEqual({
             time: {
                 lower: -10,
