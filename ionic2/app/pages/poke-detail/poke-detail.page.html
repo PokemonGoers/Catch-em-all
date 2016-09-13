@@ -7,35 +7,35 @@
 
 <ion-content padding>
 
-  <div *ngIf="pokemonData">
+  <div *ngIf="pokemon">
     <div style="text-align:center;">
-      <h1>#{{pokemonData.pokemonId}} {{pokemonData.name}}</h1>
-      <img [src]="pokemonData.icon" class="box">
+      <h1>#{{pokemon.pokemonId}} {{pokemon.name}}</h1>
+      <img [src]="pokemon.icon" class="box">
     </div>
     <div>
       <ion-row>
         <ion-col>Types</ion-col>
-        <ion-col class="right-align"><ion-badge>{{pokemonData.types}}</ion-badge></ion-col>
+        <ion-col class="right-align"><ion-badge>{{pokemon.types}}</ion-badge></ion-col>
       </ion-row>
       <ion-row>
         <ion-col>Weaknesses</ion-col>
-        <ion-col class="right-align"><ion-badge>{{pokemonData.weakness}}</ion-badge></ion-col>
+        <ion-col class="right-align"><ion-badge>{{pokemon.weakness}}</ion-badge></ion-col>
       </ion-row>
       <ion-row>
         <ion-col>Strengths</ion-col>
-        <ion-col class="right-align"><ion-badge>{{pokemonData.resistance}}</ion-badge></ion-col>
+        <ion-col class="right-align"><ion-badge>{{pokemon.resistance}}</ion-badge></ion-col>
       </ion-row>
       <ion-row>
         <ion-col>Classification</ion-col>
-        <ion-col class="right-align"><ion-badge>{{pokemonData.classification}}</ion-badge></ion-col>
+        <ion-col class="right-align"><ion-badge>{{pokemon.classification}}</ion-badge></ion-col>
       </ion-row>
         <ion-row>
           <ion-col>Gender</ion-col>
-          <ion-col class="right-align"><ion-badge>{{pokemonData.gender.abbreviation}}</ion-badge></ion-col>
+          <ion-col class="right-align"><ion-badge>{{pokemon.gender.abbreviation}}</ion-badge></ion-col>
         </ion-row>
       <div class="small-cards">
         <ion-row class="">Types</ion-row>
-        <ion-row >{{pokemonData.types}}</ion-row>
+        <ion-row >{{pokemon.types}}</ion-row>
       </div>
     </div>
   </div>
