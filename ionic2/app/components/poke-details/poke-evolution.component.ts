@@ -1,4 +1,5 @@
-import { Component} from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Pokemon } from "../../models/pokemon";
 
 @Component({
   templateUrl: 'components/poke-details/poke-evolution.component.html',
@@ -7,6 +8,13 @@ import { Component} from '@angular/core';
 
 export class PokeEvolutionComponent {
 
-  constructor() {}
+  @Input("pokemon") pokemon: Pokemon;
+
+  constructor() {
+  }
+
+  ngOnInit() {
+    console.log(this.pokemon.fleeRate);
+  }
 
 }
