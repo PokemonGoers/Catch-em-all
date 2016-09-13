@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Nav } from 'ionic-angular';
 import { MapPage } from '../../pages/map/map.page';
-import { WikiPage } from '../../pages/pokedetail/pokedetail.page';
+import { PokeDetailPage } from '../../pages/pokedetail/pokedetail.page';
 import { AboutPage } from '../../pages/about/about.page';
 import { ImprintPage } from '../../pages/imprint/imprint.page';
 
@@ -15,7 +15,7 @@ export class NavSidebarComponent {
 
   pages = [
     {name: 'PokeMap', link: MapPage},
-    {name: 'Wiki', link: WikiPage},
+    {name: 'Wiki', link: PokeDetailPage},
     {name: 'About', link: AboutPage},
     {name: 'Imprint & Disclaimer', link: ImprintPage}
   ];

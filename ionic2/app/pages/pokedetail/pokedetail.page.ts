@@ -6,7 +6,7 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
   templateUrl: 'pages/pokedetail/pokedetail.page.html',
   directives: [forwardRef(() => NavbarComponent)]
 })
-export class WikiPage {
+export class PokeDetailPage {
 
   pokemonId: number;
 
