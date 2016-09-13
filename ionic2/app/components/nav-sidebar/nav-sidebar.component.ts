@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Nav } from 'ionic-angular';
 import { MapPage } from '../../pages/map/map.page';
-import { WikiPage } from '../../pages/wiki/wiki.page';
+import { WikiPage } from '../../pages/pokedetail/pokedetail.page';
 import { AboutPage } from '../../pages/about/about.page';
 import { ImprintPage } from '../../pages/imprint/imprint.page';
 

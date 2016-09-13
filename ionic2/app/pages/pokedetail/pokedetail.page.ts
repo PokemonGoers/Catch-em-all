@@ -3,7 +3,7 @@ import { Page, NavController, NavParams } from 'ionic-angular';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 @Page({
-  templateUrl: 'pages/wiki/wiki.page.html',
+  templateUrl: 'pages/pokedetail/pokedetail.page.html',
   directives: [forwardRef(() => NavbarComponent)]
 })
 export class WikiPage {

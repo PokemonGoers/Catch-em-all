@@ -3,7 +3,7 @@ import { ApiService } from '../../services/api.service';
 import { LocationService, LocationQueryResponse } from '../../services/location.service';
 import { Pokemon } from '../../models/pokemon';
 import { Observable, Subscription } from 'rxjs';
-import { WikiPage } from '../wiki/wiki.page';
+import { WikiPage } from '../pokedetail/pokedetail.page';
 import { MapPage } from '../map/map.page';
 
 @Page({
