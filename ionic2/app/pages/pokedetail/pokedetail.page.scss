@@ -3,10 +3,10 @@
 }
 
 .box{
-	min-width: 60vw;
-  min-height: 60vw;
-  width: 60%;
-  height: 60%;
+	min-width: 30vw;
+  min-height: 30vw;
+  width: 30%;
+  height: 30%;
   border-radius: 50%;
   border: 5px solid grey;
 }
@@ -18,4 +18,8 @@
 
 .right-align{
   text-align: right;
+}
+
+.left-align{
+  text-align: left;
 }
