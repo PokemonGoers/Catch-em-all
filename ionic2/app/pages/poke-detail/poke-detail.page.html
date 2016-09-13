@@ -5,34 +5,36 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
   <div *ngIf="pokemon">
-    <ion-row>
-      <ion-col><img [src]="pokemon.icon" class="box align-right"></ion-col>
-      <ion-col padding>
-        <h1 class="align-left"><small><small>#{{pokemon.pokemonId}}</small></small><br>{{pokemon.name}}</h1>
-        <small><ion-badge>{{pokemon.classification}}</ion-badge></small>
-      </ion-col>
-    </ion-row>
-    <hr>
-    <div>
+    <div padding>
       <ion-row>
-        <ion-col>Gender</ion-col>
-        <ion-col class="right-align"><ion-badge>{{pokemon.gender.abbreviation}}</ion-badge></ion-col>
+        <ion-col><img [src]="pokemon.icon" class="box align-right"></ion-col>
+        <ion-col padding>
+          <h1 class="align-left"><small><small>#{{pokemon.pokemonId}}</small></small><br>{{pokemon.name}}</h1>
+          <small><ion-badge>{{pokemon.classification}}</ion-badge></small>
+        </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col>Types</ion-col>
-        <ion-col class="right-align"><ion-badge>{{pokemon.types}}</ion-badge></ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>Weaknesses</ion-col>
-        <ion-col class="right-align"><ion-badge>{{pokemon.weakness}}</ion-badge></ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>Strengths</ion-col>
-        <ion-col class="right-align"><ion-badge>{{pokemon.resistance}}</ion-badge></ion-col>
-      </ion-row>
+      <hr>
+      <div>
+        <ion-row>
+          <ion-col>Gender</ion-col>
+          <ion-col class="right-align"><ion-badge>{{pokemon.gender.abbreviation}}</ion-badge></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Types</ion-col>
+          <ion-col class="right-align"><ion-badge>{{pokemon.types}}</ion-badge></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Weaknesses</ion-col>
+          <ion-col class="right-align"><ion-badge>{{pokemon.weakness}}</ion-badge></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Strengths</ion-col>
+          <ion-col class="right-align"><ion-badge>{{pokemon.resistance}}</ion-badge></ion-col>
+        </ion-row>
+      </div>
     </div>
     <poke-evolution [pokemon]="pokemon"></poke-evolution>
   </div>
