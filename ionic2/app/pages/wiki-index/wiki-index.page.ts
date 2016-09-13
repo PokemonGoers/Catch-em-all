@@ -12,7 +12,7 @@ import { PokeDetailPage } from "../pokedetail/pokedetail.page";
 })
 export class WikiIndexPage {
 
-  queryString: String;
+  queryString: string;
   querySubscription: Subscription;
   results: Pokemon[] = [];
 
