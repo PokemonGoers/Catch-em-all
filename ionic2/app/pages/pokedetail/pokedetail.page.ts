@@ -2,9 +2,11 @@ import { forwardRef } from '@angular/core';
 import { Page, NavController, NavParams } from 'ionic-angular';
 import { ApiService } from '../../services/api.service';
 import { Pokemon } from "../../models/pokemon";
+import { PokeEvolutionComponent } from "../../components/poke-details/poke-evolution.component";
 
 @Page({
   templateUrl: 'pages/pokedetail/pokedetail.page.html',
+  directives: [PokeEvolutionComponent],
 })
 export class PokeDetailPage {
 
