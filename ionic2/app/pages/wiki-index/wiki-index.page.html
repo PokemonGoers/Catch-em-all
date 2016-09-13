@@ -3,5 +3,23 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-searchbar
+    padding
+    [(ngModel)]="queryString"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)"
+    (search)="onSearch($event)"
+    autocomplete="on"></ion-searchbar>
 
+  <ion-item *ngFor="let pokemon of results">
+    <ion-card>
+      <img [src]="pokemon.icon" />
+      <ion-card-content>
+        <ion-card-title>
+          {{pokemon.name}}
+        </ion-card-title>
+      </ion-card-content>
+      <button light (click)="selectPokemon(pokemon)">Pokewiki</button>
+    </ion-card>
+  </ion-item>
 </ion-content>
