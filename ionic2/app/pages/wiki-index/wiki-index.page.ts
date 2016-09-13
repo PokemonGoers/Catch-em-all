@@ -12,7 +12,7 @@ import { PokeDetailPage } from "../pokedetail/pokedetail.page";
 })
 export class WikiIndexPage {
 
-  queryString: String;
+  queryString: string;
   querySubscription: Subscription;
   results: Pokemon[] = [];
 
@@ -38,7 +38,7 @@ export class WikiIndexPage {
 
   selectPokemon(pokemon:Pokemon) {
     this.cancelRequests();
-    this.navCtrl.setRoot(PokeDetailPage, {pokemonId: pokemon.pokemonId});
+    this.navCtrl.push(PokeDetailPage, {pokemonId: pokemon.pokemonId});
   }
 
 

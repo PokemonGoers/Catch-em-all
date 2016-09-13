@@ -1,3 +1,21 @@
 .wiki {
 
 }
+
+.box{
+	min-width: 60vw;
+  min-height: 60vw;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  border: 5px solid grey;
+}
+
+.small-cards{
+  width: 20vw;
+  height: 20vw;
+}
+
+.right-align{
+  text-align: right;
+}
