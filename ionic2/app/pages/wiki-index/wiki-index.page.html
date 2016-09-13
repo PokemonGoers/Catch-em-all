@@ -10,16 +10,17 @@
     (ionCancel)="onCancel($event)"
     (search)="onSearch($event)"
     autocomplete="on"></ion-searchbar>
+    <div class="grid">
 
-  <ion-item *ngFor="let pokemon of results">
-    <ion-card>
-      <img [src]="pokemon.icon" />
-      <ion-card-content>
-        <ion-card-title>
-          {{pokemon.name}}
-        </ion-card-title>
-      </ion-card-content>
-      <button light (click)="selectPokemon(pokemon)">Pokewiki</button>
-    </ion-card>
-  </ion-item>
+      <div class="col-4_sm-12"
+          *ngFor="let pokemon of results">
+        <ion-card (click)="selectPokemon(pokemon)" style="cursor: pointer; cursor: hand;">
+            <a class="card-img" class="card-center"><img [src]="pokemon.icon" style="width: 300px; height: 300px"/></a>
+
+            <ion-item>
+              <span class="card-center"><b>{{pokemon.name}}</b></span>
+            </ion-item>
+        </ion-card>
+      </div>
+    </div>
 </ion-content>
