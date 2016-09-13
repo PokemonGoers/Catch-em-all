@@ -1,4 +1,7 @@
-import { Directive, Input, ElementRef, OnInit } from '@angular/core';
+import { Directive, Input, Output, ElementRef, EventEmitter} from '@angular/core';
+import { Events } from 'ionic-angular';
+import {PokePOI} from "../../models/poke-poi";
+import {ApiService} from "../../services/api.service";
 
 //let PokeMap = require('pokemap-1');
 //let PokeMap = require('pokemap-2');
@@ -16,13 +19,11 @@ export class MapComponent {
 
   private map;
 
-  constructor(private element: ElementRef) {}
+  constructor(private element: ElementRef, private events: Events, private apiService: ApiService) {
+  }
 
   initialize(options) {
     this.map = new PokeMap(this.element.nativeElement, options);
-
-    this.map.on('click', this.onClick.bind(this));
-    this.map.on('move', this.onMove.bind(this));
   }
 
   get initialized(): boolean {
@@ -37,12 +38,16 @@ export class MapComponent {
     this.map.updateTimeRange(timeRange);
   }
 
-  onClick(pokePOI) {
+  applyFilter(filterOptions) {
 
   }
 
-  onMove({coordinates: {latitude, longitude}, zoomLevel}) {
+  onClick(callback) {
+    this.map.on('click', callback);
+  }
 
+  onMove(callback) {
+    this.map.on('move', callback);
   }
 
 }

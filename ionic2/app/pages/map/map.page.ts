@@ -5,17 +5,23 @@ import { Geolocation } from 'ionic-native';
 import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
 import { MapComponent } from '../../components/map/map.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { PokePOICardComponent } from '../../components/poke-poi-card/poke-poi-card.component';
+import { PokePOI } from '../../models/poke-poi';
+import { ApiService } from '../../services/api.service';
 
 @Page({
   templateUrl: 'pages/map/map.page.html',
   directives: [
     forwardRef(() => NavbarComponent),
-    MapComponent
+    MapComponent,
+    PokePOICardComponent
   ]
 })
 export class MapPage implements OnInit {
 
   @ViewChild(MapComponent) map: MapComponent;
+  @ViewChild(PokePOICardComponent) pokePOICard: PokePOICardComponent;
+
 
   requestPosition: Promise<any> = null;
   latitude: number;
@@ -28,7 +34,7 @@ export class MapPage implements OnInit {
     }
   };
 
-  constructor(private popoverCtrl: PopoverController, private events: Events, navParams: NavParams) {
+  constructor(private popoverCtrl: PopoverController, private events: Events, navParams: NavParams, private api:ApiService) {
     if (navParams.get('latitude') && navParams.get('longitude')) {
       this.latitude = navParams.get('latitude');
       this.longitude = navParams.get('longitude');
@@ -68,6 +74,13 @@ export class MapPage implements OnInit {
     let timeRange = {from: this.filter.time.lower, to: this.filter.time.upper};
     let apiEndpoint = window.location.origin;
     this.map.initialize({coordinates, timeRange, apiEndpoint});
+    this.map.onClick(this.pokePOICard.show.bind(this.pokePOICard));
+
+    this.api.getPokemonById(1).subscribe(pokemon => {
+      let pokePOI = new PokePOI();
+      pokePOI.pokemon = pokemon;
+      setTimeout(this.pokePOICard.show.bind(this.pokePOICard, pokePOI), 2000)
+    });
   }
 
   showFilterPopover($event?): void {

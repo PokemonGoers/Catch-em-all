@@ -1,0 +1,14 @@
+<div class="slide-card" #slideCard @slide="slideState">
+    <ion-row *ngIf="pokePOI">
+
+        <ion-col style="flex-grow: 1;">
+            <poke-poi-bubble [pokePOI]="pokePOI" style="width: 120px; height: 120px;">
+            </poke-poi-bubble>
+        </ion-col>
+
+        <ion-col style="flex-grow: 2;">
+            <span class="poke-id">#{{ pokePOI.pokemon.pokemonId }}</span>
+            <span class="poke-name">{{ pokePOI.pokemon.name }}</span>
+        </ion-col>
+    </ion-row>
+</div>

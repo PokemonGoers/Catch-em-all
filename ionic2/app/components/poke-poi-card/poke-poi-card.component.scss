@@ -1,0 +1,22 @@
+poke-poi-card .slide-card {
+  min-height: 100px;
+  width: 100%;
+  background: white;
+  position: absolute;
+  display: inline-block;
+  bottom: 0;
+  box-shadow: 0px -6px 3px 0 rgba(0,0,0,0.75);
+  padding: 8px;
+
+  .poke-picture {
+    flex-grow: 1;
+  }
+
+  .poke-id {
+    font-size: 30px;
+  }
+
+  .poke-name {
+    font-size: 30px;
+  }
+}
