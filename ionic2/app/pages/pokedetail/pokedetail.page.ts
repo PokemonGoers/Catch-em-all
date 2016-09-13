@@ -9,11 +9,11 @@ import { Pokemon } from "../../models/pokemon";
 export class PokeDetailPage {
 
   pokemonId: number;
-  pokemonData: Pokemon;
+  pokemon: Pokemon;
 
   constructor(private navCtrl: NavController, navParams: NavParams, private apiservice: ApiService) {
     this.pokemonId = navParams.get('pokemonId');
-    this.apiservice.getPokemonById(this.pokemonId).subscribe(results => this.pokemonData = results, error => this.pokemonData = null);
+    this.apiservice.getPokemonById(this.pokemonId).subscribe(results => this.pokemon = results, error => this.pokemon = null);
   }
 
 }
