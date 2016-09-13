@@ -1,17 +1,30 @@
-<div class="row">
-  <div *ngIf="pokemon.previousEvolutions[0]">
-    <div class="col">{{pokemon.previousEvolutions[0].name}}</div>
-  </div>
-  <div *ngIf="!pokemon.previousEvolutions[0]">
-    <div class="col">empty</div>
-  </div>
+<ion-grid>
 
+  <ion-row *ngFor="let nextPokemon of nextPokemons" center>
+    <ion-col *ngIf="prevPokemon"><img [src]="prevPokemon.icon" class="box-cube"></ion-col>
+    <ion-col *ngIf="!prevPokemon"><img class="box-cube"></ion-col>
 
+    <ion-col style="text-align: center;"><ion-icon name="arrow-forward"></ion-icon></ion-col>
 
+    <ion-col><img [src]="pokemon.icon" class="box-cube"></ion-col>
 
-  <div class="col">.col</div>
-  <div class="col">.col</div>
-  <div class="col">.col</div>
-  <div class="col">.col</div>
-  <div class="col">.col</div>
-</div>
+    <ion-col style="text-align: center;"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+
+    <ion-col *ngIf="nextPokemon"><img [src]="nextPokemon.icon" class="box-cube"></ion-col>
+    <ion-col *ngIf="!nextPokemon"><img class="box-cube"></ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="nextPokemons.length==0">
+    <ion-col *ngIf="prevPokemon"><img [src]="prevPokemon.icon" class="box-cube"></ion-col>
+    <ion-col *ngIf="!prevPokemon"><img class="box-cube"></ion-col>
+
+    <ion-col style="text-align: center;"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+
+    <ion-col><img [src]="pokemon.icon" class="box-cube"></ion-col>
+
+    <ion-col style="text-align: center;"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+
+    <ion-col><img class="box-cube"></ion-col>
+  </ion-row>
+
+</ion-grid>

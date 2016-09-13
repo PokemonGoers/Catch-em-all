@@ -5,10 +5,22 @@
 .box{
 	min-width: 30vw;
   min-height: 30vw;
+  max-width: 30vw;
+  max-height: 30vw;
   width: 30%;
   height: 30%;
   border-radius: 50%;
   border: 5px solid grey;
+}
+
+.box-cube{
+  min-width: 25vw;
+  min-height: 25vw;
+  max-width: 25vw;
+  max-height: 25vw;
+  width: 25%;
+  height: 25%;
+  border: 3px solid black;
 }
 
 .small-cards{
