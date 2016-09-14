@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {FilterPopoverTabTime} from "../filter-popover-tab-time/filter-popover-tab-time";
 import {FilterPopoverTabPokemon} from "../filter-popover-tab-pokemon/filter-popover-tab-pokemon";
+import {Events, ViewController} from "ionic-angular";
 
 @Component({
   template: `
@@ -21,7 +22,16 @@ import {FilterPopoverTabPokemon} from "../filter-popover-tab-pokemon/filter-popo
 })
 export class FilterPopoverComponent {
   currentTab = 'time';
+  filter: Object;
 
-  constructor() {
+  constructor(private viewController: ViewController, private events: Events) {
+  }
+
+  close(): void {
+    this.viewController.dismiss();
+  }
+
+  onChange(): void {
+    this.events.publish('filter:changed', this.filter)
   }
 }
