@@ -4,20 +4,18 @@ import {FilterPopoverTabPokemon} from "../filter-popover-tab-pokemon/filter-popo
 
 @Component({
   template: `
-      <ion-list>
-        <ion-list-header>Filter</ion-list-header>
-          <div [ngSwitch]="currentTab">
-            <button ion-item (click)="currentTab = 'time'">
-              Time
-            </button>
-            <time-tab *ngSwitchCase="'time'"></time-tab>
-            
-            <button ion-item (click)="currentTab = 'pokemon'">
-              Pokemon
-            </button>
-            <poke-tab *ngSwitchCase="'pokemon'"></poke-tab>
-          </div>
-      </ion-list>
+    <ion-content>
+        <div [ngSwitch]="currentTab">
+            <ion-toolbar style="padding: 0;">
+                <ion-segment>
+                    <ion-segment-button value="time" (click)="currentTab = 'time'">Time</ion-segment-button>
+                    <ion-segment-button value="pokemon" (click)="currentTab = 'pokemon'">Pokemon</ion-segment-button>
+                </ion-segment>
+            </ion-toolbar>
+          <time-tab *ngSwitchCase="'time'"></time-tab>
+          <poke-tab *ngSwitchCase="'pokemon'"></poke-tab>
+        </div>
+      </ion-content>
     `,
   directives: [FilterPopoverTabTime, FilterPopoverTabPokemon]
 })
