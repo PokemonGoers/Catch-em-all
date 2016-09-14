@@ -5,7 +5,8 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { PEOPLE } from './about-people';
 
 @Page({
-  templateUrl: 'pages/about/about.page.html',
+  template: require('./about.page.html'),
+  styles: [require('./about.page.scss')],
   directives: [forwardRef(() => NavbarComponent)]
 })
 export class AboutPage {

@@ -7,7 +7,8 @@ import { ImprintPage } from '../../pages/imprint/imprint.page';
 
 @Component({
   selector: 'nav-sidebar',
-  templateUrl: 'components/nav-sidebar/nav-sidebar.component.html'
+  template: require('./nav-sidebar.component.html'),
+  styles: [require('./nav-sidebar.component.scss')]
 })
 export class NavSidebarComponent {
 
