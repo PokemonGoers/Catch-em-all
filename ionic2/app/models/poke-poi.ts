@@ -1,16 +1,8 @@
 import { Pokemon } from './pokemon';
 
-export class PokePOI {
-  pokemonId: number;
-  pokemon: Pokemon;
+export abstract class PokePOI {
 
-  location: {
-    coordinates: [number, number];
-    type: string;
-  };
+  abstract getLocation(): {latitude:number, longitude:number};
 
-  static fromObject(object: Object): PokePOI {
-    let instance = Object.create(PokePOI.prototype);
-    return Object.assign(instance, object);
-  }
+  abstract getType(): string;
 }

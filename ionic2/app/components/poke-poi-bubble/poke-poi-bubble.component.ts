@@ -2,7 +2,7 @@ import { DomSanitizationService } from '@angular/platform-browser';
 import { Component, Input, ViewChild, ElementRef, OnInit } from '@angular/core';
 
 import { Pokemon } from '../../models/pokemon';
-import { Sighting } from '../../models/sighting';
+import { PokeSighting } from '../../models/poke-sighting';
 import { PokePOI } from '../../models/poke-poi';
 
 @Component({

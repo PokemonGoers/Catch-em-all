@@ -6,7 +6,7 @@ import { FilterPopoverComponent } from '../../components/filter-popover/filter-p
 import { MapComponent } from '../../components/map/map.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { PokePOICardComponent } from '../../components/poke-poi-card/poke-poi-card.component';
-import { PokePOI } from '../../models/poke-poi';
+import { PokeSighting } from '../../models/poke-sighting';
 import { ApiService } from '../../services/api.service';
 
 @Page({
@@ -77,7 +77,7 @@ export class MapPage implements OnInit {
     this.map.onClick(this.pokePOICard.show.bind(this.pokePOICard));
 
     this.api.getPokemonById(1).subscribe(pokemon => {
-      let pokePOI = new PokePOI();
+      let pokePOI = new PokeSighting();
       pokePOI.pokemon = pokemon;
       setTimeout(this.pokePOICard.show.bind(this.pokePOICard, pokePOI), 2000)
     });
