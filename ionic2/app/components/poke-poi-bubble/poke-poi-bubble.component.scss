@@ -4,6 +4,7 @@ poke-poi-bubble {
   .circle {
     position: relative;
     border-radius: 50%;
+    border: 1px solid #cacaca;
     box-shadow: 0 0 4px 1px rgba(0,0,0,0.4);
     padding: 10px;
   }
@@ -11,6 +12,7 @@ poke-poi-bubble {
   .circle-inner {
     background: white;
     border-radius: 50%;
+    border: 1px solid #cacaca;
     position: absolute;
     width: 90%;
     height: 90%;

@@ -11,6 +11,7 @@ let PokeMap: any = function(...args) {console.debug('map:constructor', ...args)}
 PokeMap.prototype.on = function(...args) {console.debug('map:on', ...args)};
 PokeMap.prototype.goTo = function(...args) {console.debug('map:goTo', ...args)};
 PokeMap.prototype.updateTimeRange = function(...args) {console.debug('map:updateTimeRange', ...args)};
+PokeMap.prototype.filter = function(...args) {console.debug('map:filter', ...args)};
 
 @Directive({
   selector: 'map'
@@ -38,8 +39,8 @@ export class MapComponent {
     this.map.updateTimeRange(timeRange);
   }
 
-  applyFilter(filterOptions) {
-
+  filter(filterOptions: FilterOptions) {
+    this.map.filter(filterOptions);
   }
 
   onClick(callback) {
@@ -50,4 +51,10 @@ export class MapComponent {
     this.map.on('move', callback);
   }
 
+}
+
+export type FilterOptions = {
+  pokemonIds: number[];
+  sightingsSince: number; // Time in seconds
+  predictionsUntil: number; // Time in seconds
 }

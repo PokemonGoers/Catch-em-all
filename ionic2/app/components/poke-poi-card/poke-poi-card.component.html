@@ -1,14 +1,21 @@
 <div class="slide-card" #slideCard @slide="slideState">
-    <ion-row *ngIf="pokePOI">
+    <div class="poke-poi-card-content" *ngIf="pokePOI" [ngClass]="'poi-type-'+pokePOI.getType()">
+        <ion-row>
 
-        <ion-col style="flex-grow: 1;">
-            <poke-poi-bubble [pokePOI]="pokePOI" style="width: 120px; height: 120px;">
-            </poke-poi-bubble>
-        </ion-col>
+            <ion-col style="flex-grow: 0;">
+                <poke-poi-bubble [pokePOI]="pokePOI">
+                </poke-poi-bubble>
+            </ion-col>
 
-        <ion-col style="flex-grow: 2;">
-            <span class="poke-id">#{{ pokePOI.pokemon.pokemonId }}</span>
-            <span class="poke-name">{{ pokePOI.pokemon.name }}</span>
-        </ion-col>
-    </ion-row>
+            <ion-col style="flex-grow: 1;">
+                <span class="poke-id">#{{ pokePOI.pokemon.pokemonId }}</span>
+                <span class="poke-name">{{ pokePOI.pokemon.name }}</span>
+            </ion-col>
+        </ion-row>
+
+        <div class="poke-poi-type-line"></div>
+        <div class="poke-poi-type-badge">
+            {{ getPOITypeBadgeLabel() }}
+        </div>
+    </div>
 </div>

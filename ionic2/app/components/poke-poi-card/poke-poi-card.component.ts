@@ -60,4 +60,15 @@ export class PokePOICardComponent implements OnInit {
     }
   }
 
+  getPOITypeBadgeLabel(): string {
+    switch(this.pokePOI.getType()) {
+      case 'prediction':
+        return 'Pokemon Prediction';
+      case 'sighting':
+        return 'Pokemon Sighting';
+      case 'mob':
+        return 'Pokemon Mob';
+    }
+  }
+
 }

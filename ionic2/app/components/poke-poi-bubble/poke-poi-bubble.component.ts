@@ -1,4 +1,3 @@
-import { DomSanitizationService } from '@angular/platform-browser';
 import { Component, Input, ViewChild, ElementRef, OnInit } from '@angular/core';
 
 import { Pokemon } from '../../models/pokemon';
@@ -15,35 +14,34 @@ export class PokePOIBubbleComponent implements OnInit {
   @Input() pokePOI: PokePOI;
   @ViewChild('circle') circle: ElementRef;
 
-  backgroundImageStyle;
-
-  constructor(private sanitizer: DomSanitizationService) {}
+  arcHighlightColor = '#FFF75A';
+  arcBackgroundColor = '#F9F9F9';
 
   ngOnInit() {
-    let angle = 200;
-    let color = 'black';
+    let arcPercentage = 0.3;
+    let angle = arcPercentage * 360;
 
     let deg1 = 90;
     let deg2 = angle > 0 ? 90 + angle : 270 + angle;
-    let color3 = color;
+    let color3 = this.arcHighlightColor;
 
     let color1, color2, color4;
     if (angle < -180) {
-      color1 = color;
+      color1 = this.arcHighlightColor;
       color2 = 'transparent';
-      color4 = 'white';
+      color4 = this.arcBackgroundColor;
     } else if (angle >= -180 && angle < 0) {
       color1 = 'transparent';
-      color2 = 'white';
-      color4 = 'white';
+      color2 = this.arcBackgroundColor;
+      color4 = this.arcBackgroundColor;
     } else if (angle <= 180) {
-      color1 = 'white';
+      color1 = this.arcBackgroundColor;
       color2 = 'transparent';
       color4 = 'transparent';
     } else {
       color1 = 'transparent';
-      color2 = color;
-      color4 = 'white';
+      color2 = this.arcHighlightColor;
+      color4 = this.arcBackgroundColor;
     }
 
     this.circle.nativeElement.style.backgroundImage = `
