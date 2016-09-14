@@ -20,14 +20,9 @@ export class WikiIndexPage {
 
   onInput($event) {
     this.cancelRequests();
-
-    if (this.queryString.length >= 3) {
       // Search Pokemon
       this.querySubscription = this.apiservice.getPokemonByName(this.queryString)
         .subscribe(results => this.results = results, error => this.results = []);
-    } else {
-      this.results = [];
-    }
   }
 
   cancelRequests() {
