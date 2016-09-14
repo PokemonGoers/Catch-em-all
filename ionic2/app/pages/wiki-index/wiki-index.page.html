@@ -2,7 +2,7 @@
   <navbar title="Wiki"></navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding style="background-color: #f4f4f7">
   <ion-searchbar
     padding
     [(ngModel)]="queryString"
@@ -15,10 +15,9 @@
       <div class="col-4_sm-12"
           *ngFor="let pokemon of results">
         <ion-card (click)="selectPokemon(pokemon)" style="cursor: pointer; cursor: hand;">
-            <a class="card-img" class="card-center"><img [src]="pokemon.icon" style="width: 300px; height: 300px"/></a>
-
+            <a class="card-center"><img style="width: 100px; height: 100px;" [src]="pokemon.icon"/></a>
             <ion-item>
-              <span class="card-center"><b>{{pokemon.name}}</b></span>
+              <span class="card-center"><b>#{{pokemon.pokemonId}} {{pokemon.name}}</b></span>
             </ion-item>
         </ion-card>
       </div>
