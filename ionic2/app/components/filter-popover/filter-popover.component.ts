@@ -1,42 +1,29 @@
-import { Component } from '@angular/core';
-import { Events, ViewController } from 'ionic-angular';
+import {Component} from "@angular/core";
+import {FilterPopoverTabTime} from "../filter-popover-tab-time/filter-popover-tab-time";
+import {FilterPopoverTabPokemon} from "../filter-popover-tab-pokemon/filter-popover-tab-pokemon";
 
 @Component({
   template: `
-  <ion-list style="margin-bottom: 0">
-    <ion-list-header>Limit prediction time (minutes):</ion-list-header>
-    <ion-item>
-      <ion-range 
-          dualKnobs="true" 
-          [(ngModel)]="time" 
-          (ionChange)="onChange()" 
-          min="0" 
-          max="120" 
-          step="5"
-          pin="true" 
-          debounce="500">
-      </ion-range>
-    </ion-item>
-</ion-list>`
+      <ion-list>
+        <ion-list-header>Filter</ion-list-header>
+          <div [ngSwitch]="currentTab">
+            <button ion-item (click)="currentTab = 'time'">
+              Time
+            </button>
+            <time-tab *ngSwitchCase="'time'"></time-tab>
+            
+            <button ion-item (click)="currentTab = 'pokemon'">
+              Pokemon
+            </button>
+            <poke-tab *ngSwitchCase="'pokemon'"></poke-tab>
+          </div>
+      </ion-list>
+    `,
+  directives: [FilterPopoverTabTime, FilterPopoverTabPokemon]
 })
 export class FilterPopoverComponent {
-  time: {lower: number, upper: number}
+  currentTab = 'time';
 
-  constructor(private viewCtrl: ViewController, public events: Events) {
-    this.time = viewCtrl.getNavParams().get('time') || {lower: 0, upper: 60}
-   }
-
-  close(): void {
-    this.viewCtrl.dismiss();
-  }
-
-  onChange(): void {
-    this.events.publish('filter:changed:time', this.time)
-  }
-
-  setTime(lower: number, upper: number) {
-    this.time.lower = lower
-    this.time.upper = upper
-    this.onChange()
+  constructor() {
   }
 }
