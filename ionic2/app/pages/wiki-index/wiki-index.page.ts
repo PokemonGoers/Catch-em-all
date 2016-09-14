@@ -1,10 +1,10 @@
-import { Observable, Subscription } from 'rxjs';
-import { ApiService } from '../../services/api.service';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { forwardRef } from '@angular/core';
-import { Page, NavController, NavParams } from 'ionic-angular';
-import { Pokemon } from "../../models/pokemon";
+import { NavController, Page } from 'ionic-angular';
+import { Observable, Subscription } from 'rxjs';
 import { PokeDetailPage } from "../pokedetail/pokedetail.page";
+import { Pokemon } from "../../models/pokemon";
+import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { ApiService } from '../../services/api.service';
 
 @Page({
   templateUrl: 'pages/wiki-index/wiki-index.page.html',
@@ -16,7 +16,7 @@ export class WikiIndexPage {
   querySubscription: Subscription;
   results: Pokemon[] = [];
 
-  constructor(private navCtrl: NavController, navParams: NavParams, private apiservice: ApiService) { }
+  constructor(private navCtrl: NavController, private apiservice: ApiService) { }
 
   onInput($event) {
     this.cancelRequests();
@@ -35,6 +35,4 @@ export class WikiIndexPage {
     this.cancelRequests();
     this.navCtrl.setRoot(PokeDetailPage, {pokemonId: pokemon.pokemonId});
   }
-
-
 }
