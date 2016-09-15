@@ -7,7 +7,7 @@ import { MapComponent } from '../../components/map/map.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 @Page({
-  templateUrl: 'pages/map/map.page.html',
+  template: require('./map.page.html'),
   directives: [
     forwardRef(() => NavbarComponent),
     MapComponent

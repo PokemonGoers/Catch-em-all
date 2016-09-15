@@ -2,7 +2,7 @@ import { Page } from 'ionic-angular';
 
 
 @Page({
-  templateUrl: 'pages/imprint/imprint.page.html',
+  template: require('./imprint.page.html')
 })
 export class ImprintPage {
 

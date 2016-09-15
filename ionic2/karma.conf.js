@@ -6,7 +6,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine', 'browserify'],
+    frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -24,20 +24,20 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      '**/*.ts': ['browserify']
+      '**/*.ts': ['webpack']
     },
- 
-    browserify: {
-      debug: true,
-      transform: [
-        [require('browserify-istanbul'), {
-          instrumenter: require('isparta'),
-          ignore: ['**/*.spec.ts','**/*.d.ts'],
-        }]
-      ],
-      plugin: [
-        require('tsify')
-      ]
+
+    webpack: {
+      resolve: {
+        extensions: ['', '.js', '.ts']
+      },
+      module: {
+        loaders: [
+          {test: /\.ts$/, loader: 'awesome-typescript-loader'},
+          {test: /\.html$/, loader: 'raw'},
+          {test: /\.(component|page)\.scss$/, loaders: ['raw', 'sass']}
+        ]
+      }
     },
 
     customLaunchers: {
@@ -79,4 +79,4 @@ module.exports = function(config) {
     // how many browser should be started simultaneous
     concurrency: Infinity
   })
-}
+};

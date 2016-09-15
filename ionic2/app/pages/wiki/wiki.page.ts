@@ -3,7 +3,7 @@ import { Page, NavController, NavParams } from 'ionic-angular';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 @Page({
-  templateUrl: 'pages/wiki/wiki.page.html',
+  template: require('./wiki.page.html'),
   directives: [forwardRef(() => NavbarComponent)]
 })
 export class WikiPage {
