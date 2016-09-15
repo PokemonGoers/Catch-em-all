@@ -46,4 +46,7 @@ ionic2/typings
 # Ionic
 /ionic2/platforms/
 /ionic2/plugins/
+
+# Other
 .DS_Store
+.vscode

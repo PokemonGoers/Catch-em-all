@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { SearchPage } from '../../pages/search/search.page';
 
 @Component({
-  templateUrl: 'components/navbar/navbar.component.html',
+  template: require('./navbar.component.html'),
   selector: 'navbar'
 })
 export class NavbarComponent {

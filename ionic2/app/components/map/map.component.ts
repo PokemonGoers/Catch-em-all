@@ -1,7 +1,7 @@
-import { Directive, Input, Output, ElementRef, EventEmitter} from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit} from '@angular/core';
 import { Events } from 'ionic-angular';
-import {PokePOI} from "../../models/poke-poi";
-import {ApiService} from "../../services/api.service";
+import { PokePOI } from '../../models/poke-poi';
+import { ApiService } from '../../services/api.service';
 
 //let PokeMap = require('pokemap-1');
 //let PokeMap = require('pokemap-2');
@@ -13,8 +13,10 @@ PokeMap.prototype.goTo = function(...args) {console.debug('map:goTo', ...args)};
 PokeMap.prototype.updateTimeRange = function(...args) {console.debug('map:updateTimeRange', ...args)};
 PokeMap.prototype.filter = function(...args) {console.debug('map:filter', ...args)};
 
-@Directive({
-  selector: 'map'
+@Component({
+  selector: 'map',
+  template: '',
+  styles: [require('./map.component.scss')]
 })
 export class MapComponent {
 

@@ -9,7 +9,8 @@ import { PokePOIBubbleComponent } from '../poke-poi-bubble/poke-poi-bubble.compo
 let Hammer = require('hammerjs');
 
 @Component({
-  templateUrl: 'components/poke-poi-card/poke-poi-card.component.html',
+  template: require('./poke-poi-card.component.html'),
+  styles: [require('./poke-poi-card.component.scss')],
   selector: 'poke-poi-card',
   directives: [PokePOIBubbleComponent],
   animations: [

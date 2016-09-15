@@ -5,7 +5,8 @@ import { PokeSighting } from '../../models/poke-sighting';
 import { PokePOI } from '../../models/poke-poi';
 
 @Component({
-  templateUrl: 'components/poke-poi-bubble/poke-poi-bubble.component.html',
+  template: require('./poke-poi-bubble.component.html'),
+  styles: [require('./poke-poi-bubble.component.scss')],
   selector: 'poke-poi-bubble',
   directives: [PokePOIBubbleComponent]
 })

@@ -10,7 +10,7 @@ import { PokeSighting } from '../../models/poke-sighting';
 import { ApiService } from '../../services/api.service';
 
 @Page({
-  templateUrl: 'pages/map/map.page.html',
+  template: require('./map.page.html'),
   directives: [
     forwardRef(() => NavbarComponent),
     MapComponent,
