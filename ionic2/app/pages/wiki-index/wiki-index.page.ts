@@ -18,11 +18,21 @@ export class WikiIndexPage {
   results: Pokemon[] = [];
 
   constructor(private navCtrl: NavController, private apiservice: ApiService) { }
+  
+  ngOnInit() {
+    this.querySubscription = this.apiservice.getAllPokemon()
+        .subscribe(results => this.results = results, error => this.results = []);
+  }
 
   onInput() {
     this.cancelRequests();
-    this.querySubscription = this.apiservice.getPokemonByName(this.queryString)
-      .subscribe(results => this.results = results, error => this.results = []);
+    if(this.queryString === '') {
+      this.querySubscription = this.apiservice.getAllPokemon()
+        .subscribe(results => this.results = results, error => this.results = []);
+    } else {
+      this.querySubscription = this.apiservice.getPokemonByName(this.queryString)
+        .subscribe(results => this.results = results, error => this.results = []);
+    }
   }
 
   cancelRequests() {
