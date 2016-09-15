@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, OnInit } from '@angular/core';
+import { Component, Input, ElementRef, OnInit } from '@angular/core';
 
 //let PokeMap = require('pokemap-1');
 //let PokeMap = require('pokemap-2');
@@ -9,8 +9,10 @@ PokeMap.prototype.on = function(...args) {console.debug('map:on', ...args)};
 PokeMap.prototype.goTo = function(...args) {console.debug('map:goTo', ...args)};
 PokeMap.prototype.updateTimeRange = function(...args) {console.debug('map:updateTimeRange', ...args)};
 
-@Directive({
-  selector: 'map'
+@Component({
+  selector: 'map',
+  template: '',
+  styles: [require('./map.component.scss')]
 })
 export class MapComponent {
 

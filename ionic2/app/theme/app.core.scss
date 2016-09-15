@@ -6,13 +6,3 @@
 // These are the imports which make up the design of this app.
 // By default each design mode includes these shared imports.
 // App Shared Sass variables belong in app.variables.scss.
-
-@import "../pages/about/about.page";
-@import "../pages/map/map.page";
-@import "../pages/poke-detail/poke-detail.page";
-@import "../pages/search/search.page";
-@import "../pages/wiki-index/wiki-index.page";
-
-@import "../components/map/map.component";
-@import "../components/navbar/navbar.component";
-@import "../components/nav-sidebar/nav-sidebar.component";

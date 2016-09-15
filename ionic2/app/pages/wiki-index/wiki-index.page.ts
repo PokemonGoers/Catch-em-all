@@ -7,7 +7,8 @@ import {NavbarComponent} from "../../components/navbar/navbar.component";
 import {ApiService} from "../../services/api.service";
 
 @Page({
-  templateUrl: 'pages/wiki-index/wiki-index.page.html',
+  template: require('./wiki-index.page.html'),
+  styles: [require('./wiki-index.page.scss')],
   directives: [forwardRef(() => NavbarComponent)]
 })
 export class WikiIndexPage {

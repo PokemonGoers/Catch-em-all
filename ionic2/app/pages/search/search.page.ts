@@ -8,7 +8,7 @@ import {WikiIndexPage} from "../wiki-index/wiki-index.page";
 import {MapPage} from "../map/map.page";
 
 @Page({
-  templateUrl: 'pages/search/search.page.html'
+  template: require('./search.page.html')
 })
 export class SearchPage {
 
