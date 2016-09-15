@@ -4,6 +4,7 @@ import {LocationService, LocationQueryResponse} from "../../services/location.se
 import {Pokemon} from "../../models/pokemon";
 import {Subscription} from "rxjs";
 import {PokeDetailPage} from "../poke-detail/poke-detail.page";
+import {WikiIndexPage} from "../wiki-index/wiki-index.page";
 import {MapPage} from "../map/map.page";
 
 @Page({
@@ -64,11 +65,11 @@ export class SearchPage {
 
   selectPokemon(pokemon: Pokemon) {
     this.cancelRequests();
-    this.navCtrl.setRoot(PokeDetailPage, {pokemonId: pokemon.pokemonId});
+    this.navCtrl.setPages([{page: WikiIndexPage}, {page: PokeDetailPage, params: {pokemonId: pokemon.pokemonId}}]);
   }
 
   selectLocation(location: LocationQueryResponse) {
     this.cancelRequests();
-    this.navCtrl.push(MapPage, location.coordinates);
+    this.navCtrl.setRoot(MapPage, location.coordinates);
   }
 }
