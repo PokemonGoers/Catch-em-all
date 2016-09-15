@@ -22,7 +22,7 @@ export class SearchPage {
   constructor(private navCtrl: NavController, private locationService: LocationService, private api: ApiService) {
   }
 
-  onInput(event) {
+  onInput() {
     this.cancelRequests();
 
     if (this.search.length >= 3) {
@@ -39,11 +39,11 @@ export class SearchPage {
     }
   }
 
-  onCancel(event) {
+  onCancel() {
     this.navCtrl.pop();
   }
 
-  onSearch(event) {
+  onSearch() {
     // Triggered when the confirm button (e.g. enter) is pressed.
     // If there is exactly one search result we will select
     if (this.pokemonResults.length === 1 && this.locationResults.length === 0) {
@@ -62,13 +62,13 @@ export class SearchPage {
     }
   }
 
-  selectPokemon(pokemon:Pokemon) {
+  selectPokemon(pokemon: Pokemon) {
     this.cancelRequests();
     this.navCtrl.setRoot(PokeDetailPage, {pokemonId: pokemon.pokemonId});
   }
 
-  selectLocation(location:LocationQueryResponse) {
+  selectLocation(location: LocationQueryResponse) {
     this.cancelRequests();
-    this.navCtrl.setRoot(MapPage, location.coordinates);
+    this.navCtrl.push(MapPage, location.coordinates);
   }
 }

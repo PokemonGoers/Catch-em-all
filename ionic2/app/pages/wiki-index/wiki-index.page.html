@@ -6,9 +6,9 @@
   <ion-searchbar
     padding
     [(ngModel)]="queryString"
-    (ionInput)="onInput($event)"
-    (ionCancel)="onCancel($event)"
-    (search)="onSearch($event)"
+    (ionInput)="onInput()"
+    (ionCancel)="onCancel()"
+    (search)="onSearch()"
     autocomplete="on"></ion-searchbar>
 
     <div class="grid">
@@ -18,14 +18,14 @@
 
         <ion-card (click)="selectPokemon(pokemon)" style="cursor: pointer; cursor: hand;">
 
-            <a class="card-center"><img class="pokeimg-fixed" [src]="pokemon.icon"/></a>
-            
-            <ion-item>
+          <a class="card-center"><img class="poke-img-fixed" [src]="pokemon.icon"/></a>
+
+          <ion-item>
               <span class="card-center"><b>#{{pokemon.pokemonId}} {{pokemon.name}}</b></span>
             </ion-item>
-        
+
         </ion-card>
-      
+
       </div>
 
     </div>

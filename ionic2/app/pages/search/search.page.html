@@ -7,13 +7,13 @@
 <ion-content>
 
     <ion-searchbar
-            padding
-            [(ngModel)]="search"
-            (ionInput)="onInput($event)"
-            (ionCancel)="onCancel($event)"
-            (search)="onSearch($event)"
-            autocomplete="on"
-            placeholder="Search for Pokemon or location">
+      padding
+      [(ngModel)]="search"
+      (ionInput)="onInput()"
+      (ionCancel)="onCancel()"
+      (search)="onSearch()"
+      autocomplete="on"
+      placeholder="Search for Pokemon or location">
     </ion-searchbar>
 
     <ion-list>

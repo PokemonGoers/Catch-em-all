@@ -18,11 +18,10 @@ export class WikiIndexPage {
 
   constructor(private navCtrl: NavController, private apiservice: ApiService) { }
 
-  onInput($event) {
+  onInput() {
     this.cancelRequests();
-      // Search Pokemon
-      this.querySubscription = this.apiservice.getPokemonByName(this.queryString)
-        .subscribe(results => this.results = results, error => this.results = []);
+    this.querySubscription = this.apiservice.getPokemonByName(this.queryString)
+      .subscribe(results => this.results = results, error => this.results = []);
   }
 
   cancelRequests() {
@@ -31,8 +30,8 @@ export class WikiIndexPage {
     }
   }
 
-  selectPokemon(pokemon:Pokemon) {
+  selectPokemon(pokemon: Pokemon) {
     this.cancelRequests();
-    this.navCtrl.setRoot(PokeDetailPage, {pokemonId: pokemon.pokemonId});
+    this.navCtrl.push(PokeDetailPage, {pokemonId: pokemon.pokemonId});
   }
 }
