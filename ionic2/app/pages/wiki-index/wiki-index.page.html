@@ -1,0 +1,32 @@
+<ion-header>
+  <navbar title="Wiki"></navbar>
+</ion-header>
+
+<ion-content padding class="wiki-index">
+  <ion-searchbar
+    padding
+    [(ngModel)]="queryString"
+    (ionInput)="onInput()"
+    (ionCancel)="onCancel()"
+    (search)="onSearch()"
+    autocomplete="on"></ion-searchbar>
+
+    <div class="grid">
+
+      <div class="col-4_sm-12"
+          *ngFor="let pokemon of results">
+
+        <ion-card (click)="selectPokemon(pokemon)" style="cursor: pointer; cursor: hand;">
+
+          <a class="card-center"><img class="poke-img-fixed" [src]="pokemon.icon"/></a>
+
+          <ion-item>
+              <span class="card-center"><b>#{{pokemon.pokemonId}} {{pokemon.name}}</b></span>
+            </ion-item>
+
+        </ion-card>
+
+      </div>
+
+    </div>
+</ion-content>

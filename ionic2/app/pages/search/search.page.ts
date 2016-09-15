@@ -1,10 +1,11 @@
-import { Page, NavController } from 'ionic-angular';
-import { ApiService } from '../../services/api.service';
-import { LocationService, LocationQueryResponse } from '../../services/location.service';
-import { Pokemon } from '../../models/pokemon';
-import { Observable, Subscription } from 'rxjs';
-import { WikiPage } from '../wiki/wiki.page';
-import { MapPage } from '../map/map.page';
+import {Page, NavController} from "ionic-angular";
+import {ApiService} from "../../services/api.service";
+import {LocationService, LocationQueryResponse} from "../../services/location.service";
+import {Pokemon} from "../../models/pokemon";
+import {Subscription} from "rxjs";
+import {PokeDetailPage} from "../poke-detail/poke-detail.page";
+import {WikiIndexPage} from "../wiki-index/wiki-index.page";
+import {MapPage} from "../map/map.page";
 
 @Page({
   template: require('./search.page.html')
@@ -22,7 +23,7 @@ export class SearchPage {
   constructor(private navCtrl: NavController, private locationService: LocationService, private api: ApiService) {
   }
 
-  onInput(event) {
+  onInput() {
     this.cancelRequests();
 
     if (this.search.length >= 3) {
@@ -39,11 +40,11 @@ export class SearchPage {
     }
   }
 
-  onCancel(event) {
+  onCancel() {
     this.navCtrl.pop();
   }
 
-  onSearch(event) {
+  onSearch() {
     // Triggered when the confirm button (e.g. enter) is pressed.
     // If there is exactly one search result we will select
     if (this.pokemonResults.length === 1 && this.locationResults.length === 0) {
@@ -62,12 +63,12 @@ export class SearchPage {
     }
   }
 
-  selectPokemon(pokemon:Pokemon) {
+  selectPokemon(pokemon: Pokemon) {
     this.cancelRequests();
-    this.navCtrl.setRoot(WikiPage, {pokemonId: pokemon.pokemonId});
+    this.navCtrl.setPages([{page: WikiIndexPage}, {page: PokeDetailPage, params: {pokemonId: pokemon.pokemonId}}]);
   }
 
-  selectLocation(location:LocationQueryResponse) {
+  selectLocation(location: LocationQueryResponse) {
     this.cancelRequests();
     this.navCtrl.setRoot(MapPage, location.coordinates);
   }
