@@ -1,10 +1,10 @@
-import { Page, NavController } from 'ionic-angular';
-import { ApiService } from '../../services/api.service';
-import { LocationService, LocationQueryResponse } from '../../services/location.service';
-import { Pokemon } from '../../models/pokemon';
-import { Observable, Subscription } from 'rxjs';
-import { PokeDetailPage } from '../pokedetail/pokedetail.page';
-import { MapPage } from '../map/map.page';
+import {Page, NavController} from "ionic-angular";
+import {ApiService} from "../../services/api.service";
+import {LocationService, LocationQueryResponse} from "../../services/location.service";
+import {Pokemon} from "../../models/pokemon";
+import {Subscription} from "rxjs";
+import {PokeDetailPage} from "../poke-detail/poke-detail.page";
+import {MapPage} from "../map/map.page";
 
 @Page({
   templateUrl: 'pages/search/search.page.html'

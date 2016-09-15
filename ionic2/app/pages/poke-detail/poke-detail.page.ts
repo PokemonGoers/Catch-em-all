@@ -1,9 +1,9 @@
-import { forwardRef } from '@angular/core';
-import { Page, NavController, NavParams } from 'ionic-angular';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
+import {forwardRef} from "@angular/core";
+import {Page, NavController, NavParams} from "ionic-angular";
+import {NavbarComponent} from "../../components/navbar/navbar.component";
 
 @Page({
-  templateUrl: 'pages/pokedetail/pokedetail.page.html',
+  templateUrl: 'pages/poke-detail/poke-detail.page.html',
   directives: [forwardRef(() => NavbarComponent)]
 })
 export class PokeDetailPage {

@@ -1,10 +1,10 @@
-import { forwardRef } from '@angular/core';
-import { NavController, Page } from 'ionic-angular';
-import { Observable, Subscription } from 'rxjs';
-import { PokeDetailPage } from "../pokedetail/pokedetail.page";
-import { Pokemon } from "../../models/pokemon";
-import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { ApiService } from '../../services/api.service';
+import {forwardRef} from "@angular/core";
+import {NavController, Page} from "ionic-angular";
+import {Subscription} from "rxjs";
+import {PokeDetailPage} from "../poke-detail/poke-detail.page";
+import {Pokemon} from "../../models/pokemon";
+import {NavbarComponent} from "../../components/navbar/navbar.component";
+import {ApiService} from "../../services/api.service";
 
 @Page({
   templateUrl: 'pages/wiki-index/wiki-index.page.html',
