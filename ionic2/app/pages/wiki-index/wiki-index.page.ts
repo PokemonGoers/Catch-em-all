@@ -1,4 +1,4 @@
-import {forwardRef} from "@angular/core";
+import {forwardRef, OnInit, OnDestroy} from "@angular/core";
 import {NavController, Page} from "ionic-angular";
 import {Subscription} from "rxjs";
 import {PokeDetailPage} from "../poke-detail/poke-detail.page";
@@ -11,7 +11,7 @@ import {ApiService} from "../../services/api.service";
   styles: [require('./wiki-index.page.scss')],
   directives: [forwardRef(() => NavbarComponent)]
 })
-export class WikiIndexPage {
+export class WikiIndexPage implements OnInit, OnDestroy {
 
   queryString: string;
   querySubscription: Subscription;
@@ -44,5 +44,9 @@ export class WikiIndexPage {
   selectPokemon(pokemon: Pokemon) {
     this.cancelRequests();
     this.navCtrl.push(PokeDetailPage, {pokemonId: pokemon.pokemonId});
+  }
+
+  ngOnDestroy() {
+    this.cancelRequests();
   }
 }
