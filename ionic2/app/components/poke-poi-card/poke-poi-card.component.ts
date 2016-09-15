@@ -72,4 +72,12 @@ export class PokePOICardComponent implements OnInit {
     }
   }
 
+  launchDirections() {
+    // TODO
+  }
+
+  launchPokeDex() {
+    // TODO
+  }
+
 }

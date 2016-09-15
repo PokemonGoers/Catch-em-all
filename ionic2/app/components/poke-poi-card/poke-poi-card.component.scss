@@ -9,7 +9,7 @@
   border-top: 1px solid black;
 
   .poke-poi-card-content {
-    padding: 12px 8px 8px 8px;
+    padding-top: 12px;
 
     .poke-picture {
       flex-grow: 1;
@@ -22,13 +22,42 @@
     }
 
     .poke-name {
-      font-size: 40px;
+      font-size: 45px;
     }
 
     poke-poi-bubble {
       margin: 4px 30px 4px 14px;
       width: 120px;
       height: 120px;
+    }
+
+    .action-button-bar {
+      margin-top: 25px;
+      border-left: 1px solid #dedede;
+
+      ion-row:not(:last-child) {
+        border-bottom: 1px solid #dedede;
+      }
+
+      ion-row {
+        justify-content: center;
+
+        .action-button {
+          padding: 6px 4px;
+          text-align: center;
+          color: #123784;
+          cursor: pointer;
+          justify-content: center;
+
+          ion-icon {
+            font-size: 28px;
+          }
+          .button-label {
+            font-weight: bold;
+            font-size: 14px;
+          }
+        }
+      }
     }
 
     .poke-poi-type-line {
