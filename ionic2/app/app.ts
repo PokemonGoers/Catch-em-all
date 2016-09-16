@@ -32,13 +32,6 @@ export class App {
 
   constructor(public platform: Platform) {
     platform.ready().then(() => {
-      if (platform.is('ios')) {
-        require('./theme/app.ios.scss');
-      } else if (platform.is('windows')) {
-        require('./theme/app.wp.scss');
-      } else {
-        require('./theme/app.md.scss');
-      }
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();

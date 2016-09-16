@@ -16,14 +16,25 @@ module.exports = {
     app: [
       './app/app.ts'
     ],
-    vendor: [
+    core: [
       'reflect-metadata/Reflect',
       'zone.js/dist/zone',
       'es6-shim/es6-shim.min',
       '@angular/core',
       '@angular/http',
-      'ionic-angular',
+      'ionic-angular'
+    ],
+    lib: [
       'rxjs'
+    ],
+    style_ios: [
+      './app/theme/app.ios.scss'
+    ],
+    style_wp: [
+      './app/theme/app.wp.scss'
+    ],
+    style_md: [
+      './app/theme/app.md.scss'
     ]
   },
   output: {
@@ -40,7 +51,7 @@ module.exports = {
     loaders: [
       {test: /\.ts$/, loader: 'awesome-typescript-loader'},
       {test: /\.html$/, loader: 'raw'},
-      {test: /\/theme\/.*\.scss$/, loaders: ['style', 'css', 'sass']},
+      {test: /\/theme\/.*\.scss$/, loader:ExtractTextPlugin.extract(['css', 'sass'])},
       {test: /\.(component|page)\.scss$/, loaders: ['raw', 'sass']},
       {test: /\.woff(2)?(\?v=.+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
       {test: /\.(ttf|eot|svg)(\?v=.+)?$/, loader: 'file'}
@@ -58,13 +69,13 @@ module.exports = {
       BUILD_TIME: JSON.stringify(new Date())
     }),
     new HtmlWebpackPlugin({
-      template: './app/index.html'
+      template: './app/index.html',
+      excludeChunks: ['style_ios', 'style_wp', 'style_md']
     }),
-    new ExtractTextPlugin('[name].[contenthash].css'),
-    new webpack.optimize.CommonsChunkPlugin('vendor', '[name].[hash].bundle.js')
+    new ExtractTextPlugin('[name].css'),
+    new webpack.optimize.CommonsChunkPlugin({names: ['core', 'lib'], filename: '[name].[hash].bundle.js'})
   ].concat({
-    develop: [
-    ],
+    develop: [],
     release: [
       new CleanWebpackPlugin('./server/app', {root: path.resolve('../')}),
       new webpack.optimize.UglifyJsPlugin({

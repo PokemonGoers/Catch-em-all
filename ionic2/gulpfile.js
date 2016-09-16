@@ -28,8 +28,8 @@ gulp.task('watch', ['webpack'], function() {
 gulp.task('webpack', function(done) {
   var webpackConf = require('./webpack.config.js');
   webpackConf.watch = watch;
-  return gulp.src('./')
-    .pipe(webpack(webpackConf))
+
+  return webpack(webpackConf)
     .on('error', function(error) {
       this.emit('end');
     }).pipe(gulp.dest(outputDir));
