@@ -14,13 +14,12 @@ cache:
 
 install:
   - cd server
-  - npm install -q
+  - npm install -q && npm prune
 
   - cd ../ionic2
-  - npm install -q
+  - npm install -q && npm prune
   - npm update pokemap-1 pokemap-2
   - node_modules/.bin/typings install
-  - node_modules/gulp/bin/gulp.js build --release
 
   - cd ../
   - docker build -t pokemongoers/catchemall .
