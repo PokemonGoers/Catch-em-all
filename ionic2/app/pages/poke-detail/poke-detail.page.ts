@@ -1,12 +1,12 @@
-import { forwardRef } from '@angular/core';
-import { Page, NavController, NavParams } from 'ionic-angular';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
+import {forwardRef} from "@angular/core";
+import {Page, NavController, NavParams} from "ionic-angular";
+import {NavbarComponent} from "../../components/navbar/navbar.component";
 
 @Page({
-  template: require('./wiki.page.html'),
+  template: require('./poke-detail.page.html'),
   directives: [forwardRef(() => NavbarComponent)]
 })
-export class WikiPage {
+export class PokeDetailPage {
 
   pokemonId: number;
 

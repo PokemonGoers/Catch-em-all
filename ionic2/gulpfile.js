@@ -1,11 +1,11 @@
 var gulp = require('gulp');
-var webpack = require('webpack-stream');
+var webpack = require('ionic-gulp-webpack');
 var argv = process.argv;
 
 var outputDir = '../server/app';
+var webpackConf = require('./webpack.config.js');
 
 var release = argv.indexOf('--release') > -1;
-var watch = false;
 process.env['BUILD_ENV'] = release ? 'release' : 'develop';
 
 gulp.task('serve:before', ['watch']);
@@ -19,18 +19,15 @@ gulp.task('run:before', [shouldWatch ? 'watch' : 'build']);
 
 gulp.task('build', ['webpack']);
 
-gulp.task('watch', ['webpack'], function() {
-  watch = true;
-  var watchFiles = ['app/**/*.{ts,html,scss}'];
-  gulp.watch(watchFiles, ['webpack']);
+gulp.task('watch', function(done) {
+  webpack({
+    config: webpackConf,
+    watch: true
+  }).then(done);
 });
 
 gulp.task('webpack', function(done) {
-  var webpackConf = require('./webpack.config.js');
-  webpackConf.watch = watch;
-  return gulp.src('./')
-    .pipe(webpack(webpackConf))
-    .on('error', function(error) {
-      this.emit('end');
-    }).pipe(gulp.dest(outputDir));
+  webpack({
+    config: webpackConf
+  }).then(done);
 });
