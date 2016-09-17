@@ -19,7 +19,11 @@ export class PokePOIBubbleComponent implements OnInit {
   arcBackgroundColor = '#F9F9F9';
 
   ngOnInit() {
-    let arcPercentage = 0.3;
+    // TODO Set arcPercentage according to sighting or prediction time
+    this.upateArc(0.3);
+  }
+
+  upateArc(arcPercentage) {
     let angle = arcPercentage * 360;
 
     let deg1 = 90;

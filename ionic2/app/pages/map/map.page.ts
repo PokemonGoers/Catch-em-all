@@ -1,4 +1,4 @@
-import { ViewChild, OnInit, forwardRef } from '@angular/core';
+import { ViewChild, AfterViewInit, forwardRef } from '@angular/core';
 import { Page, Events, PopoverController, NavParams } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
@@ -17,7 +17,7 @@ import { ApiService } from '../../services/api.service';
     PokePOICardComponent
   ]
 })
-export class MapPage implements OnInit {
+export class MapPage implements AfterViewInit {
 
   @ViewChild(MapComponent) map: MapComponent;
   @ViewChild(PokePOICardComponent) pokePOICard: PokePOICardComponent;
@@ -43,7 +43,7 @@ export class MapPage implements OnInit {
     }
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.events.subscribe('filter:changed:time', (time: Object) => {
       this.filter.time = time[0];
 

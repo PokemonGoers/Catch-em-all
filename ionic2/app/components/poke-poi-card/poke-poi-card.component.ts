@@ -1,4 +1,5 @@
-import { Component, Input, ViewChild, OnInit, ElementRef, animate, trigger, state, style, transition } from '@angular/core';
+import { Component, Input, ViewChild, OnInit, ElementRef, ChangeDetectorRef,
+  animate, trigger, state, style, transition } from '@angular/core';
 import { Events } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 
@@ -29,7 +30,7 @@ export class PokePOICardComponent implements OnInit {
   loadPokemon: Subscription;
   slideState: string = 'hidden';
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit(): any {
     let hammer = new Hammer(this.slideCard.nativeElement);
@@ -47,8 +48,10 @@ export class PokePOICardComponent implements OnInit {
     //  this.pokePOI.pokemon = pokemon;
     //});
 
-    console.log('show', pokePOI);
     this.slideState = 'visible';
+
+    // Trigger Angular's change detection mechanism manually.
+    this.changeDetectorRef.detectChanges();
   }
 
   hide() {
