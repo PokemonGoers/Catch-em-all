@@ -1,10 +1,11 @@
-import { ViewChild, OnInit, forwardRef } from '@angular/core';
+import { ViewChild, AfterViewInit, forwardRef } from '@angular/core';
 import { Page, Events, PopoverController, NavParams } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
 import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
 import { MapComponent } from '../../components/map/map.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { FilterOptions } from '../../components/map/map.component';
 
 @Page({
   template: require('./map.page.html'),
@@ -13,61 +14,59 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
     MapComponent
   ]
 })
-export class MapPage implements OnInit {
+export class MapPage implements AfterViewInit {
 
   @ViewChild(MapComponent) map: MapComponent;
 
-  requestPosition: Promise<any> = null;
-  latitude: number;
-  longitude: number;
+  static ZOOM_LEVEL = 17;
 
-  filter = {
-    time: {
-      lower: 0,
-      upper: 60
-    }
+  positionLoaded: Promise<any> = null;
+
+  filter: FilterOptions = {
+    pokemonIds: null,
+    sightingsSince: 1800,
+    predictionsUntil: 1800
   };
 
-  constructor(private popoverCtrl: PopoverController, private events: Events, navParams: NavParams) {
-    if (navParams.get('latitude') && navParams.get('longitude')) {
-      this.latitude = navParams.get('latitude');
-      this.longitude = navParams.get('longitude');
+  constructor(private popoverCtrl: PopoverController, private events: Events, private navParams: NavParams) {
+    this.positionLoaded = this.loadPosition();
+  }
+
+  loadPosition() {
+    let position = this.navParams.get('position');
+
+    if (position) {
+      return Promise.resolve(position);
     } else {
-      this.requestPosition = Geolocation.getCurrentPosition();
+      return Geolocation.getCurrentPosition()
+        .then(position => {
+          return {
+            coordinates: {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            },
+            zoomLevel: MapPage.ZOOM_LEVEL
+          };
+        });
     }
   }
 
-  ngOnInit() {
-    this.events.subscribe('filter:changed:time', (time: Object) => {
-      this.filter.time = time[0];
+  ngAfterViewInit() {
+    this.initializeMap();
 
-      if (this.map && this.map.initialized) {
-        this.map.updateTimeRange({from: time[0].lower, to: time[0].upper});
-      }
-    });
-
-    if (this.requestPosition) {
-      this.requestPosition
-        .then(position => this.initializeMap({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude
-        }))
-        .catch(error => this.initializeMap({
-          latitude: 48.264673,
-          longitude: 11.671434
-        }));
-    } else {
-      this.initializeMap({
-        latitude: this.latitude,
-        longitude: this.longitude
-      })
-    }
+    this.positionLoaded.then(position => this.map.goTo(position));
   }
 
-  initializeMap(coordinates) {
-    let timeRange = {from: this.filter.time.lower, to: this.filter.time.upper};
+  initializeMap() {
+    let filter = this.filter;
     let apiEndpoint = window.location.origin;
-    this.map.initialize({coordinates, timeRange, apiEndpoint});
+    let tileLayer = 'http://{s}.tile.opencyclemap.org/transport/{z}/{x}/{y}.png';
+
+    this.map.initialize({filter, apiEndpoint, tileLayer});
+  }
+
+  applyFilterChange() {
+    this.map.filter(this.filter);
   }
 
   showFilterPopover($event?): void {

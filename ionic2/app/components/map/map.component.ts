@@ -1,13 +1,18 @@
-import { Component, Input, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
+import { Events } from 'ionic-angular';
 
 //let PokeMap = require('pokemap-1');
 //let PokeMap = require('pokemap-2');
+
+require('!style!css!sass!leaflet/dist/leaflet.css');
+declare var window: any;
+window.L = require('leaflet');
 
 // Dummy PokeMap class until PokeMaps are implemented
 let PokeMap: any = function(...args) {console.debug('map:constructor', ...args)};
 PokeMap.prototype.on = function(...args) {console.debug('map:on', ...args)};
 PokeMap.prototype.goTo = function(...args) {console.debug('map:goTo', ...args)};
-PokeMap.prototype.updateTimeRange = function(...args) {console.debug('map:updateTimeRange', ...args)};
+PokeMap.prototype.filter = function(...args) {console.debug('map:filter', ...args)};
 
 @Component({
   selector: 'map',
@@ -22,29 +27,32 @@ export class MapComponent {
 
   initialize(options) {
     this.map = new PokeMap(this.element.nativeElement, options);
-
-    this.map.on('click', this.onClick.bind(this));
-    this.map.on('move', this.onMove.bind(this));
   }
 
   get initialized(): boolean {
     return this.map !== undefined;
   }
 
-  goTo(coordinates: {latitude:number, longitude:number}) {
-    this.map.goTo(coordinates);
+  goTo(position) {
+    this.map.goTo(position);
   }
 
-  updateTimeRange(timeRange: {from: number, to:number}) {
-    this.map.updateTimeRange(timeRange);
+  filter(filterOptions: FilterOptions) {
+    this.map.filter(filterOptions);
   }
 
-  onClick(pokePOI) {
-
+  onClick(callback) {
+    this.map.on('click', callback);
   }
 
-  onMove({coordinates: {latitude, longitude}, zoomLevel}) {
-
+  onMove(callback) {
+    this.map.on('move', callback);
   }
 
+}
+
+export type FilterOptions = {
+  pokemonIds: number[];
+  sightingsSince: number; // Time in seconds
+  predictionsUntil: number; // Time in seconds
 }

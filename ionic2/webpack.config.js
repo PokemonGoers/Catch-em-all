@@ -45,7 +45,8 @@ module.exports = {
   devtool: devEnv ? 'cheap-module-eval-source-map' : 'source-map',
   cache: devEnv,
   resolve: {
-    extensions: ['', '.js', '.ts']
+    extensions: ['', '.js', '.ts'],
+    modulesDirectories: ['node_modules']
   },
   module: {
     loaders: [
@@ -54,13 +55,14 @@ module.exports = {
       {test: /\/theme\/.*\.scss$/, loader:ExtractTextPlugin.extract(['css', 'sass'])},
       {test: /\.(component|page)\.scss$/, loaders: ['raw', 'sass']},
       {test: /\.woff(2)?(\?v=.+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
-      {test: /\.(ttf|eot|svg)(\?v=.+)?$/, loader: 'file'}
+      {test: /\.(ttf|eot|svg|png)(\?v=.+)?$/, loader: 'file'}
     ]
   },
   sassLoader: {
     includePaths: [
       './node_modules/ionic-angular/',
-      './node_modules/ionicons/dist/scss/'
+      './node_modules/ionicons/dist/scss/',
+      './node_modules/leaflet/dist/'
     ]
   },
   plugins: [

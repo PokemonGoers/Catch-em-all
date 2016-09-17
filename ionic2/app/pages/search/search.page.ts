@@ -70,6 +70,13 @@ export class SearchPage {
 
   selectLocation(location: LocationQueryResponse) {
     this.cancelRequests();
-    this.navCtrl.setRoot(MapPage, location.coordinates);
+
+    let parameters: any = {};
+    parameters.position = {
+      coordinates: location.coordinates,
+      zoomLevel: location.zoomLevel
+    };
+
+    this.navCtrl.setRoot(MapPage, parameters);
   }
 }
