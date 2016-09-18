@@ -1,4 +1,4 @@
-import {addProviders, inject} from "@angular/core/testing";
+import {addProviders, beforeEach, it, describe, expect, inject} from "@angular/core/testing";
 import {App, Platform, Config, NavParams} from "ionic-angular";
 import {MapPage} from "./map.page";
 
