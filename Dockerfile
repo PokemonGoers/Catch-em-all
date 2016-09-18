@@ -25,8 +25,10 @@ RUN cd ionic2 && ionic build browser
 # Clean workspace
 RUN rm -rf ionic2
 
-WORKDIR server
 ENV LISTEN_ADDRESS=0.0.0.0
 ENV LISTEN_PORT=8080
+ENV API_ENDPOINT=http://pokedata.c4e3f8c7.svc.dockerapp.io:65014
+
+WORKDIR server
 EXPOSE 8080
 CMD ["npm", "start"]
