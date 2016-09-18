@@ -44,7 +44,7 @@ Run `ionic serve` in the `./ionic2` folder to start the server at `http://localh
 
     `ionic prepare`
 
-    `ionic build browser --release`
+    `ionic build browser`
 
 2. In `./server` run
 
@@ -60,11 +60,11 @@ First make sure that the Android SDK is installed and that `ANDROID_HOME` is set
 
     `ionic prepare`
 
-    `ionic build android --release`
+    `ionic build android`
 
-2. The final app apk can be found at `./ionic2/platforms/android/build/outputs/apk/android-release-unsigned.apk`.
+2. The final app apk can be found at `./ionic2/platforms/android/build/outputs/apk/android-debug.apk`.
 
-To install the app connect your Android phone with your computer and run `adb install android-release-unsigned.apk`.
+To install the app connect your Android phone with your computer and run `adb install android-debug.apk`.
 
 ## Testing
 

@@ -20,7 +20,7 @@ RUN cd ionic2 && typings install
 
 # Build web app
 RUN cd ionic2 && ionic prepare
-RUN cd ionic2 && ionic build browser --release
+RUN cd ionic2 && ionic build browser
 
 # Clean workspace
 RUN rm -rf ionic2

@@ -1,7 +1,9 @@
 {
   "scripts": {
     "start": "ionic serve",
-    "test": "karma start karma.conf.js"
+    "test": "karma start karma.conf.js",
+    "build": "gulp build --release",
+    "build:before": "build"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.4",
@@ -31,7 +33,7 @@
     "gulp": "3.9.1",
     "gulp-util": "^3.0.7",
     "html-webpack-plugin": "^2.22.0",
-    "ionic": "=2.0.0-beta.37",
+    "ionic": "^2.1.0-beta.1",
     "ionic-gulp-webpack": "^2.0.0",
     "isparta": "^4.0.0",
     "jasmine-core": "^2.5.0",
