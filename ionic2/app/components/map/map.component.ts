@@ -1,5 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
-import { Events } from 'ionic-angular';
+import {Component, ElementRef} from "@angular/core";
 
 //let PokeMap = require('pokemap-1');
 let PokeMap = require('pokemap-2');
