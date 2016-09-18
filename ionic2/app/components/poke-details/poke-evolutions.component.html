@@ -1,0 +1,40 @@
+<ion-grid>
+
+  <!-- if this pokemon only has no more evolutions -->
+  <ion-row *ngIf="nextPokemons.length==0">
+
+    <ion-col *ngIf="prevPokemon">
+      <img (click)="selectPokemon(prevPokemon)" [src]="prevPokemon.icon" class="box-cube">
+    </ion-col>
+    <ion-col *ngIf="!prevPokemon"><img class="empty-box-cube"></ion-col>
+
+    <ion-col style="text-align: center;"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+
+    <ion-col><img [src]="pokemon.icon" class="box-cube"></ion-col>
+
+    <ion-col style="text-align: center;"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+
+    <ion-col><img class="empty-box-cube"></ion-col>
+  </ion-row>
+
+  <!-- if this pokemon has multiple possible evolutions -->
+  <ion-row *ngFor="let nextPokemon of nextPokemons" center>
+
+    <ion-col *ngIf="prevPokemon">
+      <img (click)="selectPokemon(prevPokemon)" [src]="prevPokemon.icon" class="box-cube">
+    </ion-col>
+    <ion-col *ngIf="!prevPokemon"><img class="empty-box-cube"></ion-col>
+
+    <ion-col style="text-align: center;"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+
+    <ion-col><img [src]="pokemon.icon" class="box-cube"></ion-col>
+
+    <ion-col style="text-align: center;"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+
+    <ion-col *ngIf="nextPokemon">
+      <img (click)="selectPokemon(nextPokemon)" [src]="nextPokemon.icon" class="box-cube">
+    </ion-col>
+
+  </ion-row>
+
+</ion-grid>
