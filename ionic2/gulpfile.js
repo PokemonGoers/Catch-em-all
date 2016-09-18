@@ -5,7 +5,6 @@ var path = require('path');
 var del = require('del');
 var argv = process.argv;
 
-var webpackConf = require('./webpack.config.js');
 var serverDir = path.join(__dirname, '../server/app');
 var outputDir = path.join(__dirname, 'www');
 
@@ -13,7 +12,9 @@ var release = argv.includes('--release') || argv.includes('build');
 var shouldWatch = argv.includes('-l') || argv.includes('--livereload');
 
 process.env['BUILD_ENV'] = release ? 'release' : 'develop';
-gutil.log('Build environment: '+process.env['BUILD_ENV']);
+gutil.log('Build environment: ' + process.env['BUILD_ENV']);
+
+var webpackConf = require('./webpack.config.js');
 
 gulp.task('serve:before', ['watch']);
 gulp.task('emulate:before', ['build']);
