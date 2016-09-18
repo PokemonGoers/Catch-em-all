@@ -1,5 +1,11 @@
 export type PokemonGender = 'm' | 'f' | 'g' | 'h';
 export type PokemonAttackCategory = 'fast' | 'special';
+export type Attack = {
+  type: string;
+  name: string;
+  damage: number;
+  _id: string;
+};
 
 export class Pokemon {
 
@@ -9,9 +15,9 @@ export class Pokemon {
   maxHP: number;
   maxCP: number;
   fleeRate: number;
-  weakness: [string];
-  resistance: [string];
-  types: [string];
+  weakness: string[];
+  resistance: string[];
+  types: string[];
 
   gender: {
     abbreviation: PokemonGender;
@@ -20,17 +26,17 @@ export class Pokemon {
     breedable: boolean;
   };
 
-  previousEvolutions: [{
+  previousEvolutions: {
     pokemonId: number;
     name: string;
     _id: string;
-  }];
+  }[];
 
-  nextEvolutions: [{
+  nextEvolutions: {
     pokemonId: number;
     name: string;
     _id: string;
-  }];
+  }[];
 
   height: {
     maximum: string;
@@ -42,19 +48,9 @@ export class Pokemon {
     minimum: string;
   };
 
-  specialAttacks: [{
-    type: string;
-    name: string;
-    damage: number;
-    _id: string;
-  }];
+  specialAttacks: Attack[];
 
-  fastAttacks: [{
-    type: string;
-    name: string;
-    damage: number;
-    _id: string;
-  }];
+  fastAttacks: Attack[];
 
   static fromObject(object: Object): Pokemon {
     let instance = Object.create(Pokemon.prototype);
