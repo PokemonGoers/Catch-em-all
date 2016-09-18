@@ -10,19 +10,25 @@ This is project E of the WS 2016 JavaScript Technology seminar at the TU Munich.
 
 http://catch-em-all-0a600d65.c65978f4.svc.dockerapp.io:4898/
 
+## Install required packages
+
+1. `npm install -g cordova ionic@beta typings gulp`
+
+2. In `./ionic2` run
+
+    `npm install` to install node packages
+
+    `typings install` to install typings
+
+3. In `./server` run
+
+    `npm install` to install node packages
+
 ## Set up for development
 
-In `./ionic2` run
+Run `ionic serve` in the `./ionic2` folder to start the server at `http://localhost:8100`.
 
-`npm install -g cordova ionic@beta typings` to install ionic and cordova
-
-`npm install` to install packages
-
-`typings install` to install typings
-
-`ionic serve` to start server
-
-## Build app for deployment
+## Build web app
 
 ### Using Docker
 
@@ -36,19 +42,29 @@ In `./ionic2` run
 
 1. In `./ionic2` run
 
-    `npm install`
+    `ionic prepare`
 
-    `node_modules/.bin/typings install`
-
-    `gulp build --release`
+    `ionic build browser --release`
 
 2. In `./server` run
-
-    `npm install`
 
     `npm start`
 
 3. Go to `http://localhost:8080`
+
+## Build Android app
+
+First make sure that the Android SDK is installed and that `ANDROID_HOME` is set.
+
+1. In `./ionic2` run
+
+    `ionic prepare`
+
+    `ionic build android --release`
+
+2. The final app apk can be found at `./ionic2/platforms/android/build/outputs/apk/android-release-unsigned.apk`.
+
+To install the app connect your Android phone with your computer and run `adb install android-release-unsigned.apk`.
 
 ## Testing
 
