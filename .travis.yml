@@ -51,14 +51,14 @@ script:
   - npm test
 
   # Build app for browser and Android platform
-  - node_modules/.bin/ionic build browser --release
-  - node_modules/.bin/ionic build android --release
+  - node_modules/.bin/ionic build browser
+  - node_modules/.bin/ionic build android
 
 after_success:
   # Upload apk to HockeyApp
   - "if [ \"$TRAVIS_BRANCH\" = \"develop\" ]; then curl
     -F \"status=2\"
     -F \"notify=2\"
-    -F \"ipa=@platforms/android/build/outputs/apk/android-release-unsigned.apk\"
+    -F \"ipa=@platforms/android/build/outputs/apk/android-debug.apk\"
     -H \"X-HockeyAppToken: $HOCKEY_APP_TOKEN\"
     https://rink.hockeyapp.net/api/2/apps/e366595adb094a2a94e76458268a87b8/app_versions/upload; fi"
