@@ -1,5 +1,6 @@
 # Bundled web app
 /server/app
+/ionic2/www
 
 # Logs
 logs

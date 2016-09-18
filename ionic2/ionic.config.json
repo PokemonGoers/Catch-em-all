@@ -3,9 +3,9 @@
   "app_id": "",
   "v2": true,
   "typescript": true,
-  "documentRoot": "../server/app",
+  "documentRoot": "www",
   "watchPatterns": [
-    "../server/app/**/*"
+    "www/**/*"
   ],
   "proxies": [
     {

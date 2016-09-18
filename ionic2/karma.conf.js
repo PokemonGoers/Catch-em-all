@@ -35,7 +35,9 @@ module.exports = function(config) {
         loaders: [
           {test: /\.ts$/, loader: 'awesome-typescript-loader'},
           {test: /\.html$/, loader: 'raw'},
-          {test: /\.(component|page)\.scss$/, loaders: ['raw', 'sass']}
+          {test: /\.(component|page)\.scss$/, loaders: ['raw', 'sass']},
+          {test: /\.woff(2)?(\?v=.+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
+          {test: /\.(ttf|eot|svg|png)(\?v=.+)?$/, loader: 'file'}
         ]
       }
     },

@@ -1,13 +1,12 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 
 var BUILD_ENV = process.env['BUILD_ENV'] || 'develop';
 var devEnv = BUILD_ENV === 'develop';
 
-var outputDir = path.join(__dirname, '../server/app');
+var outputDir = path.join(__dirname, 'www');
 
 module.exports = {
   colors: true,
@@ -46,7 +45,10 @@ module.exports = {
   cache: devEnv,
   resolve: {
     extensions: ['', '.js', '.ts'],
-    modulesDirectories: ['node_modules']
+    modulesDirectories: ['node_modules'],
+    root: [
+      path.resolve('./app/assets')
+    ]
   },
   module: {
     loaders: [
@@ -79,7 +81,6 @@ module.exports = {
   ].concat({
     develop: [],
     release: [
-      new CleanWebpackPlugin('./server/app', {root: path.resolve('../')}),
       new webpack.optimize.UglifyJsPlugin({
         sourceMap: false,
         mangle: false,
