@@ -11,6 +11,7 @@ export class Pokemon {
 
   pokemonId: number;
   name: string;
+  description: string;
   classification: string;
   maxHP: number;
   maxCP: number;
