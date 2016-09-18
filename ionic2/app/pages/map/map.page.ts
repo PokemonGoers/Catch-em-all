@@ -52,9 +52,13 @@ export class MapPage implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.initializeMap();
-
-    this.positionLoaded.then(position => this.map.goTo(position));
+    // At this point the final dimensions of the map element are not known yet.
+    // By waiting 100ms we can avoid that the map is instantiated to the wrong dimensions.
+    // TODO Find a better method to avoid this hack.
+    setTimeout(() => {
+      this.initializeMap();
+      this.positionLoaded.then(position => this.map.goTo(position));
+    }, 100);
   }
 
   initializeMap() {
