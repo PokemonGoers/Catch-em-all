@@ -12,7 +12,7 @@ http://catch-em-all-0a600d65.c65978f4.svc.dockerapp.io:4898/
 
 ## Install required packages
 
-1. `npm install -g cordova ionic@beta typings gulp`
+1. `npm install -g cordova ionic@@2.0.0-beta.37 typings gulp`
 
 2. In `./ionic2` run
 
