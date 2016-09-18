@@ -27,6 +27,9 @@ export class MapComponent {
 
   initialize(options) {
     this.map = new PokeMap(this.element.nativeElement, options);
+
+    this.onClick(console.debug.bind(null, 'map:onClick'));
+    this.onMove(console.debug.bind(null, 'map:onMove'));
   }
 
   get initialized(): boolean {
@@ -34,10 +37,12 @@ export class MapComponent {
   }
 
   goTo(position) {
+    console.debug('map:goTo', position);
     this.map.goTo(position);
   }
 
   filter(filterOptions: FilterOptions) {
+    console.debug('map:filter', filterOptions);
     this.map.filter(filterOptions);
   }
 
