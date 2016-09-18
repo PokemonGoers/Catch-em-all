@@ -47,7 +47,7 @@ gulp.task('webpack', function(done) {
 });
 
 gulp.task('clean', function() {
-  del.sync([outputDir]);
+  del.sync([outputDir + '/**/*']);
 });
 
 gulp.task('assets', function() {

@@ -31,7 +31,7 @@
     "gulp": "3.9.1",
     "gulp-util": "^3.0.7",
     "html-webpack-plugin": "^2.22.0",
-    "ionic": "^2.1.0-beta.1",
+    "ionic": "=2.0.0-beta.37",
     "ionic-gulp-webpack": "^2.0.0",
     "isparta": "^4.0.0",
     "jasmine-core": "^2.5.0",

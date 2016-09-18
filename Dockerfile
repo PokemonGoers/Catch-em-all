@@ -13,7 +13,7 @@ RUN cd $(npm root -g)/npm \
   && sed -i -e s/graceful-fs/fs-extra/ -e s/fs\.rename/fs.move/ ./lib/utils/rename.js
 
 # Install and update dependencies
-RUN cd server && npm install --only=prod -q && npm prune
+RUN cd server && npm install --only=prod -q && npm prune --production
 RUN cd ionic2 && npm install -q && npm prune
 RUN cd ionic2 && npm update -q pokemap-1 pokemap-2
 RUN cd ionic2 && typings install
