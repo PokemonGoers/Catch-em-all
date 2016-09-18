@@ -1,18 +1,30 @@
+dist: precise
 sudo: required
+language: android
 
-services:
-  - docker
+jdk: oraclejdk8
 
-language: node_js
-node_js:
-  - "6"
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-24.0.2
+    - android-23
 
 cache:
   directories:
     - ionic2/node_modules
     - server/node_modules
 
+env:
+  global:
+    - secure: "kEjhdNDNiOypFoXjAQDjwJKD6r90uObflrl7clAe0fbntz39N9l3Sqqd40j9a9wu+8muJiP0+gPCsEAVqY6Zco6ky8JzuJnELIdJSIGDF+1Tp11XLjR6BbzSUlnvNLsPcB8HRqDmfkIpkGU5ZbcI6HWIem7A08BYUAZdFA/UbXLuUOapIhM0AJvNTM4ttUZff2cP9vUd4Qmli5P+jdCEDGTUrL5uscf1hNyunbkW0nhIu6F0TplxXz7Dr3NDQAwe7UxfBOhswHOD5/+BIVMcWY0CC3CAN+K7YCZB7qXYo/MQVxPOrR0NE4GFJ8yv7LNAjKanASaYSTIhLT5rm1jdoSm+jpHOnIHqXLekLUQkfJqv4WVb1zxuD4ZXlVyRNZTDetql81+nSu/xbJ7bvuF4oNf/kHoasdU55JXAmNf9pegRe08pV16rHRMRTNSHdq7foK2tI1h6wopMl7bhWhqWONh0ea77mzFQPwkTrR8jpkVOjZ1b6rfL8XZ1KjkopbQ6ItHPAV2Mj3t5DvWdFL9d7XmX9dyRQ2ufHtg7OZqcxiMohhUM5iicrF3inWUBQpEE9VtjjfLFtND/PDBwTMgq1xNGAMQkaXWDIwmdzo6vjHDwwSthz/TrBLRQf/0/AimAuLmo0UTSPDPd9jeUsdUrapdWRA7BlS4VW+2/N3ceVGM="
+
+before_install:
+  - nvm install 6
+
 install:
+  # Install requirements
   - cd server
   - npm install -q && npm prune
 
@@ -20,18 +32,33 @@ install:
   - npm install -q && npm prune
   - npm update pokemap-1 pokemap-2
   - node_modules/.bin/typings install
-
+  - node_modules/.bin/ionic prepare
   - cd ../
-  - docker build -t pokemongoers/catchemall .
 
 before_script:
+  # Set up chrome for browser tests
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 
 script:
+  # Run backend tests
   - cd server
   - npm test
 
+  # Run frontend/app tests
   - cd ../ionic2
   - npm test
+
+  # Build app for browser and Android platform
+  - node_modules/.bin/ionic build browser --release
+  - node_modules/.bin/ionic build android --release
+
+after_success:
+  # Upload apk to HockeyApp
+  - "if [ \"$TRAVIS_BRANCH\" = \"develop\" ]; then curl
+    -F \"status=2\"
+    -F \"notify=2\"
+    -F \"ipa=@platforms/android/build/outputs/apk/android-release-unsigned.apk\"
+    -H \"X-HockeyAppToken: $HOCKEY_APP_TOKEN\"
+    https://rink.hockeyapp.net/api/2/apps/e366595adb094a2a94e76458268a87b8/app_versions/upload; fi"
