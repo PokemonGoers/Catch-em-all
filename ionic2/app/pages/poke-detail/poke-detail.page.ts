@@ -5,6 +5,8 @@ import { ApiService } from '../../services/api.service';
 import { Pokemon } from "../../models/pokemon";
 import { PokeEvolutionsComponent } from "../../components/poke-details/poke-evolutions.component";
 import { PokeAttacksComponent } from "../../components/poke-details/poke-attacks.component";
+import { PokeTypeComponent } from "../../components/poke-details/poke-type.component";
+import { PokeStatsComponent } from "../../components/poke-details/poke-stats.component";
 
 @Page({
   template: require('./poke-detail.page.html'),
@@ -12,7 +14,9 @@ import { PokeAttacksComponent } from "../../components/poke-details/poke-attacks
   directives: [
     forwardRef(() => NavbarComponent),
     PokeEvolutionsComponent,
-    PokeAttacksComponent
+    PokeAttacksComponent,
+    PokeTypeComponent,
+    PokeStatsComponent
   ]
 })
 
