@@ -5,6 +5,7 @@ import { Geolocation } from 'ionic-native';
 import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
 import { MapComponent } from '../../components/map/map.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { ConfigService } from '../../services/config.service';
 
 @Page({
   template: require('./map.page.html'),
@@ -28,7 +29,8 @@ export class MapPage implements OnInit {
     }
   };
 
-  constructor(private popoverCtrl: PopoverController, private events: Events, navParams: NavParams) {
+  constructor(private popoverCtrl: PopoverController, private events: Events,
+              private config: ConfigService, navParams: NavParams) {
     if (navParams.get('latitude') && navParams.get('longitude')) {
       this.latitude = navParams.get('latitude');
       this.longitude = navParams.get('longitude');
@@ -66,7 +68,7 @@ export class MapPage implements OnInit {
 
   initializeMap(coordinates) {
     let timeRange = {from: this.filter.time.lower, to: this.filter.time.upper};
-    let apiEndpoint = window.location.origin;
+    let apiEndpoint = this.config.apiEndpoint;
     this.map.initialize({coordinates, timeRange, apiEndpoint});
   }
 

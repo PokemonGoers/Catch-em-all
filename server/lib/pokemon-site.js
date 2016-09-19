@@ -16,8 +16,7 @@ class PokemonSite {
     app.use(express.static(path.join(__dirname, '../app')))
 
     // Proxy requests to /api/* to API backend
-    var apiEndpoint = config.apiHost + ':' + config.apiPort
-    app.use('/api/*', proxy(apiEndpoint, {
+    app.use('/api/*', proxy(config.apiEndpoint, {
       forwardPath: (req, res) => url.parse(req.baseUrl).path
     }))
 
