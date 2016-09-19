@@ -1,8 +1,8 @@
-import {ViewChild, AfterViewInit, forwardRef} from "@angular/core";
-import {NavParams, Page} from "ionic-angular";
-import {Geolocation} from "ionic-native";
-import {MapComponent, FilterOptions} from "../../components/map/map.component";
-import {NavbarComponent} from "../../components/navbar/navbar.component";
+import { ViewChild, forwardRef } from "@angular/core";
+import { NavParams, Page } from "ionic-angular";
+import { Geolocation } from "ionic-native";
+import { MapComponent, FilterOptions } from "../../components/map/map.component";
+import { NavbarComponent } from "../../components/navbar/navbar.component";
 
 @Page({
   template: require('./map.page.html'),
@@ -11,7 +11,7 @@ import {NavbarComponent} from "../../components/navbar/navbar.component";
     MapComponent
   ]
 })
-export class MapPage implements AfterViewInit {
+export class MapPage {
 
   @ViewChild(MapComponent) map: MapComponent;
 
@@ -48,14 +48,9 @@ export class MapPage implements AfterViewInit {
     }
   }
 
-  ngAfterViewInit() {
-    // At this point the final dimensions of the map element are not known yet.
-    // By waiting 100ms we can avoid that the map is instantiated to the wrong dimensions.
-    // TODO Find a better method to avoid this hack.
-    setTimeout(() => {
+  ionViewDidEnter() {
       this.initializeMap();
       this.positionLoaded.then(position => this.map.goTo(position));
-    }, 100);
   }
 
   initializeMap() {
