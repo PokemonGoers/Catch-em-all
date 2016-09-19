@@ -1,0 +1,7 @@
+<div *ngIf="typearray">
+  <div *ngFor="let poketype of typearray" >
+      <div  class="rounded-edges"  [style.background-color]="poketype.color">
+        {{poketype.element}}
+      </div>
+  </div>
+</div>
