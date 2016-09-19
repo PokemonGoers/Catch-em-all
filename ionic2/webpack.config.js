@@ -53,8 +53,8 @@ module.exports = {
   module: {
     loaders: [
       {test: /\.ts$/, loader: 'awesome-typescript-loader'},
-      {test: /\/pokemap-(1|2)\/.*\.js$/, loader: 'babel?presets[]=es2015'}, // Hack to transpile ES6 until modules are packaged
-      {test: /\.js$/, exclude: /node_modules/, loader: 'babel?presets[]=es2015'},
+      {test: /\/pokemap-(1|2)\/.*\.js$/, loader: require.resolve('babel-loader'), query: {presets: ['babel-preset-es2015'].map(require.resolve)}}, // Hack to transpile ES6 until modules are packaged
+      {test: /\.js$/, exclude: /node_modules/, loader: require.resolve('babel-loader'), query: {presets: ['babel-preset-es2015'].map(require.resolve)}},
       {test: /\.html$/, loader: 'raw'},
       {test: /\/theme\/.*\.scss$/, loader:ExtractTextPlugin.extract(['css', 'sass'])},
       {test: /\.(component|page)\.scss$/, loaders: ['raw', 'sass']},
