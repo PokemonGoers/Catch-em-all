@@ -1,11 +1,14 @@
-import { Component} from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Pokemon } from "../../models/pokemon";
 
 @Component({
-  templateUrl: 'components/poke-details/poke-stats.component.html',
+  template: require('./poke-stats.component.html'),
+  styles: [require('./poke-stats.component.scss')],
   selector: 'poke-stats'
 })
 
 export class PokeStatsComponent {
+  @Input("pokemon") pokemon: Pokemon;
 
   constructor() {}
 

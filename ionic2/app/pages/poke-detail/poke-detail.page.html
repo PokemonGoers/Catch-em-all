@@ -36,10 +36,12 @@
         </ion-row>
         <ion-row>
           <ion-col>Strengths</ion-col>
-          <ion-col class="right-align"><poke-type [type]="pokemon.resistance"></poke-type></ion-col>
+          <ion-col><poke-type [type]="pokemon.resistance"></poke-type></ion-col>
         </ion-row>
       </div>
     </div>
+
+    <poke-stats [pokemon]="pokemon"></poke-stats>
 
     <poke-evolutions [pokemon]="pokemon"></poke-evolutions>
 

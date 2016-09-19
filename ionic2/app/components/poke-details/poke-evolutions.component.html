@@ -1,7 +1,7 @@
 <ion-grid>
 
   <!-- if this pokemon only has no more evolutions -->
-  <ion-row *ngIf="nextPokemons.length==0">
+  <ion-row *ngIf="nextPokemons.length==0" center>
 
     <ion-col *ngIf="prevPokemon">
       <img (click)="selectPokemon(prevPokemon)" [src]="prevPokemon.icon" class="box-cube">

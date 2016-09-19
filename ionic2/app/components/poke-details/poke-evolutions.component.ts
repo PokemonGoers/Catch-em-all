@@ -2,10 +2,11 @@ import { Component, Input } from '@angular/core';
 import { Pokemon } from "../../models/pokemon";
 import { ApiService } from '../../services/api.service';
 import { NavController } from "ionic-angular";
-import { PokeDetailPage } from "../../pages/pokedetail/pokedetail.page";
+import { PokeDetailPage } from "../../pages/poke-detail/poke-detail.page";
 
 @Component({
-  templateUrl: 'components/poke-details/poke-evolutions.component.html',
+  template: require('./poke-evolutions.component.html'),
+  styles: [require('./poke-evolutions.component.scss')],
   selector: 'poke-evolutions'
 })
 

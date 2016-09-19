@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  templateUrl: 'components/poke-details/poke-type.component.html',
+  template: require('./poke-type.component.html'),
   selector: 'poke-type',
   styles: [`
     .rounded-edges{
@@ -19,14 +19,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 
 export class PokeTypeComponent implements OnInit{
-  @Input('type') type:string
-  typearray:Object[]
+  @Input('type') type:string[]
+  typeArray:Object[]
 
   constructor() {
   }
 
   ngOnInit(){
-    const secondaryarray=this.type[0].split(',')
     const color={
       'fire':'#ff6600',
       'ice':'#cce6ff',
@@ -47,8 +46,9 @@ export class PokeTypeComponent implements OnInit{
       'electric':'#ffff33',
       'normal':'#8a8a5c'
     }
-    for (let item of secondaryarray){
-      this.typearray.push({element:item, color:color[item+'']})
+    this.typeArray = []
+    for (let item of this.type){
+      this.typeArray.push({element:item, color:color[item+'']})
     }
   }
 }
