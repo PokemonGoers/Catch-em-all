@@ -5,7 +5,7 @@ import { ApiService } from '../../services/api.service';
 import { Pokemon } from "../../models/pokemon";
 
 @Page({
-  templateUrl: 'pages/pokedetail/poke-detail.page.html',
+  template: require('./poke-detail.page.html'),
   directives: [forwardRef(() => NavbarComponent)]
 })
 

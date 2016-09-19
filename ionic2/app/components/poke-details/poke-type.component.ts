@@ -26,7 +26,7 @@ export class PokeTypeComponent implements OnInit{
   }
 
   ngOnInit(){
-    const secondaryarray=this.type[0].split(', ')
+    const secondaryarray=this.type[0].split(',')
     const color={
       'fire':'#ff6600',
       'ice':'#cce6ff',
@@ -47,15 +47,8 @@ export class PokeTypeComponent implements OnInit{
       'electric':'#ffff33',
       'normal':'#8a8a5c'
     }
-    var newarray=[];
-    var indexCount=0;
-    secondaryarray.forEach((item, index, array) =>{
-      newarray.push({element:item,color:color[item+'']})
-      indexCount++;
-      if(indexCount==array.length){
-        this.typearray=newarray
-      }
-    })
-    //this.typearray=newarray
+    for (let item of secondaryarray){
+      this.typearray.push({element:item, color:color[item+'']})
+    }
   }
 }

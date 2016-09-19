@@ -28,15 +28,15 @@
         </ion-row>
         <ion-row>
           <ion-col>Types</ion-col>
-          <ion-col class="right-align"><ion-badge>{{pokemon.types}}</ion-badge></ion-col>
+          <ion-col class="right-align"><poke-type [type]="pokemon.types"></poke-type></ion-col>
         </ion-row>
         <ion-row>
           <ion-col>Weaknesses</ion-col>
-          <ion-col class="right-align"><ion-badge>{{pokemon.weakness}}</ion-badge></ion-col>
+          <ion-col class="right-align"><poke-type [type]="pokemon.weakness"></poke-type></ion-col>
         </ion-row>
         <ion-row>
           <ion-col>Strengths</ion-col>
-          <ion-col class="right-align"><ion-badge>{{pokemon.resistance}}</ion-badge></ion-col>
+          <ion-col class="right-align"><poke-type [type]="pokemon.resistance"></poke-type></ion-col>
         </ion-row>
       </div>
     </div>
