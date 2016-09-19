@@ -70,6 +70,16 @@ export class ApiService {
   }
 
   /**
+   * Get Pokemon by description.
+   * @param {string} description - Description of the Pokemon
+   * @returns {Observable<Pokemon[]>}
+   */
+  getPokemonByDescription(description: string): Observable<Pokemon[]> {
+    let request = this.http.get('/api/pokemon/description/' + description);
+    return request.map(ApiService.handleResponse(Pokemon));
+  }
+
+  /**
    * Get Pokemon by specific gender.
    * @param {string} gender - Gender of the Pokemon, allowed values: [m, f, g, h]
    * @returns {Observable<Pokemon[]>}
