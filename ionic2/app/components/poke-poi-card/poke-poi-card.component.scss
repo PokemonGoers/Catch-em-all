@@ -5,8 +5,7 @@
   position: absolute;
   display: inline-block;
   bottom: 0;
-  box-shadow: 0px -6px 3px 0 rgba(0,0,0,0.7);
-  border-top: 1px solid black;
+  box-shadow: 0px -2px 3px 0 rgba(0,0,0,0.5);
 
   .poke-poi-card-content {
     padding-top: 12px;
@@ -16,13 +15,19 @@
     }
 
     .poke-id {
-      font-size: 35px;
+      font-size: 30px;
       font-weight: bold;
       color: #404040;
     }
 
     .poke-name {
-      font-size: 45px;
+      font-size: 35px;
+    }
+
+    .poke-description {
+      display: inline-block;
+      font-size: 14px;
+      color: #525252;
     }
 
     poke-poi-bubble {
@@ -32,30 +37,27 @@
     }
 
     .action-button-bar {
-      margin-top: 25px;
-      border-left: 1px solid #dedede;
-
-      ion-row:not(:last-child) {
-        border-bottom: 1px solid #dedede;
-      }
+      display: flex;
+      flex-grow: 0;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-top: 15px;
 
       ion-row {
-        justify-content: center;
+        justify-content: flex-end;
+      }
 
-        .action-button {
-          padding: 6px 4px;
-          text-align: center;
-          color: #123784;
-          cursor: pointer;
-          justify-content: center;
+      button {
+        color: #123784;
+        padding: 4px 10px;
+        margin: 2px 0;
 
-          ion-icon {
-            font-size: 28px;
-          }
-          .button-label {
-            font-weight: bold;
-            font-size: 14px;
-          }
+        .button-inner {
+          justify-content: flex-end;
+        }
+
+        ion-icon {
+          font-size: 26px;
         }
       }
     }
@@ -77,7 +79,7 @@
       top: 0;
       right: 0;
       padding: 5px 10px;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
       color: white;
       border-bottom-left-radius: 12px;
