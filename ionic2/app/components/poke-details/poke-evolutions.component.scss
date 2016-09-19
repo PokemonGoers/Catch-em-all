@@ -1,20 +1,33 @@
-.box-cube{
-  min-width: 25vw;
-  min-height: 25vw;
-  max-width: 25vw;
-  max-height: 25vw;
-  width: 25%;
-  height: 25%;
-  border: 3px solid black;
+.evolutions {
+  display: flex;
+  justify-content: center;
 }
 
-.empty-box-cube{
-  min-width: 25vw;
-  min-height: 25vw;
-  max-width: 25vw;
-  max-height: 25vw;
-  width: 25%;
-  height: 25%;
-  border: 3px solid black;
-  background-color: lightgray;
+.evolutions > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.evolutions > div > button {
+  width: 100px;
+  height: 100px;
+  box-sizing: border-box;
+  margin: 5px;
+  position: relative;
+}
+
+.evolution-image {
+  background: 50% 50% no-repeat no-repeat;
+  background-size: contain;
+  position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+  margin: 15px;
+}
+
+.current-pokemon {
+  border: 4px solid gray;
+}
+
+.arrow {
+  font-size: 2em;
 }
