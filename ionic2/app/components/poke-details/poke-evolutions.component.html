@@ -1,40 +1,25 @@
-<ion-grid>
+<div class="evolutions">
 
-  <!-- if this pokemon only has no more evolutions -->
-  <ion-row *ngIf="nextPokemons.length==0" center>
+  <div *ngIf="prevPokemon">
+    <button light (click)="selectPokemon(prevPokemon)">
+      <div class="evolution-image" [style.background-image]="'url(' + prevPokemon.icon + ')'"></div>
+    </button>
+  </div>
 
-    <ion-col *ngIf="prevPokemon">
-      <img (click)="selectPokemon(prevPokemon)" [src]="prevPokemon.icon" class="box-cube">
-    </ion-col>
-    <ion-col *ngIf="!prevPokemon"><img class="empty-box-cube"></ion-col>
+  <div class="arrow" *ngIf="prevPokemon">&rarr;</div>
 
-    <ion-col style="text-align: center;"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+  <div>
+    <button light class="current-pokemon">
+      <div class="evolution-image" [style.background-image]="'url(' + pokemon.icon + ')'"></div>
+    </button>
+  </div>
 
-    <ion-col><img [src]="pokemon.icon" class="box-cube"></ion-col>
+  <div class="arrow" *ngIf="nextPokemons.length > 0">&rarr;</div>
 
-    <ion-col style="text-align: center;"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+  <div *ngIf="nextPokemons.length > 0">
+    <button light *ngFor="let nextPokemon of nextPokemons" (click)="selectPokemon(nextPokemon)">
+      <div class="evolution-image" [style.background-image]="'url(' + nextPokemon.icon + ')'"></div>
+    </button>
+  </div>
 
-    <ion-col><img class="empty-box-cube"></ion-col>
-  </ion-row>
-
-  <!-- if this pokemon has multiple possible evolutions -->
-  <ion-row *ngFor="let nextPokemon of nextPokemons" center>
-
-    <ion-col *ngIf="prevPokemon">
-      <img (click)="selectPokemon(prevPokemon)" [src]="prevPokemon.icon" class="box-cube">
-    </ion-col>
-    <ion-col *ngIf="!prevPokemon"><img class="empty-box-cube"></ion-col>
-
-    <ion-col style="text-align: center;"><ion-icon name="arrow-forward"></ion-icon></ion-col>
-
-    <ion-col><img [src]="pokemon.icon" class="box-cube"></ion-col>
-
-    <ion-col style="text-align: center;"><ion-icon name="arrow-forward"></ion-icon></ion-col>
-
-    <ion-col *ngIf="nextPokemon">
-      <img (click)="selectPokemon(nextPokemon)" [src]="nextPokemon.icon" class="box-cube">
-    </ion-col>
-
-  </ion-row>
-
-</ion-grid>
+</div>
