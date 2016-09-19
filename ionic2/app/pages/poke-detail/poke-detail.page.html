@@ -6,39 +6,63 @@
 
 
 <ion-content>
-
   <div *ngIf="pokemon">
     <div padding>
       <ion-row>
         <ion-col><img [src]="pokemon.icon" class="box align-right"></ion-col>
         <ion-col padding>
-          <h1 class="align-left"><small><small>#{{pokemon.pokemonId}}</small></small><br>{{pokemon.name}}</h1>
-          <small><ion-badge>{{pokemon.classification}}</ion-badge></small>
+          <h1>
+            #{{pokemon.pokemonId}}
+            <br/>
+            {{pokemon.name}}
+          </h1>
+          <span><ion-badge>{{pokemon.classification}}</ion-badge> <ion-badge>{{pokemon.gender.abbreviation}}</ion-badge></span>
         </ion-col>
       </ion-row>
       <hr>
-      <ion-row padding>
+      <ion-card>
+        <ion-card-content>
         {{pokemon.description}}
-      </ion-row>
+        </ion-card-content>
+      </ion-card>
       <hr>
-      <div>
-        <ion-row>
-          <ion-col>Gender</ion-col>
-          <ion-col class="right-align"><ion-badge>{{pokemon.gender.abbreviation}}</ion-badge></ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>Types</ion-col>
-          <ion-col class="right-align"><poke-type [type]="pokemon.types"></poke-type></ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>Weaknesses</ion-col>
-          <ion-col class="right-align"><poke-type [type]="pokemon.weakness"></poke-type></ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>Strengths</ion-col>
-          <ion-col><poke-type [type]="pokemon.resistance"></poke-type></ion-col>
-        </ion-row>
-      </div>
+      <ion-card>
+        <ion-card-content>
+          <!-- Types -->
+          <ion-row>
+            <ion-col text-center>
+              Types
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-center>
+              <poke-type [type]="pokemon.types"></poke-type>
+            </ion-col>
+          </ion-row>
+          <!-- Weaknesses -->
+          <ion-row>
+            <ion-col text-center>
+              Weaknesses
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-center>
+              <poke-type [type]="pokemon.weakness"></poke-type>
+            </ion-col>
+          </ion-row>
+          <!-- Strengths -->
+          <ion-row center>
+            <ion-col text-center>
+              Strengths
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-center>
+              <poke-type [type]="pokemon.resistance"></poke-type>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
     </div>
 
     <poke-stats [pokemon]="pokemon"></poke-stats>

@@ -3,19 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   template: require('./poke-type.component.html'),
   selector: 'poke-type',
-  styles: [`
-    .rounded-edges{
-      border-radius: 5px;
-      border: solid black 1px;
-      text-align: center;
-      color: white;
-      width: 20vw;
-      height: 5vw;
-      text-transform: uppercase;
-      background-color: black;
-      text-shadow: 1px 1px grey;
-    }
-    `]
 })
 
 export class PokeTypeComponent implements OnInit{
@@ -48,7 +35,7 @@ export class PokeTypeComponent implements OnInit{
     }
     this.typeArray = []
     for (let item of this.type){
-      this.typeArray.push({element:item, color:color[item+'']})
+      this.typeArray.push({element:item, color:color[item]})
     }
   }
 }
