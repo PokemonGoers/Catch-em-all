@@ -65,7 +65,7 @@ export class SearchPage {
 
   selectPokemon(pokemon: Pokemon) {
     this.cancelRequests();
-    this.navCtrl.setPages([{page: WikiIndexPage}, {page: PokeDetailPage, params: {pokemonId: pokemon.pokemonId}}]);
+    this.navCtrl.setPages([{page: WikiIndexPage}, {page: PokeDetailPage, params: {pokemon: pokemon}}]);
   }
 
   selectLocation(location: LocationQueryResponse) {

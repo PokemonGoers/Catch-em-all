@@ -6,6 +6,11 @@ export type Attack = {
   damage: number;
   _id: string;
 };
+export type Evolution = {
+  pokemonId: number;
+  name: string;
+  _id: string;
+}
 
 export class Pokemon {
 
@@ -27,17 +32,8 @@ export class Pokemon {
     breedable: boolean;
   };
 
-  previousEvolutions: {
-    pokemonId: number;
-    name: string;
-    _id: string;
-  }[];
-
-  nextEvolutions: {
-    pokemonId: number;
-    name: string;
-    _id: string;
-  }[];
+  previousEvolutions: Evolution[];
+  nextEvolutions: Evolution[];
 
   height: {
     maximum: string;
@@ -50,7 +46,6 @@ export class Pokemon {
   };
 
   specialAttacks: Attack[];
-
   fastAttacks: Attack[];
 
   static fromObject(object: Object): Pokemon {

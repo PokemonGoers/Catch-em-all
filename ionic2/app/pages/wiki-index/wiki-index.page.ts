@@ -18,7 +18,7 @@ export class WikiIndexPage implements OnInit, OnDestroy {
   results: Pokemon[] = [];
 
   constructor(private navCtrl: NavController, private apiservice: ApiService) { }
-  
+
   ngOnInit() {
     this.querySubscription = this.apiservice.getAllPokemon()
         .subscribe(results => this.results = results, error => this.results = []);
@@ -43,7 +43,7 @@ export class WikiIndexPage implements OnInit, OnDestroy {
 
   selectPokemon(pokemon: Pokemon) {
     this.cancelRequests();
-    this.navCtrl.push(PokeDetailPage, {pokemonId: pokemon.pokemonId});
+    this.navCtrl.push(PokeDetailPage, {pokemon: pokemon});
   }
 
   ngOnDestroy() {

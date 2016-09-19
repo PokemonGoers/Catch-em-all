@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Pokemon } from "../../models/pokemon";
+import { Pokemon } from '../../models/pokemon';
 import { ApiService } from '../../services/api.service';
-import { NavController } from "ionic-angular";
-import { PokeDetailPage } from "../../pages/poke-detail/poke-detail.page";
+import { NavController } from 'ionic-angular';
+import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
 
 @Component({
   template: require('./poke-evolutions.component.html'),
@@ -12,7 +12,7 @@ import { PokeDetailPage } from "../../pages/poke-detail/poke-detail.page";
 
 export class PokeEvolutionsComponent {
 
-  @Input("pokemon") pokemon: Pokemon;
+  @Input('pokemon') pokemon: Pokemon;
 
   public prevPokemon: Pokemon;
   public nextPokemons: Pokemon[];
@@ -27,14 +27,14 @@ export class PokeEvolutionsComponent {
         .subscribe(results => this.prevPokemon = results, error => this.prevPokemon = null);
     }
 
-    for (var i=0, len=this.pokemon.nextEvolutions.length; i<len; i++) {
-      this.apiservice.getPokemonById(this.pokemon.nextEvolutions[i].pokemonId)
+    for (let evolution of this.pokemon.nextEvolutions) {
+      this.apiservice.getPokemonById(evolution.pokemonId)
         .subscribe(results => this.nextPokemons.push(results));
     }
 
   }
 
   selectPokemon(pokemon:Pokemon) {
-    this.navCtrl.push(PokeDetailPage, {pokemonId: pokemon.pokemonId});
+    this.navCtrl.push(PokeDetailPage, {pokemon: pokemon});
   }
 }

@@ -19,6 +19,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 
 export class PokeTypeComponent implements OnInit{
+
   @Input('type') type:string[]
   typeArray:Object[]
 

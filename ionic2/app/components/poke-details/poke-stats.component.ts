@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Pokemon } from "../../models/pokemon";
+import { Pokemon } from '../../models/pokemon';
 
 @Component({
   template: require('./poke-stats.component.html'),
@@ -8,7 +8,8 @@ import { Pokemon } from "../../models/pokemon";
 })
 
 export class PokeStatsComponent {
-  @Input("pokemon") pokemon: Pokemon;
+
+  @Input('pokemon') pokemon: Pokemon;
 
   constructor() {}
 
