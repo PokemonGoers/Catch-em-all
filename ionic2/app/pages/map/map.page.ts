@@ -1,8 +1,8 @@
-import { ViewChild, forwardRef } from "@angular/core";
-import { NavParams, Page } from "ionic-angular";
-import { Geolocation } from "ionic-native";
-import { MapComponent, FilterOptions } from "../../components/map/map.component";
-import { NavbarComponent } from "../../components/navbar/navbar.component";
+import { ViewChild, forwardRef } from '@angular/core';
+import { NavParams, Page } from 'ionic-angular';
+import { Geolocation } from 'ionic-native';
+import { MapComponent, FilterOptions } from '../../components/map/map.component';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 @Page({
   template: require('./map.page.html'),

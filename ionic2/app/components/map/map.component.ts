@@ -1,4 +1,4 @@
-import {Component, ViewChild } from "@angular/core";
+import { Component, ViewChild } from '@angular/core';
 
 //let PokeMap = require('pokemap-1');
 let PokeMap = require('pokemap-2');

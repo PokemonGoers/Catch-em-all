@@ -1,6 +1,6 @@
-import {addProviders, beforeEach, it, describe, expect, inject} from "@angular/core/testing";
-import {App, Platform, Config, NavParams} from "ionic-angular";
-import {MapPage} from "./map.page";
+import { addProviders, beforeEach, it, describe, expect, inject } from '@angular/core/testing';
+import { App, Platform, Config, NavParams } from 'ionic-angular';
+import { MapPage } from './map.page';
 
 describe('Map', () => {
   let config: Config;
@@ -12,7 +12,7 @@ describe('Map', () => {
   beforeEach(() => {
     config = new Config();
     platform = new Platform();
-        app = new App(config, platform);
+    app = new App(config, platform);
     navParams = new NavParams();
     mapPage = new MapPage(navParams);
     addProviders([]);
