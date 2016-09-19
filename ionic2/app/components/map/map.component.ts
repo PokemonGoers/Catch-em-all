@@ -1,4 +1,4 @@
-import {Component, ElementRef} from "@angular/core";
+import {Component, ViewChild } from "@angular/core";
 
 //let PokeMap = require('pokemap-1');
 let PokeMap = require('pokemap-2');
@@ -15,17 +15,18 @@ window.L = require('leaflet');
 
 @Component({
   selector: 'map',
-  template: '',
+  template: '<div #mapcontainer style="width: 100%; height: 100%;"></div>',
   styles: [require('./map.component.scss')]
 })
 export class MapComponent {
 
+  @ViewChild('mapcontainer') mapcontainer;
   private map;
 
-  constructor(private element: ElementRef) {}
+  constructor() {}
 
   initialize(options) {
-    this.map = new PokeMap(this.element.nativeElement, options);
+    this.map = new PokeMap(this.mapcontainer.nativeElement, options);
 
     this.onClick(console.debug.bind(null, 'map:onClick'));
     this.onMove(console.debug.bind(null, 'map:onMove'));
