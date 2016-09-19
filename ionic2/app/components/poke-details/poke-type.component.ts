@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 
 @Component({
-  templateUrl: 'components/poke-details/poke-type.component.html',
+  template: require('./poke-type.component.html'),
   selector: 'poke-type'
 })
 
