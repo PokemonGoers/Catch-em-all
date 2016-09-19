@@ -34,6 +34,8 @@ module.exports = function(config) {
       module: {
         loaders: [
           {test: /\.ts$/, loader: 'awesome-typescript-loader'},
+          {test: /\/pokemap-(1|2)\/.*\.js$/, loader: 'babel?presets[]=es2015'}, // Hack to transpile ES6 until modules are packaged
+          {test: /\.js$/, exclude: /node_modules/, loader: 'babel?presets[]=es2015'},
           {test: /\.html$/, loader: 'raw'},
           {test: /\.(component|page)\.scss$/, loaders: ['raw', 'sass']},
           {test: /\.woff(2)?(\?v=.+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
