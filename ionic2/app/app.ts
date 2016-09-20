@@ -3,7 +3,7 @@ import { ionicBootstrap, Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import 'rxjs/add/operator/map';
 
-import { MapPage } from "./pages/map/map.page";
+import { MapPage } from './pages/map/map.page';
 import { NavSidebarComponent } from './components/nav-sidebar/nav-sidebar.component';
 
 // Provider
@@ -26,6 +26,7 @@ if (BUILD_ENV === 'release') {
     LocationService
   ]
 })
+
 export class App {
 
   rootPage: any = MapPage;

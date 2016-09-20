@@ -8,6 +8,6 @@ import { Pokemon } from '../../models/pokemon';
 
 export class PokeAttacksComponent {
 
-  @Input('pokemon') pokemon: Pokemon;
+  @Input() pokemon: Pokemon;
 
 }

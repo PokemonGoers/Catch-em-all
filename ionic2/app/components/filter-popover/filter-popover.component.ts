@@ -19,7 +19,9 @@ import { Events, ViewController } from 'ionic-angular';
     </ion-item>
 </ion-list>`
 })
+
 export class FilterPopoverComponent {
+
   time: {lower: number, upper: number}
 
   constructor(private viewCtrl: ViewController, public events: Events) {
@@ -31,12 +33,13 @@ export class FilterPopoverComponent {
   }
 
   onChange(): void {
-    this.events.publish('filter:changed:time', this.time)
+    this.events.publish('filter:changed:time', this.time);
   }
 
   setTime(lower: number, upper: number) {
-    this.time.lower = lower
-    this.time.upper = upper
-    this.onChange()
+    this.time.lower = lower;
+    this.time.upper = upper;
+    this.onChange();
   }
+
 }

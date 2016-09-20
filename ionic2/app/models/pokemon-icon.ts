@@ -11,4 +11,5 @@ export class PokemonIcon {
     let instance = Object.create(PokemonIcon.prototype);
     return Object.assign(instance, object);
   }
+
 }

@@ -1,16 +1,17 @@
-import {forwardRef, OnInit, OnDestroy} from "@angular/core";
-import {NavController, Page} from "ionic-angular";
-import {Subscription} from "rxjs";
-import {PokeDetailPage} from "../poke-detail/poke-detail.page";
-import {Pokemon} from "../../models/pokemon";
-import {NavbarComponent} from "../../components/navbar/navbar.component";
-import {ApiService} from "../../services/api.service";
+import { forwardRef, OnInit, OnDestroy } from '@angular/core';
+import { NavController, Page } from 'ionic-angular';
+import { Subscription } from 'rxjs';
+import { PokeDetailPage } from '../poke-detail/poke-detail.page';
+import { Pokemon } from '../../models/pokemon';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { ApiService } from '../../services/api.service';
 
 @Page({
   template: require('./wiki-index.page.html'),
   styles: [require('./wiki-index.page.scss')],
   directives: [forwardRef(() => NavbarComponent)]
 })
+
 export class WikiIndexPage implements OnInit, OnDestroy {
 
   queryString: string;

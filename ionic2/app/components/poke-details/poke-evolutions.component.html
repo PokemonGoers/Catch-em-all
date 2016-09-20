@@ -1,12 +1,12 @@
 <div class="evolutions">
 
-  <div *ngIf="prevPokemon">
-    <button light (click)="selectPokemon(prevPokemon)">
+  <div *ngIf="prevPokemons.length > 0">
+    <button light *ngFor="let prevPokemon of prevPokemons" (click)="selectPokemon(prevPokemon)">
       <div class="evolution-image" [style.background-image]="'url(' + prevPokemon.icon + ')'"></div>
     </button>
   </div>
 
-  <div class="arrow" *ngIf="prevPokemon">&rarr;</div>
+  <div class="arrow" *ngIf="prevPokemons.length > 0">&rarr;</div>
 
   <div>
     <button light class="current-pokemon">

@@ -56,4 +56,5 @@ export class Pokemon {
   get icon():string {
     return '/api/pokemon/id/' + this.pokemonId + '/icon';
   }
+
 }

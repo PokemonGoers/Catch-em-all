@@ -5,15 +5,15 @@ import { Component, Input, OnInit } from '@angular/core';
   selector: 'poke-type',
 })
 
-export class PokeTypeComponent implements OnInit{
+export class PokeTypeComponent implements OnInit {
 
-  @Input('type') type:string[]
-  typeArray:Object[]
+  @Input() type: string[]
+  typeArray: Object[]
 
   constructor() {
   }
 
-  ngOnInit(){
+  ngOnInit() {
     const color={
       'fire':'#ff6600',
       'ice':'#cce6ff',
@@ -39,4 +39,5 @@ export class PokeTypeComponent implements OnInit{
       this.typeArray.push({element:item, color:color[item]})
     }
   }
+
 }

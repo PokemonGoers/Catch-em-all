@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 import { Pokemon } from '../models/pokemon';
 import { PokemonIcon } from '../models/pokemon-icon';
 import { Sighting } from '../models/sighting';
-import { PokemonGender } from "../models/pokemon";
-import { PokemonAttackCategory } from "../models/pokemon";
-import { SightingSource } from "../models/sighting";
+import { PokemonGender } from '../models/pokemon';
+import { PokemonAttackCategory } from '../models/pokemon';
+import { SightingSource } from '../models/sighting';
 
 export { Pokemon, PokemonIcon, Sighting}
 

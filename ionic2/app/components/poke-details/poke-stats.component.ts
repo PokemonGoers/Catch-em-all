@@ -9,12 +9,13 @@ import { Pokemon } from '../../models/pokemon';
 
 export class PokeStatsComponent implements OnInit {
 
-  @Input('pokemon') pokemon: Pokemon;
+  @Input() pokemon: Pokemon;
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit(){
-    this.pokemon.fleeRate*=100;
+  ngOnInit() {
+    this.pokemon.fleeRate *= 100;
   }
 
 }

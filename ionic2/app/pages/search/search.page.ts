@@ -1,15 +1,16 @@
-import {Page, NavController} from "ionic-angular";
-import {ApiService} from "../../services/api.service";
-import {LocationService, LocationQueryResponse} from "../../services/location.service";
-import {Pokemon} from "../../models/pokemon";
-import {Subscription} from "rxjs";
-import {PokeDetailPage} from "../poke-detail/poke-detail.page";
-import {WikiIndexPage} from "../wiki-index/wiki-index.page";
-import {MapPage} from "../map/map.page";
+import { Page, NavController } from 'ionic-angular';
+import { ApiService } from '../../services/api.service';
+import { LocationService, LocationQueryResponse } from '../../services/location.service';
+import { Pokemon } from '../../models/pokemon';
+import { Subscription } from 'rxjs';
+import { PokeDetailPage } from '../poke-detail/poke-detail.page';
+import { WikiIndexPage } from '../wiki-index/wiki-index.page';
+import { MapPage } from '../map/map.page';
 
 @Page({
   template: require('./search.page.html')
 })
+
 export class SearchPage {
 
   search: string;
