@@ -17,7 +17,7 @@ export class NavSidebarComponent {
 
   pages = [
     {name: 'PokeMap', link: MapPage},
-    {name: 'Wiki', link: WikiIndexPage},
+    {name: 'PokeDex', link: WikiIndexPage},
     {name: 'About', link: AboutPage},
     {name: 'Imprint & Disclaimer', link: ImprintPage}
   ];
