@@ -6,6 +6,7 @@ import { SearchPage } from '../../pages/search/search.page';
   template: require('./navbar.component.html'),
   selector: 'navbar'
 })
+
 export class NavbarComponent {
 
   constructor(private navCtr: NavController) {}

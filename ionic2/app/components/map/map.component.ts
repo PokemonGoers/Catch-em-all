@@ -12,6 +12,7 @@ window.L = require('leaflet');
   template: '<div #mapcontainer style="width: 100%; height: 100%;"></div>',
   styles: [require('./map.component.scss')]
 })
+
 export class MapComponent {
 
   @ViewChild('mapcontainer') mapcontainer;

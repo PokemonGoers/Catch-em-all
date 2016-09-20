@@ -1,7 +1,7 @@
-import {Component} from "@angular/core";
-import {FilterPopoverTabTime} from "../filter-popover-tab-time/filter-popover-tab-time";
-import {FilterPopoverTabPokemon} from "../filter-popover-tab-pokemon/filter-popover-tab-pokemon";
-import {Events, ViewController} from "ionic-angular";
+import { Component } from '@angular/core';
+import { FilterPopoverTabTime } from '../filter-popover-tab-time/filter-popover-tab-time';
+import { FilterPopoverTabPokemon } from '../filter-popover-tab-pokemon/filter-popover-tab-pokemon';
+import { Events, ViewController } from 'ionic-angular';
 
 @Component({
   template: `
@@ -20,7 +20,9 @@ import {Events, ViewController} from "ionic-angular";
     `,
   directives: [FilterPopoverTabTime, FilterPopoverTabPokemon]
 })
+
 export class FilterPopoverComponent {
+
   currentTab = 'time';
   filter: Object;
 
@@ -34,4 +36,5 @@ export class FilterPopoverComponent {
   onChange(): void {
     this.events.publish('filter:changed', this.filter)
   }
+
 }
