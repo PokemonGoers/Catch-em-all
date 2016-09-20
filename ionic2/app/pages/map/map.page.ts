@@ -28,9 +28,9 @@ export class MapPage {
     predictionsUntil: 1800
   };
 
-  constructor(private popoverCtrl: PopoverController,
-              private navParams: NavParams,
-              private config:ConfigService) {
+  constructor(private navParams: NavParams,
+              private config:ConfigService,
+              private popoverCtrl: PopoverController) {
     this.positionLoaded = this.loadPosition();
   }
 
