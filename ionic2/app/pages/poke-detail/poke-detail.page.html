@@ -1,7 +1,75 @@
 <ion-header>
-    <navbar title="Wiki"></navbar>
+    <ion-navbar>
+        <ion-title>Search</ion-title>
+    </ion-navbar>
 </ion-header>
 
-<ion-content padding>
 
+<ion-content>
+  <div *ngIf="pokemon">
+    <div padding>
+      <ion-row>
+        <ion-col><img [src]="pokemon.icon" class="box align-right"></ion-col>
+        <ion-col padding>
+          <h1>
+            #{{pokemon.pokemonId}}
+            <br/>
+            {{pokemon.name}}
+          </h1>
+          <span><ion-badge>{{pokemon.classification}}</ion-badge> <ion-badge>{{pokemon.gender.abbreviation}}</ion-badge></span>
+        </ion-col>
+      </ion-row>
+      <hr>
+      <ion-card>
+        <ion-card-content>
+        {{pokemon.description}}
+        </ion-card-content>
+      </ion-card>
+      <hr>
+      <ion-card>
+        <ion-card-content>
+          <!-- Types -->
+          <ion-row>
+            <ion-col text-center>
+              Types
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-center>
+              <poke-type [type]="pokemon.types"></poke-type>
+            </ion-col>
+          </ion-row>
+          <!-- Weaknesses -->
+          <ion-row>
+            <ion-col text-center>
+              Weaknesses
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-center>
+              <poke-type [type]="pokemon.weakness"></poke-type>
+            </ion-col>
+          </ion-row>
+          <!-- Strengths -->
+          <ion-row center>
+            <ion-col text-center>
+              Strengths
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-center>
+              <poke-type [type]="pokemon.resistance"></poke-type>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <poke-stats [pokemon]="pokemon"></poke-stats>
+
+    <poke-evolutions [pokemon]="pokemon"></poke-evolutions>
+
+    <poke-attacks [pokemon]="pokemon"></poke-attacks>
+
+  </div>
 </ion-content>

@@ -6,6 +6,17 @@ const config: ConfigService = configServiceInjector.get(ConfigService);
 
 export type PokemonGender = 'm' | 'f' | 'g' | 'h';
 export type PokemonAttackCategory = 'fast' | 'special';
+export type Attack = {
+  type: string;
+  name: string;
+  damage: number;
+  _id: string;
+};
+export type Evolution = {
+  pokemonId: number;
+  name: string;
+  _id: string;
+}
 
 export class Pokemon {
 
@@ -16,9 +27,9 @@ export class Pokemon {
   maxHP: number;
   maxCP: number;
   fleeRate: number;
-  weakness: [string];
-  resistance: [string];
-  types: [string];
+  weakness: string[];
+  resistance: string[];
+  types: string[];
 
   gender: {
     abbreviation: PokemonGender;
@@ -27,17 +38,8 @@ export class Pokemon {
     breedable: boolean;
   };
 
-  previousEvolutions: [{
-    pokemonId: number;
-    name: string;
-    _id: string;
-  }];
-
-  nextEvolutions: [{
-    pokemonId: number;
-    name: string;
-    _id: string;
-  }];
+  previousEvolutions: Evolution[];
+  nextEvolutions: Evolution[];
 
   height: {
     maximum: string;
@@ -49,19 +51,8 @@ export class Pokemon {
     minimum: string;
   };
 
-  specialAttacks: [{
-    type: string;
-    name: string;
-    damage: number;
-    _id: string;
-  }];
-
-  fastAttacks: [{
-    type: string;
-    name: string;
-    damage: number;
-    _id: string;
-  }];
+  specialAttacks: Attack[];
+  fastAttacks: Attack[];
 
   static fromObject(object: Object): Pokemon {
     let instance = Object.create(Pokemon.prototype);
@@ -71,4 +62,5 @@ export class Pokemon {
   get icon(): string {
     return config.apiEndpoint + '/api/pokemon/id/' + this.pokemonId + '/icon';
   }
+
 }

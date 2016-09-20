@@ -4,11 +4,12 @@ export class PokemonIcon {
 
   icon: {
     data: string;
-    contenttype: string;
+    contentType: string;
   };
 
   static fromObject(object: Object): PokemonIcon {
     let instance = Object.create(PokemonIcon.prototype);
     return Object.assign(instance, object);
   }
+
 }

@@ -9,8 +9,10 @@ import { PEOPLE } from './about-people';
   styles: [require('./about.page.scss')],
   directives: [forwardRef(() => NavbarComponent)]
 })
+
 export class AboutPage {
-  people: Object
+
+  people: Object;
 
   constructor() {
       this.people = PEOPLE;

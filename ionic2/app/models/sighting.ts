@@ -15,4 +15,5 @@ export class Sighting {
     let instance = Object.create(Sighting.prototype);
     return Object.assign(instance, object);
   }
+
 }

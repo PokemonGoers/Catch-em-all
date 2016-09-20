@@ -3,7 +3,7 @@ import { ionicBootstrap, Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import 'rxjs/add/operator/map';
 
-import { MapPage } from "./pages/map/map.page";
+import { MapPage } from './pages/map/map.page';
 import { NavSidebarComponent } from './components/nav-sidebar/nav-sidebar.component';
 import globals from './globals';
 
@@ -30,6 +30,7 @@ if (globals.BUILD_ENV === 'release') {
     ConfigService
   ]
 })
+
 export class App {
 
   rootPage: any = MapPage;

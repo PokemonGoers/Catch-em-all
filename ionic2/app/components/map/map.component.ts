@@ -14,6 +14,7 @@ PokeMap.prototype.updateTimeRange = function(...args) {console.debug('map:update
   template: '',
   styles: [require('./map.component.scss')]
 })
+
 export class MapComponent {
 
   private map;

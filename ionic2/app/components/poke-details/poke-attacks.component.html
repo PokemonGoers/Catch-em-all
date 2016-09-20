@@ -1,0 +1,37 @@
+<ion-grid>
+
+  <ion-row *ngFor="let fastAttack of pokemon.fastAttacks">
+    <ion-col>
+      <span class="vertical">fast</span>
+    </ion-col>
+
+    <ion-col>
+      {{fastAttack.name}}
+      <br>
+      {{fastAttack.type}}
+    </ion-col>
+
+    <ion-col>
+      {{fastAttack.damage}}
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngFor="let specialAttack of pokemon.specialAttacks">
+    <ion-col>
+      <span class="vertical">special</span>
+    </ion-col>
+
+    <ion-col>
+      {{specialAttack.name}}
+      <br>
+      {{specialAttack.type}}
+    </ion-col>
+
+    <ion-col>
+      {{specialAttack.damage}}
+    </ion-col>
+  </ion-row>
+
+</ion-grid>
+
+
