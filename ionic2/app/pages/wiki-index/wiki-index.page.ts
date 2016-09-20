@@ -49,4 +49,13 @@ export class WikiIndexPage implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.cancelRequests();
   }
+
+  onSearch() {
+    // Triggered when the confirm button (e.g. enter) is pressed.
+    // If there is exactly one search result we will select
+    if (this.results.length === 1) {
+      this.selectPokemon(this.results[0]);
+    }
+  }
+
 }
