@@ -3,10 +3,20 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 
-var BUILD_ENV = process.env['BUILD_ENV'] || 'develop';
-var devEnv = BUILD_ENV === 'develop';
-
 var outputDir = path.join(__dirname, 'www');
+
+var BUILD_ENV = process.env['BUILD_ENV'] || 'develop';
+var BUILD_TARGET = process.env['BUILD_TARGET'] || 'web';
+var API_ENDPOINT = process.env['API_ENDPOINT'] || 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014';
+
+let buildConfig = {
+  BUILD_ENV: JSON.stringify(BUILD_ENV),
+  BUILD_TIME: JSON.stringify(new Date()),
+  BUILD_TARGET: JSON.stringify(BUILD_TARGET),
+  API_ENDPOINT: JSON.stringify(API_ENDPOINT)
+};
+
+var devEnv = BUILD_ENV === 'develop';
 
 module.exports = {
   colors: true,
@@ -53,7 +63,7 @@ module.exports = {
     loaders: [
       {test: /\.ts$/, loader: 'awesome-typescript-loader'},
       {test: /\.html$/, loader: 'raw'},
-      {test: /\/theme\/.*\.scss$/, loader:ExtractTextPlugin.extract(['css', 'sass'])},
+      {test: /(\/|\\)theme(\/|\\).*\.scss$/, loader:ExtractTextPlugin.extract(['css', 'sass'])},
       {test: /\.(component|page)\.scss$/, loaders: ['raw', 'sass']},
       {test: /\.woff(2)?(\?v=.+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
       {test: /\.(ttf|eot|svg)(\?v=.+)?$/, loader: 'file'}
@@ -66,10 +76,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      BUILD_ENV: JSON.stringify(BUILD_ENV),
-      BUILD_TIME: JSON.stringify(new Date())
-    }),
+    new webpack.DefinePlugin(buildConfig),
     new HtmlWebpackPlugin({
       template: './app/index.html',
       excludeChunks: ['style_ios', 'style_wp', 'style_md']

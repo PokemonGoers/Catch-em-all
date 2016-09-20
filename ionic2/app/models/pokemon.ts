@@ -1,3 +1,9 @@
+import { ReflectiveInjector } from '@angular/core';
+import { ConfigService } from '../services/config.service';
+
+const configServiceInjector = ReflectiveInjector.resolveAndCreate([ConfigService]);
+const config: ConfigService = configServiceInjector.get(ConfigService);
+
 export type PokemonGender = 'm' | 'f' | 'g' | 'h';
 export type PokemonAttackCategory = 'fast' | 'special';
 export type Attack = {
@@ -53,8 +59,8 @@ export class Pokemon {
     return Object.assign(instance, object);
   }
 
-  get icon():string {
-    return '/api/pokemon/id/' + this.pokemonId + '/icon';
+  get icon(): string {
+    return config.apiEndpoint + '/api/pokemon/id/' + this.pokemonId + '/icon';
   }
 
 }
