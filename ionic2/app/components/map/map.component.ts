@@ -1,51 +1,58 @@
-import { Component, Input, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
-//let PokeMap = require('pokemap-1');
-//let PokeMap = require('pokemap-2');
+let PokeMap = require('pokemap-2');
 
-// Dummy PokeMap class until PokeMaps are implemented
-let PokeMap: any = function(...args) {console.debug('map:constructor', ...args)};
-PokeMap.prototype.on = function(...args) {console.debug('map:on', ...args)};
-PokeMap.prototype.goTo = function(...args) {console.debug('map:goTo', ...args)};
-PokeMap.prototype.updateTimeRange = function(...args) {console.debug('map:updateTimeRange', ...args)};
+// Include Leaflet style sheets and set Leaflet on global window object
+require('!style!css!sass!leaflet/dist/leaflet.css');
+declare var window: any;
+window.L = require('leaflet');
 
 @Component({
   selector: 'map',
-  template: '',
+  template: '<div #mapcontainer style="width: 100%; height: 100%;"></div>',
   styles: [require('./map.component.scss')]
 })
 
 export class MapComponent {
 
+  @ViewChild('mapcontainer') mapcontainer;
   private map;
 
-  constructor(private element: ElementRef) {}
+  constructor() {}
 
   initialize(options) {
-    this.map = new PokeMap(this.element.nativeElement, options);
+    this.map = new PokeMap(this.mapcontainer.nativeElement, options);
 
-    this.map.on('click', this.onClick.bind(this));
-    this.map.on('move', this.onMove.bind(this));
+    this.onClick(console.debug.bind(null, 'map:onClick'));
+    this.onMove(console.debug.bind(null, 'map:onMove'));
   }
 
   get initialized(): boolean {
     return this.map !== undefined;
   }
 
-  goTo(coordinates: {latitude:number, longitude:number}) {
-    this.map.goTo(coordinates);
+  goTo(position) {
+    console.debug('map:goTo', position);
+    this.map.goTo(position);
   }
 
-  updateTimeRange(timeRange: {from: number, to:number}) {
-    this.map.updateTimeRange(timeRange);
+  filter(filterOptions: FilterOptions) {
+    console.debug('map:filter', filterOptions);
+    this.map.filter(filterOptions);
   }
 
-  onClick(pokePOI) {
-
+  onClick(callback) {
+    this.map.on('click', callback);
   }
 
-  onMove({coordinates: {latitude, longitude}, zoomLevel}) {
-
+  onMove(callback) {
+    this.map.on('move', callback);
   }
 
+}
+
+export type FilterOptions = {
+  pokemonIds: number[];
+  sightingsSince: number; // Time in seconds
+  predictionsUntil: number; // Time in seconds
 }

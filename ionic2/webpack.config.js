@@ -55,6 +55,7 @@ module.exports = {
   cache: devEnv,
   resolve: {
     extensions: ['', '.js', '.ts'],
+    modulesDirectories: ['node_modules'],
     root: [
       path.resolve('./app/assets')
     ]
@@ -62,17 +63,19 @@ module.exports = {
   module: {
     loaders: [
       {test: /\.ts$/, loader: 'awesome-typescript-loader'},
+      {test: /\.js$/, exclude: /node_modules/, loader: 'babel?presets[]=es2015'},
       {test: /\.html$/, loader: 'raw'},
       {test: /(\/|\\)theme(\/|\\).*\.scss$/, loader:ExtractTextPlugin.extract(['css', 'sass'])},
       {test: /\.(component|page)\.scss$/, loaders: ['raw', 'sass']},
       {test: /\.woff(2)?(\?v=.+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
-      {test: /\.(ttf|eot|svg)(\?v=.+)?$/, loader: 'file'}
+      {test: /\.(ttf|eot|svg|png)(\?v=.+)?$/, loader: 'file'}
     ]
   },
   sassLoader: {
     includePaths: [
       './node_modules/ionic-angular/',
-      './node_modules/ionicons/dist/scss/'
+      './node_modules/ionicons/dist/scss/',
+      './node_modules/leaflet/dist/'
     ]
   },
   plugins: [
