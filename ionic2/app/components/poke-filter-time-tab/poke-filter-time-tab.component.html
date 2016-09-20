@@ -1,0 +1,56 @@
+
+<div class="group">
+  <div class="section-header">
+    <ion-toggle [ngModel]="areSightingsShown"
+                (ionChange)="onSightingsToggleChange($event)"></ion-toggle>
+    <div class="title">Pokemon Sightings</div>
+  </div>
+
+  <div class="range-container">
+    <ion-range #sightingsRange
+               min="0" max="9" step="1"
+               snaps="true" [(ngModel)]="sightingsRangeValue"
+               (ionChange)="onSightingsRangeChange($event)"></ion-range>
+    <div class="range-labels">
+      <span>1m</span>
+      <span>2w</span>
+      <span>1w</span>
+      <span>2d</span>
+      <span>1d</span>
+      <span>10h</span>
+      <span>5h</span>
+      <span>2h</span>
+      <span>1h</span>
+      <span>Now</span>
+    </div>
+  </div>
+  <div class="note">
+    Pokemon sightings reported by Pokemon Go users through social media. Use the range slider to specify for how far into the past pokemon should be visible.
+  </div>
+</div>
+<div class="group">
+  <div class="section-header">
+    <ion-toggle [(ngModel)]="arePredictionsShown"
+                (ionChange)="onPredictionsToggleChange($event)"></ion-toggle>
+    <div class="title">Pokemon Predictions</div>
+  </div>
+  <ion-range #predictionsRange
+               min="0" max="9" step="1"
+               snaps="true" [(ngModel)]="predictionsRangeValue"
+               (ionChange)="onPredictionsRangeChange($event)"></ion-range>
+  <div class="range-labels">
+    <span>Now</span>
+    <span>1h</span>
+    <span>2h</span>
+    <span>5h</span>
+    <span>10h</span>
+    <span>1d</span>
+    <span>2d</span>
+    <span>1w</span>
+    <span>2w</span>
+    <span>1m</span>
+    </div>
+  <div class="note">
+    Pokemon predictions calculated by our sophisticated machine learning algorithm. Use the range slider to specify for how far into the future pokemon should be visible.
+  </div>
+</div>

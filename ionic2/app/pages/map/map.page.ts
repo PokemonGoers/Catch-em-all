@@ -1,7 +1,8 @@
 import { ViewChild, forwardRef } from '@angular/core';
-import { NavParams, Page } from 'ionic-angular';
+import { NavParams, Page, PopoverController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
+import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
 import { MapComponent, FilterOptions } from '../../components/map/map.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ConfigService } from '../../services/config.service';
@@ -27,7 +28,9 @@ export class MapPage {
     predictionsUntil: 1800
   };
 
-  constructor(private navParams: NavParams, private config:ConfigService) {
+  constructor(private popoverCtrl: PopoverController,
+              private navParams: NavParams,
+              private config:ConfigService) {
     this.positionLoaded = this.loadPosition();
   }
 
@@ -61,5 +64,12 @@ export class MapPage {
     let tileLayer = 'http://{s}.tile.opencyclemap.org/transport/{z}/{x}/{y}.png';
 
     this.map.initialize({filter, apiEndpoint, tileLayer});
+  }
+
+  showFilterPopover($event?): void {
+    let popover = this.popoverCtrl.create(FilterPopoverComponent, this.filter);
+    popover.present({
+      ev: $event
+    });
   }
 }
