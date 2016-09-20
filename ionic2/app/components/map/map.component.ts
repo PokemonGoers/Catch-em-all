@@ -1,17 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 
-//let PokeMap = require('pokemap-1');
 let PokeMap = require('pokemap-2');
 
+// Include Leaflet style sheets and set Leaflet on global window object
 require('!style!css!sass!leaflet/dist/leaflet.css');
 declare var window: any;
 window.L = require('leaflet');
-
-// Dummy PokeMap class until PokeMaps are implemented
-//let PokeMap: any = function(...args) {console.debug('map:constructor', ...args)};
-//PokeMap.prototype.on = function(...args) {console.debug('map:on', ...args)};
-//PokeMap.prototype.goTo = function(...args) {console.debug('map:goTo', ...args)};
-//PokeMap.prototype.filter = function(...args) {console.debug('map:filter', ...args)};
 
 @Component({
   selector: 'map',
