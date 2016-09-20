@@ -63,7 +63,7 @@ module.exports = {
     loaders: [
       {test: /\.ts$/, loader: 'awesome-typescript-loader'},
       {test: /\.html$/, loader: 'raw'},
-      {test: /\/theme\/.*\.scss$/, loader:ExtractTextPlugin.extract(['css', 'sass'])},
+      {test: /(\/|\\)theme(\/|\\).*\.scss$/, loader:ExtractTextPlugin.extract(['css', 'sass'])},
       {test: /\.(component|page)\.scss$/, loaders: ['raw', 'sass']},
       {test: /\.woff(2)?(\?v=.+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
       {test: /\.(ttf|eot|svg)(\?v=.+)?$/, loader: 'file'}
