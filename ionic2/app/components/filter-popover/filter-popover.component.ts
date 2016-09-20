@@ -1,31 +1,18 @@
-import {Component} from "@angular/core";
-import {FilterPopoverTabTime} from "../filter-popover-tab-time/filter-popover-tab-time";
-import {FilterPopoverTabPokemon} from "../filter-popover-tab-pokemon/filter-popover-tab-pokemon";
-import {Events, ViewController} from "ionic-angular";
+import { Component } from "@angular/core";
+import { PokeFilterTimeTabComponent } from "../poke-filter-time-tab/poke-filter-time-tab.component";
+import { FilterPopoverTabPokemon } from "../filter-popover-tab-pokemon/filter-popover-tab-pokemon";
+import { Events, ViewController } from "ionic-angular";
 
 @Component({
-  template: `
-    <ion-content>
-        <div [ngSwitch]="currentTab">
-            <ion-toolbar style="padding: 0;">
-                <ion-segment [(ngModel)]="currentTab" primary>
-                    <ion-segment-button value="time">Time</ion-segment-button>
-                    <ion-segment-button value="pokemon">Pokemon</ion-segment-button>
-                </ion-segment>
-            </ion-toolbar>
-          <time-tab *ngSwitchCase="'time'"></time-tab>
-          <poke-tab *ngSwitchCase="'pokemon'"></poke-tab>
-        </div>
-      </ion-content>
-    `,
-  directives: [FilterPopoverTabTime, FilterPopoverTabPokemon]
+  template: require('./filter-popover.component.html'),
+  directives: [PokeFilterTimeTabComponent, FilterPopoverTabPokemon]
 })
 export class FilterPopoverComponent {
   currentTab = 'time';
   filter: Object;
 
-  constructor(private viewController: ViewController, private events: Events) {
-  }
+  constructor(private viewController: ViewController,
+              private events: Events) {}
 
   close(): void {
     this.viewController.dismiss();
