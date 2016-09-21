@@ -6,6 +6,7 @@
   display: inline-block;
   bottom: 0;
   box-shadow: 0px -2px 3px 0 rgba(0,0,0,0.5);
+  z-index: 99999;
 
   .poke-poi-card-content {
     padding-top: 12px;
@@ -15,59 +16,54 @@
     }
 
     .poke-id {
-      font-size: 30px;
+      font-size: 22px;
       font-weight: bold;
       color: #404040;
+      padding: 4px;
+      align-self:center;
     }
 
     .poke-name {
-      font-size: 35px;
+      font-size: 28px;
     }
 
     .poke-description {
-      display: block;
-      font-size: 14px;
+      font-size: 12px;
       color: #525252;
       padding: 2px 0;
     }
 
     .poke-column {
       flex-grow: 0;
-      padding: 4px 30px 4px 14px;
+      flex-basis: 120px;
 
       ion-row {
         justify-content: center;
       }
 
       poke-poi-bubble {
-        width: 130px;
-        height: 130px;
+        width: 100px;
+        height: 100px;
       }
 
       poke-type {
         margin: 16px 0 6px 0;
+
+        ion-badge {
+          font-size: 10px;
+          padding: 2px 5px;
+        }
       }
     }
 
     .action-button-bar {
-      display: flex;
-      flex-grow: 0;
-      flex-direction: column;
-      justify-content: flex-start;
-      margin-top: 15px;
-
-      ion-row {
-        justify-content: flex-end;
-      }
+      justify-content: flex-end;
+      margin-top: 8px;
 
       button {
         color: #123784;
         padding: 4px 10px;
-        margin: 2px 0;
-
-        .button-inner {
-          justify-content: flex-end;
-        }
+        margin: 0px 2px;
 
         ion-icon {
           font-size: 26px;
@@ -79,7 +75,7 @@
       position: absolute;
       top:0;
       right: 0;
-      height: 6px;
+      height: 5px;
       background: yellow;
       display: inline-block;
       width: 110%;
@@ -91,12 +87,12 @@
       display: inline-block;
       top: 0;
       right: 0;
-      padding: 5px 10px;
-      font-size: 16px;
+      padding: 3px 4px 2px 6px;
+      font-size: 12px;
       font-weight: bold;
       color: white;
-      border-bottom-left-radius: 12px;
-      box-shadow: 6px 3px 6px -3px rgba(0, 0, 0, 0.75);
+      border-bottom-left-radius: 10px;
+      box-shadow: 2px 3px 3px -3px rgba(0, 0, 0, 0.6);
     }
 
     &.poi-type-sighting {

@@ -12,20 +12,21 @@
             </ion-col>
 
             <ion-col style="flex-grow: 1;">
-                <span class="poke-id">#{{ pokePOI.pokemon.pokemonId }}</span>
-                <span class="poke-name">{{ pokePOI.pokemon.name }}</span>
-                <span class="poke-description">{{ pokePOI.pokemon.description }}</span>
-            </ion-col>
-
-            <ion-col class="action-button-bar">
                 <ion-row>
+                    <span class="poke-name">{{ pokePOI.pokemon.name }}</span>
+                    <span class="poke-id">#{{ pokePOI.pokemon.pokemonId }}</span>
+                </ion-row>
+                <ion-row class="poke-description">
+                    {{ pokePOI.pokemon.description }}
+                </ion-row>
+
+
+                <ion-row class="action-button-bar">
                     <button clear (click)="launchDirections()">
                         <ion-icon name="navigate"></ion-icon>
                         Directions
                     </button>
-                </ion-row>
 
-                <ion-row>
                     <button clear (click)="launchPokeDex()">
                         <ion-icon name="book"></ion-icon>
                         PokeDex
