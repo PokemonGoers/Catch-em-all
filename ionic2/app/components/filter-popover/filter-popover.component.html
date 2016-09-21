@@ -5,6 +5,6 @@
   </ion-segment>
 </ion-toolbar>
 <div [ngSwitch]="currentTab">
-  <poke-filter-time-tab *ngSwitchCase="'time'"></poke-filter-time-tab>
+  <poke-filter-time-tab *ngSwitchCase="'time'" [filter]="filter" (onFilterChange)="onFilterChanged(filter)"></poke-filter-time-tab>
   <poke-tab *ngSwitchCase="'pokemon'"></poke-tab>
 </div>
