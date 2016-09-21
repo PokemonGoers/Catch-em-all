@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 import { PokeFilterTimeTabComponent } from '../poke-filter-time-tab/poke-filter-time-tab.component';
-import { FilterPopoverTabPokemon } from '../filter-popover-tab-pokemon/filter-popover-tab-pokemon';
+import { PokeFilterPokemonTabComponent } from '../poke-filter-pokemon-tab/poke-filter-pokemon-tab.component';
 import { Events, ViewController } from 'ionic-angular';
 import { Pokemon } from '../../models/pokemon';
 import { Filter } from '../../models/filter';
 
 @Component({
   template: require('./filter-popover.component.html'),
-  directives: [PokeFilterTimeTabComponent, FilterPopoverTabPokemon]
+  directives: [PokeFilterTimeTabComponent, PokeFilterPokemonTabComponent]
 })
 
 export class FilterPopoverComponent {
