@@ -3,18 +3,21 @@ import { ionicBootstrap, Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import 'rxjs/add/operator/map';
 
-import { MapPage } from "./pages/map/map.page";
+import { MapPage } from './pages/map/map.page';
 import { NavSidebarComponent } from './components/nav-sidebar/nav-sidebar.component';
+import globals from './globals';
 
 // Provider
 import { ApiService } from './services/api.service';
 import { LocationService } from './services/location.service';
+import { ConfigService } from './services/config.service';
 
-declare const BUILD_ENV: string;
-declare const BUILD_TIME: string;
+console.log('BUILD_ENV', globals.BUILD_ENV);
+console.log('BUILD_TIME', globals.BUILD_TIME);
+console.log('BUILD_TARGET', globals.BUILD_TARGET);
+console.log('API_ENDPOINT', globals.API_ENDPOINT);
 
-if (BUILD_ENV === 'release') {
-  console.log('Build time:', BUILD_TIME);
+if (globals.BUILD_ENV === 'release') {
   enableProdMode();
 }
 
@@ -23,9 +26,11 @@ if (BUILD_ENV === 'release') {
   directives: [NavSidebarComponent],
   providers: [
     ApiService,
-    LocationService
+    LocationService,
+    ConfigService
   ]
 })
+
 export class App {
 
   rootPage: any = MapPage;

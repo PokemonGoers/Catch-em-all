@@ -1,15 +1,16 @@
-import {Page, NavController} from "ionic-angular";
-import {ApiService} from "../../services/api.service";
-import {LocationService, LocationQueryResponse} from "../../services/location.service";
-import {Pokemon} from "../../models/pokemon";
-import {Subscription} from "rxjs";
-import {PokeDetailPage} from "../poke-detail/poke-detail.page";
-import {WikiIndexPage} from "../wiki-index/wiki-index.page";
-import {MapPage} from "../map/map.page";
+import { Page, NavController } from 'ionic-angular';
+import { ApiService } from '../../services/api.service';
+import { LocationService, LocationQueryResponse } from '../../services/location.service';
+import { Pokemon } from '../../models/pokemon';
+import { Subscription } from 'rxjs';
+import { PokeDetailPage } from '../poke-detail/poke-detail.page';
+import { WikiIndexPage } from '../wiki-index/wiki-index.page';
+import { MapPage } from '../map/map.page';
 
 @Page({
   template: require('./search.page.html')
 })
+
 export class SearchPage {
 
   search: string;
@@ -65,11 +66,18 @@ export class SearchPage {
 
   selectPokemon(pokemon: Pokemon) {
     this.cancelRequests();
-    this.navCtrl.setPages([{page: WikiIndexPage}, {page: PokeDetailPage, params: {pokemonId: pokemon.pokemonId}}]);
+    this.navCtrl.setPages([{page: WikiIndexPage}, {page: PokeDetailPage, params: {pokemon: pokemon}}]);
   }
 
   selectLocation(location: LocationQueryResponse) {
     this.cancelRequests();
-    this.navCtrl.setRoot(MapPage, location.coordinates);
+
+    let parameters: any = {};
+    parameters.position = {
+      coordinates: location.coordinates,
+      zoomLevel: location.zoomLevel
+    };
+
+    this.navCtrl.setRoot(MapPage, parameters);
   }
 }

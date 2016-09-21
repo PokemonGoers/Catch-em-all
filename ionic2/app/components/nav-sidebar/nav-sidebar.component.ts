@@ -3,20 +3,21 @@ import { Nav } from 'ionic-angular';
 import { MapPage } from '../../pages/map/map.page';
 import { AboutPage } from '../../pages/about/about.page';
 import { ImprintPage } from '../../pages/imprint/imprint.page';
-import { WikiIndexPage } from "../../pages/wiki-index/wiki-index.page";
+import { WikiIndexPage } from '../../pages/wiki-index/wiki-index.page';
 
 @Component({
   selector: 'nav-sidebar',
   template: require('./nav-sidebar.component.html'),
   styles: [require('./nav-sidebar.component.scss')]
 })
+
 export class NavSidebarComponent {
 
   @Input() content: Nav;
 
   pages = [
     {name: 'PokeMap', link: MapPage},
-    {name: 'Wiki', link: WikiIndexPage},
+    {name: 'PokeDex', link: WikiIndexPage},
     {name: 'About', link: AboutPage},
     {name: 'Imprint & Disclaimer', link: ImprintPage}
   ];
