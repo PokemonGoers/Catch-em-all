@@ -3,6 +3,7 @@ import { Pokemon } from '../../models/pokemon';
 
 @Component({
   template: require('./poke-attacks.component.html'),
+  styles: [require('./poke-attacks.component.scss')],
   selector: 'poke-attacks'
 })
 
