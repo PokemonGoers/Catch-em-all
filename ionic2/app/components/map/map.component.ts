@@ -4,8 +4,6 @@ let PokeMap = require('pokemap-2');
 
 // Include Leaflet style sheets and set Leaflet on global window object
 require('!style!css!sass!leaflet/dist/leaflet.css');
-declare var window: any;
-window.L = require('leaflet');
 
 @Component({
   selector: 'map',
