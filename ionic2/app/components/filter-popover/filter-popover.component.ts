@@ -10,11 +10,15 @@ import { Events, ViewController } from 'ionic-angular';
 
 export class FilterPopoverComponent {
 
-  currentTab = 'time';
+  currentTab;
   filter: Object;
 
   constructor(private viewController: ViewController,
               private events: Events) {}
+
+  ngAfterViewInit() {
+    this.currentTab = 'time';
+  }
 
   close(): void {
     this.viewController.dismiss();
