@@ -1,12 +1,14 @@
 import { Component, Input, ViewChild, OnInit, ElementRef, ChangeDetectorRef,
   animate, trigger, state, style, transition } from '@angular/core';
-import { Events } from 'ionic-angular';
+import { Events, NavController } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 
 import { PokePOI } from '../../models/poke-poi';
 import { Pokemon } from '../../models/pokemon';
 import { ApiService } from '../../services/api.service';
 import { PokePOIBubbleComponent } from '../poke-poi-bubble/poke-poi-bubble.component';
+import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
+
 let Hammer = require('hammerjs');
 
 @Component({
@@ -30,7 +32,7 @@ export class PokePOICardComponent implements OnInit {
   loadPokemon: Subscription;
   slideState: string = 'hidden';
 
-  constructor(private apiService: ApiService, private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private navCtrl: NavController) {}
 
   ngOnInit(): any {
     let hammer = new Hammer(this.slideCard.nativeElement);
@@ -39,19 +41,7 @@ export class PokePOICardComponent implements OnInit {
 
   show(pokePOI: PokePOI) {
     this.pokePOI = pokePOI;
-    //this.pokePOI = null;
-    //this.cancelRequests();
-
-    //this.apiService.getPokemonById(pokePOI.pokemonId).subscribe(pokemon => {
-    //  console.log('pokemon', pokemon);
-    //  this.pokePOI = pokePOI;
-    //  this.pokePOI.pokemon = pokemon;
-    //});
-
     this.slideState = 'visible';
-
-    // Trigger Angular's change detection mechanism manually.
-    this.changeDetectorRef.detectChanges();
   }
 
   hide() {
@@ -80,7 +70,7 @@ export class PokePOICardComponent implements OnInit {
   }
 
   launchPokeDex() {
-    // TODO
+    this.navCtrl.push(PokeDetailPage, {pokemon: this.pokePOI.pokemon});
   }
 
 }
