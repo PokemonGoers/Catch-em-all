@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 
 let PokeMap = require('pokemap-2');
 
-// Include Leaflet style sheets and set Leaflet on global window object
+// Include Leaflet style sheets
 require('!style!css!sass!leaflet/dist/leaflet.css');
 
 @Component({
@@ -10,7 +10,6 @@ require('!style!css!sass!leaflet/dist/leaflet.css');
   template: '<div #mapcontainer style="width: 100%; height: 100%;"></div>',
   styles: [require('./map.component.scss')]
 })
-
 export class MapComponent {
 
   @ViewChild('mapcontainer') mapcontainer;

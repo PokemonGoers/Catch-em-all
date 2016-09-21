@@ -8,6 +8,7 @@ import { Pokemon } from '../../models/pokemon';
 import { ApiService } from '../../services/api.service';
 import { PokePOIBubbleComponent } from '../poke-poi-bubble/poke-poi-bubble.component';
 import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
+import { PokeTypeComponent } from '../poke-details/poke-type.component';
 
 let Hammer = require('hammerjs');
 
@@ -15,7 +16,10 @@ let Hammer = require('hammerjs');
   template: require('./poke-poi-card.component.html'),
   styles: [require('./poke-poi-card.component.scss')],
   selector: 'poke-poi-card',
-  directives: [PokePOIBubbleComponent],
+  directives: [
+    PokePOIBubbleComponent,
+    PokeTypeComponent
+  ],
   animations: [
     trigger('slide', [
       state('visible', style({transform: 'translateY(0)'})),

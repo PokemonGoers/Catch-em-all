@@ -28,12 +28,25 @@
       display: block;
       font-size: 14px;
       color: #525252;
+      padding: 2px 0;
     }
 
-    poke-poi-bubble {
-      margin: 4px 30px 4px 14px;
-      width: 120px;
-      height: 120px;
+    .poke-column {
+      flex-grow: 0;
+      padding: 4px 30px 4px 14px;
+
+      ion-row {
+        justify-content: center;
+      }
+
+      poke-poi-bubble {
+        width: 130px;
+        height: 130px;
+      }
+
+      poke-type {
+        margin: 16px 0 6px 0;
+      }
     }
 
     .action-button-bar {
