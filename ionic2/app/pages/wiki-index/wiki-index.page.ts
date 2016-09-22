@@ -20,7 +20,7 @@ export class WikiIndexPage {
 
   constructor(private navCtrl: NavController, private apiservice: ApiService) { }
 
-  ionViewLoaded() {
+  ionViewDidEnter() {
     this.querySubscription = this.apiservice.getAllPokemon()
         .subscribe(results => this.results = results, error => this.results = []);
   }
