@@ -1,0 +1,7 @@
+<ion-list>
+  <ion-item *ngFor="let pokemonContainer of getFilteredPokemon()">
+    <ion-checkbox dark [(checked)]="pokemonContainer.isSelected" (ngModelChange)="filterChanged()"></ion-checkbox>
+    <ion-label>{{ pokemonContainer.pokemon.name }}</ion-label>
+  </ion-item>
+</ion-list>
+<button full>Apply filters</button>
