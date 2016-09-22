@@ -1,4 +1,4 @@
-<div class="evolutions">
+<div class="evolutions ion-card">
   <div *ngIf="prevPokemons.length > 0">
     <button light *ngFor="let prevPokemon of prevPokemons" (click)="selectPokemon(prevPokemon)">
       <div class="evolution-image" [style.background-image]="'url(' + prevPokemon.icon + ')'"></div>
