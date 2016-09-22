@@ -1,37 +1,33 @@
-<ion-grid>
+<div>
+  <ion-card *ngFor="let fastAttack of pokemon.fastAttacks">
+    <ion-row>
+      <ion-col width-20><span class="vertical"><ion-badge secondary>Fast</ion-badge></span></ion-col>
+      <ion-col>
+        <ion-row>
+          <ion-col><h2>{{fastAttack.name}}</h2></ion-col>
+          <ion-col width-20 text-right><ion-badge danger>{{fastAttack.damage}}</ion-badge></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><h4>{{fastAttack.type}}</h4></ion-col>
+          <ion-col width-33 text-right><h5>Damage</h5></ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 
-  <ion-row *ngFor="let fastAttack of pokemon.fastAttacks">
-    <ion-col>
-      <span class="vertical">fast</span>
-    </ion-col>
-
-    <ion-col>
-      {{fastAttack.name}}
-      <br>
-      {{fastAttack.type}}
-    </ion-col>
-
-    <ion-col>
-      {{fastAttack.damage}}
-    </ion-col>
-  </ion-row>
-
-  <ion-row *ngFor="let specialAttack of pokemon.specialAttacks">
-    <ion-col>
-      <span class="vertical">special</span>
-    </ion-col>
-
-    <ion-col>
-      {{specialAttack.name}}
-      <br>
-      {{specialAttack.type}}
-    </ion-col>
-
-    <ion-col>
-      {{specialAttack.damage}}
-    </ion-col>
-  </ion-row>
-
-</ion-grid>
-
-
+  <ion-card *ngFor="let specialAttack of pokemon.specialAttacks">
+    <ion-row>
+      <ion-col width-20><span class="vertical"><ion-badge dark>Special</ion-badge></span></ion-col>
+      <ion-col>
+        <ion-row>
+          <ion-col><h2>{{specialAttack.name}}</h2></ion-col>
+          <ion-col width-20 text-right><ion-badge danger>{{specialAttack.damage}}</ion-badge></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><h4>{{specialAttack.type}}</h4></ion-col>
+          <ion-col width-33 text-right><h5>Damage</h5></ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</div>
