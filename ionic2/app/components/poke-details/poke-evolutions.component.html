@@ -1,5 +1,4 @@
 <div class="evolutions">
-
   <div *ngIf="prevPokemons.length > 0">
     <button light *ngFor="let prevPokemon of prevPokemons" (click)="selectPokemon(prevPokemon)">
       <div class="evolution-image" [style.background-image]="'url(' + prevPokemon.icon + ')'"></div>
@@ -21,5 +20,4 @@
       <div class="evolution-image" [style.background-image]="'url(' + nextPokemon.icon + ')'"></div>
     </button>
   </div>
-
 </div>

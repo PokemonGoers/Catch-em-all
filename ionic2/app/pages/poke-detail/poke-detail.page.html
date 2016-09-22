@@ -16,7 +16,12 @@
             <br/>
             {{pokemon.name}}
           </h1>
-          <span><ion-badge>{{pokemon.classification}}</ion-badge> <ion-badge>{{pokemon.gender.abbreviation}}</ion-badge></span>
+          <span><ion-badge>{{pokemon.classification}}</ion-badge>
+            <ion-icon name="transgender" *ngIf="pokemon.gender.abbreviation=='h'"></ion-icon>
+            <ion-icon name="transgender" *ngIf="pokemon.gender.abbreviation=='g'"></ion-icon>
+            <ion-icon name="female" *ngIf="pokemon.gender.abbreviation=='f'"></ion-icon>
+            <ion-icon name="male" *ngIf="pokemon.gender.abbreviation=='m'"></ion-icon>
+            </span>
         </ion-col>
       </ion-row>
       <hr>
@@ -26,6 +31,7 @@
         </ion-card-content>
       </ion-card>
       <hr>
+      <poke-stats [pokemon]="pokemon"></poke-stats>
       <ion-card>
         <ion-card-content>
           <!-- Types -->
@@ -64,8 +70,6 @@
         </ion-card-content>
       </ion-card>
     </div>
-
-    <poke-stats [pokemon]="pokemon"></poke-stats>
 
     <poke-evolutions [pokemon]="pokemon"></poke-evolutions>
 

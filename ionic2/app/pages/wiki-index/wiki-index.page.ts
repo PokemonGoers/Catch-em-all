@@ -1,4 +1,4 @@
-import { forwardRef, OnInit, OnDestroy } from '@angular/core';
+import { forwardRef, OnDestroy } from '@angular/core';
 import { NavController, Page } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 import { PokeDetailPage } from '../poke-detail/poke-detail.page';
@@ -12,7 +12,7 @@ import { ApiService } from '../../services/api.service';
   directives: [forwardRef(() => NavbarComponent)]
 })
 
-export class WikiIndexPage implements OnInit, OnDestroy {
+export class WikiIndexPage implements OnDestroy {
 
   queryString: string;
   querySubscription: Subscription;
@@ -20,9 +20,14 @@ export class WikiIndexPage implements OnInit, OnDestroy {
 
   constructor(private navCtrl: NavController, private apiservice: ApiService) { }
 
-  ngOnInit() {
-    this.querySubscription = this.apiservice.getAllPokemon()
+  ionViewDidEnter() {
+    if(this.queryString === ''||this.queryString===undefined) {
+      this.querySubscription = this.apiservice.getAllPokemon()
         .subscribe(results => this.results = results, error => this.results = []);
+    } else {
+      this.querySubscription = this.apiservice.getPokemonByName(this.queryString)
+        .subscribe(results => this.results = results, error => this.results = []);
+    }
   }
 
   onInput() {

@@ -1,5 +1,5 @@
-<div>
-  <ion-card *ngFor="let fastAttack of pokemon.fastAttacks">
+<ion-card>
+  <div *ngFor="let fastAttack of pokemon.fastAttacks">
     <ion-row>
       <ion-col width-20><span class="vertical"><ion-badge secondary>Fast</ion-badge></span></ion-col>
       <ion-col>
@@ -13,9 +13,10 @@
         </ion-row>
       </ion-col>
     </ion-row>
-  </ion-card>
+    <hr>
+  </div>
 
-  <ion-card *ngFor="let specialAttack of pokemon.specialAttacks">
+  <div *ngFor="let specialAttack of pokemon.specialAttacks">
     <ion-row>
       <ion-col width-20><span class="vertical"><ion-badge dark>Special</ion-badge></span></ion-col>
       <ion-col>
@@ -29,5 +30,6 @@
         </ion-row>
       </ion-col>
     </ion-row>
-  </ion-card>
-</div>
+    <hr>
+  </div>
+</ion-card>
