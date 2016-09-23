@@ -4,5 +4,17 @@
 
 <ion-content scroll="false">
   <map></map>
-  <button fab fab-right fab-bottom (click)="showFilterPopover($event)"><ion-icon name="funnel"></ion-icon></button>
+  <button fab fab-right fab-bottom (click)="showFilterPopover($event)">
+    <ion-icon name="funnel"></ion-icon>
+  </button>
 </ion-content>
+
+<div id="filter-popover-backdrop">
+  <div id="filter-popover-sheet-container">
+    <div class="popover-arrow-shadow"></div>
+    <div id="filter-popover-sheet">
+      <filter-popover></filter-popover>
+    </div>
+    <div class="popover-arrow"></div>
+  </div>
+</div>

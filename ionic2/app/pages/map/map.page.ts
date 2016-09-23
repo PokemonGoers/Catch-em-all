@@ -9,9 +9,11 @@ import { ConfigService } from '../../services/config.service';
 
 @Page({
   template: require('./map.page.html'),
+  styles: [ require('./map.page.scss')],
   directives: [
     forwardRef(() => NavbarComponent),
-    MapComponent
+    MapComponent,
+    FilterPopoverComponent
   ]
 })
 export class MapPage {

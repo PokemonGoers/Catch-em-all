@@ -4,6 +4,7 @@ import { FilterPopoverTabPokemon } from '../filter-popover-tab-pokemon/filter-po
 import { Events, ViewController } from 'ionic-angular';
 
 @Component({
+  selector: 'filter-popover',
   template: require('./filter-popover.component.html'),
   directives: [PokeFilterTimeTabComponent, FilterPopoverTabPokemon]
 })
