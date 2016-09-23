@@ -1,0 +1,12 @@
+<ion-segment [(ngModel)]="currentTab" primary>
+  <ion-segment-button value="time">Time</ion-segment-button>
+  <ion-segment-button value="pokemon">Pokemon</ion-segment-button>
+</ion-segment>
+
+<poke-filter-time-tab *ngIf="currentTab == 'time'"
+                      [filter]="filter"
+                      (onFilterChange)="onFilterChanged(filter)">
+</poke-filter-time-tab>
+
+<poke-filter-pokemon-tab *ngIf="currentTab == 'pokemon'">
+</poke-filter-pokemon-tab>

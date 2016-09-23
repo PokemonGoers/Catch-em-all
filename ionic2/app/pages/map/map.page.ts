@@ -1,19 +1,19 @@
 import { ViewChild, forwardRef } from '@angular/core';
-import { NavParams, Page, PopoverController } from 'ionic-angular';
+import { NavParams, Page, PopoverController, PopoverOptions } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
-import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
+import { PokeFilterPopoverComponent } from '../../components/poke-filter-popover/poke-filter-popover.component';
 import { MapComponent, FilterOptions } from '../../components/map/map.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ConfigService } from '../../services/config.service';
 
 @Page({
   template: require('./map.page.html'),
-  styles: [ require('./map.page.scss')],
+  styles: [require('./map.page.scss')],
   directives: [
     forwardRef(() => NavbarComponent),
     MapComponent,
-    FilterPopoverComponent
+    PokeFilterPopoverComponent
   ]
 })
 export class MapPage {
@@ -69,9 +69,9 @@ export class MapPage {
   }
 
   showFilterPopover($event?): void {
-    let popover = this.popoverCtrl.create(FilterPopoverComponent, this.filter);
+    /*let popover = this.popoverCtrl.create(PokeFilterPopoverComponent, this.filter, {cssClass: 'popover'});
     popover.present({
       ev: $event
-    });
+    });*/
   }
 }

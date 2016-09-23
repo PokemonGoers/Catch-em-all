@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  template: `<ion-content>Pokemon</ion-content>`
+  selector: 'poke-filter-pokemon-tab',
+  template: require('./poke-filter-pokemon-tab.component.html'),
+  styles: [require('./poke-filter-pokemon-tab.component.scss')],
 })
 export class PokeFilterPokemonTabComponent {
   constructor() {}

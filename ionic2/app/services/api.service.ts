@@ -29,7 +29,7 @@ export class ApiService {
         throw new Error('API Error: ' + response.text());
       }
 
-      let jsonArray: [any] = jsonResponse.data;
+      let jsonArray: any[] = jsonResponse.data;
       let objectArray = jsonArray.map(object => Type.fromObject(object));
 
       if (expectSingle) {

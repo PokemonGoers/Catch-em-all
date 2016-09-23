@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+ion-segment {
+  flex: 0 0 auto;
+}
+
+poke-filter-time-tab,
+poke-filter-pokemon-tab {
+  flex: 1 0 0;
+}
