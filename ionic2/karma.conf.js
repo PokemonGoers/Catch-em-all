@@ -60,7 +60,8 @@ module.exports = function(config) {
 
     proxies: {
       '/app': '/base/server/app',
-      '/app/api': 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api'
+      '/app/api': 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api',
+      '/app/socket.io': 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65024/socket.io'
     },
 
     // level of logging

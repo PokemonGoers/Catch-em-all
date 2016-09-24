@@ -61,10 +61,11 @@ export class MapPage {
 
   initializeMap() {
     let filter = this.filter;
-    let apiEndpoint = this.config.apiEndpoint;
     let tileLayer = 'http://{s}.tile.opencyclemap.org/transport/{z}/{x}/{y}.png';
+    let apiEndpoint = this.config.apiEndpoint;
+    let websocketEndpoint = this.config.websocketEndpoint;
 
-    this.map.initialize({filter, apiEndpoint, tileLayer});
+    this.map.initialize({filter, tileLayer, apiEndpoint, websocketEndpoint});
   }
 
   showFilterPopover($event?): void {

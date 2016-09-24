@@ -20,6 +20,11 @@ class PokemonServer {
       forwardPath: (req, res) => url.parse(req.baseUrl).path
     }))
 
+    // Proxy websocket requests to API backend
+    app.use('/socket.io/*', proxy(config.websocketEndpoint, {
+      forwardPath: (req, res) => url.parse(req.baseUrl).path
+    }))
+
     this._app = app
 
     // Start listening

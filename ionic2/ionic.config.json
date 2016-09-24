@@ -11,6 +11,10 @@
     {
       "path": "/api",
       "proxyUrl": "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api"
+    },
+    {
+      "path": "/socket.io",
+      "proxyUrl": "http://pokedata.c4e3f8c7.svc.dockerapp.io:65024/socket.io"
     }
   ]
 }
