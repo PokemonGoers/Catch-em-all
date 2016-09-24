@@ -5,7 +5,7 @@ const http = require('http')
 const proxy = require('express-http-proxy')
 const url = require('url')
 
-class PokemonSite {
+class PokemonServer {
   constructor (config) {
     // Express
     const app = express()
@@ -13,7 +13,7 @@ class PokemonSite {
     app.get('/', (req, res) => { res.redirect('index.html') })
 
     // Serve app content
-    app.use(express.static(path.join(__dirname, '../app')))
+    app.use(express.static(path.join(__dirname, 'app')))
 
     // Proxy requests to /api/* to API backend
     app.use('/api/*', proxy(config.apiEndpoint, {
@@ -59,4 +59,4 @@ class PokemonSite {
   }
 }
 
-module.exports = PokemonSite
+module.exports = PokemonServer
