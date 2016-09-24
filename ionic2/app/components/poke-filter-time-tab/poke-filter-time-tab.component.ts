@@ -1,5 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Tab,  } from 'ionic-angular';
+import { Component, ElementRef, OnInit, ViewChild, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Filter } from '../../models/filter';
 
 @Component({
   template: require('./poke-filter-time-tab.component.html'),
@@ -8,12 +8,10 @@ import { Tab,  } from 'ionic-angular';
 })
 export class PokeFilterTimeTabComponent implements OnInit {
   @ViewChild('sightingsRange') _sightingsRange: any;
-  sightingsRangeValue: number;
-  areSightingsShown: boolean;
-  predictionsRangeValue: number;
-  arePredictionsShown: boolean;
+  @Input() filter: Filter;
+  @Output() onFilterChange = new EventEmitter<Filter>();
 
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     // Inverted coloring for sightings bar: Replace method that does coloring
@@ -26,19 +24,25 @@ export class PokeFilterTimeTabComponent implements OnInit {
     setTimeout(() => this._sightingsRange.updateBar(), 0) // Hack: Async call
   }
 
-  onSightingsRangeChange() {
-    this.areSightingsShown = this.sightingsRangeValue !== 9;
+  onSightingsToggleChanged(event) {
+    event._checked ? this.filter.sightingsRange = 5 : this.filter.sightingsRange = 9;
+    this.onFilterChange.emit(this.filter);
+    setTimeout(() => this.cdr.detectChanges(), 100);
   }
 
-  onSightingsToggleChange(toggle) {
-    this.sightingsRangeValue = toggle.checked ? 4 : 9; // '1d' or 'off'
+  onSightingsRangeChanged(event) {
+    this.filter.sightingsRange = event.value;
+    this.onFilterChange.emit(this.filter);
   }
 
-  onPredictionsRangeChange() {
-    this.arePredictionsShown = this.predictionsRangeValue !== 0;
+  onPredictionsToggleChanged(event) {
+    event._checked ? this.filter.predictionsRange = 5 : this.filter.predictionsRange = 0;
+    this.onFilterChange.emit(this.filter);
+    setTimeout(() => this.cdr.detectChanges(), 100);
   }
 
-  onPredictionsToggleChange(toggle) {
-    this.predictionsRangeValue = toggle.checked ? 5 : 0; // '1d' or 'off'
+  onPredictionsRangeChanged(event) {
+    this.filter.predictionsRange = event.value;
+    this.onFilterChange.emit(this.filter);
   }
 }

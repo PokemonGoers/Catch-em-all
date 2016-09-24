@@ -1,5 +1,5 @@
 import { ViewChild, forwardRef } from '@angular/core';
-import { NavParams, Page, PopoverController } from 'ionic-angular';
+import { NavParams, Page, PopoverController, PopoverOptions } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
 import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
@@ -12,6 +12,7 @@ import { ApiService } from '../../services/api.service';
 
 @Page({
   template: require('./map.page.html'),
+  styles: [require('./map.page.scss')],
   directives: [
     forwardRef(() => NavbarComponent),
     MapComponent,
@@ -81,7 +82,7 @@ export class MapPage {
   }
 
   showFilterPopover($event?): void {
-    let popover = this.popoverCtrl.create(FilterPopoverComponent, this.filter);
+    let popover = this.popoverCtrl.create(FilterPopoverComponent, this.filter, {cssClass: 'popover'});
     popover.present({
       ev: $event
     });
