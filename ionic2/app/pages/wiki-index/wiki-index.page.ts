@@ -1,4 +1,4 @@
-import { forwardRef, OnDestroy } from '@angular/core';
+import { forwardRef } from '@angular/core';
 import { NavController, Page } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 import { PokeDetailPage } from '../poke-detail/poke-detail.page';
@@ -12,7 +12,7 @@ import { ApiService } from '../../services/api.service';
   directives: [forwardRef(() => NavbarComponent)]
 })
 
-export class WikiIndexPage implements OnDestroy {
+export class WikiIndexPage {
 
   queryString: string;
   querySubscription: Subscription;
@@ -52,7 +52,7 @@ export class WikiIndexPage implements OnDestroy {
     this.navCtrl.push(PokeDetailPage, {pokemon: pokemon});
   }
 
-  ngOnDestroy() {
+  ionViewDidUnload() {
     this.cancelRequests();
   }
 
