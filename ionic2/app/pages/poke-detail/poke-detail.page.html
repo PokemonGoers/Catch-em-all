@@ -5,11 +5,11 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content class="poke-detail">
   <div *ngIf="pokemon">
     <div>
-      <ion-row>
-        <ion-col><img [src]="pokemon.icon" class="box align-right"></ion-col>
+      <ion-row class="white-background">
+        <ion-col><img [src]="pokemon.svgIcon" class="box align-right"></ion-col>
         <ion-col padding>
           <h1>
             #{{pokemon.pokemonId}}
@@ -23,8 +23,8 @@
             <ion-icon name="male" *ngIf="pokemon.gender.abbreviation=='m'"></ion-icon>
             </span>
         </ion-col>
+        <hr>
       </ion-row>
-      <hr>
       <ion-card>
         <ion-card-content>
         {{pokemon.description}}
