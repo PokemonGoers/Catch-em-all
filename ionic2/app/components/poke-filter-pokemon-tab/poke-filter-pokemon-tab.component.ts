@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { Pokemon } from '../../models/pokemon';
 import { PokemonFilterPipe } from './pokemon-filter-pipe';
 import { PokemonFilterData } from './pokemon-filter-data';
-import { Filter } from "../../models/filter";
+import { Filter } from '../../models/filter';
 
 type PokemonContainer = {pokemon: Pokemon, isSelected: boolean};
 type TypeContainer = {type: string, isSelected: boolean};
@@ -28,7 +28,7 @@ export class PokeFilterPokemonTabComponent implements OnInit {
   pokemonContainers: PokemonContainer[] = [];
 
   pokeFilterData: PokemonFilterData = {
-    pokemonName: "",
+    pokemonName: '',
     pokemonTypes: []
   };
 
