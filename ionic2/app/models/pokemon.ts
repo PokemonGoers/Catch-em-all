@@ -67,7 +67,7 @@ export class Pokemon {
     return config.apiEndpoint + '/api/pokemon/id/' + this.pokemonId + '/icon/png';
   }
 
-  get scgIcon(): string {
+  get svgIcon(): string {
     return config.apiEndpoint + '/api/pokemon/id/' + this.pokemonId + '/icon/svg';
   }
 
