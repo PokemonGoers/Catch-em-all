@@ -24,7 +24,7 @@ export class PokeTypeComponent implements OnInit {
       'water':'#3399ff',
       'ground':'#ffcc66',
       'rock':'#cc8800',
-      'fight':'#cc0000',
+      'fighting':'#cc0000',
       'steel':'#d6d6c2',
       'dragon':'#3333cc',
       'fairy':'#cc99ff',
@@ -33,8 +33,8 @@ export class PokeTypeComponent implements OnInit {
       'psychic':'#ff6699',
       'electric':'#ffff33',
       'normal':'#8a8a5c'
-    }
-    this.typeArray = []
+    };
+    this.typeArray = [];
     for (let item of this.type){
       this.typeArray.push({element:item, color:color[item]})
     }

@@ -284,4 +284,30 @@ export class ApiService {
     });
     return request.map(ApiService.handleResponse(Sighting));
   }
+
+  getTypes(): string[] {
+    const types: string[] = [
+      'fire',
+      'ice',
+      'poison',
+      'flying',
+      'bug',
+      'grass',
+      'water',
+      'ground',
+      'rock',
+      'fighting',
+      'steel',
+      'dragon',
+      'fairy',
+      'dark',
+      'ghost',
+      'psychic',
+      'electric',
+      'normal',
+    ];
+
+    return types;
+  }
+
 }
