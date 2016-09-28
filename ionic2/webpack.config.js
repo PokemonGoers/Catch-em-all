@@ -34,7 +34,8 @@ module.exports = {
       'ionic-angular'
     ],
     lib: [
-      'rxjs'
+      'rxjs',
+      'hammerjs'
     ],
     style_ios: [
       './app/theme/app.ios.scss'
