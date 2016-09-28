@@ -1,4 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
+import { PokeSighting } from '../../models/poke-sighting';
+import { PokePrediction } from '../../models/poke-prediction';
+import { PokeMob } from '../../models/poke-mob';
+import { PokePOI } from '../../models/poke-poi';
 
 let PokeMap = require('pokemap-2');
 
@@ -36,11 +40,21 @@ export class MapComponent {
   }
 
   onClick(callback) {
-    this.map.on('click', callback);
+    this.map.on('click', pokePOI => callback(MapComponent.mapPokePOI(pokePOI)));
   }
 
   onMove(callback) {
     this.map.on('move', callback);
+  }
+
+  private static mapPokePOI(pokePOI: Object) : (PokeSighting | PokePrediction | PokeMob) {
+    if ('source' in pokePOI) {
+      return PokeSighting.fromObject(pokePOI);
+    } else if ('clusterId' in pokePOI) {
+      return PokeMob.fromObject(pokePOI);
+    } else {
+      throw new Error('PokePOI cannot be identified as PokeSighting or PokeMob:\n' + JSON.stringify(pokePOI));
+    }
   }
 
 }

@@ -9,6 +9,7 @@ import { ApiService } from '../../services/api.service';
 import { PokePOIBubbleComponent } from '../poke-poi-bubble/poke-poi-bubble.component';
 import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
 import { PokeTypeComponent } from '../poke-details/poke-type.component';
+import { PokeSighting } from '../../models/poke-sighting';
 
 let Hammer = require('hammerjs');
 
@@ -32,20 +33,28 @@ export class PokePOICardComponent implements OnInit {
 
   @ViewChild('slideCard') slideCard: ElementRef;
 
-  pokePOI: PokePOI;
+  pokePOI: PokeSighting;
   loadPokemon: Subscription;
   slideState: string = 'hidden';
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController, private apiService: ApiService) {}
 
   ngOnInit(): any {
     let hammer = new Hammer(this.slideCard.nativeElement);
     hammer.on('swipedown swipeleft swiperight', this.hide.bind(this));
   }
 
-  show(pokePOI: PokePOI) {
-    this.pokePOI = pokePOI;
+  show(pokePOI: PokeSighting) {
     this.slideState = 'visible';
+
+    this.pokePOI = null;
+    this.cancelRequests();
+
+    // Load pokemon for given pokemonId
+    this.loadPokemon = this.apiService.getPokemonById(pokePOI.pokemonId).subscribe(pokemon => {
+      pokePOI.pokemon = pokemon;
+      this.pokePOI = pokePOI;
+    });
   }
 
   hide() {

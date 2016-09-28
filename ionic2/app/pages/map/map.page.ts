@@ -74,10 +74,10 @@ export class MapPage {
 
     this.map.initialize({filter, apiEndpoint, tileLayer});
 
-    this.api.getPokemonById(1).subscribe(pokemon => {
-      let pokePOI = new PokeSighting();
-      pokePOI.pokemon = pokemon;
-      setTimeout(this.pokePOICard.show.bind(this.pokePOICard, pokePOI), 2000)
+    this.map.onClick(pokePOI => {
+      if (pokePOI instanceof PokeSighting) {
+        this.pokePOICard.show(pokePOI);
+      }
     });
   }
 
