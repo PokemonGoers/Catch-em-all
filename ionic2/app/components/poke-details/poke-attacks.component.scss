@@ -1,5 +1,21 @@
-span.vertical {
-  transform: rotate(270deg);
-  transform-origin: 85% 50%;
+div.vertical {
+  transform: translateY(68px) translateX(-5px) rotate(-90deg);
+  transform-origin: 0 0;
   float: left;
+  color: white;
+  width: 73px;
+  text-align: center;
+  padding: 3px 0 3px 0;
+}
+
+.fast {
+  background-color: #32db64;
+}
+
+.special {
+  background-color: #222;
+}
+
+.danger {
+  width: 50px;
 }

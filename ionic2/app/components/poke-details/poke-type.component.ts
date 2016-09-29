@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   template: require('./poke-type.component.html'),
+  styles: [require('./poke-type.component.scss')],
   selector: 'poke-type',
 })
 
@@ -16,22 +17,22 @@ export class PokeTypeComponent implements OnInit {
   ngOnInit() {
     const color={
       'fire':'#ff6600',
-      'ice':'#cce6ff',
+      'ice':'#66b3ff',
       'poison':'#b30086',
       'flying':'#cc66ff',
       'bug':'#99cc00',
-      'grass':'#66ff33',
+      'grass':'#33cc00',
       'water':'#3399ff',
-      'ground':'#ffcc66',
-      'rock':'#cc8800',
-      'fight':'#cc0000',
+      'ground':'#b35900',
+      'rock':'#663300',
+      'fighting':'#f53d3d',
       'steel':'#d6d6c2',
       'dragon':'#3333cc',
-      'fairy':'#cc99ff',
+      'fairy':'#ff99ff',
       'dark':'#73264d',
       'ghost':'#9933ff',
       'psychic':'#ff6699',
-      'electric':'#ffff33',
+      'electric':'#ffcc00',
       'normal':'#8a8a5c'
     }
     this.typeArray = []
