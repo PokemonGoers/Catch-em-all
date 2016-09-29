@@ -4,7 +4,7 @@ import { PokePrediction } from '../../models/poke-prediction';
 import { PokeMob } from '../../models/poke-mob';
 import { PokePOI } from '../../models/poke-poi';
 
-let PokeMap = require('pokemap-2');
+let PokeMap = require('pokemap-1');
 
 @Component({
   selector: 'map',

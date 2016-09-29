@@ -2,7 +2,6 @@ import { Component, Input, ViewChild, ElementRef, OnInit } from '@angular/core';
 
 import { Pokemon } from '../../models/pokemon';
 import { PokeSighting } from '../../models/poke-sighting';
-import { PokePOI } from '../../models/poke-poi';
 
 @Component({
   template: require('./poke-poi-bubble.component.html'),
@@ -12,15 +11,20 @@ import { PokePOI } from '../../models/poke-poi';
 })
 export class PokePOIBubbleComponent implements OnInit {
 
-  @Input() pokePOI: PokePOI;
+  @Input() pokePOI: PokeSighting;
   @ViewChild('circle') circle: ElementRef;
 
   arcHighlightColor = '#FFF75A';
   arcBackgroundColor = '#F9F9F9';
 
   ngOnInit() {
-    // TODO Set arcPercentage according to sighting or prediction time
-    this.upateArc(0.3);
+    let appearedOn = (new Date(this.pokePOI.appearedOn)).getTime() / 1000;
+    let now = Date.now() / 1000;
+    let diff = Math.max(Math.log((now -appearedOn) / 1000), 1);
+    let max = Math.log(30 * 86400 / 1000);
+    let ratio = diff / max * -1;
+
+    this.upateArc(ratio);
   }
 
   upateArc(arcPercentage) {

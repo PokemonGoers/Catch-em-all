@@ -37,7 +37,9 @@ export class PokePOICardComponent implements OnInit {
   loadPokemon: Subscription;
   slideState: string = 'hidden';
 
-  constructor(private navCtrl: NavController, private apiService: ApiService) {}
+  constructor(private navCtrl: NavController,
+              private apiService: ApiService,
+              private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit(): any {
     let hammer = new Hammer(this.slideCard.nativeElement);
@@ -45,15 +47,17 @@ export class PokePOICardComponent implements OnInit {
   }
 
   show(pokePOI: PokeSighting) {
-    this.slideState = 'visible';
-
     this.pokePOI = null;
     this.cancelRequests();
 
     // Load pokemon for given pokemonId
     this.loadPokemon = this.apiService.getPokemonById(pokePOI.pokemonId).subscribe(pokemon => {
+      this.slideState = 'visible';
       pokePOI.pokemon = pokemon;
       this.pokePOI = pokePOI;
+
+      // Change detection will only be triggered upon user interaction (e.g. moving the mouse cursor)
+      this.changeDetectorRef.detectChanges();
     });
   }
 

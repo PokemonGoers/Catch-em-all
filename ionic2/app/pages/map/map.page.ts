@@ -63,7 +63,6 @@ export class MapPage {
 
   ionViewDidEnter() {
     this.initializeMap();
-    this.map.onClick(this.pokePOICard.show.bind(this.pokePOICard));
     this.positionLoaded.then(position => this.map.goTo(position));
   }
 
