@@ -3,8 +3,6 @@ import { Component, Input, ViewChild, OnInit, ElementRef, ChangeDetectorRef,
 import { Events, NavController } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 
-import { PokePOI } from '../../models/poke-poi';
-import { Pokemon } from '../../models/pokemon';
 import { ApiService } from '../../services/api.service';
 import { PokePOIBubbleComponent } from '../poke-poi-bubble/poke-poi-bubble.component';
 import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';

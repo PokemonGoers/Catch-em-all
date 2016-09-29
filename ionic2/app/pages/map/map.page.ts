@@ -8,7 +8,6 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ConfigService } from '../../services/config.service';
 import { PokePOICardComponent } from '../../components/poke-poi-card/poke-poi-card.component';
 import { PokeSighting } from '../../models/poke-sighting';
-import { ApiService } from '../../services/api.service';
 
 @Page({
   template: require('./map.page.html'),
@@ -37,8 +36,7 @@ export class MapPage {
 
   constructor(private navParams: NavParams,
               private config:ConfigService,
-              private popoverCtrl: PopoverController,
-              private api: ApiService) {
+              private popoverCtrl: PopoverController) {
     this.positionLoaded = this.loadPosition();
   }
 
