@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Subscription } from 'rxjs';
 import { Pokemon } from '../../models/pokemon';
@@ -12,8 +12,7 @@ type TypeContainer = {type: string, isSelected: boolean};
 @Component({
   template: require('./poke-filter-pokemon-tab.component.html'),
   selector: 'poke-filter-pokemon-tab',
-  pipes: [ PokemonFilterPipe ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  pipes: [ PokemonFilterPipe ]
 })
 
 export class PokeFilterPokemonTabComponent implements OnInit {
@@ -44,12 +43,13 @@ export class PokeFilterPokemonTabComponent implements OnInit {
             isSelected: true
           };
         })
-      }).subscribe(
+      })
+      .subscribe(
         pokemonContainers => this.pokemonContainers = pokemonContainers,
         error => this.pokemonContainers = []
       );
 
-    for (let str of this.apiservice.getTypes()) {
+    for (let str in this.apiservice.getTypes()) {
       this.typeDataBinding.push({
         type: str,
         isSelected: false
@@ -77,7 +77,7 @@ export class PokeFilterPokemonTabComponent implements OnInit {
 
   nameFilterChanged() {
     this.pokeFilterData.pokemonName = this.nameFilter;
-    console.log("NAME FILTER CHANGED: " + this.pokeFilterData.pokemonName);
+    console.log('NAME FILTER CHANGED: ' + this.pokeFilterData.pokemonName);
   }
 
   typeFilterChanged() {
@@ -87,7 +87,7 @@ export class PokeFilterPokemonTabComponent implements OnInit {
         this.pokeFilterData.pokemonTypes.push(typeField.type);
       }
     }
-    console.log("TYPE FILTER CHANGED: " + this.pokeFilterData.pokemonTypes);
+    console.log('TYPE FILTER CHANGED: ' + this.pokeFilterData.pokemonTypes);
   }
 
   selectAll() {
@@ -112,6 +112,7 @@ export class PokeFilterPokemonTabComponent implements OnInit {
     }
 
     this.onFilterChange.emit(this.filter);
-    console.log("SELECTED: (" + this.filter.selectedPokemon.length + "): " + this.filter.selectedPokemon);
+    console.log('SELECTED: (' + this.filter.selectedPokemon.length + '): ' + this.filter.selectedPokemon);
   }
+
 }

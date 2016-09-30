@@ -9,6 +9,7 @@ import { PokemonGender } from '../models/pokemon';
 import { PokemonAttackCategory } from '../models/pokemon';
 import { SightingSource } from '../models/sighting';
 import { ConfigService } from './config.service';
+import { TYPES } from './poke-types';
 
 export { Pokemon, PokemonIcon, Sighting }
 
@@ -285,29 +286,8 @@ export class ApiService {
     return request.map(ApiService.handleResponse(Sighting));
   }
 
-  getTypes(): string[] {
-    const types: string[] = [
-      'fire',
-      'ice',
-      'poison',
-      'flying',
-      'bug',
-      'grass',
-      'water',
-      'ground',
-      'rock',
-      'fighting',
-      'steel',
-      'dragon',
-      'fairy',
-      'dark',
-      'ghost',
-      'psychic',
-      'electric',
-      'normal',
-    ];
-
-    return types;
+  getTypes(): { [key:string]:string; } {
+    return TYPES;
   }
 
 }
