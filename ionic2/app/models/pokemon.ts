@@ -59,8 +59,16 @@ export class Pokemon {
     return Object.assign(instance, object);
   }
 
-  get icon(): string {
-    return config.apiEndpoint + '/api/pokemon/id/' + this.pokemonId + '/icon';
+  get gifIcon(): string {
+    return config.apiEndpoint + '/api/pokemon/id/' + this.pokemonId + '/icon/gif';
+  }
+
+  get pngIcon(): string {
+    return config.apiEndpoint + '/api/pokemon/id/' + this.pokemonId + '/icon/png';
+  }
+
+  get svgIcon(): string {
+    return config.apiEndpoint + '/api/pokemon/id/' + this.pokemonId + '/icon/svg';
   }
 
 }

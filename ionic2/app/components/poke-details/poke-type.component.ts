@@ -3,6 +3,7 @@ import { ApiService } from '../../services/api.service';
 
 @Component({
   template: require('./poke-type.component.html'),
+  styles: [require('./poke-type.component.scss')],
   selector: 'poke-type',
 })
 
@@ -15,11 +16,11 @@ export class PokeTypeComponent implements OnInit {
   }
 
   ngOnInit() {
-    let types = this.apiservice.getTypes();
+    let typeColors = this.apiservice.getTypes();
 
     this.typeArray = [];
     for (let item of this.type){
-      this.typeArray.push({element:item, color:types[item]})
+      this.typeArray.push({element:item, color:typeColors[item]})
     }
   }
 
