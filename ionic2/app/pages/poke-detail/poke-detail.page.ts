@@ -27,4 +27,18 @@ export class PokeDetailPage {
     this.pokemon = navParams.get('pokemon');
   }
 
+  getRankInWords() {
+    let reverseRank = 152 - this.pokemon.rarityRank;
+
+    if (reverseRank == 1) {
+      return "1st";
+    } else if (reverseRank == 2) {
+      return "2nd";
+    } else if (reverseRank == 3) {
+      return "3rd";
+    } else {
+      return reverseRank + "th";
+    }
+  }
+
 }
