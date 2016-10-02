@@ -9,6 +9,7 @@ import { PokemonGender } from '../models/pokemon';
 import { PokemonAttackCategory } from '../models/pokemon';
 import { SightingSource } from '../models/sighting';
 import { ConfigService } from './config.service';
+import { TYPES } from './poke-types';
 
 export { Pokemon, PokemonIcon, Sighting }
 
@@ -304,4 +305,13 @@ export class ApiService {
     });
     return request.map(ApiService.handleResponse(Sighting));
   }
+
+  /**
+   * Get Pokemon types and the default type color.
+   * @returns {{ [key:string]:string; }}
+   */
+  getTypes(): { [key:string]:string; } {
+    return TYPES;
+  }
+
 }
