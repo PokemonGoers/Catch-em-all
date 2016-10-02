@@ -1,6 +1,6 @@
-import { Component, Input, ViewChild, OnInit, ElementRef, ChangeDetectorRef,
+import { Component, ViewChild, OnInit, ElementRef, ChangeDetectorRef,
   animate, trigger, state, style, transition } from '@angular/core';
-import { Events, NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 
 import { ApiService } from '../../services/api.service';
@@ -39,7 +39,7 @@ export class PokePOICardComponent implements OnInit {
               private apiService: ApiService,
               private changeDetectorRef: ChangeDetectorRef) {}
 
-  ngOnInit(): any {
+  ngOnInit() {
     let hammer = new Hammer(this.slideCard.nativeElement);
     hammer.on('swipedown swipeleft swiperight', this.hide.bind(this));
   }
