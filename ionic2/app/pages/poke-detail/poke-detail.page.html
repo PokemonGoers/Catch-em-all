@@ -32,7 +32,7 @@
       </ion-card>
       <ion-card>
         <ion-card-content text-center>
-          {{(pokemon.appearanceLikelihood).toFixed(5)}}% of all Pokémon are a {{pokemon.name}}.<br/>
+          {{getAppearanceLikelihoodInWords()}} Pokémon are a {{pokemon.name}}.<br/>
           This puts {{pokemon.name}} on the {{getRankInWords()}} place on the rarity scale.
         </ion-card-content>
       </ion-card>
