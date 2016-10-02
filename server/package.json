@@ -25,10 +25,13 @@
       "afterEach",
       "it"
     ],
-    "ignore": ["/app/"]
+    "ignore": [
+      "/app/"
+    ]
   },
   "dependencies": {
     "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
     "express": "^4.14.0",
     "express-http-proxy": "^0.10.0"
   }
