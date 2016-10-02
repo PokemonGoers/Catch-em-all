@@ -6,11 +6,13 @@ import { Pokemon } from '../../models/pokemon';
 import { Filter } from '../../models/filter';
 
 @Component({
-  template: require('./filter-popover.component.html'),
+  selector: 'poke-filter-popover',
+  template: require('./poke-filter-popover.component.html'),
+  styles: [require('./poke-filter-popover.component.scss')],
   directives: [PokeFilterTimeTabComponent, PokeFilterPokemonTabComponent]
 })
 
-export class FilterPopoverComponent {
+export class PokeFilterPopoverComponent {
   currentTab: string;
   filter: Filter;
 
@@ -27,6 +29,7 @@ export class FilterPopoverComponent {
   }
 
   onFilterChanged(filter) {
+    console.log(filter)
     this.filter = filter;
   }
 

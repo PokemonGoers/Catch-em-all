@@ -2,7 +2,7 @@ import { ViewChild, forwardRef } from '@angular/core';
 import { NavParams, Page, PopoverController, PopoverOptions } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
-import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
+import { PokeFilterPopoverComponent } from '../../components/poke-filter-popover/poke-filter-popover.component';
 import { MapComponent, FilterOptions } from '../../components/map/map.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ConfigService } from '../../services/config.service';
@@ -12,7 +12,8 @@ import { ConfigService } from '../../services/config.service';
   styles: [require('./map.page.scss')],
   directives: [
     forwardRef(() => NavbarComponent),
-    MapComponent
+    MapComponent,
+    PokeFilterPopoverComponent
   ]
 })
 export class MapPage {
@@ -68,9 +69,9 @@ export class MapPage {
   }
 
   showFilterPopover($event?): void {
-    let popover = this.popoverCtrl.create(FilterPopoverComponent, this.filter, {cssClass: 'popover'});
+    /*let popover = this.popoverCtrl.create(PokeFilterPopoverComponent, this.filter, {cssClass: 'popover'});
     popover.present({
       ev: $event
-    });
+    });*/
   }
 }
