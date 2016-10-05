@@ -1,0 +1,117 @@
+:host .slide-card {
+  min-height: 100px;
+  width: 100%;
+  background: white;
+  position: absolute;
+  display: inline-block;
+  bottom: 0;
+  box-shadow: 0px -2px 3px 0 rgba(0,0,0,0.5);
+  z-index: 99999;
+
+  .poke-poi-card-content {
+    padding-top: 12px;
+
+    .poke-picture {
+      flex-grow: 1;
+    }
+
+    .poke-id {
+      font-size: 22px;
+      font-weight: bold;
+      color: #404040;
+      padding: 4px;
+      align-self:center;
+    }
+
+    .poke-name {
+      font-size: 28px;
+    }
+
+    .poke-description {
+      font-size: 12px;
+      color: #525252;
+      padding: 2px 0;
+    }
+
+    .poke-column {
+      flex-grow: 0;
+      flex-basis: 120px;
+
+      ion-row {
+        justify-content: center;
+      }
+
+      poke-poi-bubble {
+        width: 100px;
+        height: 100px;
+      }
+
+      poke-type {
+        margin: 16px 0 6px 0;
+
+        ion-badge {
+          font-size: 10px;
+          padding: 2px 5px;
+        }
+      }
+    }
+
+    .action-button-bar {
+      justify-content: flex-end;
+      margin-top: 8px;
+
+      button {
+        color: #123784;
+        padding: 4px 10px;
+        margin: 0px 2px;
+
+        ion-icon {
+          font-size: 26px;
+        }
+      }
+    }
+
+    .poke-poi-type-line {
+      position: absolute;
+      top:0;
+      right: 0;
+      height: 5px;
+      background: yellow;
+      display: inline-block;
+      width: 110%;
+      box-shadow: 4px 3px 4px -3px rgba(0, 0, 0, 0.75);
+    }
+
+    .poke-poi-type-badge {
+      position: absolute;
+      display: inline-block;
+      top: 0;
+      right: 0;
+      padding: 3px 4px 2px 6px;
+      font-size: 12px;
+      font-weight: bold;
+      color: white;
+    }
+
+    &.poi-type-sighting {
+      .poke-poi-type-badge,
+      .poke-poi-type-line {
+        background: #123784;
+      }
+    }
+
+    &.poi-type-prediction {
+      .poke-poi-type-badge,
+      .poke-poi-type-line {
+        background: #149062;
+      }
+    }
+
+    &.poi-type-mob {
+      .poke-poi-type-badge,
+      .poke-poi-type-line {
+        background: #ca1010;
+      }
+    }
+  }
+}
