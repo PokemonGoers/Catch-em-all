@@ -9,6 +9,7 @@ import { PokemonGender } from '../models/pokemon';
 import { PokemonAttackCategory } from '../models/pokemon';
 import { SightingSource } from '../models/sighting';
 import { ConfigService } from './config.service';
+import { TYPES } from './poke-types';
 
 export { Pokemon, PokemonIcon, Sighting }
 
@@ -196,12 +197,32 @@ export class ApiService {
   }
 
   /**
-   * Get pokemon icon by specific id.
+   * Get pokemon gif icon by specific id.
    * @param {number} id - Pokemon ID, range 1-151
    * @returns {Observable<PokemonIcon>}
    */
-  getIconById(id: number): Observable<PokemonIcon> {
-    let request = this.http.get(this.apiEndpoint + '/api/pokemon/id/' + id + '/icon');
+  getGifIconById(id: number): Observable<PokemonIcon> {
+    let request = this.http.get(this.apiEndpoint + '/api/pokemon/id/' + id + '/icon/gif');
+    return request.map(ApiService.handleResponse(PokemonIcon, true));
+  }
+
+  /**
+   * Get pokemon png icon by specific id.
+   * @param {number} id - Pokemon ID, range 1-151
+   * @returns {Observable<PokemonIcon>}
+   */
+  getPngIconById(id: number): Observable<PokemonIcon> {
+    let request = this.http.get(this.apiEndpoint + '/api/pokemon/id/' + id + '/icon/png');
+    return request.map(ApiService.handleResponse(PokemonIcon, true));
+  }
+
+  /**
+   * Get pokemon svg icon by specific id.
+   * @param {number} id - Pokemon ID, range 1-151
+   * @returns {Observable<PokemonIcon>}
+   */
+  getSvgIconById(id: number): Observable<PokemonIcon> {
+    let request = this.http.get(this.apiEndpoint + '/api/pokemon/id/' + id + '/icon/svg');
     return request.map(ApiService.handleResponse(PokemonIcon, true));
   }
 
@@ -284,4 +305,13 @@ export class ApiService {
     });
     return request.map(ApiService.handleResponse(Sighting));
   }
+
+  /**
+   * Get Pokemon types and the default type color.
+   * @returns {{ [key:string]:string; }}
+   */
+  getTypes(): { [key:string]:string; } {
+    return TYPES;
+  }
+
 }

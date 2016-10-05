@@ -21,8 +21,13 @@ export class WikiIndexPage {
   constructor(private navCtrl: NavController, private apiservice: ApiService) { }
 
   ionViewDidEnter() {
-    this.querySubscription = this.apiservice.getAllPokemon()
+    if(this.queryString === ''||this.queryString===undefined) {
+      this.querySubscription = this.apiservice.getAllPokemon()
         .subscribe(results => this.results = results, error => this.results = []);
+    } else {
+      this.querySubscription = this.apiservice.getPokemonByName(this.queryString)
+        .subscribe(results => this.results = results, error => this.results = []);
+    }
   }
 
   onInput() {

@@ -1,42 +1,26 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   template: require('./poke-type.component.html'),
+  styles: [require('./poke-type.component.scss')],
   selector: 'poke-type',
 })
 
 export class PokeTypeComponent implements OnInit {
 
-  @Input() type: string[]
-  typeArray: Object[]
+  @Input() type: string[];
+  typeArray: Object[];
 
-  constructor() {
+  constructor(private apiservice: ApiService) {
   }
 
   ngOnInit() {
-    const color={
-      'fire':'#ff6600',
-      'ice':'#cce6ff',
-      'poison':'#b30086',
-      'flying':'#cc66ff',
-      'bug':'#99cc00',
-      'grass':'#66ff33',
-      'water':'#3399ff',
-      'ground':'#ffcc66',
-      'rock':'#cc8800',
-      'fight':'#cc0000',
-      'steel':'#d6d6c2',
-      'dragon':'#3333cc',
-      'fairy':'#cc99ff',
-      'dark':'#73264d',
-      'ghost':'#9933ff',
-      'psychic':'#ff6699',
-      'electric':'#ffff33',
-      'normal':'#8a8a5c'
-    }
-    this.typeArray = []
+    let typeColors = this.apiservice.getTypes();
+
+    this.typeArray = [];
     for (let item of this.type){
-      this.typeArray.push({element:item, color:color[item]})
+      this.typeArray.push({element:item, color:typeColors[item]})
     }
   }
 
