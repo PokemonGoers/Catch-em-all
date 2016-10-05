@@ -4,8 +4,8 @@ import { ConfigService } from '../services/config.service';
 const configServiceInjector = ReflectiveInjector.resolveAndCreate([ConfigService]);
 const config: ConfigService = configServiceInjector.get(ConfigService);
 
-export type PokemonGender = 'm' | 'f' | 'g' | 'h';
-export type PokemonAttackCategory = 'fast' | 'special';
+export type PokeGender = 'm' | 'f' | 'g' | 'h';
+export type PokeAttackCategory = 'fast' | 'special';
 export type Attack = {
   type: string;
   name: string;
@@ -35,7 +35,7 @@ export class Pokemon {
   appearanceLikelihood: number;
 
   gender: {
-    abbreviation: PokemonGender;
+    abbreviation: PokeGender;
     maleRatio: number;
     femaleRatio: number;
     breedable: boolean;

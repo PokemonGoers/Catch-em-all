@@ -6,18 +6,23 @@ import { FilterPopoverComponent } from '../../components/filter-popover/filter-p
 import { MapComponent, FilterOptions } from '../../components/map/map.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ConfigService } from '../../services/config.service';
+import { PokePOICardComponent } from '../../components/poke-poi-card/poke-poi-card.component';
+import { PokeSighting } from '../../models/poke-sighting';
 
 @Page({
   template: require('./map.page.html'),
   styles: [require('./map.page.scss')],
   directives: [
     forwardRef(() => NavbarComponent),
-    MapComponent
+    MapComponent,
+    PokePOICardComponent
   ]
 })
 export class MapPage {
 
   @ViewChild(MapComponent) map: MapComponent;
+  @ViewChild(PokePOICardComponent) pokePOICard: PokePOICardComponent;
+
 
   static ZOOM_LEVEL = 17;
 
@@ -55,8 +60,8 @@ export class MapPage {
   }
 
   ionViewDidEnter() {
-      this.initializeMap();
-      this.positionLoaded.then(position => this.map.goTo(position));
+    this.initializeMap();
+    this.positionLoaded.then(position => this.map.goTo(position));
   }
 
   initializeMap() {
@@ -65,6 +70,12 @@ export class MapPage {
     let tileLayer = 'http://{s}.tile.opencyclemap.org/transport/{z}/{x}/{y}.png';
 
     this.map.initialize({filter, apiEndpoint, tileLayer});
+
+    this.map.onClick(pokePOI => {
+      if (pokePOI instanceof PokeSighting) {
+        this.pokePOICard.show(pokePOI);
+      }
+    });
   }
 
   showFilterPopover($event?): void {
