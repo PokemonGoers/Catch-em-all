@@ -21,8 +21,8 @@ let Hammer = require('hammerjs');
   ],
   animations: [
     trigger('slide', [
-      state('visible', style({transform: 'translateY(0)'})),
-      state('hidden', style({transform: 'translateY(120%)'})),
+      state('visible', style({transform: 'translateY(0)', display: 'inline-block'})),
+      state('hidden', style({transform: 'translateY(120%)', display: 'none'})),
       transition('visible <=> hidden', animate('300ms ease')),
     ])
   ]
@@ -45,7 +45,6 @@ export class PokePOICardComponent implements OnInit {
   }
 
   show(pokePOI: PokeSighting) {
-    this.pokePOI = null;
     this.cancelRequests();
 
     // Load pokemon for given pokemonId
