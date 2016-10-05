@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = function(config) {
   config.set({
 
@@ -40,7 +42,16 @@ module.exports = function(config) {
           {test: /\.woff(2)?(\?v=.+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
           {test: /\.(ttf|eot|svg|png)(\?v=.+)?$/, loader: 'file'}
         ]
-      }
+      },
+      plugins:[
+        new webpack.DefinePlugin({
+          BUILD_ENV: JSON.stringify('test'),
+          BUILD_TIME: JSON.stringify(new Date()),
+          BUILD_TARGET: JSON.stringify('web'),
+          API_ENDPOINT: JSON.stringify(null),
+          WEBSOCKET_ENDPOINT: JSON.stringify(null)
+        })
+      ]
     },
 
     customLaunchers: {
