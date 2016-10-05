@@ -1,13 +1,21 @@
 import { Component } from '@angular/core';
+import { Events, ViewController } from 'ionic-angular';
+import { Filter } from '../../models/filter';
+import { ApiService } from '../../services/api.service';
+import { ConfigService } from '../../services/config.service';
 import { PokeFilterTimeTabComponent } from '../poke-filter-time-tab/poke-filter-time-tab.component';
 import { PokeFilterPokemonTabComponent } from '../poke-filter-pokemon-tab/poke-filter-pokemon-tab.component';
-import { Events, ViewController } from 'ionic-angular';
-import { Pokemon } from '../../models/pokemon';
-import { Filter } from '../../models/filter';
 
 @Component({
   template: require('./filter-popover.component.html'),
-  directives: [PokeFilterTimeTabComponent, PokeFilterPokemonTabComponent]
+  directives: [
+    PokeFilterTimeTabComponent,
+    PokeFilterPokemonTabComponent
+  ],
+  providers: [
+    ApiService,
+    ConfigService
+  ],
 })
 
 export class FilterPopoverComponent {

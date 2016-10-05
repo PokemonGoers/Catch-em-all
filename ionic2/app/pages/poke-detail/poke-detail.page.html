@@ -26,8 +26,14 @@
         <hr>
       </ion-row>
       <ion-card>
-        <ion-card-content>
-        {{pokemon.description}}
+        <ion-card-content text-center>
+          {{pokemon.description}}
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-content text-center>
+          {{getAppearanceLikelihoodInWords()}} Pokémon are a {{pokemon.name}}.<br/>
+          This puts {{pokemon.name}} on the {{getRankInWords()}} place on the rarity scale.
         </ion-card-content>
       </ion-card>
       <hr>

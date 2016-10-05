@@ -7,6 +7,7 @@ import { PokeSighting } from '../models/poke-sighting';
 import { PokeGender } from '../models/pokemon';
 import { PokeAttackCategory } from '../models/pokemon';
 import { ConfigService } from './config.service';
+import { TYPES } from './poke-types';
 
 @Injectable()
 export class ApiService {
@@ -270,4 +271,13 @@ export class ApiService {
     });
     return request.map(ApiService.handleResponse(PokeSighting));
   }
+
+  /**
+   * Get Pokemon types and the default type color.
+   * @returns {{ [key:string]:string; }}
+   */
+  getTypes(): { [key:string]:string; } {
+    return TYPES;
+  }
+
 }

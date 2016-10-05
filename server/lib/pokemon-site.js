@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const http = require('http')
 const proxy = require('express-http-proxy')
+const compression = require('compression')
 const url = require('url')
 
 class PokemonSite {
@@ -12,8 +13,11 @@ class PokemonSite {
     app.use(bodyParser.json())
     app.get('/', (req, res) => { res.redirect('index.html') })
 
-    // Serve app content
-    app.use(express.static(path.join(__dirname, '../app')))
+    // Use gzip to compress served files
+    app.use(compression())
+
+    // Serve app content and cache it for a week
+    app.use(express.static(path.join(__dirname, '../app'), {maxage: 7 * 86400000}))
 
     // Proxy requests to /api/* to API backend
     app.use('/api/*', proxy(config.apiEndpoint, {

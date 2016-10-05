@@ -31,6 +31,9 @@ export class Pokemon {
   resistance: string[];
   types: string[];
 
+  rarityRank: number;
+  appearanceLikelihood: number;
+
   gender: {
     abbreviation: PokeGender;
     maleRatio: number;
