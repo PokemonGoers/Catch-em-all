@@ -4,7 +4,7 @@ import { Pokemon } from '../../models/pokemon';
 @Component({
   template: require('./poke-rarity-badge.component.html'),
   styles: [require('./poke-rarity-badge.component.scss')],
-  selector: 'poke-attacks'
+  selector: 'poke-rarity-badge'
 })
 
 export class PokeRarityBadgeComponent {
