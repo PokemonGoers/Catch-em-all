@@ -44,7 +44,7 @@ export const PEOPLE = [
     {name:'Philipp Dowling',link:'#'}
   ]},
   {
-    alias: 'Pokémon World Cartographers',
+    alias: 'Pokémon Cartographers',
     member:[
     {name:'Elma Gazetic',link:'#'},
     {name:'Faris Cakaric',link:'#'},

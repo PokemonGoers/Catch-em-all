@@ -3,28 +3,41 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-title>About this Project</ion-title>
-  <p>
-    This web app is the result of a JavaScript Course at the Technical University of Munich.<br><br>
-    On July 6th of this year, Niantic released the new location-based augmented reality title Pokemon Go.
-    The game took the world by storm and is now installed on 5% of smartphones in the US.
-    In the game, players are using their smartphones to locate Pokemon - cute and cuddly virtual creatures that after
-    being captured and nurtured turn into fearless fighters in the name of your ambition to level up.
-    Locating and capturing Pokemon has quickly become a phenomenon - hoards of people have been sighted in
-    New York as they chase imaginary creatures and try to capture them in Central Park. Pokemon appear at
-    certain places in the real world and wait at those coordinates for a period of time. While firing up
-    your Pokemon Go app and starting to randomly look for Pokemon that may pop up nearby may be a fun
-    thing to do, we thought it could be nicer if we do not leave things to random chance, but instead try to
-    intelligently guess when and where our Pokemon will pop up.
-  </p>
-  <ion-title>Our Team</ion-title>
-  <ion-list no-lines *ngFor="let group of people">
-    <ion-list-header>
-      {{group.alias}}
-    </ion-list-header>
-    <ion-item *ngFor="let person of group.member">
-      <a [href]="person.link" class="no-deco">{{person.name}}</a>
-    </ion-item>
-  </ion-list>
+<ion-content padding class="about-page">
+  <h1>The Team</h1>
+  <div class="flex">
+    <ion-col class="mid"><img src="img/seminar_group.png" class="box" alt="Group Image"></ion-col>
+    <ion-col><p>
+      This web app is the result of a JavaScript Course at the Technical University of Munich.<br><br>
+      On July 6th of this year, Niantic released the new location-based augmented
+      reality title PokemonGo. The game took the world by storm and is now
+      installed on 5% of smartphones in the US. In the game, players are using
+      their smartphones to locate Pokemon - cute and cuddly virtual creatures that
+       after being captured and nurtured turn into fearless fighters in the name
+      of your ambition to level up.<br><br>
+      In the real world Pokemons appear at random places and only for a short
+      period of time. While firing up your PokemonGo app and starting to randomly
+      look for a Pokemon that may pop up nearby may be a fun thing to do, we
+      thought it could be nice if we do not leave things to random chance.
+      Instead, we are intelligently guessing when and where our Pokemons will pop
+      up.
+    </p></ion-col>
+  </div>
+  <h1>The Contributors</h1>
+  <div class="flex2">
+    <ion-list no-lines *ngFor="let group of people">
+      <h4>
+        {{group.alias}}
+      </h4>
+      <div class="list" *ngFor="let person of group.member">
+        <a [href]="person.link" class="no-deco">{{person.name}}</a>
+      </div>
+    </ion-list>
+  </div>
+  <h1>Sponsoring</h1>
+  <div class="mid">
+    <p>We want to call out the guys from Iteratec for their sponsoring.
+    <br>You guys made this project possible!</p>
+    <img src="img/iteratec.png" alt="Iteratec Logo">
+  </div>
 </ion-content>
