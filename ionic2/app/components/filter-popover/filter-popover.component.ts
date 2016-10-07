@@ -7,6 +7,7 @@ import { PokeFilterTimeTabComponent } from '../poke-filter-time-tab/poke-filter-
 import { PokeFilterPokemonTabComponent } from '../poke-filter-pokemon-tab/poke-filter-pokemon-tab.component';
 
 @Component({
+  // Use inline tamplate: https://github.com/driftyco/ionic/issues/7803
   template: `
     <ion-toolbar style="padding: 0;">
       <ion-segment [(ngModel)]="currentTab" primary>

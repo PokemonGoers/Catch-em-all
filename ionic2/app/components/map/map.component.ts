@@ -36,6 +36,7 @@ export class MapComponent {
   }
 
   filter(filter: Filter) {
+    // TODO: Map filter to Date() and pass to Pokemap
     let filterObj:FilterOptions = {
       pokemonIds: filter.selectedPokemon,
       sightingsSince: filter.sightingsRange,
