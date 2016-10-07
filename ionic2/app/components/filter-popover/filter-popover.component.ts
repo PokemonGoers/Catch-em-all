@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Events, ViewController } from 'ionic-angular';
+import { Events, ViewController, NavParams } from 'ionic-angular';
 import { Filter } from '../../models/filter';
 import { ApiService } from '../../services/api.service';
 import { ConfigService } from '../../services/config.service';
@@ -7,7 +7,25 @@ import { PokeFilterTimeTabComponent } from '../poke-filter-time-tab/poke-filter-
 import { PokeFilterPokemonTabComponent } from '../poke-filter-pokemon-tab/poke-filter-pokemon-tab.component';
 
 @Component({
-  template: require('./filter-popover.component.html'),
+  // Use inline tamplate: https://github.com/driftyco/ionic/issues/7803
+  template: `
+    <ion-toolbar style="padding: 0;">
+      <ion-segment [(ngModel)]="currentTab" primary>
+        <ion-segment-button value="time">Time</ion-segment-button>
+        <ion-segment-button value="pokemon">Pokemon</ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+    <div [ngSwitch]="currentTab">
+      <poke-filter-time-tab *ngSwitchCase="'time'" 
+        [filter]="filter" 
+        (onFilterChange)="onFilterChanged(filter)">     
+      </poke-filter-time-tab>
+      <poke-filter-pokemon-tab *ngSwitchCase="'pokemon'"
+        [filter]="filter"
+        (onFilterChange)="onFilterChanged(filter)">
+      </poke-filter-pokemon-tab>
+    </div>
+    `,
   directives: [
     PokeFilterTimeTabComponent,
     PokeFilterPokemonTabComponent
@@ -23,26 +41,21 @@ export class FilterPopoverComponent {
   filter: Filter;
 
   constructor(private viewController: ViewController,
-              private events: Events) {}
+              private navParams: NavParams,
+              private events: Events) {
+    this.filter = this.navParams.get('filter');
+  }
 
   ionViewWillEnter() {
     this.currentTab = 'time';
-    this.filter = {
-      sightingsRange: 7,
-      predictionsRange: 5,
-      selectedPokemon: []
-    }
   }
 
-  onFilterChanged(filter) {
-    this.filter = filter;
+  onFilterChanged(filter: Filter) {
+    this.events.publish('filter:changed',
+      new Filter(filter.sightingsRange, filter.predictionsRange, filter.selectedPokemon));
   }
 
   close(): void {
     this.viewController.dismiss();
-  }
-
-  onChange(): void {
-    this.events.publish('filter:changed', this.filter)
   }
 }

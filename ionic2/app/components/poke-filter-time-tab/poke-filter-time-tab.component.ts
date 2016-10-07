@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Filter } from '../../models/filter';
 
 @Component({
@@ -20,8 +20,8 @@ export class PokeFilterTimeTabComponent implements OnInit {
       this._barL = `${firstRatio * 100}%`;
       this._barR = `0%`;
       this.updateTicks();
-    }
-    setTimeout(() => this._sightingsRange.updateBar(), 0) // Hack: Async call
+    };
+    setTimeout(() => this._sightingsRange.updateBar(), 0); // Hack: Async call
   }
 
   onSightingsToggleChanged(event) {
@@ -30,8 +30,8 @@ export class PokeFilterTimeTabComponent implements OnInit {
     setTimeout(() => this.cdr.detectChanges(), 100);
   }
 
-  onSightingsRangeChanged(event) {
-    this.filter.sightingsRange = event.value;
+  onSightingsRangeChanged(value) {
+    this.filter.sightingsRange = value;
     this.onFilterChange.emit(this.filter);
   }
 
@@ -41,8 +41,8 @@ export class PokeFilterTimeTabComponent implements OnInit {
     setTimeout(() => this.cdr.detectChanges(), 100);
   }
 
-  onPredictionsRangeChanged(event) {
-    this.filter.predictionsRange = event.value;
+  onPredictionsRangeChanged(value) {
+    this.filter.predictionsRange = value;
     this.onFilterChange.emit(this.filter);
   }
 }

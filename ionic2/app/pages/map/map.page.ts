@@ -1,13 +1,14 @@
 import { ViewChild, forwardRef } from '@angular/core';
-import { NavParams, Page, PopoverController, PopoverOptions } from 'ionic-angular';
+import { NavParams, Page, PopoverController, Events } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
 import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
-import { MapComponent, FilterOptions } from '../../components/map/map.component';
+import { MapComponent } from '../../components/map/map.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ConfigService } from '../../services/config.service';
 import { PokePOICardComponent } from '../../components/poke-poi-card/poke-poi-card.component';
 import { PokeSighting } from '../../models/poke-sighting';
+import { Filter } from '../../models/filter';
 
 @Page({
   template: require('./map.page.html'),
@@ -28,16 +29,18 @@ export class MapPage {
 
   positionLoaded: Promise<any> = null;
 
-  filter: FilterOptions = {
-    pokemonIds: null,
-    sightingsSince: 1800,
-    predictionsUntil: 1800
-  };
+  filter: Filter;
 
   constructor(private navParams: NavParams,
               private config:ConfigService,
-              private popoverCtrl: PopoverController) {
+              private popoverCtrl: PopoverController,
+              private events: Events) {
     this.positionLoaded = this.loadPosition();
+    this.filter = new Filter(5, 5, []); //TODO: FilterService to handle storing
+    this.events.subscribe('filter:changed', ( obj ) => {
+      this.filter = obj[0];
+      this.map.filter(this.filter);
+    });
   }
 
   loadPosition() {
@@ -79,7 +82,8 @@ export class MapPage {
   }
 
   showFilterPopover($event?): void {
-    let popover = this.popoverCtrl.create(FilterPopoverComponent, this.filter, {cssClass: 'popover'});
+    let filter = this.filter;
+    let popover = this.popoverCtrl.create(FilterPopoverComponent, { filter });
     popover.present({
       ev: $event
     });
