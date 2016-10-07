@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Events, ViewController } from 'ionic-angular';
+import {Events, ViewController, NavParams} from 'ionic-angular';
 import { Filter } from '../../models/filter';
 import { ApiService } from '../../services/api.service';
 import { ConfigService } from '../../services/config.service';
@@ -40,15 +40,12 @@ export class FilterPopoverComponent {
   filter: Filter;
 
   constructor(private viewController: ViewController,
-              private events: Events) {}
+              private navParams: NavParams,
+              private events: Events) { }
 
   ionViewWillEnter() {
     this.currentTab = 'time';
-    this.filter = {
-      sightingsRange: 7,
-      predictionsRange: 5,
-      selectedPokemon: []
-    }
+    this.filter = this.navParams.get('filter');
   }
 
   onFilterChanged(filter) {
