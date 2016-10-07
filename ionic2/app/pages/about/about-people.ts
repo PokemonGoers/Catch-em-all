@@ -2,18 +2,18 @@ export const PEOPLE = [
   {
     alias: 'Pokémon Legends',
     member:[
-      {name:'Dr. Lothar Richter',link:'#'},
-      {name:'Timothy Karl',link:'#'},
-      {name:'Prof. Burkhard Rost',link:'#'}
+      {name:'Dr. Lothar Richter',link:'https://rostlab.org'},
+      {name:'Timothy Karl',link:'https://rostlab.org'},
+      {name:'Prof. Burkhard Rost',link:'https://rostlab.org'}
     ],
   },
   {
     alias: 'Pokémon Trainer',
     member:[
-    {name:'Dr. Guy Yachdav',link:'#'},
-    {name:'Dr. Tatyana Goldberg',link:'#'},
-    {name:'Christian Dallago',link:'#'},
-    {name:'Juan Miguel Cejuela',link:'#'}
+    {name:'Dr. Guy Yachdav',link:'https://www.linkedin.com/in/gyachdav'},
+    {name:'Dr. Tatyana Goldberg',link:'https://rostlab.org/~goldberg'},
+    {name:'Christian Dallago',link:'http://christian.dallago.us'},
+    {name:'Juan Miguel Cejuela',link:'https://tagtog.net'}
   ]},
   {
     alias: 'Pokémon Data Analysts',
@@ -44,7 +44,7 @@ export const PEOPLE = [
     {name:'Philipp Dowling',link:'#'}
   ]},
   {
-    alias: 'Pokémon World Cartographers',
+    alias: 'Pokémon Cartographers',
     member:[
     {name:'Elma Gazetic',link:'#'},
     {name:'Faris Cakaric',link:'#'},
