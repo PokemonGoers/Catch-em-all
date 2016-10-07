@@ -79,7 +79,7 @@ export class MapPage {
   }
 
   showFilterPopover($event?): void {
-    let popover = this.popoverCtrl.create(FilterPopoverComponent, this.filter, {cssClass: 'popover'});
+    let popover = this.popoverCtrl.create(FilterPopoverComponent, this.filter);
     popover.present({
       ev: $event
     });
