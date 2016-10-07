@@ -20,8 +20,8 @@ export class PokeFilterTimeTabComponent implements OnInit {
       this._barL = `${firstRatio * 100}%`;
       this._barR = `0%`;
       this.updateTicks();
-    }
-    setTimeout(() => this._sightingsRange.updateBar(), 0) // Hack: Async call
+    };
+    setTimeout(() => this._sightingsRange.updateBar(), 0); // Hack: Async call
   }
 
   onSightingsToggleChanged(event) {

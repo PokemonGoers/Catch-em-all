@@ -36,9 +36,9 @@ export class MapPage {
               private popoverCtrl: PopoverController,
               private events: Events) {
     this.positionLoaded = this.loadPosition();
-    this.filter = new Filter(1800, 1800, []); //TODO: FilterService to handle storing
-    this.events.subscribe('filter:changed', (filter) => {
-      this.filter = filter;
+    this.filter = new Filter(5, 5, []); //TODO: FilterService to handle storing
+    this.events.subscribe('filter:changed', ( obj ) => {
+      this.filter = obj[0];
       this.map.filter(this.filter);
     });
   }
@@ -82,7 +82,8 @@ export class MapPage {
   }
 
   showFilterPopover($event?): void {
-    let popover = this.popoverCtrl.create(FilterPopoverComponent, { filter: this.filter });
+    let filter = this.filter;
+    let popover = this.popoverCtrl.create(FilterPopoverComponent, { filter });
     popover.present({
       ev: $event
     });

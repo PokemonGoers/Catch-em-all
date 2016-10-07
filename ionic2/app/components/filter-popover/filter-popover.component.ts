@@ -41,16 +41,17 @@ export class FilterPopoverComponent {
 
   constructor(private viewController: ViewController,
               private navParams: NavParams,
-              private events: Events) { }
-
-  ionViewWillEnter() {
-    this.currentTab = 'time';
+              private events: Events) {
     this.filter = this.navParams.get('filter');
   }
 
+  ionViewWillEnter() {
+    this.currentTab = 'time';
+  }
+
   onFilterChanged(filter: Filter) {
-    this.filter = new Filter(filter.sightingsRange, filter.predictionsRange, filter.selectedPokemon);
-    this.events.publish('filter:changed', this.filter);
+    this.events.publish('filter:changed',
+      new Filter(filter.sightingsRange, filter.predictionsRange, filter.selectedPokemon));
   }
 
   close(): void {
