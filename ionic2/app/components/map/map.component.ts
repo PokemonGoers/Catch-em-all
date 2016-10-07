@@ -3,7 +3,7 @@ import { PokeSighting } from '../../models/poke-sighting';
 import { PokePrediction } from '../../models/poke-prediction';
 import { PokeMob } from '../../models/poke-mob';
 import { PokePOI } from '../../models/poke-poi';
-import {Filter} from "../../models/filter";
+import { Filter } from '../../models/filter';
 
 let PokeMap = require('pokemap-1');
 

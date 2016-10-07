@@ -1,5 +1,5 @@
 import { ViewChild, forwardRef } from '@angular/core';
-import {NavParams, Page, PopoverController, Events} from 'ionic-angular';
+import { NavParams, Page, PopoverController, Events } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
 import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
@@ -8,7 +8,7 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ConfigService } from '../../services/config.service';
 import { PokePOICardComponent } from '../../components/poke-poi-card/poke-poi-card.component';
 import { PokeSighting } from '../../models/poke-sighting';
-import {Filter} from "../../models/filter";
+import { Filter } from '../../models/filter';
 
 @Page({
   template: require('./map.page.html'),

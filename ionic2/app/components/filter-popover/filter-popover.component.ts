@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Events, ViewController, NavParams} from 'ionic-angular';
+import { Events, ViewController, NavParams } from 'ionic-angular';
 import { Filter } from '../../models/filter';
 import { ApiService } from '../../services/api.service';
 import { ConfigService } from '../../services/config.service';
