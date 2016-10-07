@@ -12,7 +12,8 @@
     <ion-range #sightingsRange
       min="0" max="9" step="1"
       snaps="true"
-      [(ngModel)]="filter.sightingsRange"
+      [ngModel]="filter.sightingsRange"
+      (ngModelChange)="onSightingsRangeChanged($event)"
       debounce="300">
     </ion-range>
 
@@ -47,7 +48,8 @@
     min="0" max="9" step="1"
     snaps="true"
     debounce="300"
-    [(ngModel)]="filter.predictionsRange">
+    [ngModel]="filter.predictionsRange"
+    (ngModelChange) = "onPredictionsRangeChanged($event)">
   </ion-range>
 
   <div class="range-labels">

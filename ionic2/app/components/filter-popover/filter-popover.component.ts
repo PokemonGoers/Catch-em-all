@@ -48,8 +48,8 @@ export class FilterPopoverComponent {
     this.filter = this.navParams.get('filter');
   }
 
-  onFilterChanged(filter) {
-    this.filter = filter;
+  onFilterChanged(filter: Filter) {
+    this.filter = new Filter(filter.sightingsRange, filter.predictionsRange, filter.selectedPokemon);
     this.events.publish('filter:changed', this.filter);
   }
 

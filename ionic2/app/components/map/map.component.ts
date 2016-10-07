@@ -3,6 +3,7 @@ import { PokeSighting } from '../../models/poke-sighting';
 import { PokePrediction } from '../../models/poke-prediction';
 import { PokeMob } from '../../models/poke-mob';
 import { PokePOI } from '../../models/poke-poi';
+import {Filter} from "../../models/filter";
 
 let PokeMap = require('pokemap-1');
 
@@ -34,9 +35,14 @@ export class MapComponent {
     this.map.goTo(position);
   }
 
-  filter(filterOptions: FilterOptions) {
-    console.debug('map:filter', filterOptions);
-    this.map.filter(filterOptions);
+  filter(filter: Filter) {
+    let filterObj:FilterOptions = {
+      pokemonIds: filter.selectedPokemon,
+      sightingsSince: filter.sightingsRange,
+      predictionsUntil: filter.predictionsRange
+    };
+    console.debug('map:filter', filter);
+    // this.map.filter(filterObj);
   }
 
   onClick(callback) {
