@@ -50,13 +50,10 @@ export class FilterPopoverComponent {
 
   onFilterChanged(filter) {
     this.filter = filter;
+    this.events.publish('filter:changed', this.filter);
   }
 
   close(): void {
     this.viewController.dismiss();
-  }
-
-  onChange(): void {
-    this.events.publish('filter:changed', this.filter)
   }
 }

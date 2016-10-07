@@ -1,5 +1,5 @@
 import { ViewChild, forwardRef } from '@angular/core';
-import { NavParams, Page, PopoverController, PopoverOptions } from 'ionic-angular';
+import {NavParams, Page, PopoverController, Events} from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
 import { FilterPopoverComponent } from '../../components/filter-popover/filter-popover.component';
@@ -36,8 +36,10 @@ export class MapPage {
 
   constructor(private navParams: NavParams,
               private config:ConfigService,
-              private popoverCtrl: PopoverController) {
+              private popoverCtrl: PopoverController,
+              private events: Events) {
     this.positionLoaded = this.loadPosition();
+    this.events.subscribe('filter:changed', (filter) => this.filter = filter);
   }
 
   loadPosition() {
