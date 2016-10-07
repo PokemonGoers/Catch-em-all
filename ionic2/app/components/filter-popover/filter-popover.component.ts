@@ -7,7 +7,24 @@ import { PokeFilterTimeTabComponent } from '../poke-filter-time-tab/poke-filter-
 import { PokeFilterPokemonTabComponent } from '../poke-filter-pokemon-tab/poke-filter-pokemon-tab.component';
 
 @Component({
-  template: require('./filter-popover.component.html'),
+  template: `
+    <ion-toolbar style="padding: 0;">
+      <ion-segment [(ngModel)]="currentTab" primary>
+        <ion-segment-button value="time">Time</ion-segment-button>
+        <ion-segment-button value="pokemon">Pokemon</ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+    <div [ngSwitch]="currentTab">
+      <poke-filter-time-tab *ngSwitchCase="'time'" 
+        [filter]="filter" 
+        (onFilterChange)="onFilterChanged(filter)">     
+      </poke-filter-time-tab>
+      <poke-filter-pokemon-tab *ngSwitchCase="'pokemon'"
+        [filter]="filter"
+        (onFilterChange)="onFilterChanged(filter)">
+      </poke-filter-pokemon-tab>
+    </div>
+    `,
   directives: [
     PokeFilterTimeTabComponent,
     PokeFilterPokemonTabComponent
