@@ -36,6 +36,7 @@
 
       <ion-card>
         <ion-card-content text-center>
+          <poke-rarity-badge [rarity]="pokemon.appearanceLikelihood"></poke-rarity-badge> <br/>
           {{ getAppearanceLikelihoodInWords() }} Pokémon are a {{ pokemon.name }}.<br/>
           This puts {{ pokemon.name }} on the {{ getRankInWords() }} place on the rarity scale.
         </ion-card-content>
