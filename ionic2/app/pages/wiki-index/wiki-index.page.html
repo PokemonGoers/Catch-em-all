@@ -17,6 +17,7 @@
           *ngFor="let pokemon of results">
 
         <ion-card (click)="selectPokemon(pokemon)" style="cursor: pointer; cursor: hand;">
+          
           <poke-rarity-badge class="card-right" [rarity]="pokemon.appearanceLikelihood"></poke-rarity-badge>
 
           <a class="card-center"><img class="poke-img-fixed" [src]="pokemon.svgIcon"/></a>
