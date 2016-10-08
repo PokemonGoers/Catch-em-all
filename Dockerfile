@@ -1,11 +1,16 @@
 FROM node:6
 
+ENV PATH="${PATH}:./node_modules/.bin"
+
+ENV LISTEN_ADDRESS=0.0.0.0
+ENV LISTEN_PORT=8080
+ENV API_ENDPOINT=http://pokedata.c4e3f8c7.svc.dockerapp.io:65014
+ENV WEBSOCKET_ENDPOINT=http://pokedata.c4e3f8c7.svc.dockerapp.io:65024
+
 WORKDIR /usr/src/pokemon-app
 
 Add ionic2 ionic2
 ADD server server
-
-ENV PATH="${PATH}:./node_modules/.bin"
 
 # Fix bug https://github.com/npm/npm/issues/9863
 RUN cd $(npm root -g)/npm \
@@ -24,10 +29,6 @@ RUN cd ionic2 && ionic build browser
 
 # Clean workspace
 RUN rm -rf ionic2
-
-ENV LISTEN_ADDRESS=0.0.0.0
-ENV LISTEN_PORT=8080
-ENV API_ENDPOINT=http://pokedata.c4e3f8c7.svc.dockerapp.io:65014
 
 WORKDIR server
 EXPOSE 8080

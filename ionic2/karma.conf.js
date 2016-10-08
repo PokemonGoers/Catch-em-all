@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = function(config) {
   config.set({
 
@@ -40,7 +42,16 @@ module.exports = function(config) {
           {test: /\.woff(2)?(\?v=.+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
           {test: /\.(ttf|eot|svg|png)(\?v=.+)?$/, loader: 'file'}
         ]
-      }
+      },
+      plugins:[
+        new webpack.DefinePlugin({
+          BUILD_ENV: JSON.stringify('test'),
+          BUILD_TIME: JSON.stringify(new Date()),
+          BUILD_TARGET: JSON.stringify('web'),
+          API_ENDPOINT: JSON.stringify(null),
+          WEBSOCKET_ENDPOINT: JSON.stringify(null)
+        })
+      ]
     },
 
     customLaunchers: {
@@ -60,7 +71,8 @@ module.exports = function(config) {
 
     proxies: {
       '/app': '/base/server/app',
-      '/app/api': 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api'
+      '/app/api': 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api',
+      '/app/socket.io': 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65024/socket.io'
     },
 
     // level of logging

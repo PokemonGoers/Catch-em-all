@@ -8,12 +8,14 @@ var outputDir = path.join(__dirname, 'www');
 var BUILD_ENV = process.env['BUILD_ENV'] || 'develop';
 var BUILD_TARGET = process.env['BUILD_TARGET'] || 'web';
 var API_ENDPOINT = process.env['API_ENDPOINT'] || 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014';
+var WEBSOCKET_ENDPOINT = process.env['WEBSOCKET_ENDPOINT'] || 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65024';
 
 let buildConfig = {
   BUILD_ENV: JSON.stringify(BUILD_ENV),
   BUILD_TIME: JSON.stringify(new Date()),
   BUILD_TARGET: JSON.stringify(BUILD_TARGET),
-  API_ENDPOINT: JSON.stringify(API_ENDPOINT)
+  API_ENDPOINT: JSON.stringify(API_ENDPOINT),
+  WEBSOCKET_ENDPOINT: JSON.stringify(WEBSOCKET_ENDPOINT)
 };
 
 var devEnv = BUILD_ENV === 'develop';

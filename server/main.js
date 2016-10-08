@@ -1,7 +1,7 @@
-const PokemonSite = require('./pokemon-site')
+const PokemonServer = require('./pokemon-server')
 const config = require('./config')
 
-const pokemonSite = new PokemonSite(config)
+const pokemonServer = new PokemonServer(config)
 
 // Setup termination handler for various signals
 const signals = [
@@ -9,7 +9,7 @@ const signals = [
   'SIGBUS', 'SIGFPE', 'SIGUSR1', 'SIGSEGV', 'SIGUSR2', 'SIGTERM'
 ]
 function closeApp () {
-  return pokemonSite.close().then(() => {
+  return pokemonServer.close().then(() => {
     console.log('Stopped app')
     process.exit(1)
   })

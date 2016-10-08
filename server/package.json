@@ -2,9 +2,9 @@
   "name": "Catch-em-all",
   "version": "0.0.0",
   "description": "Project E of WS 2016 JavaScript Seminar at TU Munich",
-  "main": "lib/main.js",
+  "main": "main.js",
   "scripts": {
-    "start": "node lib/main",
+    "start": "node main",
     "test": "node tests/main && standard"
   },
   "license": "Apache-2.0",
