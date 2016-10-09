@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit, ElementRef, ChangeDetectorRef,
   animate, trigger, state, style, transition } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 
 import { ApiService } from '../../services/api.service';
@@ -37,7 +37,8 @@ export class PokePOICardComponent implements OnInit {
 
   constructor(private navCtrl: NavController,
               private apiService: ApiService,
-              private changeDetectorRef: ChangeDetectorRef) {}
+              private changeDetectorRef: ChangeDetectorRef,
+              private events: Events) {}
 
   ngOnInit() {
     let hammer = new Hammer(this.slideCard.nativeElement);
@@ -79,8 +80,8 @@ export class PokePOICardComponent implements OnInit {
     }
   }
 
-  launchDirections() {
-    // TODO
+  showDirections() {
+    this.events.publish('map:directions', this.pokePOI.getLocation());
   }
 
   launchPokeDex() {

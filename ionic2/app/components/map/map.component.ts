@@ -1,4 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
+import { Events } from 'ionic-angular';
+import { Geolocation } from 'ionic-native';
+
 import { PokeSighting } from '../../models/poke-sighting';
 import { PokePrediction } from '../../models/poke-prediction';
 import { PokeMob } from '../../models/poke-mob';
@@ -17,13 +20,15 @@ export class MapComponent {
   @ViewChild('mapcontainer') mapcontainer;
   private map;
 
-  constructor() {}
+  constructor(private events: Events) {}
 
   initialize(options) {
     this.map = new PokeMap(this.mapcontainer.nativeElement, options);
 
     this.onClick(console.debug.bind(null, 'map:onClick'));
     this.onMove(console.debug.bind(null, 'map:onMove'));
+
+    this.events.subscribe('map:directions', data => this.showDirections(...data));
   }
 
   get initialized(): boolean {
@@ -37,7 +42,7 @@ export class MapComponent {
 
   filter(filter: Filter) {
     // TODO: Map filter to Date() and pass to Pokemap
-    let filterObj:FilterOptions = {
+    let filterObj: FilterOptions = {
       pokemonIds: filter.selectedPokemon,
       sightingsSince: filter.sightingsRange,
       predictionsUntil: filter.predictionsRange
@@ -54,7 +59,19 @@ export class MapComponent {
     this.map.on('move', callback);
   }
 
-  private static mapPokePOI(pokePOI: Object) : (PokeSighting | PokePrediction | PokeMob) {
+  showDirections(destination) {
+    this.map.clearRoutes();
+
+    Geolocation.getCurrentPosition().then(position => {
+      let start = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      };
+      this.map.navigate(start, destination);
+    })
+  }
+
+  private static mapPokePOI(pokePOI: Object): (PokeSighting | PokePrediction | PokeMob) {
     if ('source' in pokePOI) {
       return PokeSighting.fromObject(pokePOI);
     } else if ('clusterId' in pokePOI) {
