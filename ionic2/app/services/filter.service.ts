@@ -9,7 +9,7 @@ const clone = obj => JSON.parse(JSON.stringify(obj));
 @Injectable()
 export class FilterService {
 
-  private _sightingsRange: number = 5;
+  private _sightingsRange: number = 4;
   private _predictionsRange: number = 5;
   private _pokemonIds: number[] = null;
 
@@ -29,12 +29,12 @@ export class FilterService {
   timeRangesSightings: any[];
   timeRangesPredictions: any[];
 
-  constructor(private events: Events, platform: Platform) {
+  constructor(private events: Events, private platform: Platform) {
     this.timeRangesSightings = clone(this.timeRanges);
     this.timeRangesPredictions = clone(this.timeRanges);
     this.timeRangesPredictions.reverse();
 
-    if (platform.is('cordova')) {
+    if (this.platform.is('cordova')) {
       NativeStorage.getItem('filter').then(this.loadFilter.bind(this)).catch(error => console.log('ERROR', error));
     }
   }
@@ -57,7 +57,10 @@ export class FilterService {
 
   onFilterUpdate() {
     this.events.publish('map:filter', this.filter);
-    NativeStorage.setItem('filter', this.dumpFilter());
+
+    if (this.platform.is('cordova')) {
+      NativeStorage.setItem('filter', this.dumpFilter());
+    }
   }
 
   get filter(): Filter {

@@ -13,7 +13,7 @@ export class PokeFilterTimeTabComponent implements OnInit {
   sightingsRange: number;
   predictionsRange: number;
 
-  constructor(public filter: FilterService, private cdr: ChangeDetectorRef) {}
+  constructor(public filterService: FilterService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     // Inverted coloring for sightings bar: Replace method that does coloring
@@ -27,20 +27,20 @@ export class PokeFilterTimeTabComponent implements OnInit {
   }
 
   onSightingsToggleChanged(event) {
-    event._checked ? this.filter.sightingsRange = 5 : this.filter.sightingsRange = 9;
+    event._checked ? this.filterService.sightingsRange = 5 : this.filterService.sightingsRange = 9;
     setTimeout(() => this.cdr.detectChanges(), 100);
   }
 
   onSightingsRangeChanged(sightingsRange) {
-    this.filter.sightingsRange = sightingsRange;
+    this.filterService.sightingsRange = sightingsRange;
   }
 
   onPredictionsToggleChanged(event) {
-    event._checked ? this.filter.predictionsRange = 5 : this.filter.predictionsRange = 0;
+    event._checked ? this.filterService.predictionsRange = 5 : this.filterService.predictionsRange = 0;
     setTimeout(() => this.cdr.detectChanges(), 100);
   }
 
   onPredictionsRangeChanged(predictionsRange) {
-    this.filter.predictionsRange = predictionsRange;
+    this.filterService.predictionsRange = predictionsRange;
   }
 }
