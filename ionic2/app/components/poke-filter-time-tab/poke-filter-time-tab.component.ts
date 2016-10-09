@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Filter } from '../../models/filter';
 import { FilterService } from '../../services/filter.service';
 
-const clone = obj => JSON.parse(JSON.stringify(obj));
-
 @Component({
   template: require('./poke-filter-time-tab.component.html'),
   selector: 'poke-filter-time-tab',
@@ -15,12 +13,9 @@ export class PokeFilterTimeTabComponent implements OnInit {
   sightingsRange: number;
   predictionsRange: number;
 
-  constructor(public filterService: FilterService, private cdr: ChangeDetectorRef) {}
+  constructor(public filter: FilterService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.sightingsRange = this.filterService.sightingsRange;
-    this.predictionsRange = this.filterService.predictionsRange;
-
     // Inverted coloring for sightings bar: Replace method that does coloring
     this.sightingsRangeSlider.updateBar = function () {
       let firstRatio = this._knobs.first.ratio;
@@ -32,24 +27,20 @@ export class PokeFilterTimeTabComponent implements OnInit {
   }
 
   onSightingsToggleChanged(event) {
-    event._checked ? this.sightingsRange = 5 : this.sightingsRange = 9;
-    this.filterService.sightingsRange = this.sightingsRange;
+    event._checked ? this.filter.sightingsRange = 5 : this.filter.sightingsRange = 9;
     setTimeout(() => this.cdr.detectChanges(), 100);
   }
 
   onSightingsRangeChanged(sightingsRange) {
-    this.sightingsRange = sightingsRange;
-    this.filterService.sightingsRange = this.sightingsRange;
+    this.filter.sightingsRange = sightingsRange;
   }
 
   onPredictionsToggleChanged(event) {
-    event._checked ? this.predictionsRange = 5 : this.predictionsRange = 0;
-    this.filterService.predictionsRange = this.predictionsRange;
+    event._checked ? this.filter.predictionsRange = 5 : this.filter.predictionsRange = 0;
     setTimeout(() => this.cdr.detectChanges(), 100);
   }
 
   onPredictionsRangeChanged(predictionsRange) {
-    this.predictionsRange = predictionsRange;
-    this.filterService.predictionsRange = this.predictionsRange;
+    this.filter.predictionsRange = predictionsRange;
   }
 }

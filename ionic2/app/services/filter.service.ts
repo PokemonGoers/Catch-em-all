@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Events } from 'ionic-angular';
+import { Events, Platform } from 'ionic-angular';
 import { NativeStorage } from 'ionic-native';
 
 import { Filter } from '../models/filter';
@@ -29,12 +29,14 @@ export class FilterService {
   timeRangesSightings: any[];
   timeRangesPredictions: any[];
 
-  constructor(private events: Events) {
+  constructor(private events: Events, platform: Platform) {
     this.timeRangesSightings = clone(this.timeRanges);
     this.timeRangesPredictions = clone(this.timeRanges);
     this.timeRangesPredictions.reverse();
 
-    NativeStorage.getItem('filter').then(this.loadFilter.bind(this));
+    if (platform.is('cordova')) {
+      NativeStorage.getItem('filter').then(this.loadFilter.bind(this)).catch(error => console.log('ERROR', error));
+    }
   }
 
   private loadFilter(savedFilter) {

@@ -2,7 +2,7 @@
 
   <div class="section-header">
     <ion-toggle
-      [checked]="sightingsRange != 9"
+      [checked]="filter.sightingsRange != 9"
       (ionChange)="onSightingsToggleChanged($event)">
     </ion-toggle>
     <div class="title">Pokemon Sightings</div>
@@ -12,13 +12,13 @@
     <ion-range #sightingsRangeSlider
       min="0" max="9" step="1"
       snaps="true"
-      [ngModel]="sightingsRange"
+      [ngModel]="filter.sightingsRange"
       (ngModelChange)="onSightingsRangeChanged($event)"
       debounce="300">
     </ion-range>
 
     <div class="range-labels">
-      <span *ngFor="let range of filterService.timeRangesSightings">{{ range.label }}</span>
+      <span *ngFor="let range of filter.timeRangesSightings">{{ range.label }}</span>
     </div>
   </div>
 
@@ -31,7 +31,7 @@
 <div class="group">
 
   <div class="section-header">
-    <ion-toggle [checked]="predictionsRange != 0"
+    <ion-toggle [checked]="filter.predictionsRange != 0"
         (ionChange)="onPredictionsToggleChanged($event)"></ion-toggle>
     <div class="title">Pokemon Predictions</div>
   </div>
@@ -40,12 +40,12 @@
     min="0" max="9" step="1"
     snaps="true"
     debounce="300"
-    [ngModel]="predictionsRange"
+    [ngModel]="filter.predictionsRange"
     (ngModelChange)="onPredictionsRangeChanged($event)">
   </ion-range>
 
   <div class="range-labels">
-    <span *ngFor="let range of filterService.timeRangesPredictions">{{ range.label }}</span>
+    <span *ngFor="let range of filter.timeRangesPredictions">{{ range.label }}</span>
   </div>
 
   <div class="note">
