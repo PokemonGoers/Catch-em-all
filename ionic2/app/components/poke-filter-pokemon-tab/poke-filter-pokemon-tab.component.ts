@@ -1,10 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { ApiService } from '../../services/api.service';
 import { Subscription } from 'rxjs';
 import { Pokemon } from '../../models/pokemon';
 import { PokemonFilterPipe } from './pokemon-filter-pipe';
 import { PokemonFilterData } from './pokemon-filter-data';
 import { Filter } from '../../models/filter';
+import { FilterService } from '../../services/filter.service';
 
 type PokemonContainer = {pokemon: Pokemon, isSelected: boolean};
 type TypeContainer = {type: string, isSelected: boolean};
@@ -12,13 +14,12 @@ type TypeContainer = {type: string, isSelected: boolean};
 @Component({
   template: require('./poke-filter-pokemon-tab.component.html'),
   selector: 'poke-filter-pokemon-tab',
-  pipes: [ PokemonFilterPipe ]
+  pipes: [PokemonFilterPipe]
 })
 
 export class PokeFilterPokemonTabComponent implements OnInit {
 
-  @Input() filter: Filter;
-  @Output() onFilterChange = new EventEmitter<Filter>();
+  pokemonIds: number[];
 
   nameFilter: string;
   typeDataBinding: TypeContainer[] = [];
@@ -31,16 +32,18 @@ export class PokeFilterPokemonTabComponent implements OnInit {
     pokemonTypes: []
   };
 
-  constructor(private apiservice: ApiService) {
+  constructor(private apiservice: ApiService, private filterService: FilterService) {
   }
 
   ngOnInit() {
+    this.pokemonIds = this.filterService.pokemonIds;
+
     this.querySubscription = this.apiservice.getAllPokemon()
       .map(pokemonList => {
         return pokemonList.map(pokemon => {
           return {
             pokemon: pokemon,
-            isSelected: true
+            isSelected: this.pokemonIds === null || this.pokemonIds.indexOf(pokemon.pokemonId) >= 0
           };
         })
       })
@@ -103,16 +106,16 @@ export class PokeFilterPokemonTabComponent implements OnInit {
   }
 
   applyFilters() {
-    this.filter.selectedPokemon = [];
+    this.pokemonIds = [];
 
     for (let pokemonCon of this.pokemonContainers) {
       if (pokemonCon.isSelected) {
-        this.filter.selectedPokemon.push(pokemonCon.pokemon.pokemonId);
+        this.pokemonIds.push(pokemonCon.pokemon.pokemonId);
       }
     }
 
-    this.onFilterChange.emit(this.filter);
-    console.log('SELECTED: (' + this.filter.selectedPokemon.length + '): ' + this.filter.selectedPokemon);
+    this.filterService.pokemonIds = this.pokemonIds;
+    console.log('SELECTED: (' + this.pokemonIds.length + '): ' + this.pokemonIds);
   }
 
 }

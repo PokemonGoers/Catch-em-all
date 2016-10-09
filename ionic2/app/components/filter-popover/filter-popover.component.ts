@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { Events, ViewController, NavParams } from 'ionic-angular';
+import { ViewController } from 'ionic-angular';
 import { Filter } from '../../models/filter';
 import { ApiService } from '../../services/api.service';
 import { ConfigService } from '../../services/config.service';
 import { PokeFilterTimeTabComponent } from '../poke-filter-time-tab/poke-filter-time-tab.component';
 import { PokeFilterPokemonTabComponent } from '../poke-filter-pokemon-tab/poke-filter-pokemon-tab.component';
+import { FilterService } from '../../services/filter.service';
 
 @Component({
   // Use inline tamplate: https://github.com/driftyco/ionic/issues/7803
@@ -16,14 +17,8 @@ import { PokeFilterPokemonTabComponent } from '../poke-filter-pokemon-tab/poke-f
       </ion-segment>
     </ion-toolbar>
     <div [ngSwitch]="currentTab">
-      <poke-filter-time-tab *ngSwitchCase="'time'" 
-        [filter]="filter" 
-        (onFilterChange)="onFilterChanged(filter)">     
-      </poke-filter-time-tab>
-      <poke-filter-pokemon-tab *ngSwitchCase="'pokemon'"
-        [filter]="filter"
-        (onFilterChange)="onFilterChanged(filter)">
-      </poke-filter-pokemon-tab>
+      <poke-filter-time-tab *ngSwitchCase="'time'"></poke-filter-time-tab>
+      <poke-filter-pokemon-tab *ngSwitchCase="'pokemon'"></poke-filter-pokemon-tab>
     </div>
     `,
   directives: [
@@ -32,27 +27,18 @@ import { PokeFilterPokemonTabComponent } from '../poke-filter-pokemon-tab/poke-f
   ],
   providers: [
     ApiService,
-    ConfigService
+    ConfigService,
+    FilterService
   ],
 })
 
 export class FilterPopoverComponent {
   currentTab: string;
-  filter: Filter;
 
-  constructor(private viewController: ViewController,
-              private navParams: NavParams,
-              private events: Events) {
-    this.filter = this.navParams.get('filter');
-  }
+  constructor(private viewController: ViewController) {}
 
   ionViewWillEnter() {
     this.currentTab = 'time';
-  }
-
-  onFilterChanged(filter: Filter) {
-    this.events.publish('filter:changed',
-      new Filter(filter.sightingsRange, filter.predictionsRange, filter.selectedPokemon));
   }
 
   close(): void {

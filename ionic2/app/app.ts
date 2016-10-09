@@ -11,6 +11,7 @@ import env from './env';
 import { ApiService } from './services/api.service';
 import { LocationService } from './services/location.service';
 import { ConfigService } from './services/config.service';
+import { FilterService } from './services/filter.service';
 
 for (let envKey in env) {
   console.log(envKey, env[envKey]);
@@ -26,7 +27,8 @@ if (env.BUILD_ENV === 'release') {
   providers: [
     ApiService,
     LocationService,
-    ConfigService
+    ConfigService,
+    FilterService
   ]
 })
 
