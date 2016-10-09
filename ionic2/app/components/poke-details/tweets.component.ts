@@ -13,6 +13,11 @@ export class TweetsComponent {
 
   tweetArray: Object[];
 
+  slideOptions = {
+    loop: true,
+    autoplay: 3000
+  };
+
   ngOnInit() {
     this.tweetArray = [];
     for(var i = 0; i < 20; i++) {
