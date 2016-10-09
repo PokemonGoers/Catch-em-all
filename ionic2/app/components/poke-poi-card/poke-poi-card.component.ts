@@ -8,6 +8,7 @@ import { PokePOIBubbleComponent } from '../poke-poi-bubble/poke-poi-bubble.compo
 import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
 import { PokeTypeComponent } from '../poke-details/poke-type.component';
 import { PokeSighting } from '../../models/poke-sighting';
+import { PokeRarityBadgeComponent } from '../../components/poke-rarity-badge/poke-rarity-badge.component';
 
 let Hammer = require('hammerjs');
 
@@ -17,7 +18,8 @@ let Hammer = require('hammerjs');
   selector: 'poke-poi-card',
   directives: [
     PokePOIBubbleComponent,
-    PokeTypeComponent
+    PokeTypeComponent,
+    PokeRarityBadgeComponent
   ],
   animations: [
     trigger('slide', [

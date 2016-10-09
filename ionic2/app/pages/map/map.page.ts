@@ -64,7 +64,7 @@ export class MapPage {
 
   initializeMap() {
     let filter = this.filterService.filter;
-    let tileLayer = 'http://{s}.tile.opencyclemap.org/transport/{z}/{x}/{y}.png';
+    let tileLayer = 'https://api.mapbox.com/styles/v1/poulzinho/ciu2fc21400k32iqi2gkb7h7g/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG91bHppbmhvIiwiYSI6ImNpdTJmMmlwMTAwMHAyeW55NmVpbXpoY3oifQ._S-9Yx6OXlnMMq_MgsodlA';
     let apiEndpoint = this.config.apiEndpoint;
     let websocketEndpoint = this.config.websocketEndpoint;
 
