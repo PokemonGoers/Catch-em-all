@@ -9,6 +9,7 @@ import { ConfigService } from '../../services/config.service';
 import { PokePOICardComponent } from '../../components/poke-poi-card/poke-poi-card.component';
 import { PokeSighting } from '../../models/poke-sighting';
 import { Filter } from '../../models/filter';
+import { FilterService } from '../../services/filter.service';
 
 @Page({
   template: require('./map.page.html'),
@@ -29,18 +30,12 @@ export class MapPage {
 
   positionLoaded: Promise<any> = null;
 
-  filter: Filter;
-
   constructor(private navParams: NavParams,
               private config:ConfigService,
               private popoverCtrl: PopoverController,
-              private events: Events) {
+              private events: Events,
+              private filterService: FilterService) {
     this.positionLoaded = this.loadPosition();
-    this.filter = new Filter(5, 5, []); //TODO: FilterService to handle storing
-    this.events.subscribe('filter:changed', ( obj ) => {
-      this.filter = obj[0];
-      this.map.filter(this.filter);
-    });
   }
 
   loadPosition() {
@@ -64,27 +59,20 @@ export class MapPage {
 
   ionViewDidEnter() {
     this.initializeMap();
-    this.positionLoaded.then(position => this.map.goTo(position));
+    this.positionLoaded.then(position => this.events.publish('map:goto', position));
   }
 
   initializeMap() {
-    let filter = this.filter;
+    let filter = this.filterService.filter;
     let tileLayer = 'https://api.mapbox.com/styles/v1/poulzinho/ciu2fc21400k32iqi2gkb7h7g/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG91bHppbmhvIiwiYSI6ImNpdTJmMmlwMTAwMHAyeW55NmVpbXpoY3oifQ._S-9Yx6OXlnMMq_MgsodlA';
     let apiEndpoint = this.config.apiEndpoint;
     let websocketEndpoint = this.config.websocketEndpoint;
 
     this.map.initialize({filter, tileLayer, apiEndpoint, websocketEndpoint});
-
-    this.map.onClick(pokePOI => {
-      if (pokePOI instanceof PokeSighting) {
-        this.pokePOICard.show(pokePOI);
-      }
-    });
   }
 
   showFilterPopover($event?): void {
-    let filter = this.filter;
-    let popover = this.popoverCtrl.create(FilterPopoverComponent, { filter });
+    let popover = this.popoverCtrl.create(FilterPopoverComponent);
     popover.present({
       ev: $event
     });

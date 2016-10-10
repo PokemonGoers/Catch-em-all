@@ -1,4 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
+import { Events } from 'ionic-angular';
+
 import { PokeSighting } from '../../models/poke-sighting';
 import { PokePrediction } from '../../models/poke-prediction';
 import { PokeMob } from '../../models/poke-mob';
@@ -17,44 +19,43 @@ export class MapComponent {
   @ViewChild('mapcontainer') mapcontainer;
   private map;
 
-  constructor() {}
+  constructor(private events: Events) {}
 
   initialize(options) {
     this.map = new PokeMap(this.mapcontainer.nativeElement, options);
 
-    this.onClick(console.debug.bind(null, 'map:onClick'));
-    this.onMove(console.debug.bind(null, 'map:onMove'));
+    this.map.on('click', this.onClick.bind(this));
+    this.map.on('move', this.onMove.bind(this));
+
+    this.events.subscribe('map:filter', ([filter]) => this.filter(filter));
+    this.events.subscribe('map:goto', ([position]) => this.goTo(position));
   }
 
   get initialized(): boolean {
     return this.map !== undefined;
   }
 
-  goTo(position) {
+  private goTo(position) {
     console.debug('map:goTo', position);
     this.map.goTo(position);
   }
 
-  filter(filter: Filter) {
-    // TODO: Map filter to Date() and pass to Pokemap
-    let filterObj:FilterOptions = {
-      pokemonIds: filter.selectedPokemon,
-      sightingsSince: filter.sightingsRange,
-      predictionsUntil: filter.predictionsRange
-    };
+  private filter(filter: Filter) {
     console.debug('map:filter', filter);
-    // this.map.filter(filterObj);
+    //this.map.filter(filter);
   }
 
-  onClick(callback) {
-    this.map.on('click', pokePOI => callback(MapComponent.mapPokePOI(pokePOI)));
+  private onClick(pokePOI) {
+    console.debug('map:click', pokePOI);
+    this.events.publish('map:click', MapComponent.mapPokePOI(pokePOI));
   }
 
-  onMove(callback) {
-    this.map.on('move', callback);
+  private onMove(position) {
+    console.debug('map:move', position);
+    this.events.publish('map:move', position);
   }
 
-  private static mapPokePOI(pokePOI: Object) : (PokeSighting | PokePrediction | PokeMob) {
+  private static mapPokePOI(pokePOI: Object): (PokeSighting | PokePrediction | PokeMob) {
     if ('source' in pokePOI) {
       return PokeSighting.fromObject(pokePOI);
     } else if ('clusterId' in pokePOI) {
@@ -64,10 +65,4 @@ export class MapComponent {
     }
   }
 
-}
-
-export type FilterOptions = {
-  pokemonIds: number[];
-  sightingsSince: number; // Time in seconds
-  predictionsUntil: number; // Time in seconds
 }

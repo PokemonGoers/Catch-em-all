@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Filter } from '../../models/filter';
+import { FilterService } from '../../services/filter.service';
 
 @Component({
   template: require('./poke-filter-time-tab.component.html'),
@@ -7,42 +8,39 @@ import { Filter } from '../../models/filter';
   styles: [require('./poke-filter-time-tab.component.scss')]
 })
 export class PokeFilterTimeTabComponent implements OnInit {
-  @ViewChild('sightingsRange') _sightingsRange: any;
-  @Input() filter: Filter;
-  @Output() onFilterChange = new EventEmitter<Filter>();
+  @ViewChild('sightingsRangeSlider') sightingsRangeSlider: any;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  sightingsRange: number;
+  predictionsRange: number;
+
+  constructor(public filterService: FilterService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     // Inverted coloring for sightings bar: Replace method that does coloring
-    this._sightingsRange.updateBar = function () {
+    this.sightingsRangeSlider.updateBar = function () {
       let firstRatio = this._knobs.first.ratio;
       this._barL = `${firstRatio * 100}%`;
       this._barR = `0%`;
       this.updateTicks();
     };
-    setTimeout(() => this._sightingsRange.updateBar(), 0); // Hack: Async call
+    setTimeout(() => this.sightingsRangeSlider.updateBar(), 0); // Hack: Async call
   }
 
   onSightingsToggleChanged(event) {
-    event._checked ? this.filter.sightingsRange = 5 : this.filter.sightingsRange = 9;
-    this.onFilterChange.emit(this.filter);
+    event._checked ? this.filterService.sightingsRange = 5 : this.filterService.sightingsRange = 9;
     setTimeout(() => this.cdr.detectChanges(), 100);
   }
 
-  onSightingsRangeChanged(value) {
-    this.filter.sightingsRange = value;
-    this.onFilterChange.emit(this.filter);
+  onSightingsRangeChanged(sightingsRange) {
+    this.filterService.sightingsRange = sightingsRange;
   }
 
   onPredictionsToggleChanged(event) {
-    event._checked ? this.filter.predictionsRange = 5 : this.filter.predictionsRange = 0;
-    this.onFilterChange.emit(this.filter);
+    event._checked ? this.filterService.predictionsRange = 5 : this.filterService.predictionsRange = 0;
     setTimeout(() => this.cdr.detectChanges(), 100);
   }
 
-  onPredictionsRangeChanged(value) {
-    this.filter.predictionsRange = value;
-    this.onFilterChange.emit(this.filter);
+  onPredictionsRangeChanged(predictionsRange) {
+    this.filterService.predictionsRange = predictionsRange;
   }
 }
