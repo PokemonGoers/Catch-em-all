@@ -19,6 +19,7 @@ export class TweetsComponent {
   };
 
   ngOnInit() {
+    /* Mock data */
     this.tweetArray = [];
     for(var i = 0; i < 20; i++) {
       var tweet = {
@@ -31,6 +32,7 @@ export class TweetsComponent {
     }
   }
 
+  // We will get timestamps from the api, here is a function for converting
   // http://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
   timestampToDate(timestamp)
   {
