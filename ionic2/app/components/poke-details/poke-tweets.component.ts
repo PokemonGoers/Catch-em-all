@@ -2,12 +2,12 @@ import { Component, Input } from '@angular/core';
 import { Pokemon } from '../../models/pokemon';
 
 @Component({
-  template: require('./tweets.component.html'),
-  styles: [require('./tweets.component.scss')],
-  selector: 'tweets'
+  template: require('./poke-tweets.component.html'),
+  styles: [require('./poke-tweets.component.scss')],
+  selector: 'poke-tweets'
 })
 
-export class TweetsComponent {
+export class PokeTweetsComponent {
 
   @Input() pokemon: Pokemon;
 

@@ -7,7 +7,7 @@ import { PokeAttacksComponent } from '../../components/poke-details/poke-attacks
 import { PokeTypeComponent } from '../../components/poke-details/poke-type.component';
 import { PokeStatsComponent } from '../../components/poke-details/poke-stats.component';
 import { PokeRarityBadgeComponent } from '../../components/poke-rarity-badge/poke-rarity-badge.component';
-import { TweetsComponent } from '../../components/poke-details/tweets.component';
+import { PokeTweetsComponent } from '../../components/poke-details/poke-tweets.component';
 
 @Page({
   template: require('./poke-detail.page.html'),
@@ -18,8 +18,8 @@ import { TweetsComponent } from '../../components/poke-details/tweets.component'
     PokeAttacksComponent,
     PokeTypeComponent,
     PokeStatsComponent,
-    PokeRarityBadgeComponent
-    TweetsComponent
+    PokeRarityBadgeComponent,
+    PokeTweetsComponent
   ]
 })
 
