@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Events } from 'ionic-angular';
+import { Geolocation } from 'ionic-native';
 
 import { PokeSighting } from '../../models/poke-sighting';
 import { PokePrediction } from '../../models/poke-prediction';
@@ -29,6 +30,7 @@ export class MapComponent {
 
     this.events.subscribe('map:filter', ([filter]) => this.filter(filter));
     this.events.subscribe('map:goto', ([position]) => this.goTo(position));
+    this.events.subscribe('map:directions', ([destination]) => this.showDirections(destination));
   }
 
   get initialized(): boolean {
@@ -53,6 +55,18 @@ export class MapComponent {
   private onMove(position) {
     console.debug('map:move', position);
     this.events.publish('map:move', position);
+  }
+
+  showDirections(destination) {
+    this.map.clearRoutes();
+
+    Geolocation.getCurrentPosition().then(position => {
+      let start = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      };
+      this.map.navigate(start, destination);
+    })
   }
 
   private static mapPokePOI(pokePOI: Object): (PokeSighting | PokePrediction | PokeMob) {

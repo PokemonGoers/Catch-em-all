@@ -88,8 +88,8 @@ export class PokePOICardComponent implements OnInit {
     }
   }
 
-  launchDirections() {
-    // TODO
+  showDirections() {
+    this.events.publish('map:directions', this.pokePOI.getLocation());
   }
 
   launchPokeDex() {
