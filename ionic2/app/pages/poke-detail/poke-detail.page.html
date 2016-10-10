@@ -7,16 +7,18 @@
 
 <ion-content class="poke-detail">
   <div *ngIf="pokemon">
+
     <div>
+
       <ion-row class="white-background">
         <ion-col><img [src]="pokemon.svgIcon" class="box align-right"></ion-col>
         <ion-col padding>
           <h1>
-            #{{pokemon.pokemonId}}
+            #{{ pokemon.pokemonId }}
             <br/>
-            {{pokemon.name}}
+            {{ pokemon.name }}
           </h1>
-          <span><ion-badge>{{pokemon.classification}}</ion-badge>
+          <span><ion-badge>{{ pokemon.classification }}</ion-badge>
             <ion-icon name="transgender" *ngIf="pokemon.gender.abbreviation=='h'"></ion-icon>
             <ion-icon name="transgender" *ngIf="pokemon.gender.abbreviation=='g'"></ion-icon>
             <ion-icon name="female" *ngIf="pokemon.gender.abbreviation=='f'"></ion-icon>
@@ -25,19 +27,25 @@
         </ion-col>
         <hr>
       </ion-row>
+
       <ion-card>
         <ion-card-content text-center>
-          {{pokemon.description}}
+          {{ pokemon.description }}
         </ion-card-content>
       </ion-card>
+
       <ion-card>
         <ion-card-content text-center>
-          {{getAppearanceLikelihoodInWords()}} Pokémon are a {{pokemon.name}}.<br/>
-          This puts {{pokemon.name}} on the {{getRankInWords()}} place on the rarity scale.
+          <poke-rarity-badge [rarity]="pokemon.appearanceLikelihood"></poke-rarity-badge> <br/>
+          {{ getAppearanceLikelihoodInWords() }} Pokémon are a {{ pokemon.name }}.<br/>
+          This puts {{ pokemon.name }} on the {{ getRankInWords() }} place on the rarity scale.
         </ion-card-content>
       </ion-card>
+
       <hr>
+
       <poke-stats [pokemon]="pokemon"></poke-stats>
+
       <ion-card>
         <ion-card-content>
           <!-- Types -->
@@ -75,6 +83,7 @@
           </ion-row>
         </ion-card-content>
       </ion-card>
+
     </div>
 
     <poke-evolutions [pokemon]="pokemon"></poke-evolutions>

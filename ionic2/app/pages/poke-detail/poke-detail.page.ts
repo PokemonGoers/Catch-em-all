@@ -6,6 +6,7 @@ import { PokeEvolutionsComponent } from '../../components/poke-details/poke-evol
 import { PokeAttacksComponent } from '../../components/poke-details/poke-attacks.component';
 import { PokeTypeComponent } from '../../components/poke-details/poke-type.component';
 import { PokeStatsComponent } from '../../components/poke-details/poke-stats.component';
+import { PokeRarityBadgeComponent } from '../../components/poke-rarity-badge/poke-rarity-badge.component';
 import { TweetsComponent } from '../../components/poke-details/tweets.component';
 
 @Page({
@@ -17,6 +18,7 @@ import { TweetsComponent } from '../../components/poke-details/tweets.component'
     PokeAttacksComponent,
     PokeTypeComponent,
     PokeStatsComponent,
+    PokeRarityBadgeComponent
     TweetsComponent
   ]
 })

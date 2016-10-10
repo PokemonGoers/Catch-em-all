@@ -18,11 +18,15 @@
 
         <ion-card (click)="selectPokemon(pokemon)" style="cursor: pointer; cursor: hand;">
 
+          <poke-rarity-badge class="card-right" [rarity]="pokemon.appearanceLikelihood"></poke-rarity-badge>
+
           <a class="card-center"><img class="poke-img-fixed" [src]="pokemon.svgIcon"/></a>
 
           <ion-item>
-              <span class="card-center"><b>#{{pokemon.pokemonId}} {{pokemon.name}}</b></span>
-            </ion-item>
+            <span class="card-center">
+              <b>#{{ pokemon.pokemonId }} {{ pokemon.name }}</b>
+            </span>
+          </ion-item>
 
         </ion-card>
 
