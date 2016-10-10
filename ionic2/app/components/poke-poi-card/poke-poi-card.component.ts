@@ -8,6 +8,7 @@ import { PokePOIBubbleComponent } from '../poke-poi-bubble/poke-poi-bubble.compo
 import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
 import { PokeTypeComponent } from '../poke-details/poke-type.component';
 import { PokeSighting } from '../../models/poke-sighting';
+import { PokeRarityBadgeComponent } from '../../components/poke-rarity-badge/poke-rarity-badge.component';
 
 let Hammer = require('hammerjs');
 
@@ -17,7 +18,8 @@ let Hammer = require('hammerjs');
   selector: 'poke-poi-card',
   directives: [
     PokePOIBubbleComponent,
-    PokeTypeComponent
+    PokeTypeComponent,
+    PokeRarityBadgeComponent
   ],
   animations: [
     trigger('slide', [
@@ -41,6 +43,12 @@ export class PokePOICardComponent implements OnInit {
               private events: Events) {}
 
   ngOnInit() {
+    this.events.subscribe('map:click', ([pokePOI]) => {
+      if (pokePOI instanceof PokeSighting) {
+        this.show(pokePOI);
+      }
+    });
+
     let hammer = new Hammer(this.slideCard.nativeElement);
     hammer.on('swipedown swipeleft swiperight', this.hide.bind(this));
   }
