@@ -8,6 +8,7 @@ import { FilterTimeTabComponent } from '../filter-time-tab/filter-time-tab.compo
 import { FilterPokemonTabComponent } from '../filter-pokemon-tab/filter-pokemon-tab.component';
 
 @Component({
+  selector: 'poke-filter',
   template:  require('./filter.component.html'),
   directives: [
     FilterTimeTabComponent,
