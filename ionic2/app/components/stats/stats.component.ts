@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { Pokemon } from '../../models/pokemon';
 
 @Component({
@@ -6,13 +7,11 @@ import { Pokemon } from '../../models/pokemon';
   styles: [require('./stats.component.scss')],
   selector: 'poke-stats'
 })
-
 export class StatsComponent implements OnInit {
 
   @Input() pokemon: Pokemon;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
     this.pokemon.fleeRate *= 100;

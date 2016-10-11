@@ -1,22 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { ApiService } from '../../services/api.service';
-import { Subscription } from 'rxjs';
+import { FilterService } from '../../services/filter.service';
 import { Pokemon } from '../../models/pokemon';
 import { PokemonFilterPipe } from '../../pipes/pokemon-filter/pokemon-filter.pipe';
 import { PokemonFilterData } from '../../models/pokemon-filter-data';
-import { Filter } from '../../models/filter';
-import { FilterService } from '../../services/filter.service';
 
 type PokemonContainer = {pokemon: Pokemon, isSelected: boolean};
 type TypeContainer = {type: string, isSelected: boolean};
 
 @Component({
-  template: require('./filter-pokemon-tab.component.html'),
   selector: 'poke-filter-pokemon-tab',
+  template: require('./filter-pokemon-tab.component.html'),
   pipes: [PokemonFilterPipe]
 })
-
 export class FilterPokemonTabComponent implements OnInit {
 
   pokemonIds: number[];
@@ -32,13 +30,12 @@ export class FilterPokemonTabComponent implements OnInit {
     pokemonTypes: []
   };
 
-  constructor(private apiservice: ApiService, private filterService: FilterService) {
-  }
+  constructor(private apiService: ApiService, private filterService: FilterService) { }
 
   ngOnInit() {
     this.pokemonIds = this.filterService.pokemonIds;
 
-    this.querySubscription = this.apiservice.getAllPokemon()
+    this.querySubscription = this.apiService.getAllPokemon()
       .map(pokemonList => {
         return pokemonList.map(pokemon => {
           return {
@@ -52,7 +49,7 @@ export class FilterPokemonTabComponent implements OnInit {
         error => this.pokemonContainers = []
       );
 
-    for (let str in this.apiservice.getTypes()) {
+    for (let str in this.apiService.getTypes()) {
       this.typeDataBinding.push({
         type: str,
         isSelected: false

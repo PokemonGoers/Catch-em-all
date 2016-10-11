@@ -1,7 +1,8 @@
 import { forwardRef } from '@angular/core';
 import { Page, NavController, NavParams } from 'ionic-angular';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
+
 import { Pokemon } from '../../models/pokemon';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { EvolutionsComponent } from '../../components/evolutions/evolutions.component';
 import { AttacksComponent } from '../../components/attacks/attacks.component';
 import { TypesComponent } from '../../components/types/types.component';
@@ -20,7 +21,6 @@ import { RarityBadgeComponent } from '../../components/rarity-badge/rarity-badge
     RarityBadgeComponent
   ]
 })
-
 export class PokeDetailPage {
 
   pokemon: Pokemon;

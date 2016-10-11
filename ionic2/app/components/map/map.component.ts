@@ -5,13 +5,12 @@ import { Geolocation } from 'ionic-native';
 import { PokeSighting } from '../../models/poke-sighting';
 import { PokePrediction } from '../../models/poke-prediction';
 import { PokeMob } from '../../models/poke-mob';
-import { PokePOI } from '../../models/poke-poi';
 import { Filter } from '../../models/filter';
 
 let PokeMap = require('pokemap-1');
 
 @Component({
-  selector: 'map',
+  selector: 'poke-map',
   template: '<div #mapcontainer style="width: 100%; height: 100%;"></div>',
   styles: [require('./map.component.scss')]
 })
@@ -20,7 +19,7 @@ export class MapComponent {
   @ViewChild('mapcontainer') mapcontainer;
   private map;
 
-  constructor(private events: Events) {}
+  constructor(private events: Events) { }
 
   initialize(options) {
     this.map = new PokeMap(this.mapcontainer.nativeElement, options);

@@ -1,16 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { Nav } from 'ionic-angular';
+
 import { MapPage } from '../../pages/map/map.page';
 import { AboutPage } from '../../pages/about/about.page';
 import { ImprintPage } from '../../pages/imprint/imprint.page';
 import { WikiIndexPage } from '../../pages/wiki-index/wiki-index.page';
 
 @Component({
-  selector: 'nav-sidebar',
+  selector: 'poke-nav-sidebar',
   template: require('./nav-sidebar.component.html'),
   styles: [require('./nav-sidebar.component.scss')]
 })
-
 export class NavSidebarComponent {
 
   @Input() content: Nav;
@@ -21,6 +21,8 @@ export class NavSidebarComponent {
     {name: 'About', link: AboutPage},
     {name: 'Imprint & Disclaimer', link: ImprintPage}
   ];
+
+  constructor() { }
 
   openPage(page) {
     // Reset the content nav to have just this page

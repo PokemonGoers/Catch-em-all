@@ -7,8 +7,6 @@ import { MapComponent } from '../../components/map/map.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ConfigService } from '../../services/config.service';
 import { POICardComponent } from '../../components/poi-card/poi-card.component';
-import { PokeSighting } from '../../models/poke-sighting';
-import { Filter } from '../../models/filter';
 import { FilterService } from '../../services/filter.service';
 
 @Page({

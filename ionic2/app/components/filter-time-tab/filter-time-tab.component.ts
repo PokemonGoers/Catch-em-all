@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { Filter } from '../../models/filter';
+
 import { FilterService } from '../../services/filter.service';
 
 @Component({
-  template: require('./filter-time-tab.component.html'),
   selector: 'poke-filter-time-tab',
+  template: require('./filter-time-tab.component.html'),
   styles: [require('./filter-time-tab.component.scss')]
 })
 export class FilterTimeTabComponent implements OnInit {
@@ -13,7 +13,7 @@ export class FilterTimeTabComponent implements OnInit {
   sightingsRange: number;
   predictionsRange: number;
 
-  constructor(public filterService: FilterService, private cdr: ChangeDetectorRef) {}
+  constructor(public filterService: FilterService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     // Inverted coloring for sightings bar: Replace method that does coloring

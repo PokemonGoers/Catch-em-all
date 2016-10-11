@@ -13,9 +13,9 @@ import { RarityBadgeComponent } from '../rarity-badge/rarity-badge.component';
 let Hammer = require('hammerjs');
 
 @Component({
+  selector: 'poke-poi-card',
   template: require('./poi-card.component.html'),
   styles: [require('./poi-card.component.scss')],
-  selector: 'poke-poi-card',
   directives: [
     POIBubbleComponent,
     TypesComponent,
@@ -40,7 +40,7 @@ export class POICardComponent implements OnInit {
   constructor(private navCtrl: NavController,
               private apiService: ApiService,
               private changeDetectorRef: ChangeDetectorRef,
-              private events: Events) {}
+              private events: Events) { }
 
   ngOnInit() {
     this.events.subscribe('map:click', ([pokePOI]) => {
