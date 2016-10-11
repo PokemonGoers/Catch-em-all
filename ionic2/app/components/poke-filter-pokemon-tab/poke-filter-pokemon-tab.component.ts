@@ -35,13 +35,13 @@ export class PokeFilterPokemonTabComponent implements OnInit {
     pokemonTypes: []
   };
 
-  constructor(private apiservice: ApiService, private filterService: FilterService) {
+  constructor(private apiService: ApiService, private filterService: FilterService) {
   }
 
   ngOnInit() {
     this.pokemonIds = this.filterService.pokemonIds;
 
-    this.querySubscription = this.apiservice.getAllPokemon()
+    this.querySubscription = this.apiService.getAllPokemon()
       .map(pokemonList => {
         return pokemonList.map(pokemon => {
           return {
@@ -55,7 +55,7 @@ export class PokeFilterPokemonTabComponent implements OnInit {
         error => this.pokemonContainers = []
       );
 
-    for (let str in this.apiservice.getTypes()) {
+    for (let str in this.apiService.getTypes()) {
       this.typeDataBinding.push({
         type: [str],
         isSelected: false
