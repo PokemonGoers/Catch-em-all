@@ -7,6 +7,7 @@
 // By default each design mode includes these shared imports.
 // App Shared Sass variables belong in app.variables.scss.
 .popover-content {
-  height: 550px;
+  max-height: 550px;
+  height: 70vh;
   width: 300px;
 }
