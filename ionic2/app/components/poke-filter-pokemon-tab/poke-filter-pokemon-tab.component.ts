@@ -7,14 +7,17 @@ import { PokemonFilterPipe } from './pokemon-filter-pipe';
 import { PokemonFilterData } from './pokemon-filter-data';
 import { Filter } from '../../models/filter';
 import { FilterService } from '../../services/filter.service';
+import { PokeTypeComponent } from '../../components/poke-details/poke-type.component';
 
 type PokemonContainer = {pokemon: Pokemon, isSelected: boolean};
-type TypeContainer = {type: string, isSelected: boolean};
+type TypeContainer = {type: string[], isSelected: boolean};
 
 @Component({
   template: require('./poke-filter-pokemon-tab.component.html'),
+  styles: [require('./poke-filter-pokemon-tab.component.scss')],
   selector: 'poke-filter-pokemon-tab',
-  pipes: [PokemonFilterPipe]
+  pipes: [PokemonFilterPipe],
+  directives: [PokeTypeComponent]
 })
 
 export class PokeFilterPokemonTabComponent implements OnInit {
@@ -54,7 +57,7 @@ export class PokeFilterPokemonTabComponent implements OnInit {
 
     for (let str in this.apiservice.getTypes()) {
       this.typeDataBinding.push({
-        type: str,
+        type: [str],
         isSelected: false
       });
     }
@@ -87,7 +90,7 @@ export class PokeFilterPokemonTabComponent implements OnInit {
     this.pokeFilterData.pokemonTypes = [];
     for (let typeField of this.typeDataBinding) {
       if (typeField.isSelected) {
-        this.pokeFilterData.pokemonTypes.push(typeField.type);
+        this.pokeFilterData.pokemonTypes.push(typeField.type[0]);
       }
     }
     console.log('TYPE FILTER CHANGED: ' + this.pokeFilterData.pokemonTypes);

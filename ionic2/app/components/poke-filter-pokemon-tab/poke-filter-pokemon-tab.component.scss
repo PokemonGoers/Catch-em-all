@@ -1,0 +1,32 @@
+.background{
+  background-color: #f4f4f7;
+}
+.type-selection{
+  padding-left: 20px;
+  color: #333333;
+}
+.type-list{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: space-around;
+  max-height: 325px;
+}
+.type-item{
+  flex-grow: 0;
+  vertical-align: middle;
+  text-align: center;
+  padding: 7px;
+}
+ion-checkbox{
+  vertical-align: middle;
+}
+img{
+  max-width: 40px;
+  max-height: 40px;
+}
+poke-list{
+  padding-left: 5px;
+}
