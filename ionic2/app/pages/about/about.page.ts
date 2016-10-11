@@ -2,7 +2,7 @@ import { forwardRef } from '@angular/core';
 import { Page } from 'ionic-angular';
 
 import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { PeopleService } from '../../services/people.service';
+import { ProjectGroupsService } from '../../services/project-groups.service';
 import { ProjectGroup } from '../../models/project-group';
 
 @Page({
@@ -12,10 +12,10 @@ import { ProjectGroup } from '../../models/project-group';
 })
 export class AboutPage {
 
-  people: ProjectGroup[];
+  projectGroups: ProjectGroup[];
 
-  constructor(private peopleService: PeopleService) {
-      this.people = PeopleService.getProjectGroups();
+  constructor(private projectGroupsService: ProjectGroupsService) {
+      this.projectGroups = this.projectGroupsService.getProjectGroups();
   }
 
 }

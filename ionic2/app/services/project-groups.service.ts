@@ -2,17 +2,17 @@ import { Injectable } from '@angular/core';
 import { ProjectGroup } from '../models/project-group'
 
 @Injectable()
-export class PeopleService {
+export class ProjectGroupsService {
 
     constructor() { }
 
-    static getProjectGroups(): ProjectGroup[] {
-      return PEOPLE;
+    getProjectGroups(): ProjectGroup[] {
+      return PROJECTGROUPS;
     }
 
 }
 
-export const PEOPLE: ProjectGroup[] = [
+export const PROJECTGROUPS: ProjectGroup[] = [
   {
     alias: 'Pokémon Legends',
     member:[
