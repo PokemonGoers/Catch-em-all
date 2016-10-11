@@ -2,12 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Pokemon } from '../../models/pokemon';
 
 @Component({
-  template: require('./poke-stats.component.html'),
-  styles: [require('./poke-stats.component.scss')],
+  template: require('./stats.component.html'),
+  styles: [require('./stats.component.scss')],
   selector: 'poke-stats'
 })
 
-export class PokeStatsComponent implements OnInit {
+export class StatsComponent implements OnInit {
 
   @Input() pokemon: Pokemon;
 

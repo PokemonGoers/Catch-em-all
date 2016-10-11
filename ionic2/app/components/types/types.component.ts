@@ -2,12 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 
 @Component({
-  template: require('./poke-type.component.html'),
-  styles: [require('./poke-type.component.scss')],
+  template: require('./types.component.html'),
+  styles: [require('./types.component.scss')],
   selector: 'poke-type',
 })
 
-export class PokeTypeComponent implements OnInit {
+export class TypesComponent implements OnInit {
 
   @Input() type: string[];
   typeArray: Object[];

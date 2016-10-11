@@ -3,11 +3,11 @@ import { Filter } from '../../models/filter';
 import { FilterService } from '../../services/filter.service';
 
 @Component({
-  template: require('./poke-filter-time-tab.component.html'),
+  template: require('./filter-time-tab.component.html'),
   selector: 'poke-filter-time-tab',
-  styles: [require('./poke-filter-time-tab.component.scss')]
+  styles: [require('./filter-time-tab.component.scss')]
 })
-export class PokeFilterTimeTabComponent implements OnInit {
+export class FilterTimeTabComponent implements OnInit {
   @ViewChild('sightingsRangeSlider') sightingsRangeSlider: any;
 
   sightingsRange: number;

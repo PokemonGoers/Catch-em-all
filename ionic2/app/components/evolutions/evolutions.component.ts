@@ -5,12 +5,12 @@ import { NavController } from 'ionic-angular';
 import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
 
 @Component({
-  template: require('./poke-evolutions.component.html'),
-  styles: [require('./poke-evolutions.component.scss')],
+  template: require('./evolutions.component.html'),
+  styles: [require('./evolutions.component.scss')],
   selector: 'poke-evolutions'
 })
 
-export class PokeEvolutionsComponent implements OnInit {
+export class EvolutionsComponent implements OnInit {
 
   @Input() pokemon: Pokemon;
 

@@ -5,14 +5,14 @@ import { PokeDetailPage } from '../poke-detail/poke-detail.page';
 import { Pokemon } from '../../models/pokemon';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ApiService } from '../../services/api.service';
-import { PokeRarityBadgeComponent } from '../../components/poke-rarity-badge/poke-rarity-badge.component';
+import { RarityBadgeComponent } from '../../components/rarity-badge/rarity-badge.component';
 
 @Page({
   template: require('./wiki-index.page.html'),
   styles: [require('./wiki-index.page.scss')],
   directives: [
     forwardRef(() => NavbarComponent),
-    PokeRarityBadgeComponent
+    RarityBadgeComponent
   ]
 })
 

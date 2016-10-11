@@ -4,12 +4,12 @@ import { Pokemon } from '../../models/pokemon';
 import { PokeSighting } from '../../models/poke-sighting';
 
 @Component({
-  template: require('./poke-poi-bubble.component.html'),
-  styles: [require('./poke-poi-bubble.component.scss')],
+  template: require('./poi-bubble.component.html'),
+  styles: [require('./poi-bubble.component.scss')],
   selector: 'poke-poi-bubble',
-  directives: [PokePOIBubbleComponent]
+  directives: [POIBubbleComponent]
 })
-export class PokePOIBubbleComponent implements OnInit {
+export class POIBubbleComponent implements OnInit {
 
   @Input() pokePOI: PokeSighting;
   @ViewChild('circle') circle: ElementRef;
