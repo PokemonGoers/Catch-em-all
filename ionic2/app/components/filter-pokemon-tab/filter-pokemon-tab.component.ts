@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Subscription } from 'rxjs';
 import { Pokemon } from '../../models/pokemon';
-import { PokemonFilterPipe } from '../../pipes/pokemon-filter/pokemon-filter-pipe';
+import { PokemonFilterPipe } from '../../pipes/pokemon-filter/pokemon-filter.pipe';
 import { PokemonFilterData } from '../../models/pokemon-filter-data';
 import { Filter } from '../../models/filter';
 import { FilterService } from '../../services/filter.service';
