@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
-import { Filter } from '../../models/filter';
+
 import { ApiService } from '../../services/api.service';
 import { ConfigService } from '../../services/config.service';
-import { PokeFilterTimeTabComponent } from '../poke-filter-time-tab/poke-filter-time-tab.component';
-import { PokeFilterPokemonTabComponent } from '../poke-filter-pokemon-tab/poke-filter-pokemon-tab.component';
 import { FilterService } from '../../services/filter.service';
+import { FilterTimeTabComponent } from '../filter-time-tab/filter-time-tab.component';
+import { FilterPokemonTabComponent } from '../filter-pokemon-tab/filter-pokemon-tab.component';
 
 @Component({
-  selector: 'poke-filter-popover',
-  template: require('./poke-filter-popover.component.html'),
+  selector: 'poke-filter',
+  template:  require('./filter.component.html'),
   directives: [
-    PokeFilterTimeTabComponent,
-    PokeFilterPokemonTabComponent
+    FilterTimeTabComponent,
+    FilterPokemonTabComponent
   ],
   providers: [
     ApiService,
@@ -20,11 +20,10 @@ import { FilterService } from '../../services/filter.service';
     FilterService
   ],
 })
-
-export class PokeFilterPopoverComponent {
+export class FilterComponent {
   currentTab: string;
 
-  constructor(private viewController: ViewController) {}
+  constructor(private viewController: ViewController) { }
 
   ionViewWillEnter() {
     this.currentTab = 'time';

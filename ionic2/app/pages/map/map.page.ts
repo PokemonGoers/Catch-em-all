@@ -2,13 +2,11 @@ import { ViewChild, forwardRef } from '@angular/core';
 import { NavParams, Page, PopoverController, Events } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
-import { PokeFilterPopoverComponent } from '../../components/poke-filter-popover/poke-filter-popover.component';
+import { FilterComponent } from '../../components/filter/filter.component';
 import { MapComponent } from '../../components/map/map.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ConfigService } from '../../services/config.service';
-import { PokePOICardComponent } from '../../components/poke-poi-card/poke-poi-card.component';
-import { PokeSighting } from '../../models/poke-sighting';
-import { Filter } from '../../models/filter';
+import { POICardComponent } from '../../components/poi-card/poi-card.component';
 import { FilterService } from '../../services/filter.service';
 
 @Page({
@@ -17,13 +15,13 @@ import { FilterService } from '../../services/filter.service';
   directives: [
     forwardRef(() => NavbarComponent),
     MapComponent,
-    PokePOICardComponent
+    POICardComponent
   ]
 })
 export class MapPage {
 
   @ViewChild(MapComponent) map: MapComponent;
-  @ViewChild(PokePOICardComponent) pokePOICard: PokePOICardComponent;
+  @ViewChild(POICardComponent) pokePOICard: POICardComponent;
 
 
   static ZOOM_LEVEL = 17;
@@ -72,7 +70,7 @@ export class MapPage {
   }
 
   showFilterPopover($event?): void {
-    let popover = this.popoverCtrl.create(PokeFilterPopoverComponent);
+    let popover = this.popoverCtrl.create(FilterComponent);
     popover.present({
       ev: $event
     });

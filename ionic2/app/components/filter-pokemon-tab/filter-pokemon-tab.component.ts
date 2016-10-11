@@ -1,26 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { ApiService } from '../../services/api.service';
-import { Subscription } from 'rxjs';
-import { Pokemon } from '../../models/pokemon';
-import { PokemonFilterPipe } from './pokemon-filter-pipe';
-import { PokemonFilterData } from './pokemon-filter-data';
-import { Filter } from '../../models/filter';
 import { FilterService } from '../../services/filter.service';
-import { PokeTypeComponent } from '../../components/poke-details/poke-type.component';
+import { Pokemon } from '../../models/pokemon';
+import { PokemonFilterPipe } from '../../pipes/pokemon-filter/pokemon-filter.pipe';
+import { PokemonFilterData } from '../../models/pokemon-filter-data';
+import { TypesComponent } from '../../components/types/types.component';
 
 type PokemonContainer = {pokemon: Pokemon, isSelected: boolean};
 type TypeContainer = {type: string[], isSelected: boolean};
 
 @Component({
-  template: require('./poke-filter-pokemon-tab.component.html'),
-  styles: [require('./poke-filter-pokemon-tab.component.scss')],
   selector: 'poke-filter-pokemon-tab',
+  template: require('./filter-pokemon-tab.component.html'),
+  styles: [require('./filter-pokemon-tab.component.scss'),],
   pipes: [PokemonFilterPipe],
-  directives: [PokeTypeComponent]
+  directives: [TypesComponent]
 })
-
-export class PokeFilterPokemonTabComponent implements OnInit {
+export class FilterPokemonTabComponent implements OnInit {
 
   pokemonIds: number[];
 
@@ -35,8 +33,7 @@ export class PokeFilterPokemonTabComponent implements OnInit {
     pokemonTypes: []
   };
 
-  constructor(private apiService: ApiService, private filterService: FilterService) {
-  }
+  constructor(private apiService: ApiService, private filterService: FilterService) { }
 
   ngOnInit() {
     this.pokemonIds = this.filterService.pokemonIds;

@@ -1,5 +1,5 @@
 <ion-header>
-  <navbar title="About"></navbar>
+  <poke-navbar title="About"></poke-navbar>
 </ion-header>
 
 
@@ -26,7 +26,7 @@
   <div class="flex">
     <ion-col class="mid"><img src="img/seminar_group.png" class="box" alt="Group Image"></ion-col>
     <ion-col class="flex2">
-      <ion-list no-lines *ngFor="let group of people">
+      <ion-list no-lines *ngFor="let group of projectGroups">
         <h4>
           {{group.alias}}
         </h4>

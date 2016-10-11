@@ -4,22 +4,22 @@ import { NavController, Events } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 
 import { ApiService } from '../../services/api.service';
-import { PokePOIBubbleComponent } from '../poke-poi-bubble/poke-poi-bubble.component';
+import { POIBubbleComponent } from '../poi-bubble/poi-bubble.component';
 import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
-import { PokeTypeComponent } from '../poke-details/poke-type.component';
+import { TypesComponent } from '../types/types.component';
 import { PokeSighting } from '../../models/poke-sighting';
-import { PokeRarityBadgeComponent } from '../../components/poke-rarity-badge/poke-rarity-badge.component';
+import { RarityBadgeComponent } from '../rarity-badge/rarity-badge.component';
 
 let Hammer = require('hammerjs');
 
 @Component({
-  template: require('./poke-poi-card.component.html'),
-  styles: [require('./poke-poi-card.component.scss')],
   selector: 'poke-poi-card',
+  template: require('./poi-card.component.html'),
+  styles: [require('./poi-card.component.scss')],
   directives: [
-    PokePOIBubbleComponent,
-    PokeTypeComponent,
-    PokeRarityBadgeComponent
+    POIBubbleComponent,
+    TypesComponent,
+    RarityBadgeComponent
   ],
   animations: [
     trigger('slide', [
@@ -29,7 +29,7 @@ let Hammer = require('hammerjs');
     ])
   ]
 })
-export class PokePOICardComponent implements OnInit {
+export class POICardComponent implements OnInit {
 
   @ViewChild('slideCard') slideCard: ElementRef;
 
@@ -40,7 +40,7 @@ export class PokePOICardComponent implements OnInit {
   constructor(private navCtrl: NavController,
               private apiService: ApiService,
               private changeDetectorRef: ChangeDetectorRef,
-              private events: Events) {}
+              private events: Events) { }
 
   ngOnInit() {
     this.events.subscribe('map:click', ([pokePOI]) => {

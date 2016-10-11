@@ -1,21 +1,22 @@
 import { Component, Input, ViewChild, ElementRef, OnInit } from '@angular/core';
 
-import { Pokemon } from '../../models/pokemon';
 import { PokeSighting } from '../../models/poke-sighting';
 
 @Component({
-  template: require('./poke-poi-bubble.component.html'),
-  styles: [require('./poke-poi-bubble.component.scss')],
   selector: 'poke-poi-bubble',
-  directives: [PokePOIBubbleComponent]
+  template: require('./poi-bubble.component.html'),
+  styles: [require('./poi-bubble.component.scss')],
+  directives: [POIBubbleComponent]
 })
-export class PokePOIBubbleComponent implements OnInit {
+export class POIBubbleComponent implements OnInit {
 
   @Input() pokePOI: PokeSighting;
   @ViewChild('circle') circle: ElementRef;
 
   arcHighlightColor = '#FFF75A';
   arcBackgroundColor = '#F9F9F9';
+
+  constructor() { }
 
   ngOnInit() {
     let appearedOn = (new Date(this.pokePOI.appearedOn)).getTime() / 1000;
