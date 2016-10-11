@@ -11,4 +11,6 @@ export class AttacksComponent {
 
   @Input() pokemon: Pokemon;
 
+  constructor() { }
+
 }

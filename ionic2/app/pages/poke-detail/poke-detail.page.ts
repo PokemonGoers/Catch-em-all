@@ -1,5 +1,5 @@
 import { forwardRef } from '@angular/core';
-import { Page, NavController, NavParams } from 'ionic-angular';
+import { Page, NavParams } from 'ionic-angular';
 
 import { Pokemon } from '../../models/pokemon';
 import { NavbarComponent } from '../../components/navbar/navbar.component';

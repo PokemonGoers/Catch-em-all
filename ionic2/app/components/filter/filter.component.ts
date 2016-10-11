@@ -19,7 +19,6 @@ import { FilterPokemonTabComponent } from '../filter-pokemon-tab/filter-pokemon-
     FilterService
   ],
 })
-
 export class FilterComponent {
   currentTab: string;
 

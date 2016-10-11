@@ -3,9 +3,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Pokemon } from '../../models/pokemon';
 
 @Component({
+  selector: 'poke-stats',
   template: require('./stats.component.html'),
-  styles: [require('./stats.component.scss')],
-  selector: 'poke-stats'
+  styles: [require('./stats.component.scss')]
 })
 export class StatsComponent implements OnInit {
 

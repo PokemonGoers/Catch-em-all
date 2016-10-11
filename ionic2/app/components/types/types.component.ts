@@ -3,9 +3,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 
 @Component({
-  template: require('./types.component.html'),
-  styles: [require('./types.component.scss')],
   selector: 'poke-type',
+  template: require('./types.component.html'),
+  styles: [require('./types.component.scss')]
 })
 export class TypesComponent implements OnInit {
 
