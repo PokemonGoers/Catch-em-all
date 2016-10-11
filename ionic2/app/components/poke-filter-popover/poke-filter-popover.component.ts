@@ -8,19 +8,8 @@ import { PokeFilterPokemonTabComponent } from '../poke-filter-pokemon-tab/poke-f
 import { FilterService } from '../../services/filter.service';
 
 @Component({
-  // Use inline tamplate: https://github.com/driftyco/ionic/issues/7803
-  template: `
-    <ion-toolbar style="padding: 0;">
-      <ion-segment [(ngModel)]="currentTab" primary>
-        <ion-segment-button value="time">Time</ion-segment-button>
-        <ion-segment-button value="pokemon">Pokemon</ion-segment-button>
-      </ion-segment>
-    </ion-toolbar>
-    <div [ngSwitch]="currentTab">
-      <poke-filter-time-tab *ngSwitchCase="'time'"></poke-filter-time-tab>
-      <poke-filter-pokemon-tab *ngSwitchCase="'pokemon'"></poke-filter-pokemon-tab>
-    </div>
-    `,
+  selector: 'poke-filter-popover',
+  template: require('./poke-filter-popover.component.html'),
   directives: [
     PokeFilterTimeTabComponent,
     PokeFilterPokemonTabComponent
@@ -32,7 +21,7 @@ import { FilterService } from '../../services/filter.service';
   ],
 })
 
-export class FilterPopoverComponent {
+export class PokeFilterPopoverComponent {
   currentTab: string;
 
   constructor(private viewController: ViewController) {}
