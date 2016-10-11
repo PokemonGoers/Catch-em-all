@@ -14,6 +14,7 @@ type TypeContainer = {type: string[], isSelected: boolean};
 @Component({
   selector: 'poke-filter-pokemon-tab',
   template: require('./filter-pokemon-tab.component.html'),
+  styles: [require('./filter-pokemon-tab.component.scss'),],
   pipes: [PokemonFilterPipe],
   directives: [TypesComponent]
 })
