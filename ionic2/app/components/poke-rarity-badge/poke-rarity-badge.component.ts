@@ -2,9 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Pokemon } from '../../models/pokemon';
 
 @Component({
-  template: require('./poke-rarity-badge.component.html'),
-  styles: [require('./poke-rarity-badge.component.scss')],
-  selector: 'poke-rarity-badge'
+  selector: 'poke-rarity-badge',
+  template: require('./poke-rarity-badge.component.html')
 })
 
 export class PokeRarityBadgeComponent {
