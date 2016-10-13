@@ -1,5 +1,15 @@
 ion-badge {
-  background-color: white;
-  color: #e8ae00;
-  font-size: 125%;
+  border-radius: 0px;
+}
+
+.rare {
+  background-color: red;
+}
+
+.uncommon {
+  background-color: orange;
+}
+
+.common {
+  background-color: green;
 }
