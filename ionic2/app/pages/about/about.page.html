@@ -1,9 +1,9 @@
 <ion-header>
-  <navbar title="About"></navbar>
+  <poke-navbar title="About"></poke-navbar>
 </ion-header>
 
 
-<ion-content padding class="about-page">
+<ion-content padding class="background">
   <h1>The Project</h1>
   <div class="flex">
     <p>
@@ -26,7 +26,7 @@
   <div class="flex">
     <ion-col class="mid"><img src="img/seminar_group.png" class="box" alt="Group Image"></ion-col>
     <ion-col class="flex2">
-      <ion-list no-lines *ngFor="let group of people">
+      <ion-list no-lines *ngFor="let group of projectGroups">
         <h4>
           {{group.alias}}
         </h4>
@@ -39,8 +39,8 @@
   <h1>The Sponsors</h1>
   <div class="mid">
     <p>
-      We want to thank our sponsor <a href="https://www.iteratec.de/">Iteratec</a> for providing the domain, hosting and some interesting insights into their company.
+      We want to thank our sponsor <a href="https://www.iteratec.de/">iteratec</a> for providing the domain, hosting and some interesting insights into their company.
     </p>
-    <img src="img/iteratec.png" alt="Iteratec Logo">
+    <img src="img/iteratec.png" alt="iteratec Logo">
   </div>
 </ion-content>

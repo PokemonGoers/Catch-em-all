@@ -2,32 +2,23 @@
 
   <div class="section-header">
     <ion-toggle
-      [checked]="filter.sightingsRange != 9"
+      [checked]="filterService.sightingsRange != 9"
       (ionChange)="onSightingsToggleChanged($event)">
     </ion-toggle>
     <div class="title">Pokemon Sightings</div>
   </div>
 
   <div class="range-container">
-    <ion-range #sightingsRange
+    <ion-range #sightingsRangeSlider
       min="0" max="9" step="1"
       snaps="true"
-      [ngModel]="filter.sightingsRange"
+      [ngModel]="filterService.sightingsRange"
       (ngModelChange)="onSightingsRangeChanged($event)"
       debounce="300">
     </ion-range>
 
     <div class="range-labels">
-      <span>1m</span>
-      <span>2w</span>
-      <span>1w</span>
-      <span>2d</span>
-      <span>1d</span>
-      <span>10h</span>
-      <span>5h</span>
-      <span>2h</span>
-      <span>1h</span>
-      <span>Now</span>
+      <span *ngFor="let range of filterService.timeRangesSightings">{{ range.label }}</span>
     </div>
   </div>
 
@@ -40,31 +31,22 @@
 <div class="group">
 
   <div class="section-header">
-    <ion-toggle [checked]="filter.predictionsRange != 0"
+    <ion-toggle [checked]="filterService.predictionsRange != 0"
         (ionChange)="onPredictionsToggleChanged($event)"></ion-toggle>
     <div class="title">Pokemon Predictions</div>
   </div>
 
-  <ion-range #predictionsRange
+  <ion-range #predictionsRangeSlider
     min="0" max="9" step="1"
     snaps="true"
     debounce="300"
-    [ngModel]="filter.predictionsRange"
-    (ngModelChange) = "onPredictionsRangeChanged($event)">
+    [ngModel]="filterService.predictionsRange"
+    (ngModelChange)="onPredictionsRangeChanged($event)">
   </ion-range>
 
   <div class="range-labels">
-    <span>Now</span>
-    <span>1h</span>
-    <span>2h</span>
-    <span>5h</span>
-    <span>10h</span>
-    <span>1d</span>
-    <span>2d</span>
-    <span>1w</span>
-    <span>2w</span>
-    <span>1m</span>
-    </div>
+    <span *ngFor="let range of filterService.timeRangesPredictions">{{ range.label }}</span>
+  </div>
 
   <div class="note">
     Pokemon predictions calculated by our sophisticated machine learning algorithm. Use the range slider to specify for how far into the future pokemon should be visible.

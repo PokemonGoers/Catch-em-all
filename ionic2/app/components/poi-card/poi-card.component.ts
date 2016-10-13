@@ -1,25 +1,25 @@
 import { Component, ViewChild, OnInit, ElementRef, ChangeDetectorRef,
   animate, trigger, state, style, transition } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 
 import { ApiService } from '../../services/api.service';
-import { PokePOIBubbleComponent } from '../poke-poi-bubble/poke-poi-bubble.component';
+import { POIBubbleComponent } from '../poi-bubble/poi-bubble.component';
 import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
-import { PokeTypeComponent } from '../poke-details/poke-type.component';
+import { TypesComponent } from '../types/types.component';
 import { PokeSighting } from '../../models/poke-sighting';
-import { PokeRarityBadgeComponent } from '../../components/poke-rarity-badge/poke-rarity-badge.component';
+import { RarityBadgeComponent } from '../rarity-badge/rarity-badge.component';
 
 let Hammer = require('hammerjs');
 
 @Component({
-  template: require('./poke-poi-card.component.html'),
-  styles: [require('./poke-poi-card.component.scss')],
   selector: 'poke-poi-card',
+  template: require('./poi-card.component.html'),
+  styles: [require('./poi-card.component.scss')],
   directives: [
-    PokePOIBubbleComponent,
-    PokeTypeComponent,
-    PokeRarityBadgeComponent
+    POIBubbleComponent,
+    TypesComponent,
+    RarityBadgeComponent
   ],
   animations: [
     trigger('slide', [
@@ -29,7 +29,7 @@ let Hammer = require('hammerjs');
     ])
   ]
 })
-export class PokePOICardComponent implements OnInit {
+export class POICardComponent implements OnInit {
 
   @ViewChild('slideCard') slideCard: ElementRef;
 
@@ -39,9 +39,16 @@ export class PokePOICardComponent implements OnInit {
 
   constructor(private navCtrl: NavController,
               private apiService: ApiService,
-              private changeDetectorRef: ChangeDetectorRef) {}
+              private changeDetectorRef: ChangeDetectorRef,
+              private events: Events) { }
 
   ngOnInit() {
+    this.events.subscribe('map:click', ([pokePOI]) => {
+      if (pokePOI instanceof PokeSighting) {
+        this.show(pokePOI);
+      }
+    });
+
     let hammer = new Hammer(this.slideCard.nativeElement);
     hammer.on('swipedown swipeleft swiperight', this.hide.bind(this));
   }
@@ -81,8 +88,8 @@ export class PokePOICardComponent implements OnInit {
     }
   }
 
-  launchDirections() {
-    // TODO
+  showDirections() {
+    this.events.publish('map:directions', this.pokePOI.getLocation());
   }
 
   launchPokeDex() {

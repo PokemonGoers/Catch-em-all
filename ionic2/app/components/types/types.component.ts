@@ -1,22 +1,21 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { ApiService } from '../../services/api.service';
 
 @Component({
-  template: require('./poke-type.component.html'),
-  styles: [require('./poke-type.component.scss')],
   selector: 'poke-type',
+  template: require('./types.component.html'),
+  styles: [require('./types.component.scss')]
 })
-
-export class PokeTypeComponent implements OnInit {
+export class TypesComponent implements OnInit {
 
   @Input() type: string[];
   typeArray: Object[];
 
-  constructor(private apiservice: ApiService) {
-  }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    let typeColors = this.apiservice.getTypes();
+    let typeColors = this.apiService.getTypes();
 
     this.typeArray = [];
     for (let item of this.type){

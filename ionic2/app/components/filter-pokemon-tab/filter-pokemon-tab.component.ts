@@ -1,24 +1,26 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ApiService } from '../../services/api.service';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+
+import { ApiService } from '../../services/api.service';
+import { FilterService } from '../../services/filter.service';
 import { Pokemon } from '../../models/pokemon';
-import { PokemonFilterPipe } from './pokemon-filter-pipe';
-import { PokemonFilterData } from './pokemon-filter-data';
-import { Filter } from '../../models/filter';
+import { PokemonFilterPipe } from '../../pipes/pokemon-filter/pokemon-filter.pipe';
+import { PokemonFilterData } from '../../models/pokemon-filter-data';
+import { TypesComponent } from '../../components/types/types.component';
 
 type PokemonContainer = {pokemon: Pokemon, isSelected: boolean};
-type TypeContainer = {type: string, isSelected: boolean};
+type TypeContainer = {type: string[], isSelected: boolean};
 
 @Component({
-  template: require('./poke-filter-pokemon-tab.component.html'),
   selector: 'poke-filter-pokemon-tab',
-  pipes: [ PokemonFilterPipe ]
+  template: require('./filter-pokemon-tab.component.html'),
+  styles: [require('./filter-pokemon-tab.component.scss'),],
+  pipes: [PokemonFilterPipe],
+  directives: [TypesComponent]
 })
+export class FilterPokemonTabComponent implements OnInit {
 
-export class PokeFilterPokemonTabComponent implements OnInit {
-
-  @Input() filter: Filter;
-  @Output() onFilterChange = new EventEmitter<Filter>();
+  pokemonIds: number[];
 
   nameFilter: string;
   typeDataBinding: TypeContainer[] = [];
@@ -31,16 +33,17 @@ export class PokeFilterPokemonTabComponent implements OnInit {
     pokemonTypes: []
   };
 
-  constructor(private apiservice: ApiService) {
-  }
+  constructor(private apiService: ApiService, private filterService: FilterService) { }
 
   ngOnInit() {
-    this.querySubscription = this.apiservice.getAllPokemon()
+    this.pokemonIds = this.filterService.pokemonIds;
+
+    this.querySubscription = this.apiService.getAllPokemon()
       .map(pokemonList => {
         return pokemonList.map(pokemon => {
           return {
             pokemon: pokemon,
-            isSelected: true
+            isSelected: this.pokemonIds === null || this.pokemonIds.indexOf(pokemon.pokemonId) >= 0
           };
         })
       })
@@ -49,9 +52,9 @@ export class PokeFilterPokemonTabComponent implements OnInit {
         error => this.pokemonContainers = []
       );
 
-    for (let str in this.apiservice.getTypes()) {
+    for (let str in this.apiService.getTypes()) {
       this.typeDataBinding.push({
-        type: str,
+        type: [str],
         isSelected: false
       });
     }
@@ -84,7 +87,7 @@ export class PokeFilterPokemonTabComponent implements OnInit {
     this.pokeFilterData.pokemonTypes = [];
     for (let typeField of this.typeDataBinding) {
       if (typeField.isSelected) {
-        this.pokeFilterData.pokemonTypes.push(typeField.type);
+        this.pokeFilterData.pokemonTypes.push(typeField.type[0]);
       }
     }
     console.log('TYPE FILTER CHANGED: ' + this.pokeFilterData.pokemonTypes);
@@ -103,16 +106,16 @@ export class PokeFilterPokemonTabComponent implements OnInit {
   }
 
   applyFilters() {
-    this.filter.selectedPokemon = [];
+    this.pokemonIds = [];
 
     for (let pokemonCon of this.pokemonContainers) {
       if (pokemonCon.isSelected) {
-        this.filter.selectedPokemon.push(pokemonCon.pokemon.pokemonId);
+        this.pokemonIds.push(pokemonCon.pokemon.pokemonId);
       }
     }
 
-    this.onFilterChange.emit(this.filter);
-    console.log('SELECTED: (' + this.filter.selectedPokemon.length + '): ' + this.filter.selectedPokemon);
+    this.filterService.pokemonIds = this.pokemonIds;
+    console.log('SELECTED: (' + this.pokemonIds.length + '): ' + this.pokemonIds);
   }
 
 }
