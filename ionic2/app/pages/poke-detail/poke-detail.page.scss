@@ -1,31 +1,62 @@
-.poke-detail {
-  background-color: #f4f4f7;
-}
+ion-content {
+  background: #4070d0;
 
-.white-background {
-  background-color: white;
-}
+  #header {
+    background: linear-gradient(to bottom,
+                                rgba(255, 255, 255, 0.2),
+                                rgba(255, 255, 255, 0));
+    display: flex;
+    justify-content: center;
 
-.box{
-  /*min-width: 30vw;
-  min-height: 30vw;*/
-  max-width: 120px;
-  max-height: 120px;
-  width: 30vw;
-  height: 30vw;
-  border-radius: 50%;
-  border: 5px solid grey;
-}
+    > #header-content {
+      max-width: 700px;
 
-.small-cards{
-  width: 20vw;
-  height: 20vw;
-}
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
 
-.right-align{
-  text-align: right;
-}
+      #image-container {
+        flex: 1 0 auto;
 
-.left-align{
-  text-align: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        > img {
+          display: block;
+          width: 250px; height: 250px;
+          padding: 15px;
+          box-sizing: border-box;
+          background: radial-gradient(ellipse closest-side at 50% 65%,
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0));
+        }
+      }
+
+      > #main-info {
+        flex: 1000 1 200px;
+
+        color: white;
+        padding: 10px;
+
+        > #number { opacity: 0.8; font-size: 20px; }
+        > #name { font-size: 32px; }
+        > #classification-and-gender { opacity: 0.8; }
+        > #types { margin-top: 10px; }
+        > #rarity { margin-top: 10px; }
+      }
+    }
+  }
+
+  #description-card {
+    margin-right: auto; margin-left: auto;
+    max-width: 700px;
+
+    p:not(:last-child) { margin-bottom: 25px; }
+  }
+
+  #evolutions {
+    margin: 0 auto; max-width: 700px;
+    padding: 10px;
+  }
 }

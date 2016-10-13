@@ -4,91 +4,61 @@
     </ion-navbar>
 </ion-header>
 
-
-<ion-content class="poke-detail">
+<ion-content>
   <div *ngIf="pokemon">
+    <div id="header">
+      <div id="header-content">
+        <div id="image-container">
+          <img [src]="pokemon.svgIcon" class="box align-right">
+        </div>
+        <div id="main-info">
+          <div id="number">#{{ pokemon.pokemonId }}</div>
+          <div id="name">{{ pokemon.name }}</div>
+          <div id="classification-and-gender">
+            {{ pokemon.classification }}
+            <span *ngIf="pokemon.gender.abbreviation=='h'">, male or female</span>
+            <span *ngIf="pokemon.gender.abbreviation=='g'">, no gender</span>
+            <span *ngIf="pokemon.gender.abbreviation=='f'">, female</span>
+            <span *ngIf="pokemon.gender.abbreviation=='m'">, male</span>
+          </div>
+          <div id="types"><poke-type [type]="pokemon.types"></poke-type></div>
+          <div id="rarity">
+            <poke-rarity-badge [rarity]="pokemon.appearanceLikelihood"></poke-rarity-badge>
+            <span style="opacity: 0.5">(Rarity: Soon badge instead of stars)</span>
+          </div>
+        </div>
+      </div>
+    </div><!-- End header -->
 
-    <div>
+    <ion-card id="description-card">
+      <ion-card-content>
+        <p>{{ pokemon.description }}</p>
+        <p>
+          Weaknesses <poke-type [type]="pokemon.weakness"></poke-type><br>
+          Strengths <poke-type [type]="pokemon.resistance"></poke-type>
+        </p>
+        <p>
+          {{ getAppearanceLikelihoodInWords() }} Pokémon are a
+          {{ pokemon.name }}. This puts {{ pokemon.name }} on the
+          {{ getRankInWords() }} place on the rarity scale.
+        </p>
+      </ion-card-content>
+    </ion-card>
 
-      <ion-row class="white-background">
-        <ion-col><img [src]="pokemon.svgIcon" class="box align-right"></ion-col>
-        <ion-col padding>
-          <h1>
-            #{{ pokemon.pokemonId }}
-            <br/>
-            {{ pokemon.name }}
-          </h1>
-          <span><ion-badge>{{ pokemon.classification }}</ion-badge>
-            <ion-icon name="transgender" *ngIf="pokemon.gender.abbreviation=='h'"></ion-icon>
-            <ion-icon name="transgender" *ngIf="pokemon.gender.abbreviation=='g'"></ion-icon>
-            <ion-icon name="female" *ngIf="pokemon.gender.abbreviation=='f'"></ion-icon>
-            <ion-icon name="male" *ngIf="pokemon.gender.abbreviation=='m'"></ion-icon>
-            </span>
-        </ion-col>
-        <hr>
-      </ion-row>
+    <ion-card>
+      <ion-card-content>
+        Max Health Points {{ pokemon.maxHP }}<br>
+        Max Combat Points {{ pokemon.maxCP }}<br>
+        Flee Rate{{ ((pokemon.fleeRate)*100).toFixed(0) }}%<br>
+        Weight {{ pokemon.weight.minimum }} - {{ pokemon.weight.maximum }}<br>
+        Height {{ pokemon.height.minimum }} - {{ pokemon.height.maximum }}<br>
+      </ion-card-content>
+    </ion-card>
 
-      <ion-card>
-        <ion-card-content text-center>
-          {{ pokemon.description }}
-        </ion-card-content>
-      </ion-card>
-
-      <ion-card>
-        <ion-card-content text-center>
-          <poke-rarity-badge [rarity]="pokemon.appearanceLikelihood"></poke-rarity-badge> <br/>
-          {{ getAppearanceLikelihoodInWords() }} Pokémon are a {{ pokemon.name }}.<br/>
-          This puts {{ pokemon.name }} on the {{ getRankInWords() }} place on the rarity scale.
-        </ion-card-content>
-      </ion-card>
-
-      <hr>
-
-      <poke-stats [pokemon]="pokemon"></poke-stats>
-
-      <ion-card>
-        <ion-card-content>
-          <!-- Types -->
-          <ion-row>
-            <ion-col text-center>
-              Types
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col text-center>
-              <poke-type [type]="pokemon.types"></poke-type>
-            </ion-col>
-          </ion-row>
-          <!-- Weaknesses -->
-          <ion-row>
-            <ion-col text-center>
-              Weaknesses
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col text-center>
-              <poke-type [type]="pokemon.weakness"></poke-type>
-            </ion-col>
-          </ion-row>
-          <!-- Strengths -->
-          <ion-row center>
-            <ion-col text-center>
-              Strengths
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col text-center>
-              <poke-type [type]="pokemon.resistance"></poke-type>
-            </ion-col>
-          </ion-row>
-        </ion-card-content>
-      </ion-card>
-
+    <div id="evolutions">
+      <poke-evolutions [pokemon]="pokemon"></poke-evolutions>
     </div>
 
-    <poke-evolutions [pokemon]="pokemon"></poke-evolutions>
-
     <poke-attacks [pokemon]="pokemon"></poke-attacks>
-
   </div>
 </ion-content>

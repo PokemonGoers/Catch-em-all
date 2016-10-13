@@ -1,23 +1,21 @@
-<div class="evolutions ion-card">
-  <div *ngIf="prevPokemons.length > 0">
-    <button light *ngFor="let prevPokemon of prevPokemons" (click)="selectPokemon(prevPokemon)">
-      <div class="evolution-image" [style.background-image]="'url(' + prevPokemon.svgIcon + ')'"></div>
-    </button>
-  </div>
+<div class="evolutions-column" *ngIf="prevPokemons.length > 0">
+  <button light *ngFor="let prevPokemon of prevPokemons" (click)="selectPokemon(prevPokemon)">
+    <div class="evolution-image" [style.background-image]="'url(' + prevPokemon.svgIcon + ')'"></div>
+  </button>
+</div>
 
-  <div class="arrow" *ngIf="prevPokemons.length > 0">&rarr;</div>
+<div class="arrow" *ngIf="prevPokemons.length > 0">&rarr;</div>
 
-  <div>
-    <button light class="current-pokemon">
-      <div class="evolution-image" [style.background-image]="'url(' + pokemon.svgIcon + ')'"></div>
-    </button>
-  </div>
+<div class="evolutions-column">
+  <button light class="current-pokemon">
+    <div class="evolution-image" [style.background-image]="'url(' + pokemon.svgIcon + ')'"></div>
+  </button>
+</div>
 
-  <div class="arrow" *ngIf="nextPokemons.length > 0">&rarr;</div>
+<div class="arrow" *ngIf="nextPokemons.length > 0">&rarr;</div>
 
-  <div *ngIf="nextPokemons.length > 0">
-    <button light *ngFor="let nextPokemon of nextPokemons" (click)="selectPokemon(nextPokemon)">
-      <div class="evolution-image" [style.background-image]="'url(' + nextPokemon.svgIcon + ')'"></div>
-    </button>
-  </div>
+<div class="evolutions-column" *ngIf="nextPokemons.length > 0">
+  <button light *ngFor="let nextPokemon of nextPokemons" (click)="selectPokemon(nextPokemon)">
+    <div class="evolution-image" [style.background-image]="'url(' + nextPokemon.svgIcon + ')'"></div>
+  </button>
 </div>
