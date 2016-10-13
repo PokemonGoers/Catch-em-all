@@ -38,22 +38,35 @@
           Strengths <poke-type [type]="pokemon.resistance"></poke-type>
         </p>
         <p>
-          {{ getAppearanceLikelihoodInWords() }} Pokémon are a
-          {{ pokemon.name }}. This puts {{ pokemon.name }} on the
+          {{ getAppearanceLikelihoodInWords() }} Pokémon are a(n)
+          {{ pokemon.name }}. This puts {{ pokemon.name }} in the
           {{ getRankInWords() }} place on the rarity scale.
         </p>
       </ion-card-content>
     </ion-card>
 
-    <ion-card>
-      <ion-card-content>
-        Max Health Points {{ pokemon.maxHP }}<br>
-        Max Combat Points {{ pokemon.maxCP }}<br>
-        Flee Rate{{ ((pokemon.fleeRate)*100).toFixed(0) }}%<br>
-        Weight {{ pokemon.weight.minimum }} - {{ pokemon.weight.maximum }}<br>
-        Height {{ pokemon.height.minimum }} - {{ pokemon.height.maximum }}<br>
-      </ion-card-content>
-    </ion-card>
+    <div id="stats">
+      <div class="stat">
+        <div class="value">{{ pokemon.maxHP }}</div>
+        <div class="label">Max Health Points</div>
+      </div>
+      <div class="stat">
+        <div class="value">{{ pokemon.maxCP }}</div>
+        <div class="label">Max Combat Points</div>
+      </div>
+      <div class="stat">
+        <div class="value">{{ ((pokemon.fleeRate)*100).toFixed(0) }}%</div>
+        <div class="label">Flee Rate</div>
+      </div>
+      <div class="stat">
+        <div class="value">{{ pokemon.weight.minimum }} - {{ pokemon.weight.maximum }}</div>
+        <div class="label">Weight</div>
+      </div>
+      <div class="stat">
+        <div class="value">{{ pokemon.height.minimum }} - {{ pokemon.height.maximum }}</div>
+        <div class="label">Height</div>
+      </div>
+    </div>
 
     <div id="evolutions">
       <poke-evolutions [pokemon]="pokemon"></poke-evolutions>

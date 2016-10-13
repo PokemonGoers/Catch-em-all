@@ -56,6 +56,39 @@ ion-content {
     p:not(:last-child) { margin-bottom: 25px; }
   }
 
+  #stats {
+    margin-right: auto; margin-left: auto;
+    max-width: 500px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    > .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      margin: 10px;
+
+      > .value {
+        background: white;
+        padding: 10px;
+        font-size: 17px;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+        margin: 0 20px -10px 20px;
+      }
+      > .label {
+        width: 100%;
+        background: white;
+        padding: 5px;
+        border-radius: 20px;
+        text-align: center;
+      }
+    }
+  }
+
   #evolutions {
     margin: 0 auto; max-width: 700px;
     padding: 10px;
