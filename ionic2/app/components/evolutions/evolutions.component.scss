@@ -10,8 +10,10 @@
 }
 
 .evolutions > div > button {
-  width: 100px;
-  height: 100px;
+  max-width: 100px;
+  max-height: 100px;
+  width: 23vw;
+  height: 23vw;
   box-sizing: border-box;
   margin: 5px;
   position: relative;
@@ -21,7 +23,7 @@
   background: 50% 50% no-repeat no-repeat;
   background-size: contain;
   position: absolute; top: 0; right: 0; bottom: 0; left: 0;
-  margin: 15px;
+  margin: 5px;
 }
 
 .current-pokemon {
