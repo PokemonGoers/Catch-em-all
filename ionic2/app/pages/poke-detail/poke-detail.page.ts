@@ -4,9 +4,7 @@ import { Page, NavParams } from 'ionic-angular';
 import { Pokemon } from '../../models/pokemon';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { EvolutionsComponent } from '../../components/evolutions/evolutions.component';
-import { AttacksComponent } from '../../components/attacks/attacks.component';
 import { TypesComponent } from '../../components/types/types.component';
-import { StatsComponent } from '../../components/stats/stats.component';
 import { RarityBadgeComponent } from '../../components/rarity-badge/rarity-badge.component';
 
 @Page({
@@ -15,9 +13,7 @@ import { RarityBadgeComponent } from '../../components/rarity-badge/rarity-badge
   directives: [
     forwardRef(() => NavbarComponent),
     EvolutionsComponent,
-    AttacksComponent,
     TypesComponent,
-    StatsComponent,
     RarityBadgeComponent
   ]
 })
