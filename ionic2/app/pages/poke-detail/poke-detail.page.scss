@@ -1,11 +1,11 @@
 ion-content {
-  background: #4070d0;
-  background: rgb(98, 64, 208);
+  background: #eee;
+  color: black;
 
   #header {
-    background: linear-gradient(to bottom,
-                                rgba(64, 112, 208, 0.5),
-                                rgba(64, 112, 208, 0));
+    /*background: linear-gradient(to bottom,
+                                rgba(255, 255, 255, 0.2),
+                                rgba(255, 255, 255, 0));*/
     display: flex;
     justify-content: center;
 
@@ -28,20 +28,19 @@ ion-content {
           width: 250px; height: 250px;
           padding: 15px;
           box-sizing: border-box;
-          background: radial-gradient(ellipse closest-side at 50% 65%,
-          rgba(255, 255, 255, 0.2),
-          rgba(255, 255, 255, 0));
+          /*background: radial-gradient(ellipse closest-side at 50% 65%,
+                                      rgba(0, 0, 0, 0.2),
+                                      rgba(0, 0, 0, 0));*/
         }
       }
 
       > #main-info {
         flex: 1000 1 200px;
 
-        color: white;
         padding: 10px;
 
         > #number { opacity: 0.8; font-size: 20px; }
-        > #name { font-size: 32px; }
+        > #name { font-size: 2em; font-weight: 300; }
         > #classification-and-gender { opacity: 0.8; }
         > #types { margin-top: 10px; }
         > #rarity { margin-top: 10px; }
@@ -57,7 +56,7 @@ ion-content {
   }
 
   #stats {
-    margin-right: auto; margin-left: auto;
+    margin: 20px auto;
     max-width: 500px;
 
     display: flex;
@@ -92,11 +91,11 @@ ion-content {
   #evolutions {
     margin: 0 auto;
     max-width: 700px;
-    padding: 10px;
+    padding: 0 10px;
   }
 
   #attacks {
-    margin: 20px auto;
+    margin: 0 auto 20px;
     max-width: 700px;
     padding: 0 5px;
 
@@ -108,7 +107,9 @@ ion-content {
       width: auto;
       margin: 0 5px;
 
-      h1 { color: white; }
+      h1 {
+        font-weight: 300;
+      }
       ion-card {
         width: auto;
         margin: 0;
