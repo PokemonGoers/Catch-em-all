@@ -7,7 +7,8 @@
 <div class="arrow" *ngIf="prevPokemons.length > 0">&rarr;</div>
 
 <div class="evolutions-column">
-  <button light class="current-pokemon">
+  <button light>
+    <div class="current-pokemon-indicator"></div>
     <div class="evolution-image" [style.background-image]="'url(' + pokemon.svgIcon + ')'"></div>
   </button>
 </div>
