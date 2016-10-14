@@ -12,7 +12,11 @@
           <img [src]="pokemon.svgIcon" class="box align-right">
         </div>
         <div id="main-info">
-          <div id="number">#{{ pokemon.pokemonId }}</div>
+          <div id="number-and-rarity">
+            #{{ pokemon.pokemonId }}
+            <poke-rarity-badge [rarity]="pokemon.appearanceLikelihood">
+            </poke-rarity-badge>
+          </div>
           <div id="name">{{ pokemon.name }}</div>
           <div id="classification-and-gender">
             {{ pokemon.classification }}
@@ -21,11 +25,8 @@
             <span *ngIf="pokemon.gender.abbreviation=='f'">, female</span>
             <span *ngIf="pokemon.gender.abbreviation=='m'">, male</span>
           </div>
-          <div id="types"><poke-type [type]="pokemon.types"></poke-type></div>
-          <!--div id="rarity">
-            <poke-rarity-badge [rarity]="pokemon.appearanceLikelihood"></poke-rarity-badge>
-            <span style="opacity: 0.5">(Rarity: Soon badge instead of stars)</span>
-          </div-->
+          <div id="types"><poke-type [types]="pokemon.types"></poke-type></div>
+
         </div>
       </div>
     </div><!-- End header -->
@@ -34,8 +35,8 @@
       <ion-card-content>
         <p>{{ pokemon.description }}</p>
         <p>
-          Weaknesses <poke-type [type]="pokemon.weakness"></poke-type><br>
-          Strengths <poke-type [type]="pokemon.resistance"></poke-type>
+          Weaknesses <poke-type [types]="pokemon.weakness"></poke-type><br>
+          Strengths <poke-type [types]="pokemon.resistance"></poke-type>
         </p>
         <p>
           {{ getAppearanceLikelihoodInWords() }} Pokémon are a(n)

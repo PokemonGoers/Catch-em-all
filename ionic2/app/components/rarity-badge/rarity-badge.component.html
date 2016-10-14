@@ -1,3 +1,3 @@
-<ion-badge class="rare" *ngIf="rarity < 0.001">Rare</ion-badge>
-<ion-badge class="uncommon" *ngIf="rarity < 0.01 && rarity >= 0.001">Uncommon</ion-badge>
-<ion-badge class="common" *ngIf="rarity >= 0.01">Common</ion-badge>
+<div style="background-color: red" *ngIf="rarity < 0.001">Rare</div>
+<div style="background-color: orange" *ngIf="rarity < 0.01 && rarity >= 0.001">Uncommon</div>
+<div style="background-color: green" *ngIf="rarity >= 0.01">Common</div>

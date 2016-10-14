@@ -1,15 +1,16 @@
-ion-badge {
+:host {
+  display: inline-block;
+}
+
+div {
   border-radius: 0px;
-}
-
-.rare {
-  background-color: red;
-}
-
-.uncommon {
-  background-color: orange;
-}
-
-.common {
-  background-color: green;
+  display: inline-block;
+  padding: 3px 8px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  color: white;
 }
