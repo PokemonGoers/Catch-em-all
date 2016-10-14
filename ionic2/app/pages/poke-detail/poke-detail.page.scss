@@ -90,7 +90,55 @@ ion-content {
   }
 
   #evolutions {
-    margin: 0 auto; max-width: 700px;
+    margin: 0 auto;
+    max-width: 700px;
     padding: 10px;
+  }
+
+  #attacks {
+    margin: 20px auto;
+    max-width: 700px;
+    padding: 0 5px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+      flex: 1 0 150px;
+      width: auto;
+      margin: 0 5px;
+
+      h1 { color: white; }
+      ion-card {
+        width: auto;
+        margin: 0;
+
+        ion-card-content {
+          padding: 0;
+
+          .attack {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+
+            &:not(:last-child) { border-bottom: 1px solid #ccc; }
+
+            > .damage {
+              text-align: center;
+              margin-right: 10px;
+
+              > .number { font-size: 1.4em; color: red; }
+              > .label { font-size: 0.7em; opacity: 0.6; }
+            }
+
+            > .details {
+              flex: 1 0 0;
+
+              > .type { opacity: 0.6; }
+            }
+          }
+        }
+      }
+    }
   }
 }

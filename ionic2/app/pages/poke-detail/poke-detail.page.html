@@ -43,7 +43,7 @@
           {{ getRankInWords() }} place on the rarity scale.
         </p>
       </ion-card-content>
-    </ion-card>
+    </ion-card><!-- End description card -->
 
     <div id="stats">
       <div class="stat">
@@ -66,12 +66,48 @@
         <div class="value">{{ pokemon.height.minimum }} - {{ pokemon.height.maximum }}</div>
         <div class="label">Height</div>
       </div>
-    </div>
+    </div><!-- End stats -->
 
     <div id="evolutions">
       <poke-evolutions [pokemon]="pokemon"></poke-evolutions>
     </div>
 
-    <poke-attacks [pokemon]="pokemon"></poke-attacks>
+    <div id="attacks">
+      <div id="fast-attacks">
+        <h1>Fast Attacks</h1>
+        <ion-card id="fast-attacks-card">
+          <ion-card-content>
+            <div class="attack" *ngFor="let attack of pokemon.fastAttacks">
+              <div class="damage">
+                <div class="number">{{ attack.damage }}</div>
+                <div class="label">Damage</div>
+              </div>
+              <div class="details">
+                <div class="name">{{ attack.name }}</div>
+                <div class="type">{{ attack.type }}</div>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <div id="special-attacks">
+        <h1>Special Attacks</h1>
+        <ion-card id="special-attacks-card">
+          <ion-card-content>
+            <div class="attack" *ngFor="let attack of pokemon.specialAttacks">
+              <div class="damage">
+                <div class="number">{{ attack.damage }}</div>
+                <div class="label">Damage</div>
+              </div>
+              <div class="details">
+                <div class="name">{{ attack.name }}</div>
+                <div class="type">{{ attack.type }}</div>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div><!-- End attacks -->
   </div>
 </ion-content>
