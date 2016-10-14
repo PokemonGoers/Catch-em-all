@@ -1,28 +1,28 @@
 import { forwardRef } from '@angular/core';
-import { Page, NavController, NavParams } from 'ionic-angular';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { Page, NavParams } from 'ionic-angular';
+
 import { Pokemon } from '../../models/pokemon';
-import { PokeEvolutionsComponent } from '../../components/poke-details/poke-evolutions.component';
-import { PokeAttacksComponent } from '../../components/poke-details/poke-attacks.component';
-import { PokeTypeComponent } from '../../components/poke-details/poke-type.component';
-import { PokeStatsComponent } from '../../components/poke-details/poke-stats.component';
-import { PokeRarityBadgeComponent } from '../../components/poke-rarity-badge/poke-rarity-badge.component';
-import { PokeTweetsComponent } from '../../components/poke-details/poke-tweets.component';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { EvolutionsComponent } from '../../components/evolutions/evolutions.component';
+import { AttacksComponent } from '../../components/attacks/attacks.component';
+import { TypesComponent } from '../../components/types/types.component';
+import { StatsComponent } from '../../components/stats/stats.component';
+import { RarityBadgeComponent } from '../../components/rarity-badge/rarity-badge.component';
+import { TweetsComponent } from '../../components/tweets/tweets.component';
 
 @Page({
   template: require('./poke-detail.page.html'),
   styles: [require('./poke-detail.page.scss')],
   directives: [
     forwardRef(() => NavbarComponent),
-    PokeEvolutionsComponent,
-    PokeAttacksComponent,
-    PokeTypeComponent,
-    PokeStatsComponent,
-    PokeRarityBadgeComponent,
-    PokeTweetsComponent
+    EvolutionsComponent,
+    AttacksComponent,
+    TypesComponent,
+    StatsComponent,
+    RarityBadgeComponent,
+    TweetsComponent
   ]
 })
-
 export class PokeDetailPage {
 
   pokemon: Pokemon;

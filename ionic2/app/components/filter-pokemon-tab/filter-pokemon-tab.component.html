@@ -1,0 +1,38 @@
+<div class="background">
+  <h5 class="type-selection">Select type of Pokemon:</h5>
+  <div class="type-list">
+    <div class="type-item" *ngFor="let typeEntry of typeDataBinding">
+      <ion-checkbox dark [(ngModel)]="typeEntry.isSelected" (ionChange)="typeFilterChanged()"></ion-checkbox>
+      <poke-type [type]="typeEntry.type"></poke-type>
+    </div>
+  </div>
+  <br>
+  <ion-searchbar
+    [(ngModel)]="nameFilter"
+    (ionInput)="onNameInput()"
+    (ionCancel)="onCancel()"
+    (search)="onSearch()"
+    autocomplete="on">
+  </ion-searchbar>
+  <div padding>
+    <button ion-button block (click)="applyFilters()">Apply filter</button>
+  </div>
+  <ion-buttons style="text-align: center;">
+    <button clear (click)="selectAll()">Select all</button>
+    <button clear (click)="selectNone()">Select none</button>
+  </ion-buttons>
+  <div style="padding-top: 0px;" padding>
+    <ion-row *ngFor="let pokemonContainer of ( pokemonContainers | pokemonFilterPipe: pokeFilterData )">
+      <div style="display: flex; align-items: center;" padding>
+        <ion-checkbox dark [(ngModel)]="pokemonContainer.isSelected"></ion-checkbox>
+      </div>
+      <ion-col style="display: flex; align-items: center; ">
+          {{ pokemonContainer.pokemon.name }}
+      </ion-col>
+      <ion-col end style="display: flex; align-items: center; flex-basis: 40px;
+          flex-grow: 0; flex-direction: column;">
+          <img [src]="pokemonContainer.pokemon.gifIcon">
+      </ion-col>
+    </ion-row>
+  </div>
+</div>

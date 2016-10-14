@@ -1,0 +1,55 @@
+<div class="group">
+
+  <div class="section-header">
+    <ion-toggle
+      [checked]="filterService.sightingsRange != 9"
+      (ionChange)="onSightingsToggleChanged($event)">
+    </ion-toggle>
+    <div class="title">Pokemon Sightings</div>
+  </div>
+
+  <div class="range-container">
+    <ion-range #sightingsRangeSlider
+      min="0" max="9" step="1"
+      snaps="true"
+      [ngModel]="filterService.sightingsRange"
+      (ngModelChange)="onSightingsRangeChanged($event)"
+      debounce="300">
+    </ion-range>
+
+    <div class="range-labels">
+      <span *ngFor="let range of filterService.timeRangesSightings">{{ range.label }}</span>
+    </div>
+  </div>
+
+  <div class="note">
+    Pokemon sightings reported by Pokemon Go users through social media. Use the range slider to specify for how far into the past pokemon should be visible.
+  </div>
+
+</div>
+
+<div class="group">
+
+  <div class="section-header">
+    <ion-toggle [checked]="filterService.predictionsRange != 0"
+        (ionChange)="onPredictionsToggleChanged($event)"></ion-toggle>
+    <div class="title">Pokemon Predictions</div>
+  </div>
+
+  <ion-range #predictionsRangeSlider
+    min="0" max="9" step="1"
+    snaps="true"
+    debounce="300"
+    [ngModel]="filterService.predictionsRange"
+    (ngModelChange)="onPredictionsRangeChanged($event)">
+  </ion-range>
+
+  <div class="range-labels">
+    <span *ngFor="let range of filterService.timeRangesPredictions">{{ range.label }}</span>
+  </div>
+
+  <div class="note">
+    Pokemon predictions calculated by our sophisticated machine learning algorithm. Use the range slider to specify for how far into the future pokemon should be visible.
+  </div>
+
+</div>

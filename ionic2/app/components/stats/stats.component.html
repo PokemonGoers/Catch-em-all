@@ -1,0 +1,28 @@
+<div *ngIf="pokemon">
+  <ion-card>
+    <ion-row center>
+      <ion-col class="hp" center>
+        <ion-icon name="heart"></ion-icon>
+        <div center>{{ pokemon.maxHP }}</div>
+      </ion-col>
+      <ion-col class="cp">
+        <ion-icon name="ribbon"></ion-icon>
+        <div center>{{ pokemon.maxCP }}</div>
+      </ion-col>
+      <ion-col class="flee">
+        <ion-icon name="walk"></ion-icon>
+        <div center>{{ ((pokemon.fleeRate)*100).toFixed(0) }}%</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="weight">
+        <ion-icon name="paw"></ion-icon>
+        <div center>{{ pokemon.weight.minimum }} - {{ pokemon.weight.maximum }}</div>
+      </ion-col>
+      <ion-col class="height">
+        <ion-icon name="arrow-round-up"></ion-icon>
+        <div center>{{ pokemon.height.minimum }} - {{ pokemon.height.maximum }}</div>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</div>

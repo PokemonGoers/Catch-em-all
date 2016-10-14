@@ -1,0 +1,45 @@
+<div class="slide-card" #slideCard @slide="slideState">
+  <div class="poke-poi-card-content" *ngIf="pokePOI" [ngClass]="'poi-type-'+pokePOI.getType()">
+    <ion-row>
+
+      <ion-col class="poke-column">
+        <ion-row>
+          <poke-poi-bubble [pokePOI]="pokePOI"></poke-poi-bubble>
+        </ion-row>
+        <ion-row>
+          <poke-type [type]="pokePOI.pokemon.types"></poke-type>
+        </ion-row>
+      </ion-col>
+
+      <ion-col style="flex-grow: 1;">
+        <ion-row>
+          <span class="poke-name">{{ pokePOI.pokemon.name }}</span>
+          <span class="poke-id">#{{ pokePOI.pokemon.pokemonId }}</span>
+          <poke-rarity-badge [rarity]="pokePOI.pokemon.appearanceLikelihood"></poke-rarity-badge>
+        </ion-row>
+        <ion-row class="poke-description">
+          {{ pokePOI.pokemon.description }}
+        </ion-row>
+
+
+        <ion-row class="action-button-bar">
+          <button clear (click)="showDirections()">
+            <ion-icon name="navigate"></ion-icon>
+            Directions
+          </button>
+
+          <button clear (click)="launchPokeDex()">
+            <ion-icon name="book"></ion-icon>
+            PokeDex
+          </button>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <div class="poke-poi-type-line"></div>
+    <div class="poke-poi-type-badge">
+      {{ getPOITypeBadgeLabel() }}
+    </div>
+
+  </div>
+</div>
