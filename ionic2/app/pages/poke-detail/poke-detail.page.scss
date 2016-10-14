@@ -1,31 +1,153 @@
-.poke-detail {
-  background-color: #f4f4f7;
-}
+ion-content {
+  background: #eee;
+  color: black;
 
-.white-background {
-  background-color: white;
-}
+  #header {
+    /*background: linear-gradient(to bottom,
+                                rgba(255, 255, 255, 0.2),
+                                rgba(255, 255, 255, 0));*/
+    display: flex;
+    justify-content: center;
 
-.box{
-  /*min-width: 30vw;
-  min-height: 30vw;*/
-  max-width: 120px;
-  max-height: 120px;
-  width: 30vw;
-  height: 30vw;
-  border-radius: 50%;
-  border: 5px solid grey;
-}
+    > #header-content {
+      max-width: 700px;
 
-.small-cards{
-  width: 20vw;
-  height: 20vw;
-}
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
 
-.right-align{
-  text-align: right;
-}
+      #image-container {
+        flex: 1 0 auto;
 
-.left-align{
-  text-align: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        > img {
+          display: block;
+          width: 250px; height: 250px;
+          padding: 15px;
+          box-sizing: border-box;
+          /*background: radial-gradient(ellipse closest-side at 50% 65%,
+                                      rgba(0, 0, 0, 0.2),
+                                      rgba(0, 0, 0, 0));*/
+        }
+      }
+
+      > #main-info {
+        flex: 1000 1 200px;
+
+        padding: 10px;
+
+        > #number { opacity: 0.8; font-size: 20px; }
+        > #name { font-size: 2em; font-weight: 300; }
+        > #classification-and-gender { opacity: 0.8; }
+        > #types { margin-top: 10px; }
+        > #rarity { margin-top: 10px; }
+      }
+    }
+  }
+
+  #description-card {
+    margin-right: auto; margin-left: auto;
+    max-width: 700px;
+
+    p:not(:last-child) { margin-bottom: 25px; }
+  }
+
+  #tweet-card {
+    margin-right: auto; margin-left: auto;
+    max-width: 700px;
+
+    p:not(:last-child) { margin-bottom: 25px; }
+  }
+
+  #stats {
+    margin: 20px auto;
+    max-width: 500px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    > .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      margin: 10px;
+
+      > .value {
+        background: white;
+        padding: 10px;
+        font-size: 17px;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+        margin: 0 20px -10px 20px;
+      }
+      > .label {
+        width: 100%;
+        background: white;
+        padding: 5px;
+        border-radius: 20px;
+        text-align: center;
+      }
+    }
+  }
+
+  #evolutions {
+    margin: 0 auto;
+    max-width: 700px;
+    padding: 0 10px;
+  }
+
+  #attacks {
+    margin: 0 auto 20px;
+    max-width: 700px;
+    padding: 0 5px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+      flex: 1 0 150px;
+      width: auto;
+      margin: 0 5px;
+
+      h1 {
+        font-weight: 300;
+        white-space: nowrap;
+      }
+      ion-card {
+        width: auto;
+        margin: 0;
+
+        ion-card-content {
+          padding: 0;
+
+          .attack {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+
+            &:not(:last-child) { border-bottom: 1px solid #ccc; }
+
+            > .damage {
+              text-align: center;
+              margin-right: 10px;
+
+              > .number { font-size: 1.4em; color: red; }
+              > .label { font-size: 0.7em; opacity: 0.6; }
+            }
+
+            > .details {
+              flex: 1 0 0;
+
+              > .type { opacity: 0.6; }
+            }
+          }
+        }
+      }
+    }
+  }
 }
