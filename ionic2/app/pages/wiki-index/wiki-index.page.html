@@ -18,7 +18,9 @@
 
         <ion-card (click)="selectPokemon(pokemon)" style="cursor: pointer; cursor: hand;">
 
-          <poke-rarity-badge class="card-right" [rarity]="pokemon.appearanceLikelihood"></poke-rarity-badge>
+          <div class="card-right">
+            <poke-rarity-badge [rarity]="pokemon.appearanceLikelihood"></poke-rarity-badge>
+          </div>
 
           <a class="card-center"><img class="poke-img-fixed" [src]="pokemon.svgIcon"/></a>
 

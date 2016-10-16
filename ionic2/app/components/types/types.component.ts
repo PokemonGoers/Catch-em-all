@@ -9,18 +9,16 @@ import { ApiService } from '../../services/api.service';
 })
 export class TypesComponent implements OnInit {
 
-  @Input() type: string[];
-  typeArray: Object[];
+  @Input() type: string;
+  private typeColors: Object;
+  typeColor: Object;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {
+    this.typeColors = apiService.getTypes();
+  }
 
   ngOnInit() {
-    let typeColors = this.apiService.getTypes();
-
-    this.typeArray = [];
-    for (let item of this.type){
-      this.typeArray.push({element:item, color:typeColors[item]})
-    }
+    this.typeColor = {type: this.type, color: this.typeColors[this.type]};
   }
 
 }

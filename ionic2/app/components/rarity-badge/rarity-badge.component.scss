@@ -1,5 +1,15 @@
-ion-badge {
-  background-color: white;
-  color: #e8ae00;
-  font-size: 125%;
+:host {
+  display: inline-block;
+}
+
+div {
+  display: inline-block;
+  padding: 3px 8px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  color: white;
 }

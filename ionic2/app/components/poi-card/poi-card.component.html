@@ -7,7 +7,8 @@
           <poke-poi-bubble [pokePOI]="pokePOI"></poke-poi-bubble>
         </ion-row>
         <ion-row>
-          <poke-type [type]="pokePOI.pokemon.types"></poke-type>
+          <poke-type [type]="type" *ngFor="let type of pokePOI.pokemon.types">
+          </poke-type>
         </ion-row>
       </ion-col>
 
@@ -15,7 +16,8 @@
         <ion-row>
           <span class="poke-name">{{ pokePOI.pokemon.name }}</span>
           <span class="poke-id">#{{ pokePOI.pokemon.pokemonId }}</span>
-          <poke-rarity-badge [rarity]="pokePOI.pokemon.appearanceLikelihood"></poke-rarity-badge>
+          <poke-rarity-badge [rarity]="pokePOI.pokemon.appearanceLikelihood">
+          </poke-rarity-badge>
         </ion-row>
         <ion-row class="poke-description">
           {{ pokePOI.pokemon.description }}
