@@ -25,18 +25,23 @@
             <span *ngIf="pokemon.gender.abbreviation=='f'">, female</span>
             <span *ngIf="pokemon.gender.abbreviation=='m'">, male</span>
           </div>
-          <div id="types"><poke-type [types]="pokemon.types"></poke-type></div>
+          <div id="types">
+            <poke-type [type]="type" *ngFor="let type of pokemon.types">
+            </poke-type>
+          </div>
 
         </div>
       </div>
     </div><!-- End header -->
-
     <ion-card id="description-card">
       <ion-card-content>
         <p>{{ pokemon.description }}</p>
         <p>
-          Weaknesses <poke-type [types]="pokemon.weakness"></poke-type><br>
-          Strengths <poke-type [types]="pokemon.resistance"></poke-type>
+          Weaknesses <poke-type [type]="type" *ngFor="let type of pokemon.weakness">
+          </poke-type>
+          <br>
+          Strengths <poke-type [type]="type" *ngFor="let type of pokemon.resistance">
+          </poke-type>
         </p>
         <p>
           {{ getAppearanceLikelihoodInWords() }} Pokémon are a(n)
