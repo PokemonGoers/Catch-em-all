@@ -13,7 +13,7 @@
         </div>
         <div id="main-info">
           <div id="number-and-rarity">
-            #{{ pokemon.pokemonId }}
+            <ion-badge light>#{{ pokemon.pokemonId }}</ion-badge>
             <poke-rarity-badge [rarity]="pokemon.appearanceLikelihood">
             </poke-rarity-badge>
           </div>
@@ -29,10 +29,10 @@
             <poke-type [type]="type" *ngFor="let type of pokemon.types">
             </poke-type>
           </div>
-
         </div>
       </div>
     </div><!-- End header -->
+
     <ion-card id="description-card">
       <ion-card-content>
         <p>{{ pokemon.description }}</p>
