@@ -6,6 +6,7 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { EvolutionsComponent } from '../../components/evolutions/evolutions.component';
 import { TypesComponent } from '../../components/types/types.component';
 import { RarityBadgeComponent } from '../../components/rarity-badge/rarity-badge.component';
+import { TweetsComponent } from '../../components/tweets/tweets.component';
 
 @Page({
   template: require('./poke-detail.page.html'),
@@ -14,7 +15,8 @@ import { RarityBadgeComponent } from '../../components/rarity-badge/rarity-badge
     forwardRef(() => NavbarComponent),
     EvolutionsComponent,
     TypesComponent,
-    RarityBadgeComponent
+    RarityBadgeComponent,
+    TweetsComponent
   ]
 })
 export class PokeDetailPage {

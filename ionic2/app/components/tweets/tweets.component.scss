@@ -1,0 +1,19 @@
+div.vertical {
+  transform: translateY(70px) translateX(-5px) rotate(-90deg);
+  transform-origin: 0 0;
+  float: left;
+  color: white;
+  width: 80px;
+  text-align: center;
+  padding: 3px 0 3px 0;
+  font-size: 1.4rem;
+}
+
+.tweet-id {
+  background-color: #1da1f2;  /* Twitter brand color */
+}
+
+.tweet-id:before {
+   font-family: FontAwesome;
+   content: "\f099 \00a0 ";  /* Twitter icon and whitespace */
+}

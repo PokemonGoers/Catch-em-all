@@ -1,0 +1,17 @@
+<ion-slides [options]="slideOptions">
+  <ion-slide *ngFor="let tweet of tweetsArray">
+    <ion-row>
+      <ion-col width-10>
+        <div class="vertical tweet-id">{{tweet.id}}</div>
+      </ion-col>
+      <ion-col>
+        <ion-row>
+          <ion-col><h2>{{tweet.text}}</h2></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><h4>{{tweet.timestamp}}</h4></ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-slide>
+</ion-slides>
