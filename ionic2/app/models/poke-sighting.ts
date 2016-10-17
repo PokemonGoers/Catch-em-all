@@ -25,7 +25,6 @@ export class PokeSighting extends PokePOI {
   }
 
   static fromObject(object: Object): PokeSighting {
-    let instance = Object.create(PokeSighting.prototype);
-    return Object.assign(instance, object);
+    return Object.assign(new PokeSighting(), object);
   }
 }

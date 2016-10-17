@@ -15,7 +15,6 @@ export class PokePrediction extends PokePOI {
   }
 
   static fromObject(object: Object): PokePrediction {
-    let instance = Object.create(PokePrediction.prototype);
-    return Object.assign(instance, object);
+    return Object.assign(new PokePrediction(), object);
   }
 }

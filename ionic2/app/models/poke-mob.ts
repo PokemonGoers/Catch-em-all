@@ -20,8 +20,7 @@ export class PokeMob extends PokePOI {
   }
 
   static fromObject(object: Object): PokeMob {
-    let instance = Object.create(PokeMob.prototype);
-    return Object.assign(instance, object);
+    return Object.assign(new PokeMob(), object);
   }
 }
 
