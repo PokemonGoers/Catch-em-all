@@ -48,7 +48,7 @@ export class MapComponent {
 
   private onClick(pokePOI) {
     console.debug('map:click', pokePOI);
-    this.events.publish('map:click', MapComponent.mapPokePOI(pokePOI));
+    this.events.publish('map:click', pokePOIFromMapEventData(pokePOI));
   }
 
   private onMove(position) {
@@ -67,15 +67,16 @@ export class MapComponent {
       this.map.navigate(start, destination);
     })
   }
+}
 
-  private static mapPokePOI(pokePOI: Object): (PokeSighting | PokePrediction | PokeMob) {
-    if ('source' in pokePOI) {
-      return PokeSighting.fromObject(pokePOI);
-    } else if ('clusterId' in pokePOI) {
-      return PokeMob.fromObject(pokePOI);
-    } else {
-      throw new Error('PokePOI cannot be identified as PokeSighting or PokeMob:\n' + JSON.stringify(pokePOI));
-    }
+function pokePOIFromMapEventData(pokePOI: Object)
+    : (PokeSighting | PokePrediction | PokeMob) {
+  if ('source' in pokePOI) {
+    return PokeSighting.fromObject(pokePOI);
+  } else if ('clusterId' in pokePOI) {
+    return PokeMob.fromObject(pokePOI);
+  } else {
+    throw new Error('PokePOI cannot be identified as ' +
+                    'PokeSighting or PokeMob:\n' + JSON.stringify(pokePOI));
   }
-
 }
