@@ -79,13 +79,11 @@ export class MapPage {
 
   showArtificialMob() {
     const mob = new Mob();
-    Object.assign(mob, {
-      clusterId: 123,
-      tweets: [],
-      longitude: 48.184858933932304,
-      latitude: 11.732025146484373,
-      timestamp: 1476796355282
-    });
+    mob.clusterId = 123;
+    mob.tweets = [];
+    mob.longitude = 48.184858933932304;
+    mob.latitude = 11.732025146484373;
+    mob.timestamp = 1476796355282;
     this.events.publish('map:click', mob);
   }
 }

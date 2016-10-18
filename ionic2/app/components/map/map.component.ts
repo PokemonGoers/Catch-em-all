@@ -73,13 +73,11 @@ export class MapComponent {
 function poiFromMapEventData(rawData: any) : POI {
   if ('source' in rawData) {
     const sighting = new Sighting();
-    Object.assign(sighting, {
-      latitude: rawData.location.coordinates[1],
-      longitude: rawData.location.coordinates[0],
-      pokemonId: rawData.pokemonId,
-      source: rawData.source,
-      appearedOn: rawData.appearedOn
-    })
+    sighting.latitude = rawData.location.coordinates[1];
+    sighting.longitude = rawData.location.coordinates[0];
+    sighting.pokemonId = rawData.pokemonId;
+    sighting.source = rawData.source;
+    sighting.appearedOn = rawData.appearedOn;
     return sighting;
   } else if ('clusterId' in rawData) {
     const mob = new Mob();
