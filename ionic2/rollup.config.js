@@ -1,4 +1,4 @@
-const config = require('@ionic/src-scripts/config/rollup.config');
+const config = require('@ionic/app-scripts/config/rollup.config');
 const replace = require('rollup-plugin-replace');
 
 var release = process.env['IONIC_ENV'] === 'prod';
