@@ -4,8 +4,7 @@ import { ProjectGroupsService } from '../../services/project-groups.service';
 import { ProjectGroup } from '../../models/project-group';
 
 @Component({
-  templateUrl: './about.page.html',
-  styleUrls: ['./about.page.scss']
+  templateUrl: './about.page.html'
 })
 export class AboutPage {
 

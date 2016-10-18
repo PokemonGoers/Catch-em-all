@@ -6,7 +6,6 @@ import { SearchPage } from '../../pages/search/search.page';
 @Component({
   selector: 'poke-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: []
 })
 export class NavbarComponent {
 

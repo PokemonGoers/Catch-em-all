@@ -12,8 +12,7 @@ type TypeContainer = {type: string[], isSelected: boolean};
 
 @Component({
   selector: 'poke-filter-pokemon-tab',
-  template: './filter-pokemon-tab.component.html',
-  styleUrls: ['./filter-pokemon-tab.component.scss']
+  template: './filter-pokemon-tab.component.html'
 })
 export class FilterPokemonTabComponent implements OnInit {
 

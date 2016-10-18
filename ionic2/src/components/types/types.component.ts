@@ -4,8 +4,7 @@ import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'poke-type',
-  templateUrl: './types.component.html',
-  styleUrls: ['./types.component.scss']
+  templateUrl: './types.component.html'
 })
 export class TypesComponent implements OnInit {
 

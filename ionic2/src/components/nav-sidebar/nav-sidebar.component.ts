@@ -8,8 +8,7 @@ import { WikiIndexPage } from '../../pages/wiki-index/wiki-index.page';
 
 @Component({
   selector: 'poke-nav-sidebar',
-  templateUrl: './nav-sidebar.component.html',
-  styleUrls: ['./nav-sidebar.component.scss']
+  templateUrl: './nav-sidebar.component.html'
 })
 export class NavSidebarComponent {
 

@@ -10,7 +10,6 @@ import { PokeSighting } from '../../models/poke-sighting';
 @Component({
   selector: 'poke-poi-card',
   templateUrl: './poi-card.component.html',
-  styleUrls: ['./poi-card.component.scss'],
   animations: [
     trigger('slide', [
       state('visible', style({transform: 'translateY(0)', display: 'inline-block'})),

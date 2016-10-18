@@ -2,8 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'poke-rarity-badge',
-  templateUrl: './rarity-badge.component.html',
-  styleUrls: ['./rarity-badge.component.scss']
+  templateUrl: './rarity-badge.component.html'
 })
 export class RarityBadgeComponent {
 
