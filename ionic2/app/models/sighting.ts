@@ -4,7 +4,6 @@ import { Pokemon } from './pokemon';
 export class Sighting extends POI {
 
   pokemonId: number;
-  pokemon: Pokemon;
   source: string;
   appearedOn: string;
 

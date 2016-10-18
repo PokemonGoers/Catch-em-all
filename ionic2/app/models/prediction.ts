@@ -4,7 +4,6 @@ import { Pokemon } from './pokemon';
 export class Prediction extends POI {
 
   pokemonId: number;
-  pokemon: Pokemon;
 
   getLocation(): {latitude:number, longitude:number} {
     return undefined;
