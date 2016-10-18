@@ -10,6 +10,7 @@ import { PokeDetailPage } from '../pages/poke-detail/poke-detail.page';
 import { SearchPage } from '../pages/search/search.page';
 import { WikiIndexPage } from '../pages/wiki-index/wiki-index.page';
 
+import { EvolutionsComponent } from '../components/evolutions/evolutions.component';
 import { FilterComponent } from '../components/filter/filter.component';
 import { FilterPokemonTabComponent } from '../components/filter-pokemon-tab/filter-pokemon-tab.component';
 import { FilterTimeTabComponent } from '../components/filter-time-tab/filter-time-tab.component';
@@ -43,6 +44,7 @@ for (let envKey in env) {
     PokeDetailPage,
     SearchPage,
     WikiIndexPage,
+    EvolutionsComponent,
     FilterComponent,
     FilterPokemonTabComponent,
     FilterTimeTabComponent,
