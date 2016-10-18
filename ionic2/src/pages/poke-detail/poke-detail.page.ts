@@ -5,7 +5,7 @@ import { Pokemon } from '../../models/pokemon';
 
 @Component({
   templateUrl: './poke-detail.page.html',
-  styleUrl: './poke-detail.page.scss'
+  styleUrls: ['./poke-detail.page.scss']
 })
 export class PokeDetailPage {
 

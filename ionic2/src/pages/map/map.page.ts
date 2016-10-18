@@ -10,7 +10,7 @@ import { FilterService } from '../../services/filter.service';
 
 @Component({
   templateUrl: './map.page.html',
-  styleUrl: './map.page.scss'
+  styleUrls: ['./map.page.scss']
 })
 export class MapPage {
 

@@ -5,7 +5,7 @@ import { ProjectGroup } from '../../models/project-group';
 
 @Component({
   templateUrl: './about.page.html',
-  styleUrl: './about.page.scss'
+  styleUrls: ['./about.page.scss']
 })
 export class AboutPage {
 

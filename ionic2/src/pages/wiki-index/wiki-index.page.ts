@@ -8,7 +8,7 @@ import { ApiService } from '../../services/api.service';
 
 @Component({
   templateUrl: './wiki-index.page.html',
-  styleUrl: './wiki-index.page.scss'
+  styleUrls: ['./wiki-index.page.scss']
 })
 export class WikiIndexPage {
 

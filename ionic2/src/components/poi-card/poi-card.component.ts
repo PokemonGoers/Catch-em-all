@@ -7,12 +7,10 @@ import { ApiService } from '../../services/api.service';
 import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
 import { PokeSighting } from '../../models/poke-sighting';
 
-import Hammer from 'hammerjs';
-
 @Component({
   selector: 'poke-poi-card',
   templateUrl: './poi-card.component.html',
-  styleUrl: './poi-card.component.scss',
+  styleUrls: ['./poi-card.component.scss'],
   animations: [
     trigger('slide', [
       state('visible', style({transform: 'translateY(0)', display: 'inline-block'})),

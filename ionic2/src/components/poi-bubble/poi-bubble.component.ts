@@ -5,7 +5,7 @@ import { PokeSighting } from '../../models/poke-sighting';
 @Component({
   selector: 'poke-poi-bubble',
   templateUrl: './poi-bubble.component.html',
-  styleUrl: './poi-bubble.component.scss'
+  styleUrls: ['./poi-bubble.component.scss']
 })
 export class POIBubbleComponent implements OnInit {
 

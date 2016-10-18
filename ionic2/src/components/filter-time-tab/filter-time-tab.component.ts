@@ -5,7 +5,7 @@ import { FilterService } from '../../services/filter.service';
 @Component({
   selector: 'poke-filter-time-tab',
   templateUrl: './filter-time-tab.component.html',
-  styleUrl: './filter-time-tab.component.scss'
+  styleUrls: ['./filter-time-tab.component.scss']
 })
 export class FilterTimeTabComponent implements OnInit {
   @ViewChild('sightingsRangeSlider') sightingsRangeSlider: any;

@@ -13,7 +13,7 @@ import PokeMap from 'pokemap-1';
 @Component({
   selector: 'poke-map',
   template: '<div #mapcontainer style="width: 100%; height: 100%;"></div>',
-  styleUrl: './map.component.scss'
+  styleUrls: ['./map.component.scss']
 })
 export class MapComponent {
 
