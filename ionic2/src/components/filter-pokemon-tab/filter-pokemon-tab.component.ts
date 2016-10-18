@@ -1,22 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
+import { Pokemon } from '../../models/pokemon';
+import { PokemonFilterData } from '../../models/pokemon-filter-data';
 import { ApiService } from '../../services/api.service';
 import { FilterService } from '../../services/filter.service';
-import { Pokemon } from '../../models/pokemon';
-import { PokemonFilterPipe } from '../../pipes/pokemon-filter/pokemon-filter.pipe';
-import { PokemonFilterData } from '../../models/pokemon-filter-data';
-import { TypesComponent } from '../../components/types/types.component';
+
 
 type PokemonContainer = {pokemon: Pokemon, isSelected: boolean};
 type TypeContainer = {type: string[], isSelected: boolean};
 
 @Component({
   selector: 'poke-filter-pokemon-tab',
-  template: require('./filter-pokemon-tab.component.html'),
-  styles: [require('./filter-pokemon-tab.component.scss'),],
-  pipes: [PokemonFilterPipe],
-  directives: [TypesComponent]
+  template: './filter-pokemon-tab.component.html',
+  styleUrl: './filter-pokemon-tab.component.scss'
 })
 export class FilterPokemonTabComponent implements OnInit {
 

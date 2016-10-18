@@ -1,4 +1,4 @@
-import { Page, NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 
 import { ApiService } from '../../services/api.service';
@@ -7,9 +7,10 @@ import { Pokemon } from '../../models/pokemon';
 import { PokeDetailPage } from '../poke-detail/poke-detail.page';
 import { WikiIndexPage } from '../wiki-index/wiki-index.page';
 import { MapPage } from '../map/map.page';
+import { Component } from '@angular/core';
 
-@Page({
-  template: require('./search.page.html')
+@Component({
+  templateUrl: './search.page.html'
 })
 export class SearchPage {
 

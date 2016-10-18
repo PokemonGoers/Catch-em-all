@@ -1,20 +1,14 @@
-import { forwardRef } from '@angular/core';
-import { NavController, Page } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 
 import { PokeDetailPage } from '../poke-detail/poke-detail.page';
 import { Pokemon } from '../../models/pokemon';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ApiService } from '../../services/api.service';
-import { RarityBadgeComponent } from '../../components/rarity-badge/rarity-badge.component';
 
-@Page({
-  template: require('./wiki-index.page.html'),
-  styles: [require('./wiki-index.page.scss')],
-  directives: [
-    forwardRef(() => NavbarComponent),
-    RarityBadgeComponent
-  ]
+@Component({
+  templateUrl: './wiki-index.page.html',
+  styleUrl: './wiki-index.page.scss'
 })
 export class WikiIndexPage {
 

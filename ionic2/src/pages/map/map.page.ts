@@ -1,22 +1,16 @@
-import { ViewChild, forwardRef } from '@angular/core';
-import { NavParams, Page, PopoverController, Events } from 'ionic-angular';
+import { ViewChild, Component } from '@angular/core';
+import { NavParams, PopoverController, Events } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
 import { FilterComponent } from '../../components/filter/filter.component';
 import { MapComponent } from '../../components/map/map.component';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ConfigService } from '../../services/config.service';
 import { POICardComponent } from '../../components/poi-card/poi-card.component';
 import { FilterService } from '../../services/filter.service';
 
-@Page({
-  template: require('./map.page.html'),
-  styles: [require('./map.page.scss')],
-  directives: [
-    forwardRef(() => NavbarComponent),
-    MapComponent,
-    POICardComponent
-  ]
+@Component({
+  templateUrl: './map.page.html',
+  styleUrl: './map.page.scss'
 })
 export class MapPage {
 

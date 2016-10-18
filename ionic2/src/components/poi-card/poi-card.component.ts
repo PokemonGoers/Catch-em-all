@@ -4,23 +4,15 @@ import { NavController, Events } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 
 import { ApiService } from '../../services/api.service';
-import { POIBubbleComponent } from '../poi-bubble/poi-bubble.component';
 import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
-import { TypesComponent } from '../types/types.component';
 import { PokeSighting } from '../../models/poke-sighting';
-import { RarityBadgeComponent } from '../rarity-badge/rarity-badge.component';
 
 let Hammer = require('hammerjs');
 
 @Component({
   selector: 'poke-poi-card',
-  template: require('./poi-card.component.html'),
-  styles: [require('./poi-card.component.scss')],
-  directives: [
-    POIBubbleComponent,
-    TypesComponent,
-    RarityBadgeComponent
-  ],
+  templateUrl: './poi-card.component.html',
+  styleUrl: './poi-card.component.scss',
   animations: [
     trigger('slide', [
       state('visible', style({transform: 'translateY(0)', display: 'inline-block'})),

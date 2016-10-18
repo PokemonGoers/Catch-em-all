@@ -12,7 +12,7 @@ let PokeMap = require('pokemap-1');
 @Component({
   selector: 'poke-map',
   template: '<div #mapcontainer style="width: 100%; height: 100%;"></div>',
-  styles: [require('./map.component.scss')]
+  styleUrl: './map.component.scss'
 })
 export class MapComponent {
 

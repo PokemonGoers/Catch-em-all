@@ -1,21 +1,11 @@
-import { forwardRef } from '@angular/core';
-import { Page, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavParams } from 'ionic-angular';
 
 import { Pokemon } from '../../models/pokemon';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { EvolutionsComponent } from '../../components/evolutions/evolutions.component';
-import { TypesComponent } from '../../components/types/types.component';
-import { RarityBadgeComponent } from '../../components/rarity-badge/rarity-badge.component';
 
-@Page({
-  template: require('./poke-detail.page.html'),
-  styles: [require('./poke-detail.page.scss')],
-  directives: [
-    forwardRef(() => NavbarComponent),
-    EvolutionsComponent,
-    TypesComponent,
-    RarityBadgeComponent
-  ]
+@Component({
+  templateUrl: './poke-detail.page.html',
+  styleUrl: './poke-detail.page.scss'
 })
 export class PokeDetailPage {
 

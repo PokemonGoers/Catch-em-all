@@ -5,7 +5,7 @@ import { SearchPage } from '../../pages/search/search.page';
 
 @Component({
   selector: 'poke-navbar',
-  template: require('./navbar.component.html'),
+  templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
 

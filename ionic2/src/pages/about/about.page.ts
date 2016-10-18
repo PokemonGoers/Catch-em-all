@@ -1,14 +1,11 @@
-import { forwardRef } from '@angular/core';
-import { Page } from 'ionic-angular';
+import { Component } from '@angular/core';
 
-import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ProjectGroupsService } from '../../services/project-groups.service';
 import { ProjectGroup } from '../../models/project-group';
 
-@Page({
-  template: require('./about.page.html'),
-  styles: [require('./about.page.scss')],
-  directives: [forwardRef(() => NavbarComponent)]
+@Component({
+  templateUrl: './about.page.html',
+  styleUrl: './about.page.scss'
 })
 export class AboutPage {
 

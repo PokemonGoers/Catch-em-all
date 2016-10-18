@@ -7,8 +7,8 @@ import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
 
 @Component({
   selector: 'poke-evolutions',
-  template: require('./evolutions.component.html'),
-  styles: [require('./evolutions.component.scss')]
+  templateUrl: '../evolutions.component.html',
+  styleUrl: './evolutions.component.scss'
 })
 export class EvolutionsComponent implements OnInit {
 

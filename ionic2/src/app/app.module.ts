@@ -27,6 +27,8 @@ import { LocationService } from '../services/location.service';
 import { FilterService } from '../services/filter.service';
 import { ProjectGroupsService } from '../services/project-groups.service';
 
+import { PokemonFilterPipe } from '../pipes/pokemon-filter/pokemon-filter.pipe';
+
 
 for (let envKey in env) {
   console.log(envKey, env[envKey]);
@@ -50,7 +52,8 @@ for (let envKey in env) {
     POIBubbleComponent,
     POICardComponent,
     RarityBadgeComponent,
-    TypesComponent
+    TypesComponent,
+    PokemonFilterPipe
   ],
   imports: [
     IonicModule.forRoot(App)
