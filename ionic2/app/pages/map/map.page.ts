@@ -8,7 +8,7 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ConfigService } from '../../services/config.service';
 import { POICardComponent } from '../../components/poi-card/poi-card.component';
 import { FilterService } from '../../services/filter.service';
-import { PokeMob } from '../../models/poke-mob';
+import { Mob } from '../../models/mob';
 
 @Page({
   template: require('./map.page.html'),
@@ -78,13 +78,13 @@ export class MapPage {
   }
 
   showArtificialMob() {
-    const pokeMob = PokeMob.fromObject({
+    const mob = Mob.fromObject({
       isMob: true,
       clusterId: 123,
       tweets: [],
       coordinates: [48.184858933932304, 11.732025146484373], // [longitude, latitude]
       timestamp: 1476796355282
     });
-    this.events.publish('map:click', pokeMob);
+    this.events.publish('map:click', mob);
   }
 }

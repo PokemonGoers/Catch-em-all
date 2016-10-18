@@ -4,7 +4,8 @@ import { Geolocation } from 'ionic-native';
 
 import { PokeSighting } from '../../models/poke-sighting';
 import { PokePrediction } from '../../models/poke-prediction';
-import { PokeMob } from '../../models/poke-mob';
+import { Mob } from '../../models/mob';
+import { POI } from '../../models/poi';
 import { Filter } from '../../models/filter';
 
 let PokeMap = require('pokemap-1');
@@ -46,9 +47,9 @@ export class MapComponent {
     //this.map.filter(filter);
   }
 
-  private onClick(pokePOI) {
-    console.debug('map:click', pokePOI);
-    this.events.publish('map:click', pokePOIFromMapEventData(pokePOI));
+  private onClick(poi) {
+    console.debug('map:click', poi);
+    this.events.publish('map:click', poiFromMapEventData(poi));
   }
 
   private onMove(position) {
@@ -69,14 +70,13 @@ export class MapComponent {
   }
 }
 
-function pokePOIFromMapEventData(pokePOI: Object)
-    : (PokeSighting | PokePrediction | PokeMob) {
-  if ('source' in pokePOI) {
-    return PokeSighting.fromObject(pokePOI);
-  } else if ('clusterId' in pokePOI) {
-    return PokeMob.fromObject(pokePOI);
+function poiFromMapEventData(poi: Object) : POI {
+  if ('source' in poi) {
+    return PokeSighting.fromObject(poi);
+  } else if ('clusterId' in poi) {
+    return Mob.fromObject(poi);
   } else {
-    throw new Error('PokePOI cannot be identified as ' +
-                    'PokeSighting or PokeMob:\n' + JSON.stringify(pokePOI));
+    throw new Error('POI cannot be identified as ' +
+                    'PokeSighting or Mob:\n' + JSON.stringify(poi));
   }
 }

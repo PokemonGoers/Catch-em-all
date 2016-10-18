@@ -1,6 +1,6 @@
 import { POI } from './poi';
 
-export class PokeMob extends POI {
+export class Mob extends POI {
 
   clusterId: number;
   tweets: PokeTweet[];
@@ -19,8 +19,8 @@ export class PokeMob extends POI {
     return 'mob';
   }
 
-  static fromObject(object: Object): PokeMob {
-    return Object.assign(new PokeMob(), object);
+  static fromObject(object: Object): Mob {
+    return Object.assign(new Mob(), object);
   }
 }
 
