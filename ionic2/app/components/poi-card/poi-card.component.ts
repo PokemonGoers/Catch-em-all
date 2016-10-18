@@ -85,17 +85,6 @@ export class POICardComponent implements OnInit {
     }
   }
 
-  getPOITypeBadgeLabel(): string {
-    switch(this.poi.type) {
-      case 'prediction':
-        return 'Pokemon Prediction';
-      case 'sighting':
-        return 'Pokemon Sighting';
-      case 'mob':
-        return 'Pokemon Mob';
-    }
-  }
-
   showDirections() {
     this.events.publish('map:directions', {
       longitude: this.poi.longitude,

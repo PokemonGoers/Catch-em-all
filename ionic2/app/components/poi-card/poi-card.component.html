@@ -1,59 +1,59 @@
-<div class="slide-card" #slideCard @slide="slideState">
-  <div class="poi-card-content poi-type-sighting"
-       *ngIf="poi && poi.type == 'sighting' && pokemon">
-    <ion-row>
+<div id="slide-card" #slideCard @slide="slideState">
+  <!-- Sightings -->
+  <div *ngIf="poi && poi.type == 'sighting' && pokemon">
+    <section class="side-section" id="sighting-side-section">
+      <poke-poi-bubble [pokemon]="pokemon"
+                       [appearedOn]="poi.appearedOn"></poke-poi-bubble>
+      <div>
+        <poke-type [type]="type" *ngFor="let type of pokemon.types">
+        </poke-type>
+      </div>
+    </section>
 
-      <ion-col class="poke-column">
-        <ion-row>
-          <poke-poi-bubble [pokemon]="pokemon"
-                           [appearedOn]="poi.appearedOn"></poke-poi-bubble>
-        </ion-row>
-        <ion-row>
-          <poke-type [type]="type" *ngFor="let type of pokemon.types">
-          </poke-type>
-        </ion-row>
-      </ion-col>
+    <section class="main-section" id="sighting-main-section">
+      <div class="name-and-rarity">
+        <span class="title">{{ pokemon.name }}</span>
+        <poke-rarity-badge [rarity]="pokemon.appearanceLikelihood">
+        </poke-rarity-badge>
+      </div>
+      <div class="description">{{ pokemon.description }}</div>
+      <div class="buttons">
+        <button clear (click)="showDirections()">
+          <ion-icon name="navigate"></ion-icon> Directions
+        </button>
+        <button clear (click)="launchPokeDex()">
+          <ion-icon name="book"></ion-icon> PokeDex
+        </button>
+      </div>
+    </section>
 
-      <ion-col style="flex-grow: 1;">
-        <ion-row>
-          <span class="poke-name">{{ pokemon.name }}</span>
-          <poke-rarity-badge [rarity]="pokemon.appearanceLikelihood">
-          </poke-rarity-badge>
-        </ion-row>
-        <ion-row class="poke-description">
-          {{ pokemon.description }}
-        </ion-row>
+    <div class="line" id="sighting-line"></div>
+    <div class="line-badge" id="sighting-line-badge">Pokemon Sighting</div>
+  </div>
 
+  <!-- Mobs -->
+  <div *ngIf="poi && poi.type == 'mob'">
+    <section class="side-section" id="mob-side-section">
+      <img src="img/pokemon-mob.svg" alt="Pokemon Logo">
+    </section>
 
-        <ion-row class="action-button-bar">
-          <button clear (click)="showDirections()">
-            <ion-icon name="navigate"></ion-icon>
-            Directions
-          </button>
+    <section class="main-section" id="mob-main-section">
+      <div class="title">PokeMob</div>
+      <div class="description">
+        A lot of players seem to gather at this location!<br><br>
+        Based on {{ poi.tweets.length }} tweet(s).
+      </div>
+      <div class="buttons">
+        <button clear (click)="showDirections()">
+          <ion-icon name="navigate"></ion-icon> Directions
+        </button>
+      </div>
+    </section>
 
-          <button clear (click)="launchPokeDex()">
-            <ion-icon name="book"></ion-icon>
-            PokeDex
-          </button>
-        </ion-row>
-      </ion-col>
-    </ion-row>
+    <section class="buttons-section" id="mob-buttons-section">
+    </section>
 
-    <div class="poi-type-line"></div>
-    <div class="poi-type-badge">
-      {{ getPOITypeBadgeLabel() }}
-    </div>
-
-  </div><!-- End Pokemon sighting card layout -->
-
-  <div class="poi-card-content poi-type-mob"
-       *ngIf="poi && poi.type == 'mob'">
-    <img src="img/pokemon-mob.svg" alt="Pokemon Logo">
-    <div>A lot of players seem to gather at this location!</div>
-
-    <div class="poi-type-line"></div>
-    <div class="poi-type-badge">
-      {{ getPOITypeBadgeLabel() }}
-    </div>
-  </div><!-- End mob card layout -->
+    <div class="line" id="mob-line"></div>
+    <div class="line-badge" id="mob-line-badge">PokeMob</div>
+  </div>
 </div>
