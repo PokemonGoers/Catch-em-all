@@ -5,7 +5,7 @@ export class Mob extends POI {
   tweets: PokeTweet[];
   timestamp: number;
 
-  get type(): string { return 'mob'; }
+  type = 'mob';
 }
 
 export type PokeTweet = {

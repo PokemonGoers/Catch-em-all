@@ -6,5 +6,5 @@ export class Sighting extends POI {
   source: string;
   appearedOn: string;
 
-  get type(): string { return 'sighting'; }
+  type = 'sighting';
 }
