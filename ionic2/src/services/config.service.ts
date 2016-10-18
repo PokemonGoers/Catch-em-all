@@ -19,12 +19,12 @@ export class ConfigService {
   }
 
   get websocketEndpoint(): string {
-    if (env.BUILD_TARGET !== 'web' && env.WEBSOCKET_ENDPOINT) {
-      return env.WEBSOCKET_ENDPOINT;
+    if (this.browserPlatform && env.WEBSOCKET_ENDPOINT) {
+      return window.location.origin;
     } else {
       // For build target 'web' we are running a node server alongside
       // the src which proxies all websocket requests.
-      return window.location.origin;
+      return env.WEBSOCKET_ENDPOINT;
     }
   }
 
