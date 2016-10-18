@@ -80,7 +80,12 @@ export class MapPage {
   showArtificialMob() {
     const mob = new Mob();
     mob.clusterId = 123;
-    mob.tweets = [];
+    mob.tweets = [
+      { id: '1', text: 'hello', coordinates: [1, 2], timestamp: 123 },
+      { id: '2', text: 'world', coordinates: [1, 2], timestamp: 123 },
+      { id: '3', text: 'hello', coordinates: [1, 2], timestamp: 123 },
+      { id: '4', text: 'world', coordinates: [1, 2], timestamp: 123 },
+    ];
     mob.longitude = 48.184858933932304;
     mob.latitude = 11.732025146484373;
     mob.timestamp = 1476796355282;
