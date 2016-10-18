@@ -14,7 +14,7 @@ for (let envKey in env) {
 }
 
 config.plugins.push(replace({
-  include: '**/.tmp/src/env.js',
+  include: '**/.tmp/app/env.js',
   delimiters: ['<@', '@>'],
   values: env
 }));
