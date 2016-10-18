@@ -15,19 +15,12 @@
       flex-grow: 1;
     }
 
-    .poke-id {
-      font-size: 22px;
-      font-weight: bold;
-      color: #404040;
-      padding: 4px;
-      align-self:center;
-    }
-
     .poke-name {
       font-size: 28px;
     }
 
     poke-rarity-badge {
+      margin-left: 10px;
       align-self: center;
     }
 
