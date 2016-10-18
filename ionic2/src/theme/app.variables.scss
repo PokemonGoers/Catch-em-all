@@ -8,18 +8,18 @@
 
 // App Shared Variables
 // --------------------------------------------------
-// To customize the look and feel of this app, you can override
+// To customize the look and feel of this src, you can override
 // the Sass variables found in Ionic's source scss files. Setting
 // variables before Ionic's Sass will use these variables rather than
 // Ionic's default Sass variable values. App Shared Sass imports belong
-// in the app.core.scss file and not this file. Sass variables specific
-// to the mode belong in either the app.ios.scss or app.md.scss files.
+// in the src.core.scss file and not this file. Sass variables specific
+// to the mode belong in either the src.ios.scss or src.md.scss files.
 $font-path: '../../node_modules/ionic-angular/fonts';
 
 // App Shared Color Variables
 // --------------------------------------------------
 // It's highly recommended to change the default colors
-// to match your app's branding. Ionic uses a Sass map of
+// to match your src's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 // Both iOS and MD colors can be further customized if colors

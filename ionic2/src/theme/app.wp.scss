@@ -3,7 +3,7 @@
 
 // App Shared Variables
 // --------------------------------------------------
-// Shared Sass variables go in the app.variables.scss file
+// Shared Sass variables go in the src.variables.scss file
 @import "app.variables";
 
 
@@ -21,11 +21,11 @@
 
 // App Shared Sass
 // --------------------------------------------------
-// All Sass files that make up this app goes into the app.core.scss file.
-// For simpler CSS overrides, custom app CSS must come after Ionic's CSS.
+// All Sass files that make up this src goes into the src.core.scss file.
+// For simpler CSS overrides, custom src CSS must come after Ionic's CSS.
 @import "app.core";
 
 
 // App Windows Only Sass
 // --------------------------------------------------
-// CSS that should only apply to the Windows app
+// CSS that should only apply to the Windows src

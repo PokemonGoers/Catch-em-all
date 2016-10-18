@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import env from '../env';
+import env from '../app/env';
 
 @Injectable()
 export class ConfigService {
@@ -10,7 +10,7 @@ export class ConfigService {
       return env.API_ENDPOINT;
     } else {
       // For build target 'web' we are running a node server alongside
-      // the app which proxies all api requests.
+      // the src which proxies all api requests.
       return window.location.origin;
     }
   }
@@ -20,7 +20,7 @@ export class ConfigService {
       return env.WEBSOCKET_ENDPOINT;
     } else {
       // For build target 'web' we are running a node server alongside
-      // the app which proxies all websocket requests.
+      // the src which proxies all websocket requests.
       return window.location.origin;
     }
   }
