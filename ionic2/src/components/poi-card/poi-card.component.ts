@@ -7,7 +7,7 @@ import { ApiService } from '../../services/api.service';
 import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
 import { PokeSighting } from '../../models/poke-sighting';
 
-let Hammer = require('hammerjs');
+import Hammer from 'hammerjs';
 
 @Component({
   selector: 'poke-poi-card',

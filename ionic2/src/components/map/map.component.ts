@@ -7,7 +7,8 @@ import { PokePrediction } from '../../models/poke-prediction';
 import { PokeMob } from '../../models/poke-mob';
 import { Filter } from '../../models/filter';
 
-let PokeMap = require('pokemap-1');
+import PokeMap from 'pokemap-1';
+
 
 @Component({
   selector: 'poke-map',
