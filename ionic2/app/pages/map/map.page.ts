@@ -78,11 +78,12 @@ export class MapPage {
   }
 
   showArtificialMob() {
-    const mob = Mob.fromObject({
-      isMob: true,
+    const mob = new Mob();
+    Object.assign(mob, {
       clusterId: 123,
       tweets: [],
-      coordinates: [48.184858933932304, 11.732025146484373], // [longitude, latitude]
+      longitude: 48.184858933932304,
+      latitude: 11.732025146484373,
       timestamp: 1476796355282
     });
     this.events.publish('map:click', mob);

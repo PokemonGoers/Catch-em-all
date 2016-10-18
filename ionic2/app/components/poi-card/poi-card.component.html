@@ -1,6 +1,6 @@
 <div class="slide-card" #slideCard @slide="slideState">
   <div class="poi-card-content poi-type-sighting"
-       *ngIf="poi && poi.getType() == 'sighting' && pokemon">
+       *ngIf="poi && poi.type == 'sighting' && pokemon">
     <ion-row>
 
       <ion-col class="poke-column">
@@ -47,7 +47,7 @@
   </div><!-- End Pokemon sighting card layout -->
 
   <div class="poi-card-content poi-type-mob"
-       *ngIf="poi && poi.getType() == 'mob'">
+       *ngIf="poi && poi.type == 'mob'">
     Mob card
   </div><!-- End mob card layout -->
 </div>

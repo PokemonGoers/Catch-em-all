@@ -86,7 +86,7 @@ export class POICardComponent implements OnInit {
   }
 
   getPOITypeBadgeLabel(): string {
-    switch(this.poi.getType()) {
+    switch(this.poi.type) {
       case 'prediction':
         return 'Pokemon Prediction';
       case 'sighting':
@@ -97,7 +97,10 @@ export class POICardComponent implements OnInit {
   }
 
   showDirections() {
-    this.events.publish('map:directions', this.poi.getLocation());
+    this.events.publish('map:directions', {
+      longitude: this.poi.longitude,
+      latitude: this.poi.latitude
+    });
   }
 
   launchPokeDex() {

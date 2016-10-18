@@ -70,13 +70,22 @@ export class MapComponent {
   }
 }
 
-function poiFromMapEventData(poi: Object) : POI {
-  if ('source' in poi) {
-    return Sighting.fromObject(poi);
-  } else if ('clusterId' in poi) {
-    return Mob.fromObject(poi);
+function poiFromMapEventData(rawData: any) : POI {
+  if ('source' in rawData) {
+    const sighting = new Sighting();
+    Object.assign(sighting, {
+      latitude: rawData.location.coordinates[1],
+      longitude: rawData.location.coordinates[0],
+      pokemonId: rawData.pokemonId,
+      source: rawData.source,
+      appearedOn: rawData.appearedOn
+    })
+    return sighting;
+  } else if ('clusterId' in rawData) {
+    const mob = new Mob();
+    return mob;
   } else {
     throw new Error('POI cannot be identified as ' +
-                    'Sighting or Mob:\n' + JSON.stringify(poi));
+                    'Sighting or Mob:\n' + JSON.stringify(rawData));
   }
 }
