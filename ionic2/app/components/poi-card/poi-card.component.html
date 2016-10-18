@@ -48,6 +48,12 @@
 
   <div class="poi-card-content poi-type-mob"
        *ngIf="poi && poi.type == 'mob'">
-    Mob card
+    <img src="img/pokemon-mob.svg" alt="Pokemon Logo">
+    <div>A lot of players seem to gather at this location!</div>
+
+    <div class="poi-type-line"></div>
+    <div class="poi-type-badge">
+      {{ getPOITypeBadgeLabel() }}
+    </div>
   </div><!-- End mob card layout -->
 </div>
