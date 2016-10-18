@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { SearchPage } from '../../pages/search/search.page';
@@ -8,6 +8,8 @@ import { SearchPage } from '../../pages/search/search.page';
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
+
+  @Input() title: string;
 
   constructor(private navCtr: NavController) { }
 
