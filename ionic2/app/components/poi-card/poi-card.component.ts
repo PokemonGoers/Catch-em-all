@@ -10,7 +10,7 @@ import { TypesComponent } from '../types/types.component';
 import { RarityBadgeComponent } from '../rarity-badge/rarity-badge.component';
 import { Pokemon } from '../../models/pokemon';
 
-import { PokePOI } from '../../models/poke-poi';
+import { POI } from '../../models/poi';
 import { PokeSighting } from '../../models/poke-sighting';
 
 let Hammer = require('hammerjs');
@@ -36,7 +36,7 @@ export class POICardComponent implements OnInit {
 
   @ViewChild('slideCard') slideCard: ElementRef;
 
-  pokePOI: PokePOI;
+  poi: POI;
   pokemon: Pokemon;
   loadPokemon: Subscription;
   slideState: string = 'hidden';
@@ -47,23 +47,23 @@ export class POICardComponent implements OnInit {
               private events: Events) { }
 
   ngOnInit() {
-    this.events.subscribe('map:click', ([pokePOI]) => {
-      this.show(pokePOI);
+    this.events.subscribe('map:click', ([poi]) => {
+      this.show(poi);
     });
 
     let hammer = new Hammer(this.slideCard.nativeElement);
     hammer.on('swipedown swipeleft swiperight', this.hide.bind(this));
   }
 
-  show(pokePOI: PokePOI) {
+  show(poi: POI) {
     this.cancelRequests();
 
-    this.pokePOI = pokePOI;
+    this.poi = poi;
     this.pokemon = null;
 
     // Load Pokemon for given pokemonId
-    if (pokePOI instanceof PokeSighting) {
-      const pokeSighting = <PokeSighting>pokePOI;
+    if (poi instanceof PokeSighting) {
+      const pokeSighting = <PokeSighting>poi;
       this.loadPokemon = this.apiService
                              .getPokemonById(pokeSighting.pokemonId)
                              .subscribe(pokemon => {
@@ -87,7 +87,7 @@ export class POICardComponent implements OnInit {
   }
 
   getPOITypeBadgeLabel(): string {
-    switch(this.pokePOI.getType()) {
+    switch(this.poi.getType()) {
       case 'prediction':
         return 'Pokemon Prediction';
       case 'sighting':
@@ -98,7 +98,7 @@ export class POICardComponent implements OnInit {
   }
 
   showDirections() {
-    this.events.publish('map:directions', this.pokePOI.getLocation());
+    this.events.publish('map:directions', this.poi.getLocation());
   }
 
   launchPokeDex() {

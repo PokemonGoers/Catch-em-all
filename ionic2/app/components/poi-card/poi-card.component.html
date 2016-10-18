@@ -1,12 +1,12 @@
 <div class="slide-card" #slideCard @slide="slideState">
-  <div class="poke-poi-card-content poi-type-sighting"
-       *ngIf="pokePOI && pokePOI.getType() == 'sighting' && pokemon">
+  <div class="poi-card-content poi-type-sighting"
+       *ngIf="poi && poi.getType() == 'sighting' && pokemon">
     <ion-row>
 
       <ion-col class="poke-column">
         <ion-row>
           <poke-poi-bubble [pokemon]="pokemon"
-                           [appearedOn]="pokePOI.appearedOn"></poke-poi-bubble>
+                           [appearedOn]="poi.appearedOn"></poke-poi-bubble>
         </ion-row>
         <ion-row>
           <poke-type [type]="type" *ngFor="let type of pokemon.types">
@@ -39,15 +39,15 @@
       </ion-col>
     </ion-row>
 
-    <div class="poke-poi-type-line"></div>
-    <div class="poke-poi-type-badge">
+    <div class="poi-type-line"></div>
+    <div class="poi-type-badge">
       {{ getPOITypeBadgeLabel() }}
     </div>
 
   </div><!-- End Pokemon sighting card layout -->
 
-  <div class="poke-poi-card-content poi-type-mob"
-       *ngIf="pokePOI && pokePOI.getType() == 'mob'">
+  <div class="poi-card-content poi-type-mob"
+       *ngIf="poi && poi.getType() == 'mob'">
     Mob card
   </div><!-- End mob card layout -->
 </div>

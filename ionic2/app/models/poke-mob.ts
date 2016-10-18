@@ -1,6 +1,6 @@
-import { PokePOI } from './poke-poi';
+import { POI } from './poi';
 
-export class PokeMob extends PokePOI {
+export class PokeMob extends POI {
 
   clusterId: number;
   tweets: PokeTweet[];

@@ -1,7 +1,7 @@
-import { PokePOI } from './poke-poi';
+import { POI } from './poi';
 import { Pokemon } from './pokemon';
 
-export class PokePrediction extends PokePOI {
+export class PokePrediction extends POI {
 
   pokemonId: number;
   pokemon: Pokemon;

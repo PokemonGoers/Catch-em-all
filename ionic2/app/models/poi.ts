@@ -1,4 +1,4 @@
-export abstract class PokePOI {
+export abstract class POI {
 
   abstract getLocation(): { latitude:number, longitude:number };
 

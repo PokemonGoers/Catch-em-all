@@ -8,7 +8,7 @@
   box-shadow: 0px -2px 3px 0 rgba(0,0,0,0.5);
   z-index: 99999;
 
-  .poke-poi-card-content {
+  .poi-card-content {
     padding-top: 12px;
 
     .poke-picture {
@@ -68,7 +68,7 @@
       }
     }
 
-    .poke-poi-type-line {
+    .poi-type-line {
       position: absolute;
       top:0;
       right: 0;
@@ -79,7 +79,7 @@
       box-shadow: 4px 3px 4px -3px rgba(0, 0, 0, 0.75);
     }
 
-    .poke-poi-type-badge {
+    .poi-type-badge {
       position: absolute;
       display: inline-block;
       top: 0;
@@ -91,22 +91,22 @@
     }
 
     &.poi-type-sighting {
-      .poke-poi-type-badge,
-      .poke-poi-type-line {
+      .poi-type-badge,
+      .poi-type-line {
         background: #123784;
       }
     }
 
     &.poi-type-prediction {
-      .poke-poi-type-badge,
-      .poke-poi-type-line {
+      .poi-type-badge,
+      .poi-type-line {
         background: #149062;
       }
     }
 
     &.poi-type-mob {
-      .poke-poi-type-badge,
-      .poke-poi-type-line {
+      .poi-type-badge,
+      .poi-type-line {
         background: #ca1010;
       }
     }
