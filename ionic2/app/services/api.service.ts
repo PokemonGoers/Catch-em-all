@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs';
 
-import { Pokemon } from '../models/pokemon';
+import { Pokemon, PokemonGender, PokemonAttackCategory } from '../models/pokemon';
 import { Sighting } from '../models/sighting';
-import { PokeGender } from '../models/pokemon';
-import { PokeAttackCategory } from '../models/pokemon';
 import { ConfigService } from './config.service';
 import { TYPES } from './poke-types';
 
@@ -89,7 +87,7 @@ export class ApiService {
    * @param {string} gender - Gender of the Pokemon, allowed values: [m, f, g, h]
    * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByGender(gender: PokeGender): Observable<Pokemon[]> {
+  getPokemonByGender(gender: PokemonGender): Observable<Pokemon[]> {
     let request = this.http.get(this.apiEndpoint + '/api/pokemon/gender/' + gender);
     return request.map(ApiService.handleResponse(Pokemon));
   }
@@ -130,7 +128,7 @@ export class ApiService {
    * @param {string} type - Type of the attack
    * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByAttackType(category: PokeAttackCategory, type: string): Observable<Pokemon[]> {
+  getPokemonByAttackType(category: PokemonAttackCategory, type: string): Observable<Pokemon[]> {
     let request = this.http.get(this.apiEndpoint + '/api/pokemon/attack/' + category + '/type/' + type);
     return request.map(ApiService.handleResponse(Pokemon));
   }
@@ -141,7 +139,7 @@ export class ApiService {
    * @param {string} name - Name of the attack
    * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByAttackName(category: PokeAttackCategory, name: string): Observable<Pokemon[]> {
+  getPokemonByAttackName(category: PokemonAttackCategory, name: string): Observable<Pokemon[]> {
     let request = this.http.get(this.apiEndpoint + '/api/pokemon/attack/' + category + '/name/' + name);
     return request.map(ApiService.handleResponse(Pokemon));
   }
@@ -152,7 +150,7 @@ export class ApiService {
    * @param {number} damage - Damage value of the attack
    * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByAttackDamage(category: PokeAttackCategory, damage: number): Observable<Pokemon[]> {
+  getPokemonByAttackDamage(category: PokemonAttackCategory, damage: number): Observable<Pokemon[]> {
     let request = this.http.get(this.apiEndpoint + '/api/pokemon/attack/' + category + '/damage/' + damage);
     return request.map(ApiService.handleResponse(Pokemon));
   }
@@ -163,7 +161,7 @@ export class ApiService {
    * @param {number} id - ID of the evolved Pokemon, range 1-151
    * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByEvolutionId(category: PokeAttackCategory, id: number): Observable<Pokemon[]> {
+  getPokemonByEvolutionId(category: PokemonAttackCategory, id: number): Observable<Pokemon[]> {
     let request = this.http.get(this.apiEndpoint + '/api/pokemon/evolution/' + category + '/id/' + id);
     return request.map(ApiService.handleResponse(Pokemon));
   }
@@ -174,7 +172,7 @@ export class ApiService {
    * @param {string} name - Name of the evolved Pokemon
    * @returns {Observable<Pokemon[]>}
    */
-  getPokemonByEvolutionName(category: PokeAttackCategory, name: string): Observable<Pokemon[]> {
+  getPokemonByEvolutionName(category: PokemonAttackCategory, name: string): Observable<Pokemon[]> {
     let request = this.http.get(this.apiEndpoint + '/api/pokemon/evolution/' + category + '/name/' + name);
     return request.map(ApiService.handleResponse(Pokemon));
   }
