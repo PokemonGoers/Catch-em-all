@@ -3,7 +3,7 @@ import { Events } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
 import { PokeSighting } from '../../models/poke-sighting';
-import { PokePrediction } from '../../models/poke-prediction';
+import { Prediction } from '../../models/prediction';
 import { Mob } from '../../models/mob';
 import { POI } from '../../models/poi';
 import { Filter } from '../../models/filter';

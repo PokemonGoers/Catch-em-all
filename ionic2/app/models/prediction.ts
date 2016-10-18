@@ -1,7 +1,7 @@
 import { POI } from './poi';
 import { Pokemon } from './pokemon';
 
-export class PokePrediction extends POI {
+export class Prediction extends POI {
 
   pokemonId: number;
   pokemon: Pokemon;
@@ -14,7 +14,7 @@ export class PokePrediction extends POI {
     return 'prediction';
   }
 
-  static fromObject(object: Object): PokePrediction {
-    return Object.assign(new PokePrediction(), object);
+  static fromObject(object: Object): Prediction {
+    return Object.assign(new Prediction(), object);
   }
 }
