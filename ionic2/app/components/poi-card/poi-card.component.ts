@@ -7,8 +7,11 @@ import { ApiService } from '../../services/api.service';
 import { POIBubbleComponent } from '../poi-bubble/poi-bubble.component';
 import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
 import { TypesComponent } from '../types/types.component';
-import { PokeSighting } from '../../models/poke-sighting';
 import { RarityBadgeComponent } from '../rarity-badge/rarity-badge.component';
+import { Pokemon } from '../../models/pokemon';
+
+import { PokePOI } from '../../models/poke-poi';
+import { PokeSighting } from '../../models/poke-sighting';
 
 let Hammer = require('hammerjs');
 
@@ -33,7 +36,8 @@ export class POICardComponent implements OnInit {
 
   @ViewChild('slideCard') slideCard: ElementRef;
 
-  pokePOI: PokeSighting;
+  pokePOI: PokePOI;
+  pokemon: Pokemon;
   loadPokemon: Subscription;
   slideState: string = 'hidden';
 
@@ -44,27 +48,32 @@ export class POICardComponent implements OnInit {
 
   ngOnInit() {
     this.events.subscribe('map:click', ([pokePOI]) => {
-      if (pokePOI instanceof PokeSighting) {
-        this.show(pokePOI);
-      }
+      this.show(pokePOI);
     });
 
     let hammer = new Hammer(this.slideCard.nativeElement);
     hammer.on('swipedown swipeleft swiperight', this.hide.bind(this));
   }
 
-  show(pokePOI: PokeSighting) {
+  show(pokePOI: PokePOI) {
     this.cancelRequests();
 
-    // Load pokemon for given pokemonId
-    this.loadPokemon = this.apiService.getPokemonById(pokePOI.pokemonId).subscribe(pokemon => {
-      this.slideState = 'visible';
-      pokePOI.pokemon = pokemon;
-      this.pokePOI = pokePOI;
+    this.pokePOI = pokePOI;
+    this.pokemon = null;
 
-      // Change detection will only be triggered upon user interaction (e.g. moving the mouse cursor)
-      this.changeDetectorRef.detectChanges();
-    });
+    // Load Pokemon for given pokemonId
+    if (pokePOI instanceof PokeSighting) {
+      const pokeSighting = <PokeSighting>pokePOI;
+      this.loadPokemon = this.apiService
+                             .getPokemonById(pokeSighting.pokemonId)
+                             .subscribe(pokemon => {
+                                this.slideState = 'visible';
+                                this.pokemon = pokemon;
+                                this.changeDetectorRef.detectChanges();
+                              });
+    } else {
+      this.slideState = 'visible';
+    }
   }
 
   hide() {
@@ -93,7 +102,7 @@ export class POICardComponent implements OnInit {
   }
 
   launchPokeDex() {
-    this.navCtrl.push(PokeDetailPage, {pokemon: this.pokePOI.pokemon});
+    this.navCtrl.push(PokeDetailPage, { pokemon: this.pokemon });
   }
 
 }

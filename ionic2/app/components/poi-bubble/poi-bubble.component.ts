@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild, ElementRef, OnInit } from '@angular/core';
 
-import { PokeSighting } from '../../models/poke-sighting';
+import { Pokemon } from '../../models/pokemon';
 
 @Component({
   selector: 'poke-poi-bubble',
@@ -10,7 +10,8 @@ import { PokeSighting } from '../../models/poke-sighting';
 })
 export class POIBubbleComponent implements OnInit {
 
-  @Input() pokePOI: PokeSighting;
+  @Input() pokemon: Pokemon;
+  @Input() appearedOn: number;
   @ViewChild('circle') circle: ElementRef;
 
   arcHighlightColor = '#FFF75A';
@@ -19,7 +20,7 @@ export class POIBubbleComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    let appearedOn = (new Date(this.pokePOI.appearedOn)).getTime() / 1000;
+    let appearedOn = (new Date(this.appearedOn)).getTime() / 1000;
     let now = Date.now() / 1000;
     let diff = Math.max(Math.log((now -appearedOn) / 1000), 1);
     let max = Math.log(30 * 86400 / 1000);

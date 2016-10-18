@@ -1,26 +1,28 @@
 <div class="slide-card" #slideCard @slide="slideState">
-  <div class="poke-poi-card-content" *ngIf="pokePOI" [ngClass]="'poi-type-'+pokePOI.getType()">
+  <div class="poke-poi-card-content poi-type-sighting"
+       *ngIf="pokePOI && pokePOI.getType() == 'sighting' && pokemon">
     <ion-row>
 
       <ion-col class="poke-column">
         <ion-row>
-          <poke-poi-bubble [pokePOI]="pokePOI"></poke-poi-bubble>
+          <poke-poi-bubble [pokemon]="pokemon"
+                           [appearedOn]="pokePOI.appearedOn"></poke-poi-bubble>
         </ion-row>
         <ion-row>
-          <poke-type [type]="type" *ngFor="let type of pokePOI.pokemon.types">
+          <poke-type [type]="type" *ngFor="let type of pokemon.types">
           </poke-type>
         </ion-row>
       </ion-col>
 
       <ion-col style="flex-grow: 1;">
         <ion-row>
-          <span class="poke-name">{{ pokePOI.pokemon.name }}</span>
-          <span class="poke-id">#{{ pokePOI.pokemon.pokemonId }}</span>
-          <poke-rarity-badge [rarity]="pokePOI.pokemon.appearanceLikelihood">
+          <span class="poke-name">{{ pokemon.name }}</span>
+          <span class="poke-id">#{{ pokemon.pokemonId }}</span>
+          <poke-rarity-badge [rarity]="pokemon.appearanceLikelihood">
           </poke-rarity-badge>
         </ion-row>
         <ion-row class="poke-description">
-          {{ pokePOI.pokemon.description }}
+          {{ pokemon.description }}
         </ion-row>
 
 
@@ -43,5 +45,10 @@
       {{ getPOITypeBadgeLabel() }}
     </div>
 
-  </div>
+  </div><!-- End Pokemon sighting card layout -->
+
+  <div class="poke-poi-card-content poi-type-mob"
+       *ngIf="pokePOI && pokePOI.getType() == 'mob'">
+    Mob card
+  </div><!-- End mob card layout -->
 </div>
