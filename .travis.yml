@@ -30,7 +30,6 @@ install:
   - cd ../ionic2
   - npm install -q && npm prune
   - npm update pokemap-1 pokemap-2
-  - node_modules/.bin/typings install
   - node_modules/.bin/ionic prepare
   - cd ../
 
@@ -46,8 +45,8 @@ script:
   - npm test
 
   # Run frontend/app tests
-  - cd ../ionic2
-  - npm test
+  # - cd ../ionic2
+  # - npm test
 
   # Build app for browser and Android platform
   - node_modules/.bin/ionic build browser

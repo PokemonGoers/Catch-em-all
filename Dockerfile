@@ -21,7 +21,6 @@ RUN cd $(npm root -g)/npm \
 RUN cd server && npm install --only=prod -q && npm prune --production
 RUN cd ionic2 && npm install -q && npm prune
 RUN cd ionic2 && npm update -q pokemap-1 pokemap-2
-RUN cd ionic2 && typings install
 
 # Build web app
 RUN cd ionic2 && ionic prepare
