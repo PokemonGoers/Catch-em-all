@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Events } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
-import { PokeSighting } from '../../models/poke-sighting';
+import { Sighting } from '../../models/sighting';
 import { Prediction } from '../../models/prediction';
 import { Mob } from '../../models/mob';
 import { POI } from '../../models/poi';
@@ -72,11 +72,11 @@ export class MapComponent {
 
 function poiFromMapEventData(poi: Object) : POI {
   if ('source' in poi) {
-    return PokeSighting.fromObject(poi);
+    return Sighting.fromObject(poi);
   } else if ('clusterId' in poi) {
     return Mob.fromObject(poi);
   } else {
     throw new Error('POI cannot be identified as ' +
-                    'PokeSighting or Mob:\n' + JSON.stringify(poi));
+                    'Sighting or Mob:\n' + JSON.stringify(poi));
   }
 }

@@ -9,9 +9,8 @@ import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
 import { TypesComponent } from '../types/types.component';
 import { RarityBadgeComponent } from '../rarity-badge/rarity-badge.component';
 import { Pokemon } from '../../models/pokemon';
-
 import { POI } from '../../models/poi';
-import { PokeSighting } from '../../models/poke-sighting';
+import { Sighting } from '../../models/sighting';
 
 let Hammer = require('hammerjs');
 
@@ -62,10 +61,10 @@ export class POICardComponent implements OnInit {
     this.pokemon = null;
 
     // Load Pokemon for given pokemonId
-    if (poi instanceof PokeSighting) {
-      const pokeSighting = <PokeSighting>poi;
+    if (poi instanceof Sighting) {
+      const sighting = <Sighting>poi;
       this.loadPokemon = this.apiService
-                             .getPokemonById(pokeSighting.pokemonId)
+                             .getPokemonById(sighting.pokemonId)
                              .subscribe(pokemon => {
                                 this.slideState = 'visible';
                                 this.pokemon = pokemon;

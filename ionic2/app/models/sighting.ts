@@ -1,7 +1,7 @@
 import { POI } from './poi';
 import { Pokemon } from './pokemon';
 
-export class PokeSighting extends POI {
+export class Sighting extends POI {
 
   pokemonId: number;
   pokemon: Pokemon;
@@ -24,7 +24,7 @@ export class PokeSighting extends POI {
     return 'sighting';
   }
 
-  static fromObject(object: Object): PokeSighting {
-    return Object.assign(new PokeSighting(), object);
+  static fromObject(object: Object): Sighting {
+    return Object.assign(new Sighting(), object);
   }
 }
