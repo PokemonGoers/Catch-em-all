@@ -1,4 +1,4 @@
-<div class="slide-card" #slideCard @slide="slideState">
+<div class="slide-card" #slideCard [@slide]="slideState">
   <div class="poke-poi-card-content" *ngIf="pokePOI" [ngClass]="'poi-type-'+pokePOI.getType()">
     <ion-row>
 
