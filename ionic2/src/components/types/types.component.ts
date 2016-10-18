@@ -9,8 +9,8 @@ import { ApiService } from '../../services/api.service';
 export class TypesComponent implements OnInit {
 
   @Input() type: string;
-  private typeColors: Object;
-  typeColor: Object;
+  private typeColors: { [key:string]:string; };
+  typeColor: { type:string, color:string };
 
   constructor(private apiService: ApiService) {
     this.typeColors = apiService.getTypes();
