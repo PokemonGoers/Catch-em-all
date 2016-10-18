@@ -38,6 +38,10 @@ export class WikiIndexPage {
     }
   }
 
+  onCancel() {
+    this.cancelRequests();
+  }
+
   cancelRequests() {
     if (this.querySubscription && !this.querySubscription.closed) {
       this.querySubscription.unsubscribe();
