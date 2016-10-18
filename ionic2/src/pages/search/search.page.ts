@@ -56,10 +56,10 @@ export class SearchPage {
   }
 
   cancelRequests() {
-    if (this.locationQuery && !this.locationQuery.isUnsubscribed) {
+    if (this.locationQuery && !this.locationQuery.closed) {
       this.locationQuery.unsubscribe();
     }
-    if (this.pokemonQuery && !this.pokemonQuery.isUnsubscribed) {
+    if (this.pokemonQuery && !this.pokemonQuery.closed) {
       this.pokemonQuery.unsubscribe();
     }
   }

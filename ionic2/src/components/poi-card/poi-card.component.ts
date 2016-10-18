@@ -64,7 +64,7 @@ export class POICardComponent implements OnInit {
   }
 
   cancelRequests() {
-    if (this.loadPokemon && !this.loadPokemon.isUnsubscribed) {
+    if (this.loadPokemon && !this.loadPokemon.closed) {
       this.loadPokemon.unsubscribe();
     }
   }

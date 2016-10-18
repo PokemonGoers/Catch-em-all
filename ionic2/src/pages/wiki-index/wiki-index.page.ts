@@ -40,7 +40,7 @@ export class WikiIndexPage {
   }
 
   cancelRequests() {
-    if (this.querySubscription && !this.querySubscription.isUnsubscribed) {
+    if (this.querySubscription && !this.querySubscription.closed) {
       this.querySubscription.unsubscribe();
     }
   }
