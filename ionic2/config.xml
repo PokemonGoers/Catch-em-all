@@ -42,7 +42,7 @@
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
     <platform name="browser">
-        <preference name="SplashScreen" value="/img/splash.png" />
+        <preference name="SplashScreen" value="assets/img/splash.png" />
         <preference name="AutoHideSplashScreen" value="false" />
         <preference name="SplashScreenWidth" value="400" />
         <preference name="SplashScreenHeight" value="600" />
