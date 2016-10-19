@@ -7,6 +7,7 @@ import { Pokemon } from '../../models/pokemon';
 import { ApiService } from '../../services/api.service';
 
 @Component({
+  selector: 'wiki-index-page',
   templateUrl: './wiki-index.page.html'
 })
 export class WikiIndexPage {

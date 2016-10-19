@@ -4,6 +4,7 @@ import { NavParams } from 'ionic-angular';
 import { Pokemon } from '../../models/pokemon';
 
 @Component({
+  selector: 'detail-page',
   templateUrl: './poke-detail.page.html'
 })
 export class PokeDetailPage {

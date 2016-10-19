@@ -10,6 +10,7 @@ import { MapPage } from '../map/map.page';
 import { Component } from '@angular/core';
 
 @Component({
+  selector: 'search-page',
   templateUrl: './search.page.html'
 })
 export class SearchPage {

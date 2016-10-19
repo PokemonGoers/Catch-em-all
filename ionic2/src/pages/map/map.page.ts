@@ -9,6 +9,7 @@ import { POICardComponent } from '../../components/poi-card/poi-card.component';
 import { FilterService } from '../../services/filter.service';
 
 @Component({
+  selector: 'map-page',
   templateUrl: './map.page.html'
 })
 export class MapPage {
