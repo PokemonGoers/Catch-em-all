@@ -1,6 +1,6 @@
 <div id="slide-card" #slideCard @slide="slideState">
   <!-- Sightings -->
-  <div *ngIf="poi && poi.type == 'sighting' && pokemon">
+  <div *ngIf="poi?.type == 'sighting' && pokemon">
     <section class="side-section" id="sighting-side-section">
       <poke-poi-bubble [pokemon]="pokemon"
                        [appearedOn]="poi.appearedOn"></poke-poi-bubble>
@@ -32,7 +32,7 @@
   </div>
 
   <!-- Mobs -->
-  <div *ngIf="poi && poi.type == 'mob'">
+  <div *ngIf="poi?.type == 'mob'">
     <section class="side-section" id="mob-side-section">
       <img src="img/pokemon-mob.svg" alt="Pokemon Logo">
     </section>
