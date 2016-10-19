@@ -30,7 +30,7 @@ export class MapPage {
   positionLoaded: Promise<any> = null;
 
   constructor(private navParams: NavParams,
-              private config:ConfigService,
+              private config: ConfigService,
               private popoverCtrl: PopoverController,
               private events: Events,
               private filterService: FilterService) {
