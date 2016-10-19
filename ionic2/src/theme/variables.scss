@@ -52,8 +52,9 @@ $ionicons-font-path: "../assets/fonts";
 
 ion-popover .popover-content {
   max-height: 550px;
-  height: 70vh;
-  width: 350px !important;
+  height: 70vh !important;
+  max-width: 350px;
+  width: 50vh !important;
 }
 poke-navbar .searchbar-input {
   // Replace outer shadows in poke-navbar with inset shadows
