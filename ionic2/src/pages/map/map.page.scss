@@ -1,7 +1,11 @@
 map-page {
-  :host {
-    scroll-content {
-      overflow: hidden;
-    }
+  scroll-content {
+    overflow: hidden;
+  }
+
+  #artificial-mob-button {
+    position: absolute;
+    top: 10px;
+    left: 60px;
   }
 }

@@ -2,10 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { Events } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
-import { PokeSighting } from '../../models/poke-sighting';
-import { PokePrediction } from '../../models/poke-prediction';
-import { PokeMob } from '../../models/poke-mob';
 import { Filter } from '../../models/filter';
+import { poiFromMapEventData } from '../../utils/poi-from-map-event-data'
 
 import PokeMap from 'pokemap-1';
 
@@ -46,9 +44,9 @@ export class MapComponent {
     //this.map.filter(filter);
   }
 
-  private onClick(pokePOI) {
-    console.debug('map:click', pokePOI);
-    this.events.publish('map:click', MapComponent.mapPokePOI(pokePOI));
+  private onClick(poi) {
+    console.debug('map:click', poi);
+    this.events.publish('map:click', poiFromMapEventData(poi));
   }
 
   private onMove(position) {
@@ -67,15 +65,4 @@ export class MapComponent {
       this.map.navigate(start, destination);
     })
   }
-
-  private static mapPokePOI(pokePOI: Object): (PokeSighting | PokePrediction | PokeMob) {
-    if ('source' in pokePOI) {
-      return PokeSighting.fromObject(pokePOI);
-    } else if ('clusterId' in pokePOI) {
-      return PokeMob.fromObject(pokePOI);
-    } else {
-      throw new Error('PokePOI cannot be identified as PokeSighting or PokeMob:\n' + JSON.stringify(pokePOI));
-    }
-  }
-
 }

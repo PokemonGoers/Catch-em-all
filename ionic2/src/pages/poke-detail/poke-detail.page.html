@@ -12,8 +12,7 @@
           <img [src]="pokemon.svgIcon" class="box align-right">
         </div>
         <div id="main-info">
-          <div id="number-and-rarity">
-            <ion-badge color="light">#{{ pokemon.pokemonId }}</ion-badge>
+          <div id="rarity">
             <poke-rarity-badge [rarity]="pokemon.appearanceLikelihood">
             </poke-rarity-badge>
           </div>

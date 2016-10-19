@@ -18,8 +18,8 @@ export class ConfigService {
       return env.WEBSOCKET_ENDPOINT;
   }
 
-  get browserPlatform(): boolean {
-    return this.platform.is('core') || this.platform.is('mobileweb');
+  get isDevelopEnvironment(): boolean {
+    return env.BUILD_ENV === 'develop';
   }
 
 }

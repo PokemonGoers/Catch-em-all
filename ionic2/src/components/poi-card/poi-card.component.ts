@@ -5,7 +5,13 @@ import { Subscription } from 'rxjs';
 
 import { ApiService } from '../../services/api.service';
 import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
-import { PokeSighting } from '../../models/poke-sighting';
+import { TypesComponent } from '../types/types.component';
+import { RarityBadgeComponent } from '../rarity-badge/rarity-badge.component';
+import { Pokemon } from '../../models/pokemon';
+import { POI } from '../../models/poi';
+import { Sighting } from '../../models/sighting';
+
+import Hammer from 'hammerjs';
 
 @Component({
   selector: 'poke-poi-card',
@@ -22,7 +28,8 @@ export class POICardComponent implements OnInit {
 
   @ViewChild('slideCard') slideCard: ElementRef;
 
-  pokePOI: PokeSighting;
+  poi: POI;
+  pokemon: Pokemon;
   loadPokemon: Subscription;
   slideState: string = 'hidden';
 
@@ -32,28 +39,33 @@ export class POICardComponent implements OnInit {
               private events: Events) { }
 
   ngOnInit() {
-    this.events.subscribe('map:click', ([pokePOI]) => {
-      if (pokePOI instanceof PokeSighting) {
-        this.show(pokePOI);
-      }
+    this.events.subscribe('map:click', ([poi]) => {
+      this.show(poi);
     });
 
     let hammer = new Hammer(this.slideCard.nativeElement);
     hammer.on('swipedown swipeleft swiperight', this.hide.bind(this));
   }
 
-  show(pokePOI: PokeSighting) {
+  show(poi: POI) {
     this.cancelRequests();
 
-    // Load pokemon for given pokemonId
-    this.loadPokemon = this.apiService.getPokemonById(pokePOI.pokemonId).subscribe(pokemon => {
-      this.slideState = 'visible';
-      pokePOI.pokemon = pokemon;
-      this.pokePOI = pokePOI;
+    this.poi = poi;
+    this.pokemon = null;
 
-      // Change detection will only be triggered upon user interaction (e.g. moving the mouse cursor)
-      this.changeDetectorRef.detectChanges();
-    });
+    // Load Pokemon for given pokemonId
+    if (poi instanceof Sighting) {
+      const sighting = <Sighting>poi;
+      this.loadPokemon = this.apiService
+                             .getPokemonById(sighting.pokemonId)
+                             .subscribe(pokemon => {
+                                this.slideState = 'visible';
+                                this.pokemon = pokemon;
+                                this.changeDetectorRef.detectChanges();
+                              });
+    } else {
+      this.slideState = 'visible';
+    }
   }
 
   hide() {
@@ -66,23 +78,15 @@ export class POICardComponent implements OnInit {
     }
   }
 
-  getPOITypeBadgeLabel(): string {
-    switch(this.pokePOI.getType()) {
-      case 'prediction':
-        return 'Pokemon Prediction';
-      case 'sighting':
-        return 'Pokemon Sighting';
-      case 'mob':
-        return 'Pokemon Mob';
-    }
-  }
-
   showDirections() {
-    this.events.publish('map:directions', this.pokePOI.getLocation());
+    this.events.publish('map:directions', {
+      longitude: this.poi.longitude,
+      latitude: this.poi.latitude
+    });
   }
 
   launchPokeDex() {
-    this.navCtrl.push(PokeDetailPage, {pokemon: this.pokePOI.pokemon});
+    this.navCtrl.push(PokeDetailPage, { pokemon: this.pokemon });
   }
 
 }

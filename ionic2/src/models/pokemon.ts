@@ -5,8 +5,8 @@ import { Platform } from 'ionic-angular';
 const configServiceInjector = ReflectiveInjector.resolveAndCreate([ConfigService, Platform]);
 const config: ConfigService = configServiceInjector.get(ConfigService);
 
-export type PokeGender = 'm' | 'f' | 'g' | 'h';
-export type PokeAttackCategory = 'fast' | 'special';
+export type PokemonGender = 'm' | 'f' | 'g' | 'h';
+export type PokemonAttackCategory = 'fast' | 'special';
 export type Attack = {
   type: string;
   name: string;
@@ -36,7 +36,7 @@ export class Pokemon {
   appearanceLikelihood: number;
 
   gender: {
-    abbreviation: PokeGender;
+    abbreviation: PokemonGender;
     maleRatio: number;
     femaleRatio: number;
     breedable: boolean;
