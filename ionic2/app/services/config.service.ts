@@ -4,7 +4,6 @@ import env from '../env';
 
 @Injectable()
 export class ConfigService {
-
   get apiEndpoint(): string {
     if (env.BUILD_TARGET !== 'web' && env.API_ENDPOINT) {
       return env.API_ENDPOINT;
@@ -25,4 +24,7 @@ export class ConfigService {
     }
   }
 
+  get isDevelopEnvironment(): boolean {
+    return env.BUILD_ENV === 'develop';
+  }
 }

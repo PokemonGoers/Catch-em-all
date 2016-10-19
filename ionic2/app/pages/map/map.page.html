@@ -10,4 +10,10 @@
   </button>
 
   <poke-poi-card #poiCard></poke-poi-card>
+
+  <button id="artificial-mob-button"
+          (click)="showArtificialMob()"
+          *ngIf="config.isDevelopEnvironment">
+    Show artificial mob card
+  </button>
 </ion-content>

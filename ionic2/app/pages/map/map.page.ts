@@ -8,6 +8,7 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ConfigService } from '../../services/config.service';
 import { POICardComponent } from '../../components/poi-card/poi-card.component';
 import { FilterService } from '../../services/filter.service';
+import { Mob } from '../../models/mob';
 
 @Page({
   template: require('./map.page.html'),
@@ -29,7 +30,7 @@ export class MapPage {
   positionLoaded: Promise<any> = null;
 
   constructor(private navParams: NavParams,
-              private config:ConfigService,
+              private config: ConfigService,
               private popoverCtrl: PopoverController,
               private events: Events,
               private filterService: FilterService) {
@@ -74,5 +75,20 @@ export class MapPage {
     popover.present({
       ev: $event
     });
+  }
+
+  showArtificialMob() {
+    const mob = new Mob();
+    mob.clusterId = 123;
+    mob.tweets = [
+      { id: '1', text: 'hello', latitude: 1, longitude: 2, timestamp: 123 },
+      { id: '2', text: 'world', latitude: 1, longitude: 2, timestamp: 123 },
+      { id: '3', text: 'hello', latitude: 1, longitude: 2, timestamp: 123 },
+      { id: '4', text: 'world', latitude: 1, longitude: 2, timestamp: 123 },
+    ];
+    mob.longitude = 48.184858933932304;
+    mob.latitude = 11.732025146484373;
+    mob.timestamp = 1476796355282;
+    this.events.publish('map:click', mob);
   }
 }
