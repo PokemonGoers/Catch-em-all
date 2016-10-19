@@ -18,10 +18,10 @@
       </div>
       <div class="description">{{ pokemon.description }}</div>
       <div class="buttons">
-        <button clear (click)="showDirections()">
+        <button ion-button clear (click)="showDirections()">
           <ion-icon name="navigate"></ion-icon> Directions
         </button>
-        <button clear (click)="launchPokeDex()">
+        <button ion-button clear (click)="launchPokeDex()">
           <ion-icon name="book"></ion-icon> PokeDex
         </button>
       </div>
@@ -31,25 +31,10 @@
     <div class="line-badge" id="sighting-line-badge">Pokemon Sighting</div>
   </div>
 
-<<<<<<< HEAD:ionic2/src/components/poi-card/poi-card.component.html
-        <ion-row class="action-button-bar">
-          <button ion-button color="light" (click)="showDirections()">
-            <ion-icon name="navigate"></ion-icon>
-            Directions
-          </button>
-
-          <button ion-button color="light" (click)="launchPokeDex()">
-            <ion-icon name="book"></ion-icon>
-            PokeDex
-          </button>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-=======
   <!-- Mobs -->
   <div *ngIf="poi?.type == 'mob'">
     <section class="side-section" id="mob-side-section">
-      <img src="img/pokemon-mob.svg" alt="Pokemon Logo">
+      <img src="assets/img/pokemon-mob.svg" alt="Pokemon Logo">
     </section>
 
     <section class="main-section" id="mob-main-section">
@@ -59,12 +44,11 @@
         Based on {{ poi.tweets.length }} tweets.
       </div>
       <div class="buttons">
-        <button clear (click)="showDirections()">
+        <button ion-button clear (click)="showDirections()">
           <ion-icon name="navigate"></ion-icon> Directions
         </button>
       </div>
     </section>
->>>>>>> 2c6511e48a5a0127e100b5ac70bebebe3cd5868e:ionic2/app/components/poi-card/poi-card.component.html
 
     <section class="buttons-section" id="mob-buttons-section">
     </section>
