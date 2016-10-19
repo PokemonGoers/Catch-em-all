@@ -45,7 +45,7 @@ script:
   - npm test
 
   # Run frontend/app tests
-  # - cd ../ionic2
+  - cd ../ionic2
   # - npm test
 
   # Build app for browser and Android platform
