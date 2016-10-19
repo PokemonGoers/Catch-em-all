@@ -10,7 +10,7 @@ const signals = [
 ]
 function closeApp () {
   return pokemonServer.close().then(() => {
-    console.log('Stopped src')
+    console.log('Stopped app')
     process.exit(1)
   })
 }
