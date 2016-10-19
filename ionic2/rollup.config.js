@@ -6,7 +6,8 @@ var release = process.env['IONIC_ENV'] === 'prod';
 const env = {
   BUILD_ENV: release ? 'release' : 'develop',
   BUILD_TIME: new Date(),
-  API_ENDPOINT: process.env['API_ENDPOINT'] || 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014'
+  API_ENDPOINT: process.env['API_ENDPOINT'] || 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014',
+  WEBSOCKET_ENDPOINT: process.env['WEBSOCKET_ENDPOINT'] || 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65024'
 };
 
 for (let envKey in env) {
