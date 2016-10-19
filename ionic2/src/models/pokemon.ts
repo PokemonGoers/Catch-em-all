@@ -1,7 +1,8 @@
 import { ReflectiveInjector } from '@angular/core';
 import { ConfigService } from '../services/config.service';
+import { Platform } from 'ionic-angular';
 
-const configServiceInjector = ReflectiveInjector.resolveAndCreate([ConfigService]);
+const configServiceInjector = ReflectiveInjector.resolveAndCreate([ConfigService, Platform]);
 const config: ConfigService = configServiceInjector.get(ConfigService);
 
 export type PokeGender = 'm' | 'f' | 'g' | 'h';
