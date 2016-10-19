@@ -10,14 +10,3 @@
 // automatically applied to the <body> element in the app.
 //
 // App Shared Sass variables belong in variables.scss.
-.popover-content {
-  max-height: 550px;
-  height: 70vh;
-  width: 300px;
-}
-poke-navbar .searchbar-input {
-  // Replace outer shadows in poke-navbar with inset shadows
-  box-shadow: inset 0 0 4px 0 rgba(0,0,0,0.2);
-  border: 1px solid #b1b1b1;
-}
-

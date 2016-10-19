@@ -68,7 +68,8 @@ for (let envKey in env) {
     MapPage,
     PokeDetailPage,
     SearchPage,
-    WikiIndexPage
+    WikiIndexPage,
+    FilterComponent
   ],
   providers: [
     ApiService,

@@ -18,8 +18,8 @@
     <button ion-button block (click)="applyFilters()">Apply filter</button>
   </div>
   <ion-buttons style="text-align: center;">
-    <button clear (click)="selectAll()">Select all</button>
-    <button clear (click)="selectNone()">Select none</button>
+    <button ion-button clear (click)="selectAll()">Select all</button>
+    <button ion-button clear (click)="selectNone()">Select none</button>
   </ion-buttons>
   <div style="padding-top: 0px;" padding>
     <ion-row *ngFor="let pokemonContainer of ( pokemonContainers | pokemonFilterPipe: pokeFilterData )">

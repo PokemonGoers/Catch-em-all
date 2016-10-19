@@ -12,7 +12,7 @@ export class FilterTimeTabComponent implements OnInit {
   sightingsRange: number;
   predictionsRange: number;
 
-  constructor(public filterService: FilterService, private cdr: ChangeDetectorRef) { }
+  constructor(public filterService: FilterService) { }
 
   ngOnInit() {
     // Inverted coloring for sightings bar: Replace method that does coloring
@@ -27,7 +27,6 @@ export class FilterTimeTabComponent implements OnInit {
 
   onSightingsToggleChanged(event) {
     event._checked ? this.filterService.sightingsRange = 5 : this.filterService.sightingsRange = 9;
-    setTimeout(() => this.cdr.detectChanges(), 100);
   }
 
   onSightingsRangeChanged(sightingsRange) {
@@ -36,7 +35,6 @@ export class FilterTimeTabComponent implements OnInit {
 
   onPredictionsToggleChanged(event) {
     event._checked ? this.filterService.predictionsRange = 5 : this.filterService.predictionsRange = 0;
-    setTimeout(() => this.cdr.detectChanges(), 100);
   }
 
   onPredictionsRangeChanged(predictionsRange) {

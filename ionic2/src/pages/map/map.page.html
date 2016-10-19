@@ -5,9 +5,11 @@
 <ion-content>
   <poke-map (click)="poiCard.hide()"></poke-map>
 
-  <button ion-button fab fab-right fab-bottom (click)="showFilterPopover($event)">
-    <ion-icon name="funnel"></ion-icon>
-  </button>
+  <ion-fab right bottom>
+    <button ion-fab (click)="showFilterPopover($event)">
+      <ion-icon name="funnel"></ion-icon>
+    </button>
+  </ion-fab>
 
   <poke-poi-card #poiCard></poke-poi-card>
 </ion-content>
