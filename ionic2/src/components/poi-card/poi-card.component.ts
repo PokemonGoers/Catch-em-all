@@ -5,8 +5,6 @@ import { Subscription } from 'rxjs';
 
 import { ApiService } from '../../services/api.service';
 import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
-import { TypesComponent } from '../types/types.component';
-import { RarityBadgeComponent } from '../rarity-badge/rarity-badge.component';
 import { Pokemon } from '../../models/pokemon';
 import { POI } from '../../models/poi';
 import { Sighting } from '../../models/sighting';
