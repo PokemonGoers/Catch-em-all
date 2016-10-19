@@ -9,23 +9,13 @@ export class ConfigService {
   constructor(private platform: Platform) { }
 
   get apiEndpoint(): string {
-    if (this.browserPlatform) {
-      // If we are running inside a browser the app is served
-      // by a web server which also proxies all API requests.
-      return window.location.origin;
-    } else {
       return env.API_ENDPOINT;
-    }
   }
 
   get websocketEndpoint(): string {
-    if (this.browserPlatform && env.WEBSOCKET_ENDPOINT) {
-      return window.location.origin;
-    } else {
       // For build target 'web' we are running a node server alongside
       // the src which proxies all websocket requests.
       return env.WEBSOCKET_ENDPOINT;
-    }
   }
 
   get browserPlatform(): boolean {
