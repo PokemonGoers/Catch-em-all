@@ -1,15 +1,17 @@
-scroll-content {
-  overflow-y: auto;
-}
+poke-nav-sidebar {
+  scroll-content {
+    overflow-y: auto;
+  }
 
-ion-footer {
-  display: flex;
-  padding: 10px;
-  height: 98px;
-  flex: 0 0 auto;
-  align-items: center;
+  ion-footer {
+    display: flex;
+    padding: 10px;
+    height: 98px;
+    flex: 0 0 auto;
+    align-items: center;
 
-  div {
-    margin-left: 10px;
+    div {
+      margin-left: 10px;
+    }
   }
 }

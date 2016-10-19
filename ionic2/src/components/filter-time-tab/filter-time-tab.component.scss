@@ -1,27 +1,29 @@
-.group {
-  padding: 20px;
-}
+poke-filter-time-tab {
+  .group {
+    padding: 20px;
+  }
 
-.section-header {
-  display: flex;
-  align-items: center;
-}
+  .section-header {
+    display: flex;
+    align-items: center;
+  }
 
-ion-toggle {
-  margin: 10px;
-  margin-left: 0;
-}
+  ion-toggle {
+    margin: 10px;
+    margin-left: 0;
+  }
 
-.title {
-  font-size: 17px;
-}
+  .title {
+    font-size: 17px;
+  }
 
-.note {
-  font-size: 13px;
-}
+  .note {
+    font-size: 13px;
+  }
 
-.range-labels {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  .range-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
 }

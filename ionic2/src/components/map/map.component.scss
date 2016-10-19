@@ -1,7 +1,9 @@
-:host {
-  background: black;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-grow: 1;
+poke-map {
+  :host {
+    background: black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-grow: 1;
+  }
 }

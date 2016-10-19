@@ -1,17 +1,19 @@
-:host {
-  display: inline-block;
-}
+poke-type {
+  :host {
+    display: inline-block;
+  }
 
-div {
-  border-radius: 10px;
-  display: inline-block;
-  margin: 2px;
-  padding: 3px 8px;
-  font-size: 1.3rem;
-  font-weight: bold;
-  line-height: 1;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  color: white;
+  div {
+    border-radius: 10px;
+    display: inline-block;
+    margin: 2px;
+    padding: 3px 8px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    color: white;
+  }
 }
