@@ -54,7 +54,7 @@ export class WikiIndexPage {
     this.navCtrl.push(PokeDetailPage, {pokemon: pokemon});
   }
 
-  ionViewDidUnload() {
+  ionViewDidLeave() {
     this.cancelRequests();
   }
 

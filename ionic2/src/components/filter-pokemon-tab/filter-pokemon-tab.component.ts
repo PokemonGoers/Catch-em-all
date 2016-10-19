@@ -56,7 +56,7 @@ export class FilterPokemonTabComponent implements OnInit {
     }
   }
 
-  ionViewDidUnload() {
+  ionViewDidLeave() {
     this.cancelRequests();
   }
 
