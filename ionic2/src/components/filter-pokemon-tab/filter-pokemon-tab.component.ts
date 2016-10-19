@@ -18,7 +18,7 @@ export class FilterPokemonTabComponent implements OnInit {
 
   pokemonIds: number[];
 
-  nameFilter: string;
+  nameFilter: string = '';
   typeDataBinding: TypeContainer[] = [];
 
   querySubscription: Subscription;

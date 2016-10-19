@@ -12,7 +12,7 @@ import { ApiService } from '../../services/api.service';
 })
 export class WikiIndexPage {
 
-  queryString: string;
+  queryString: string = '';
   querySubscription: Subscription;
   results: Pokemon[] = [];
 

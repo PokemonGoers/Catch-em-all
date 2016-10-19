@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
 })
 export class SearchPage {
 
-  search: string;
+  search: string = '';
 
   pokemonResults: Pokemon[] = [];
   locationResults: LocationQueryResponse[] = [];
