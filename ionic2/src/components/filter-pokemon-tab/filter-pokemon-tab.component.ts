@@ -74,6 +74,10 @@ export class FilterPokemonTabComponent implements OnInit {
     // Triggered when the confirm button (e.g. enter) is pressed.
   }
 
+  onCancel() {
+    this.cancelRequests();
+  }
+
   nameFilterChanged() {
     this.pokeFilterData.pokemonName = this.nameFilter;
     console.log('NAME FILTER CHANGED: ' + this.pokeFilterData.pokemonName);
