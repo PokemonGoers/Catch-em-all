@@ -13,7 +13,7 @@
 
   <button id="artificial-mob-button"
           (click)="showArtificialMob()"
-          [hidden]="config.buildEnvironment !== 'develop'">
+          *ngIf="config.buildEnvironment === 'develop'">
     Show artificial mob card
   </button>
 </ion-content>
