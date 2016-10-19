@@ -1,6 +1,10 @@
 poke-nav-sidebar {
-  scroll-content {
+  .scroll-content {
     overflow-y: auto;
+  }
+
+  ion-content {
+    top: 56px
   }
 
   ion-footer {
