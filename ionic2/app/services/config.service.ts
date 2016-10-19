@@ -24,5 +24,7 @@ export class ConfigService {
     }
   }
 
-  buildEnvironment = env.BUILD_ENV;
+  get isDevelopEnvironment(): boolean {
+    return env.BUILD_ENV === 'develop';
+  }
 }
