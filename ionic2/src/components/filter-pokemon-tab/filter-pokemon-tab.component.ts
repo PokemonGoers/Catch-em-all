@@ -7,8 +7,8 @@ import { ApiService } from '../../services/api.service';
 import { FilterService } from '../../services/filter.service';
 
 
-type PokemonContainer = {pokemon: Pokemon, isSelected: boolean};
-type TypeContainer = {type: string[], isSelected: boolean};
+export type PokemonContainer = {pokemon: Pokemon, isSelected: boolean};
+export type TypeContainer = {type: string[], isSelected: boolean};
 
 @Component({
   selector: 'poke-filter-pokemon-tab',
