@@ -4,7 +4,7 @@ import { Geolocation } from 'ionic-native';
 
 import { Sighting } from '../../models/sighting';
 import { Prediction } from '../../models/prediction';
-import { Mob } from '../../models/mob';
+import { Mob, MobTweet } from '../../models/mob';
 import { POI } from '../../models/poi';
 import { Filter } from '../../models/filter';
 
@@ -81,6 +81,19 @@ function poiFromMapEventData(rawData: any) : POI {
     return sighting;
   } else if ('clusterId' in rawData) {
     const mob = new Mob();
+    mob.clusterId = rawData.clusterId;
+    mob.timestamp = rawData.timestamp;
+    mob.latitude = rawData.coordinates[1];
+    mob.longitude = rawData.coordinates[0];
+    mob.tweets = rawData.tweets.map(t => {
+      return <MobTweet>{
+        id: t.id,
+        text: t.text,
+        latitude: t.coordinates[1],
+        longitude: t.coordinates[0],
+        timestamp: t.timestamp
+      }
+    })
     return mob;
   } else {
     throw new Error('POI cannot be identified as ' +

@@ -2,15 +2,16 @@ import { POI } from './poi';
 
 export class Mob extends POI {
   clusterId: number;
-  tweets: PokeTweet[];
+  tweets: MobTweet[];
   timestamp: number;
 
   type = 'mob';
 }
 
-export type PokeTweet = {
+export type MobTweet = {
   id: string;
   text: string;
-  coordinates: [number, number];  // [longitude, latitude]
+  latitude: number;
+  longitude: number;
   timestamp: number;
 }
