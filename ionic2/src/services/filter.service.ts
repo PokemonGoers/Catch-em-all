@@ -35,7 +35,10 @@ export class FilterService {
     this.timeRangesPredictions.reverse();
 
     if (this.platform.is('cordova')) {
-      NativeStorage.getItem('filter').then(this.loadFilter.bind(this)).catch(error => console.log('ERROR', error));
+      this.platform.ready().then(() => {
+          NativeStorage.getItem('filter').then(this.loadFilter.bind(this)).catch(error => console.log('ERROR', error))
+        }
+      );
     }
   }
 
@@ -59,7 +62,7 @@ export class FilterService {
     this.events.publish('map:filter', this.filter);
 
     if (this.platform.is('cordova')) {
-      NativeStorage.setItem('filter', this.dumpFilter());
+      this.platform.ready().then(() => NativeStorage.setItem('filter', this.dumpFilter()));
     }
   }
 
