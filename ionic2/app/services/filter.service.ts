@@ -61,12 +61,22 @@ export class FilterService {
     if (this.platform.is('cordova')) {
       NativeStorage.setItem('filter', this.dumpFilter());
     }
+
+    console.log(this.filter)
   }
 
-  get filter(): Filter {
+/*  get filter(): Filter {
     return {
       sightingsSince: this.timeRangesSightings[this._sightingsRange].time,
       predictionsUntil: this.timeRangesPredictions[this._predictionsRange].time,
+      pokemonIds: this._pokemonIds
+    }
+  }*/
+
+  get filter(): Filter {
+    return {
+      sightingsSince: new Date(new Date().getTime() + (this.timeRangesSightings[this._sightingsRange].time) * 1000),
+      predictionsUntil: new Date(new Date().getTime() + (this.timeRangesPredictions[this._predictionsRange].time) * 1000),
       pokemonIds: this._pokemonIds
     }
   }
