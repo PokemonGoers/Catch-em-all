@@ -48,8 +48,8 @@ self.addEventListener('fetch', (event) => {
 
         // Otherwise, if there is no entry in the cache for event.request, response will be
         // undefined, and we need to fetch() the resource.
-        console.log(' No response for %s found in cache. ' +
-          'About to fetch from network...', event.request.url);
+        // console.log(' No response for %s found in cache. ' +
+        //  'About to fetch from network...', event.request.url);
 
         // We call .clone() on the request since we might use it in the call to cache.put() later on.
         // Both fetch() and cache.put() "consume" the request, so we need to make a copy.
