@@ -1,0 +1,21 @@
+<ion-header>
+  <poke-navbar title="PokeMap"></poke-navbar>
+</ion-header>
+
+<ion-content>
+  <poke-map (click)="poiCard.hide()"></poke-map>
+
+  <ion-fab right bottom>
+    <button ion-fab icon-only (click)="showFilterPopover($event)">
+      <ion-icon name="funnel"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <poke-poi-card #poiCard></poke-poi-card>
+
+  <button ion-button color="primary" id="artificial-mob-button"
+          (click)="showArtificialMob()"
+          *ngIf="config.isDevelopEnvironment">
+    Show artificial mob card
+  </button>
+</ion-content>

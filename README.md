@@ -8,11 +8,11 @@ This is project E of the WS 2016 JavaScript Technology seminar at the TU Munich.
 
 ## Live Demo
 
-http://catch-em-all-0a600d65.c65978f4.svc.dockerapp.io:4898/
+https://predictemall.online
 
 ## Install required packages
 
-1. `npm install -g cordova ionic@2.0.0-beta.37 gulp`
+1. `npm install -g cordova ionic`
 
 2. In `./ionic2` run
 

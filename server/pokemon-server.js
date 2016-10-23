@@ -1,10 +1,8 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 const path = require('path')
 const http = require('http')
 const proxy = require('express-http-proxy')
 const compression = require('compression')
-const url = require('url')
 const logger = require('morgan')
 
 class PokemonServer {
@@ -14,7 +12,6 @@ class PokemonServer {
 
     app.use(logger('short'))
 
-    app.use(bodyParser.json())
     app.get('/', (req, res) => { res.redirect('index.html') })
 
     // Use gzip to compress served files
@@ -23,14 +20,14 @@ class PokemonServer {
     // Serve app content and cache it for a week
     app.use(express.static(path.join(__dirname, 'app'), {maxage: 7 * 86400000}))
 
-    // Proxy requests to /api/* to API backend
-    app.use('/api/*', proxy(config.apiEndpoint, {
-      forwardPath: (req, res) => url.parse(req.baseUrl).path
+    // Proxy requests to /api to API backend
+    app.use('/api', proxy(config.apiEndpoint, {
+      forwardPath: (req, res) => req.originalUrl
     }))
 
     // Proxy websocket requests to API backend
-    app.use('/socket.io/*', proxy(config.websocketEndpoint, {
-      forwardPath: (req, res) => url.parse(req.baseUrl).path
+    app.use('/socket.io', proxy(config.websocketEndpoint, {
+      forwardPath: (req, res) => req.originalUrl
     }))
 
     this._app = app
