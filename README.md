@@ -8,7 +8,7 @@ This is project E of the WS 2016 JavaScript Technology seminar at the TU Munich.
 
 ## Live Demo
 
-http://catch-em-all-0a600d65.c65978f4.svc.dockerapp.io:4898/
+https://predictemall.online
 
 ## Install required packages
 
