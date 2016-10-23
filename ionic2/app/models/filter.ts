@@ -1,5 +1,5 @@
 export class Filter {
-  sightingsSince: number;
-  predictionsUntil: number;
+  sightingsSince: Date;
+  predictionsUntil: Date;
   pokemonIds: number[];
 }
