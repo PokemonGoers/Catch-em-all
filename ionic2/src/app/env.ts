@@ -1,7 +1,7 @@
 // Exports global constants from build
 export default {
-  BUILD_ENV: 'release',
-  BUILD_TIME: new Date(),
-  API_ENDPOINT: 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014',
-  WEBSOCKET_ENDPOINT: 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65024'
+  BUILD_ENV: '<@BUILD_ENV@>',
+  BUILD_TIME: '<@BUILD_TIME@>',
+  API_ENDPOINT: '<@API_ENDPOINT@>',
+  WEBSOCKET_ENDPOINT: '<@WEBSOCKET_ENDPOINT@>'
 };
