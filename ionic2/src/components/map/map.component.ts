@@ -40,7 +40,7 @@ export class MapComponent {
 
   private filter(filter: Filter) {
     console.debug('map:filter', filter);
-    //this.map.filter(filter);
+    this.map.filter(filter);
   }
 
   private onClick(poi) {
