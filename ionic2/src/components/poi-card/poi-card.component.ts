@@ -8,6 +8,7 @@ import { PokeDetailPage } from '../../pages/poke-detail/poke-detail.page';
 import { Pokemon } from '../../models/pokemon';
 import { POI } from '../../models/poi';
 import { Sighting } from '../../models/sighting';
+import { Prediction } from '../../models/prediction';
 
 import Hammer from 'hammerjs';
 
@@ -53,14 +54,11 @@ export class POICardComponent implements OnInit {
 
     // Load Pokemon for given pokemonId
     if (poi instanceof Sighting) {
-      const sighting = <Sighting>poi;
-      this.loadPokemon = this.apiService
-                             .getPokemonById(sighting.pokemonId)
-                             .subscribe(pokemon => {
-                                this.slideState = 'visible';
-                                this.pokemon = pokemon;
-                                this.changeDetectorRef.detectChanges();
-                              });
+      const sighting = <Sighting> poi;
+      this.loadPokemon = this.subscribe(sighting.pokemonId);
+    } else if (poi instanceof Prediction) {
+      const prediction = <Prediction> poi;
+      this.loadPokemon = this.subscribe(prediction.pokemonId);
     } else {
       this.slideState = 'visible';
     }
@@ -85,6 +83,17 @@ export class POICardComponent implements OnInit {
 
   launchPokeDex() {
     this.navCtrl.push(PokeDetailPage, { pokemon: this.pokemon });
+  }
+
+  subscribe(pokemonId: number): Subscription {
+    return (
+      this.apiService
+          .getPokemonById(pokemonId)
+          .subscribe(pokemon => {
+            this.slideState = 'visible';
+            this.pokemon = pokemon;
+          })
+    );
   }
 
 }
