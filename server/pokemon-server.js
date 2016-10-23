@@ -1,5 +1,4 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 const path = require('path')
 const http = require('http')
 const proxy = require('express-http-proxy')
@@ -10,7 +9,7 @@ class PokemonServer {
   constructor (config) {
     // Express
     const app = express()
-    app.use(bodyParser.json())
+
     app.get('/', (req, res) => { res.redirect('index.html') })
 
     // Use gzip to compress served files
