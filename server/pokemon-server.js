@@ -3,11 +3,14 @@ const path = require('path')
 const http = require('http')
 const proxy = require('express-http-proxy')
 const compression = require('compression')
+const logger = require('morgan')
 
 class PokemonServer {
   constructor (config) {
     // Express
     const app = express()
+
+    app.use(logger('short'))
 
     app.get('/', (req, res) => { res.redirect('index.html') })
 
