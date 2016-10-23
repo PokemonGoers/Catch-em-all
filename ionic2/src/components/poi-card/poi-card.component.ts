@@ -55,20 +55,10 @@ export class POICardComponent implements OnInit {
     // Load Pokemon for given pokemonId
     if (poi instanceof Sighting) {
       const sighting = <Sighting> poi;
-      this.loadPokemon = this.apiService
-                             .getPokemonById(sighting.pokemonId)
-                             .subscribe(pokemon => {
-                                this.slideState = 'visible';
-                                this.pokemon = pokemon;
-                              });
+      this.loadPokemon = this.subscribe(sighting.pokemonId);
     } else if (poi instanceof Prediction) {
       const prediction = <Prediction> poi;
-            this.loadPokemon = this.apiService
-                             .getPokemonById(prediction.pokemonId)
-                             .subscribe(pokemon => {
-                                this.slideState = 'visible';
-                                this.pokemon = pokemon;
-                              });
+      this.loadPokemon = this.subscribe(prediction.pokemonId);
     } else {
       this.slideState = 'visible';
     }
@@ -93,6 +83,17 @@ export class POICardComponent implements OnInit {
 
   launchPokeDex() {
     this.navCtrl.push(PokeDetailPage, { pokemon: this.pokemon });
+  }
+
+  subscribe(pokemonId: number): Subscription {
+    return (
+      this.apiService
+          .getPokemonById(pokemonId)
+          .subscribe(pokemon => {
+            this.slideState = 'visible';
+            this.pokemon = pokemon;
+          })
+    );
   }
 
 }
