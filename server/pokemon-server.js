@@ -9,7 +9,7 @@ class PokemonServer {
   constructor (config) {
     // Express
     const app = express()
-
+    app.use(bodyParser.json())
     app.get('/', (req, res) => { res.redirect('index.html') })
 
     // Use gzip to compress served files
