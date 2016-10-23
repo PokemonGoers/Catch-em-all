@@ -35,22 +35,19 @@ export class MapComponent {
   }
 
   private goTo(position) {
-    console.debug('map:goTo', position);
     this.map.goTo(position);
   }
 
   private filter(filter: Filter) {
     console.debug('map:filter', filter);
-    //this.map.filter(filter);
+    this.map.filter(filter);
   }
 
   private onClick(poi) {
-    console.debug('map:click', poi);
     this.events.publish('map:click', poiFromMapEventData(poi));
   }
 
   private onMove(position) {
-    console.debug('map:move', position);
     this.events.publish('map:move', position);
   }
 

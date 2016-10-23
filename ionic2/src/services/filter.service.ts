@@ -36,7 +36,9 @@ export class FilterService {
 
     if (this.platform.is('cordova')) {
       this.platform.ready().then(() => {
-          NativeStorage.getItem('filter').then(this.loadFilter.bind(this)).catch(error => console.log('ERROR', error))
+          NativeStorage.getItem('filter').then(this.loadFilter.bind(this)).catch(error => {
+            if(error.code && error.code != 2) console.log('ERROR', error); 
+          })
         }
       );
     }
