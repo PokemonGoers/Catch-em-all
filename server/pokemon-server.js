@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const http = require('http')
-const proxy = require('express-http-proxy')
+const proxy = require('http-proxy-middleware')
 const compression = require('compression')
 const logger = require('morgan')
 
@@ -21,14 +21,10 @@ class PokemonServer {
     app.use(express.static(path.join(__dirname, 'app'), {maxage: 7 * 86400000}))
 
     // Proxy requests to /api to API backend
-    app.use('/api', proxy(config.apiEndpoint, {
-      forwardPath: (req, res) => req.originalUrl
-    }))
+    app.use('/api', proxy(config.apiEndpoint))
 
     // Proxy websocket requests to API backend
-    app.use('/socket.io', proxy(config.websocketEndpoint, {
-      forwardPath: (req, res) => req.originalUrl
-    }))
+    app.use('/socket.io', proxy(config.websocketEndpoint, {ws: true}))
 
     this._app = app
 
