@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, URLSearchParams } from '@angular/http';
+import { Geolocation } from 'ionic-native';
 import { Observable } from 'rxjs';
 
 import { Pokemon, PokemonGender, PokemonAttackCategory } from '../models/pokemon';
 import { Sighting } from '../models/sighting';
 import { ConfigService } from './config.service';
+import { WebsocketService } from './websocket.service';
 import { TYPES } from './poke-types';
 
 @Injectable()
 export class ApiService {
 
-  apiEndpoint: string;
+  private apiEndpoint: string;
+  private initializeMobSettings: Promise<any> = null;
+  private MOB_RADIUS: number = 5000000;
 
-  constructor(private http: Http, config: ConfigService) {
+
+  constructor(private http: Http, private websocket: WebsocketService, config: ConfigService) {
     this.apiEndpoint = config.apiEndpoint;
   }
 
@@ -276,6 +281,28 @@ export class ApiService {
    */
   getTypes(): { [key:string]:string; } {
     return TYPES;
+  }
+
+  /**
+   * Registers a callback which is called on every mob detection.
+   * @param {function} callback
+   */
+  subscribeToMobs(callback: ((Mob) => any)) {
+    if (!this.initializeMobSettings) {
+      this.initializeMobSettings = Geolocation.getCurrentPosition()
+        .then(position => {
+          this.websocket.emit('settings', {
+            mode: 'geo',
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+            radius: this.MOB_RADIUS
+          });
+        });
+    }
+
+    this.initializeMobSettings.then(() => {
+      this.websocket.on('mob', callback);
+    })
   }
 
 }

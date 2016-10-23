@@ -27,6 +27,8 @@ import { ConfigService } from '../services/config.service';
 import { LocationService } from '../services/location.service';
 import { FilterService } from '../services/filter.service';
 import { ProjectGroupsService } from '../services/project-groups.service';
+import { WebsocketService } from '../services/websocket.service';
+import { NotificationService } from '../services/notification.service';
 
 import { PokemonFilterPipe } from '../pipes/pokemon-filter/pokemon-filter.pipe';
 
@@ -76,7 +78,9 @@ for (let envKey in env) {
     ConfigService,
     FilterService,
     LocationService,
-    ProjectGroupsService
+    ProjectGroupsService,
+    WebsocketService,
+    NotificationService
   ]
 })
 export class AppModule {
