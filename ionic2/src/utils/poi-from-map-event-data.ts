@@ -29,12 +29,12 @@ export function poiFromMapEventData(rawData: any) : POI {
     })
     return mob;
   } else if ('confidence' in rawData) {
-    const prediciton = new Prediction();
-    prediciton.latitude = rawData.location.coordinates[1];
-    prediciton.longitude = rawData.location.coordinates[0];
-    prediciton.pokemonId = rawData.pokemonId;
-    prediciton.confidence = rawData.confidence;
-    return prediciton;
+    const prediction = new Prediction();
+    prediction.latitude = rawData.location.coordinates[1];
+    prediction.longitude = rawData.location.coordinates[0];
+    prediction.pokemonId = rawData.pokemonId;
+    prediction.confidence = rawData.confidence;
+    return prediction;
   } else {
     throw new Error('POI cannot be identified as ' +
                     'Sighting, Prediction or Mob:\n' + JSON.stringify(rawData));
