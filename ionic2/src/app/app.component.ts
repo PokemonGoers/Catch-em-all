@@ -20,7 +20,7 @@ export class App {
         StatusBar.styleDefault();
       }
 
-      if (platform.is('android')) {
+      if (platform.is('android') && !platform.is('mobileweb')) {
         notificationService.setNav(this.nav);
         notificationService.scheduleNotifications();
       }
