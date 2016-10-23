@@ -10,6 +10,7 @@ export class POIBubbleComponent implements OnInit {
 
   @Input() pokemon: Pokemon;
   @Input() appearedOn: number;
+  @Input() confidence: number;
   @ViewChild('circle') circle: ElementRef;
 
   arcHighlightColor = '#FFF75A';
@@ -18,13 +19,17 @@ export class POIBubbleComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    let appearedOn = (new Date(this.appearedOn)).getTime() / 1000;
-    let now = Date.now() / 1000;
-    let diff = Math.max(Math.log((now -appearedOn) / 1000), 1);
-    let max = Math.log(30 * 86400 / 1000);
-    let ratio = diff / max * -1;
+    if(this.appearedOn) {
+      let appearedOn = (new Date(this.appearedOn)).getTime() / 1000;
+      let now = Date.now() / 1000;
+      let diff = Math.max(Math.log((now -appearedOn) / 1000), 1);
+      let max = Math.log(30 * 86400 / 1000);
+      let ratio = diff / max * -1;
 
-    this.upateArc(ratio);
+      this.upateArc(ratio);
+    } else if(this.confidence) {
+      this.upateArc(this.confidence);
+    }
   }
 
   upateArc(arcPercentage) {

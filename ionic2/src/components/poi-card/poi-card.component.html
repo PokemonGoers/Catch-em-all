@@ -31,6 +31,38 @@
     <div class="line-badge" id="sighting-line-badge">Pokemon Sighting</div>
   </div>
 
+    <!-- Predicitons -->
+  <div *ngIf="poi?.type == 'prediction' && pokemon">
+    <section class="side-section" id="sighting-side-section">
+      <poke-poi-bubble [pokemon]="pokemon"
+                       [confidence]="poi.confidence"></poke-poi-bubble>
+      <div>
+        <poke-type [type]="type" *ngFor="let type of pokemon.types">
+        </poke-type>
+      </div>
+    </section>
+
+    <section class="main-section" id="sighting-main-section">
+      <div class="name-and-rarity">
+        <span class="title">{{ pokemon.name }}</span>
+        <poke-rarity-badge [rarity]="pokemon.appearanceLikelihood">
+        </poke-rarity-badge>
+      </div>
+      <div class="description">{{ pokemon.description }}</div>
+      <div class="buttons">
+        <button ion-button icon-left clear (click)="showDirections()">
+          <ion-icon name="navigate"></ion-icon> Directions
+        </button>
+        <button ion-button icon-left clear (click)="launchPokeDex()">
+          <ion-icon name="book"></ion-icon> PokeDex
+        </button>
+      </div>
+    </section>
+
+    <div class="line" id="prediction-line"></div>
+    <div class="line-badge" id="prediction-line-badge">Pokemon Prediction</div>
+  </div>
+
   <!-- Mobs -->
   <div *ngIf="poi?.type == 'mob'">
     <section class="side-section" id="mob-side-section">

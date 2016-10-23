@@ -1,5 +1,6 @@
 import { POI } from '../models/poi';
 import { Sighting } from '../models/sighting';
+import { Prediction } from '../models/prediction';
 import { Mob, MobTweet } from '../models/mob';
 
 export function poiFromMapEventData(rawData: any) : POI {
@@ -27,8 +28,15 @@ export function poiFromMapEventData(rawData: any) : POI {
       }
     })
     return mob;
+  } else if ('confidence' in rawData) {
+    const prediciton = new Prediction();
+    prediciton.latitude = rawData.location.coordinates[1];
+    prediciton.longitude = rawData.location.coordinates[0];
+    prediciton.pokemonId = rawData.pokemonId;
+    prediciton.confidence = rawData.confidence;
+    return prediciton;
   } else {
     throw new Error('POI cannot be identified as ' +
-                    'Sighting or Mob:\n' + JSON.stringify(rawData));
+                    'Sighting, Prediction or Mob:\n' + JSON.stringify(rawData));
   }
 }
