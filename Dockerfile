@@ -21,11 +21,13 @@ RUN cd $(npm root -g)/npm \
 RUN cd server && npm install --only=prod -q && npm prune --production
 RUN cd ionic2 && npm install -q && npm prune
 RUN cd ionic2 && npm update -q pokemap-1 pokemap-2
-RUN cd ionic2 && typings install
 
 # Build web app
 RUN cd ionic2 && ionic prepare
 RUN cd ionic2 && ionic build browser
+
+# Copy bundled web app to server directory
+RUN rm -rf server/app && cp -r ionic2/platforms/browser/www server/app
 
 # Clean workspace
 RUN rm -rf ionic2

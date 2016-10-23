@@ -1,0 +1,59 @@
+<div id="slide-card" #slideCard [@slide]="slideState">
+  <!-- Sightings -->
+  <div *ngIf="poi?.type == 'sighting' && pokemon">
+    <section class="side-section" id="sighting-side-section">
+      <poke-poi-bubble [pokemon]="pokemon"
+                       [appearedOn]="poi.appearedOn"></poke-poi-bubble>
+      <div>
+        <poke-type [type]="type" *ngFor="let type of pokemon.types">
+        </poke-type>
+      </div>
+    </section>
+
+    <section class="main-section" id="sighting-main-section">
+      <div class="name-and-rarity">
+        <span class="title">{{ pokemon.name }}</span>
+        <poke-rarity-badge [rarity]="pokemon.appearanceLikelihood">
+        </poke-rarity-badge>
+      </div>
+      <div class="description">{{ pokemon.description }}</div>
+      <div class="buttons">
+        <button ion-button icon-left clear (click)="showDirections()">
+          <ion-icon name="navigate"></ion-icon> Directions
+        </button>
+        <button ion-button icon-left clear (click)="launchPokeDex()">
+          <ion-icon name="book"></ion-icon> PokeDex
+        </button>
+      </div>
+    </section>
+
+    <div class="line" id="sighting-line"></div>
+    <div class="line-badge" id="sighting-line-badge">Pokemon Sighting</div>
+  </div>
+
+  <!-- Mobs -->
+  <div *ngIf="poi?.type == 'mob'">
+    <section class="side-section" id="mob-side-section">
+      <img src="assets/img/pokemon-mob.svg" alt="Pokemon Logo">
+    </section>
+
+    <section class="main-section" id="mob-main-section">
+      <div class="title">PokeMob</div>
+      <div class="description">
+        A lot of players seem to gather at this location!<br><br>
+        Based on {{ poi.tweets.length }} tweets.
+      </div>
+      <div class="buttons">
+        <button ion-button icon-left clear (click)="showDirections()">
+          <ion-icon name="navigate"></ion-icon> Directions
+        </button>
+      </div>
+    </section>
+
+    <section class="buttons-section" id="mob-buttons-section">
+    </section>
+
+    <div class="line" id="mob-line"></div>
+    <div class="line-badge" id="mob-line-badge">PokeMob</div>
+  </div>
+</div>

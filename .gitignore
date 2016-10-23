@@ -3,8 +3,11 @@
 /ionic2/www
 
 # Logs
-logs
+*.sw[mnpcod]
 *.log
+*.tmp
+*.tmp.*
+log.txt
 npm-debug.log*
 
 # Runtime data
@@ -33,7 +36,6 @@ build/Release
 # Dependency directories
 node_modules
 jspm_packages
-ionic2/typings
 
 # Optional npm cache directory
 .npm
@@ -41,13 +43,23 @@ ionic2/typings
 # Optional REPL history
 .node_repl_history
 
-# JetBrains IDE project files
+# IDEs / Editor
 .idea
+*.sublime-project
+*.sublime-workspace
+.vscode/
 
 # Ionic
 /ionic2/platforms/
 /ionic2/plugins/
+/ionic2/tmp/
+/ionic2/temp/
+/ionic2/hooks/
+/ionic2/plugins/android.json
+/ionic2/plugins/ios.json
+/ionic2/www/
+$RECYCLE.BIN/
 
 # Other
 .DS_Store
-.vscode
+UserInterfaceState.xcuserstate
