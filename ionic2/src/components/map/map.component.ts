@@ -35,7 +35,6 @@ export class MapComponent {
   }
 
   private goTo(position) {
-    console.debug('map:goTo', position);
     this.map.goTo(position);
   }
 
@@ -45,12 +44,10 @@ export class MapComponent {
   }
 
   private onClick(poi) {
-    console.debug('map:click', poi);
     this.events.publish('map:click', poiFromMapEventData(poi));
   }
 
   private onMove(position) {
-    console.debug('map:move', position);
     this.events.publish('map:move', position);
   }
 

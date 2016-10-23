@@ -80,7 +80,6 @@ export class FilterPokemonTabComponent implements OnInit {
 
   nameFilterChanged() {
     this.pokeFilterData.pokemonName = this.nameFilter;
-    console.log('NAME FILTER CHANGED: ' + this.pokeFilterData.pokemonName);
   }
 
   typeFilterChanged() {
@@ -90,7 +89,6 @@ export class FilterPokemonTabComponent implements OnInit {
         this.pokeFilterData.pokemonTypes.push(typeField.type[0]);
       }
     }
-    console.log('TYPE FILTER CHANGED: ' + this.pokeFilterData.pokemonTypes);
   }
 
   selectAll() {
@@ -115,7 +113,6 @@ export class FilterPokemonTabComponent implements OnInit {
     }
 
     this.filterService.pokemonIds = this.pokemonIds;
-    console.log('SELECTED: (' + this.pokemonIds.length + '): ' + this.pokemonIds);
   }
 
 }
