@@ -1,14 +1,14 @@
 poke-filter-pokemon-tab {
-  .background{
+  .background {
     background-color: #f4f4f7;
   }
 
-  .type-selection{
+  .type-selection {
     padding-left: 20px;
     color: #333333;
   }
 
-  .type-list{
+  .type-list {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -18,23 +18,23 @@ poke-filter-pokemon-tab {
     max-height: 325px;
   }
 
-  .type-item{
+  .type-item {
     flex-grow: 0;
     vertical-align: middle;
     text-align: center;
     padding: 7px;
   }
 
-  ion-checkbox{
+  ion-checkbox {
     vertical-align: middle;
   }
 
-  img{
+  img {
     max-width: 40px;
     max-height: 40px;
   }
 
-  poke-list{
+  poke-list {
     padding-left: 5px;
   }
 }

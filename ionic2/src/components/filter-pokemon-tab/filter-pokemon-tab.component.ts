@@ -5,10 +5,10 @@ import { Pokemon } from '../../models/pokemon';
 import { PokemonFilterData } from '../../models/pokemon-filter-data';
 import { ApiService } from '../../services/api.service';
 import { FilterService } from '../../services/filter.service';
-
+import { types } from '../../utils/types';
 
 export type PokemonContainer = {pokemon: Pokemon, isSelected: boolean};
-export type TypeContainer = {type: string[], isSelected: boolean};
+export type TypeContainer = { type: string, isSelected: boolean};
 
 @Component({
   selector: 'poke-filter-pokemon-tab',
@@ -48,12 +48,9 @@ export class FilterPokemonTabComponent implements OnInit {
         error => this.pokemonContainers = []
       );
 
-    for (let str in this.apiService.getTypes()) {
-      this.typeDataBinding.push({
-        type: [str],
-        isSelected: false
-      });
-    }
+    this.typeDataBinding = types.map(type => {
+      return { type, isSelected: false }
+    });
   }
 
   ionViewDidLeave() {
