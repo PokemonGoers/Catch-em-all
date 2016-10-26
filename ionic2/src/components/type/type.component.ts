@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { typeColors } from '../../utils/types';
+import { TypeService } from '../../services/type.service';
 
 @Component({
   selector: 'poke-type',
@@ -8,5 +8,5 @@ import { typeColors } from '../../utils/types';
 })
 export class TypeComponent {
   @Input() type: string;
-  typeColors = typeColors;
+  constructor(private typeService: TypeService) { }
 }

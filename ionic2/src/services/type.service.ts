@@ -1,4 +1,6 @@
-export const types = [
+import { Injectable } from '@angular/core';
+
+const types = [
   'bug',
   'dark',
   'dragon',
@@ -19,7 +21,7 @@ export const types = [
   'water'
 ];
 
-export const typeColors = {
+const typeColors = {
   'bug': '#99cc00',
   'dark': '#73264d',
   'dragon' :'#3333cc',
@@ -38,4 +40,10 @@ export const typeColors = {
   'rock': '#994d00',
   'steel': '#808080',
   'water': '#3399ff'
+}
+
+@Injectable()
+export class TypeService {
+    get types () { return types; }
+    get typeColors () { return typeColors; }
 }
