@@ -6,13 +6,9 @@ import { ViewController } from 'ionic-angular';
   templateUrl:  './filter.component.html'
 })
 export class FilterComponent {
-  currentTab: string;
+  currentTab: string = 'time';
 
   constructor(private viewController: ViewController) { }
-
-  ionViewWillEnter() {
-    this.currentTab = 'time';
-  }
 
   close(): void {
     this.viewController.dismiss();
