@@ -54,10 +54,10 @@ export class POICardComponent implements OnInit {
 
     // Load Pokemon for given pokemonId
     if (poi instanceof Sighting) {
-      const sighting = <Sighting> poi;
+      const sighting: Sighting = poi;
       this.loadPokemon = this.subscribe(sighting.pokemonId);
     } else if (poi instanceof Prediction) {
-      const prediction = <Prediction> poi;
+      const prediction: Prediction = poi;
       this.loadPokemon = this.subscribe(prediction.pokemonId);
     } else {
       this.slideState = 'visible';
