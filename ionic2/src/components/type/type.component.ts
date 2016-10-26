@@ -8,5 +8,5 @@ import { TypeService } from '../../services/type.service';
 })
 export class TypeComponent {
   @Input() type: string;
-  constructor(private typeService: TypeService) { }
+  constructor(public typeService: TypeService) { }
 }
