@@ -20,13 +20,14 @@ import { NavbarComponent } from '../components/navbar/navbar.component';
 import { POIBubbleComponent } from '../components/poi-bubble/poi-bubble.component';
 import { POICardComponent } from '../components/poi-card/poi-card.component';
 import { RarityBadgeComponent } from '../components/rarity-badge/rarity-badge.component';
-import { TypesComponent } from '../components/types/types.component';
+import { TypeComponent } from '../components/type/type.component';
 
 import { ApiService } from '../services/api.service';
 import { ConfigService } from '../services/config.service';
 import { LocationService } from '../services/location.service';
 import { FilterService } from '../services/filter.service';
 import { ProjectGroupsService } from '../services/project-groups.service';
+import { TypeService } from '../services/type.service';
 
 import { PokemonFilterPipe } from '../pipes/pokemon-filter/pokemon-filter.pipe';
 
@@ -54,7 +55,7 @@ for (let envKey in env) {
     POIBubbleComponent,
     POICardComponent,
     RarityBadgeComponent,
-    TypesComponent,
+    TypeComponent,
     PokemonFilterPipe
   ],
   imports: [
@@ -76,7 +77,8 @@ for (let envKey in env) {
     ConfigService,
     FilterService,
     LocationService,
-    ProjectGroupsService
+    ProjectGroupsService,
+    TypeService
   ]
 })
 export class AppModule {

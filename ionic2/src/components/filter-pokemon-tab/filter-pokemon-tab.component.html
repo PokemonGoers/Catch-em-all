@@ -3,7 +3,7 @@
   <div class="type-list">
     <div class="type-item" *ngFor="let typeEntry of typeDataBinding">
       <ion-checkbox color="dark" [(ngModel)]="typeEntry.isSelected" (ionChange)="typeFilterChanged()"></ion-checkbox>
-      <poke-type [type]="type" *ngFor="let type of typeEntry.type"></poke-type>
+      <poke-type [type]="typeEntry.type"></poke-type>
     </div>
   </div>
   <br>
