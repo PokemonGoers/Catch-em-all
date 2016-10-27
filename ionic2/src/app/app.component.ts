@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
-import { StatusBar } from 'ionic-native';
+import { StatusBar, Splashscreen } from 'ionic-native';
 import 'rxjs/add/operator/map';
 
 import { MapPage } from '../pages/map/map.page';
@@ -18,6 +18,7 @@ export class App {
     platform.ready().then(() => {
       if (platform.is('cordova')) {
         StatusBar.styleDefault();
+        Splashscreen.hide();
       }
 
       if (platform.is('android') && !platform.is('mobileweb')) {

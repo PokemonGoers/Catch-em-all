@@ -8,6 +8,7 @@ import { ConfigService } from '../../services/config.service';
 import { POICardComponent } from '../../components/poi-card/poi-card.component';
 import { FilterService } from '../../services/filter.service';
 import { Mob } from '../../models/mob';
+import { Prediction } from '../../models/prediction';
 
 @Component({
   selector: 'map-page',
@@ -84,5 +85,14 @@ export class MapPage {
     mob.latitude = 11.732025146484373;
     mob.timestamp = 1476796355282;
     this.events.publish('map:click', mob);
+  }
+
+  showArtificialPrediction() {
+    const prediction = new Prediction();
+    prediction.pokemonId = 54;
+    prediction.longitude = 48.184858933932304;
+    prediction.latitude = 11.732025146484373;
+    prediction.confidence = 0.75;
+    this.events.publish('map:click', prediction);
   }
 }
