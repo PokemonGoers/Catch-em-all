@@ -37,7 +37,7 @@ export class NotificationService {
     LocalNotifications.schedule({
       id: this.MOB_NOTIFICATION_ID,
       title: 'PredictEmAll - PokeMob detected',
-      text: mob.tweets.length + ' persons in your area are tweeting about Pokemon',
+      text: mob.tweets.length + ' tweets about Pokémon were posted in your area',
       icon: 'res://icon.png',
       smallIcon: 'res://icon.png',
       data: mob
