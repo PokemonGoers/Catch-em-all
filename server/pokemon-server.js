@@ -10,7 +10,7 @@ class PokemonServer {
     // Express
     const app = express()
 
-    app.use(logger('short'))
+    app.use(logger(config.requestLogFormat))
 
     app.get('/', (req, res) => { res.redirect('index.html') })
 
@@ -21,10 +21,10 @@ class PokemonServer {
     app.use(express.static(path.join(__dirname, 'app'), {maxage: 7 * 86400000}))
 
     // Proxy requests to /api to API backend
-    app.use('/api', proxy(config.apiEndpoint))
+    app.use('/api', proxy(config.apiEndpoint, {changeOrigin: true, logLevel: config.proxyLogLevel}))
 
     // Proxy websocket requests to API backend
-    app.use('/socket.io', proxy(config.websocketEndpoint, {ws: true}))
+    app.use('/socket.io', proxy(config.websocketEndpoint, {ws: true, changeOrigin: true, logLevel: config.proxyLogLevel}))
 
     this._app = app
 
