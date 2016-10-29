@@ -7,6 +7,12 @@ ENV LISTEN_PORT=8080
 ENV API_ENDPOINT=http://pokedata.c4e3f8c7.svc.dockerapp.io:65014
 ENV WEBSOCKET_ENDPOINT=http://pokedata.c4e3f8c7.svc.dockerapp.io:65024
 
+# https://github.com/expressjs/morgan#predefined-formats
+ENV REQUEST_LOG_FORMAT=short
+
+# debug|info|warn|error|silent
+ENV PROXY_LOG_LEVEL=info
+
 WORKDIR /usr/src/pokemon-app
 
 Add ionic2 ionic2
