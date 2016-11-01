@@ -6,10 +6,18 @@
 const CACHE_VERSION = '###CACHE_VERSION###';
 
 const cacheWhitelist = [
-  /\.html($|\?.*)/,
-  /\.js($|\?.*)/,
-  /\.css($|\?.*)/,
-  /\.woff2($|\?.*)/
+  /\.html($|\?)/,
+  /\.js($|\?)/,
+  /\.css($|\?)/,
+  /\.woff2?($|\?)/,
+  /\.png($|\?)/,
+  /\.gif($|\?)/,
+  /\.jpe?g($|\?)/,
+  /\.ico($|\?)/,
+  /\.svg($|\?)/,
+  /\.eot($|\?)/,
+  /\.ttf($|\?)/,
+  /\/api\//
 ];
 
 function shouldCache(response) {
