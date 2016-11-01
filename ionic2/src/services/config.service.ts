@@ -1,17 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Platform } from 'ionic-angular';
 
 import env from '../app/env';
 
 @Injectable()
 export class ConfigService {
 
-  constructor(private platform: Platform) { }
-
   get apiEndpoint(): string {
-    if (this.browserPlatform) {
-      // If we are running inside a browser the app is served
-      // by a web server which also proxies all API requests.
+    if (this.requestProxy) {
       return window.location.origin;
     } else {
       return env.API_ENDPOINT;
@@ -19,19 +14,17 @@ export class ConfigService {
   }
 
   get websocketEndpoint(): string {
-    if (this.browserPlatform) {
-      // If we are running inside a browser the app is served
-      // by a web server which also proxies all API requests.
+    if (this.requestProxy) {
       return window.location.origin;
     } else {
-      // For build target 'web' we are running a node server alongside
-      // the src which proxies all websocket requests.
       return env.WEBSOCKET_ENDPOINT;
     }
   }
 
-  get browserPlatform(): boolean {
-    return this.platform.is('core') || this.platform.is('mobileweb');
+  get requestProxy(): boolean {
+    // Is set to true if the app is running alongside a node server
+    // which proxies requests to the actual API backend.
+    return env.REQUEST_PROXY !== 'false';
   }
 
   get isDevelopEnvironment(): boolean {

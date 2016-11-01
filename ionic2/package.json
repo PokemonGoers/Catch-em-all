@@ -3,9 +3,9 @@
   "description": "CatchEmAll: An Ionic project",
   "scripts": {
     "build": "ionic-app-scripts build",
-    "build:browser": "ionic prepare && ionic build browser",
-    "build:android": "ionic prepare && ionic build android",
-    "watch": "ionic-app-scripts watch",
+    "build:browser": "ionic prepare && REQUEST_PROXY=true ionic build browser",
+    "build:android": "ionic prepare && REQUEST_PROXY=false ionic build android",
+    "watch": "REQUEST_PROXY=false ionic-app-scripts watch",
     "serve:before": "watch",
     "emulate:before": "build",
     "deploy:before": "build",
