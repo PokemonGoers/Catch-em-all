@@ -49,8 +49,8 @@ script:
   # - npm test
 
   # Build app for browser and Android platform
-  - node_modules/.bin/ionic build browser
-  - node_modules/.bin/ionic build android
+  - npm run build:browser
+  - npm run build:android
 
 after_success:
   # Upload apk to HockeyApp
