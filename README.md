@@ -38,15 +38,9 @@ Run `ionic serve` in the `./ionic2` folder to start the server at `http://localh
 
 ### Without Docker
 
-1. In `./ionic2` run
+1. In `./ionic2` run `npm run build:browser`
 
-    `ionic prepare`
-
-    `ionic build browser`
-
-2. In `./server` run
-
-    `npm start`
+2. In `./server` run `npm start`
 
 3. Go to `http://localhost:8080`
 
@@ -54,11 +48,7 @@ Run `ionic serve` in the `./ionic2` folder to start the server at `http://localh
 
 First make sure that the Android SDK is installed and that `ANDROID_HOME` is set.
 
-1. In `./ionic2` run
-
-    `ionic prepare`
-
-    `ionic build android`
+1. In `./ionic2` run `npm run build:android`
 
 2. The final app apk can be found at `./ionic2/platforms/android/build/outputs/apk/android-debug.apk`.
 
