@@ -55,7 +55,6 @@ jspm_packages
 /ionic2/plugins/
 /ionic2/tmp/
 /ionic2/temp/
-/ionic2/hooks/
 /ionic2/plugins/android.json
 /ionic2/plugins/ios.json
 /ionic2/www/
