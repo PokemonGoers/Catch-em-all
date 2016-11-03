@@ -17,8 +17,8 @@ class PokemonServer {
     // Use gzip to compress served files
     app.use(compression())
 
-    // Serve app content and cache it for a week
-    app.use(express.static(path.join(__dirname, 'app'), {maxage: 7 * 86400000}))
+    // Serve app content
+    app.use(express.static(path.join(__dirname, 'app')))
 
     // Proxy requests to /api to API backend
     app.use('/api', proxy(config.apiEndpoint, {changeOrigin: true, logLevel: config.proxyLogLevel}))
