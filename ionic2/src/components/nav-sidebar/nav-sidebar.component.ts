@@ -18,7 +18,7 @@ export class NavSidebarComponent {
     {name: 'PokeMap', link: MapPage},
     {name: 'PokeDex', link: WikiIndexPage},
     {name: 'About', link: AboutPage},
-    {name: 'Imprint & Disclaimer', link: ImprintPage}
+    {name: 'Disclaimer', link: ImprintPage}
   ];
 
   constructor() { }
